@@ -27,13 +27,13 @@ export default function Navbar() {
             Home
           </Link>
           <Link
-            href="/"
+            href="/#recipes"
             className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900"
           >
             Recipes
           </Link>
           <Link
-            href="/"
+            href="/recipes"
             className="rounded-full bg-terra-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-terra-700 hover:shadow-md"
           >
             Browse All
