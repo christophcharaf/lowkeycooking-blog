@@ -1,10 +1,27 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* ── Terracotta palette ── */
+  --color-terra-50:  #fdf3ee;
+  --color-terra-100: #fde5d0;
+  --color-terra-200: #fac9a8;
+  --color-terra-300: #f5a679;
+  --color-terra-400: #ee7f4e;
+  --color-terra-500: #e0622e;
+  --color-terra-600: #c2501f;
+  --color-terra-700: #a0401a;
+  --color-terra-800: #7e3217;
+  --color-terra-900: #5c2410;
+
+  --color-cream-50:  #fdfaf5;
+  --color-cream-100: #f9f4eb;
+  --color-cream-200: #f2e9d6;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -126,4 +143,100 @@
   html {
     @apply font-sans;
   }
+}
+
+/* ─── Recipe markdown content styles ────────────────────────────── */
+.recipe-content h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111827;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #fde5d0;
+  letter-spacing: -0.02em;
+}
+
+.recipe-content h2:first-child {
+  margin-top: 0;
+}
+
+/* Ingredient list */
+.recipe-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.recipe-content ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  color: #374151;
+  border: 1px solid #f3f4f6;
+}
+
+.recipe-content ul li::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  margin-top: 0.35rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #c2501f;
+}
+
+/* Instructions list */
+.recipe-content ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  counter-reset: step;
+}
+
+.recipe-content ol li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  counter-increment: step;
+}
+
+.recipe-content ol li::before {
+  content: counter(step);
+  display: flex;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: #c2501f;
+  color: white;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  margin-top: 0.1rem;
+}
+
+.recipe-content ol li p,
+.recipe-content ol li {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #374151;
+}
+
+.recipe-content p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #4b5563;
 }
