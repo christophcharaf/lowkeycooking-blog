@@ -1,7 +1,7 @@
 ---
 title: Lobster Bisque
 description: A luxurious and creamy classic, this lobster bisque is rich with tender lobster meat and aromatic flavors, perfect for a special occasion.
-image: https://images.unsplash.com/photo-1677353986873-10eb083a2169?w=1200&q=80
+image: https://images.unsplash.com/photo-1464093515883-ec948246accb?w=1200&q=80
 prep_time: 30 mins
 cook_time: 60 mins
 servings: 4
