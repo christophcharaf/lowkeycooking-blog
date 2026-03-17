@@ -250,6 +250,39 @@
   color: #4b5563;
 }
 
+/* ─── Recipe content — dark mode overrides ──────────────────────── */
+.dark .recipe-content h2 {
+  color: #f9fafb;
+  border-bottom-color: #374151;
+}
+
+.dark .recipe-section-icon {
+  color: #f5a679; /* terra-300 */
+}
+
+.dark .recipe-content ul li {
+  background: #1f2937;
+  color: #d1d5db;
+  border-color: #374151;
+}
+
+.dark .recipe-content ul li::before {
+  background-color: #f5a679; /* terra-300 */
+}
+
+.dark .recipe-content ol li::before {
+  background-color: #e0622e; /* terra-500 */
+}
+
+.dark .recipe-content ol li p,
+.dark .recipe-content ol li {
+  color: #d1d5db;
+}
+
+.dark .recipe-content p {
+  color: #9ca3af;
+}
+
 /* ── Print styles ─────────────────────────────────────────── */
 @media print {
   /* Hide everything that isn't the recipe */

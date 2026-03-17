@@ -4,7 +4,17 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
-const recipesDirectory = path.join(process.cwd(), "recipes");
+// Map every translated heading variant to the icon key
+const HEADING_TO_ICON_KEY: Record<string, string> = {
+  // English
+  ingredients: "ingredients",
+  instructions: "instructions",
+  // Spanish
+  ingredientes: "ingredients",
+  instrucciones: "instructions",
+  preparación: "instructions",
+  preparacion: "instructions",
+};
 
 const SECTION_ICONS: Record<string, string> = {
   ingredients: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="recipe-section-icon"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg>`,
@@ -13,7 +23,8 @@ const SECTION_ICONS: Record<string, string> = {
 
 function injectSectionIcons(html: string): string {
   return html.replace(/<h2>(.*?)<\/h2>/gi, (match, title: string) => {
-    const icon = SECTION_ICONS[title.trim().toLowerCase()];
+    const iconKey = HEADING_TO_ICON_KEY[title.trim().toLowerCase()];
+    const icon = iconKey ? SECTION_ICONS[iconKey] : undefined;
     if (!icon) return match;
     return `<h2>${icon}<span>${title}</span></h2>`;
   });
@@ -54,13 +65,19 @@ export interface RecipeSummary extends RecipeFrontmatter {
   slug: string;
 }
 
-export function getAllRecipes(): RecipeSummary[] {
-  const fileNames = fs.readdirSync(recipesDirectory);
+function getRecipesDirectory(locale: string): string {
+  return path.join(process.cwd(), "recipes", locale);
+}
+
+export function getAllRecipes(locale: string = "en"): RecipeSummary[] {
+  const dir = getRecipesDirectory(locale);
+  if (!fs.existsSync(dir)) return [];
+  const fileNames = fs.readdirSync(dir);
   return fileNames
     .filter((name) => name.endsWith(".md"))
     .map((fileName) => {
       const slug = fileName.replace(/\.md$/, "");
-      const fullPath = path.join(recipesDirectory, fileName);
+      const fullPath = path.join(dir, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data } = matter(fileContents);
       return {
@@ -70,8 +87,12 @@ export function getAllRecipes(): RecipeSummary[] {
     });
 }
 
-export async function getRecipeBySlug(slug: string): Promise<Recipe> {
-  const fullPath = path.join(recipesDirectory, `${slug}.md`);
+export async function getRecipeBySlug(
+  slug: string,
+  locale: string = "en",
+): Promise<Recipe> {
+  const dir = getRecipesDirectory(locale);
+  const fullPath = path.join(dir, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -87,7 +108,6 @@ export async function getRecipeBySlug(slug: string): Promise<Recipe> {
 
 /** Converts a recipe into a clean plain-text string suitable for the Notes app. */
 export function recipeToShareText(recipe: Recipe): string {
-  // Strip HTML tags, decode entities, and preserve section structure
   const contentText = recipe.contentHtml
     .replace(/<h2[^>]*>[\s\S]*?<\/h2>/gi, (match) => {
       const heading = match.replace(/<[^>]*>/g, "").trim();
@@ -141,11 +161,4 @@ export function recipeToShareText(recipe: Recipe): string {
   lines.push("", `From LowKeyCooking`);
 
   return lines.join("\n");
-}
-
-export function generateStaticParams(): { slug: string }[] {
-  const fileNames = fs.readdirSync(recipesDirectory);
-  return fileNames
-    .filter((name) => name.endsWith(".md"))
-    .map((fileName) => ({ slug: fileName.replace(/\.md$/, "") }));
 }

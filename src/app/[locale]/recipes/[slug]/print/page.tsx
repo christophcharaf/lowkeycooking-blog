@@ -1,22 +1,22 @@
 import { notFound } from "next/navigation";
-import {
-  getRecipeBySlug,
-  getAllRecipes,
-} from "@/lib/recipes";
+import { getAllRecipes, getRecipeBySlug } from "@/lib/recipes";
 import PrintPreview from "@/components/PrintPreview";
 
 export async function generateStaticParams() {
-  return getAllRecipes().map((r) => ({ slug: r.slug }));
+  const locales = ["en", "es"];
+  return locales.flatMap((locale) =>
+    getAllRecipes(locale).map((r) => ({ locale, slug: r.slug })),
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   try {
-    const recipe = await getRecipeBySlug(slug);
+    const recipe = await getRecipeBySlug(slug, locale);
     return { title: `Print: ${recipe.title} — LowKeyCooking` };
   } catch {
     return { title: "Print Recipe" };
@@ -26,13 +26,13 @@ export async function generateMetadata({
 export default async function PrintPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
 
   let recipe;
   try {
-    recipe = await getRecipeBySlug(slug);
+    recipe = await getRecipeBySlug(slug, locale);
   } catch {
     notFound();
   }

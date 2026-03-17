@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import NextLink from "next/link";
 import { Mail, Link, Check, Printer, Share2, NotebookPen } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link as LocaleLink } from "@/i18n/navigation";
 
 interface ShareButtonsProps {
   title: string;
@@ -60,10 +61,20 @@ function TikTokIcon() {
   );
 }
 
-export default function ShareButtons({ title, description, image, slug, shareText }: ShareButtonsProps) {
+const shareButtonBase =
+  "flex items-center gap-2 rounded-full border border-cream-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-150 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200";
+
+export default function ShareButtons({
+  title,
+  description,
+  image,
+  slug,
+  shareText,
+}: ShareButtonsProps) {
   const [url, setUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [noteSaved, setNoteSaved] = useState(false);
+  const t = useTranslations("ShareButtons");
 
   useEffect(() => {
     setUrl(window.location.href);
@@ -120,7 +131,6 @@ export default function ShareButtons({ title, description, image, slug, shareTex
   ];
 
   async function saveToNotes() {
-    // Web Share API — opens the native share sheet (Notes, Keep, etc.) on mobile
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share({ title, text: shareText });
@@ -129,7 +139,6 @@ export default function ShareButtons({ title, description, image, slug, shareTex
         // user cancelled or API unavailable — fall through to clipboard
       }
     }
-    // Desktop fallback: copy the formatted text to clipboard
     try {
       await navigator.clipboard.writeText(shareText);
     } catch {
@@ -150,7 +159,6 @@ export default function ShareButtons({ title, description, image, slug, shareTex
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // fallback for older browsers
       const input = document.createElement("input");
       input.value = url;
       document.body.appendChild(input);
@@ -163,13 +171,13 @@ export default function ShareButtons({ title, description, image, slug, shareTex
   }
 
   return (
-    <div className="print-hide mt-10 border-t border-cream-200 pt-10">
-      <h2 className="mb-1 flex items-center gap-2 text-xl font-extrabold tracking-tight text-gray-900">
+    <div className="print-hide mt-10 border-t border-cream-200 pt-10 dark:border-gray-700">
+      <h2 className="mb-1 flex items-center gap-2 text-xl font-extrabold tracking-tight text-gray-900 dark:text-gray-50">
         <Share2 className="size-5 text-terra-600" />
-        Share this Recipe
+        {t("shareThisRecipe")}
       </h2>
-      <p className="mb-5 text-sm text-gray-500">
-        Loved it? Share it with friends and family!
+      <p className="mb-5 text-sm text-gray-500 dark:text-gray-400">
+        {t("shareSubtitle")}
       </p>
       <div className="flex flex-wrap gap-2.5">
         {shareLinks.map((link) => (
@@ -178,9 +186,9 @@ export default function ShareButtons({ title, description, image, slug, shareTex
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Share on ${link.name}`}
-            title={`Share on ${link.name}`}
-            className={`flex items-center gap-2 rounded-full border border-cream-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-150 ${link.hoverClass}`}
+            aria-label={t("shareOn", { platform: link.name })}
+            title={t("shareOn", { platform: link.name })}
+            className={`${shareButtonBase} ${link.hoverClass}`}
           >
             {link.icon}
             <span>{link.name}</span>
@@ -188,40 +196,40 @@ export default function ShareButtons({ title, description, image, slug, shareTex
         ))}
         <button
           onClick={copyLink}
-          aria-label="Copy link to clipboard"
-          title="Copy link"
-          className="flex items-center gap-2 rounded-full border border-cream-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-150 hover:border-terra-200 hover:bg-terra-50 hover:text-terra-700"
+          aria-label={t("copyLinkAriaLabel")}
+          title={t("copyLink")}
+          className={`${shareButtonBase} hover:border-terra-200 hover:bg-terra-50 hover:text-terra-700 dark:hover:border-terra-700 dark:hover:bg-terra-900/30 dark:hover:text-terra-400`}
         >
           {copied ? (
             <Check className="size-5 text-green-500" />
           ) : (
             <Link className="size-5" />
           )}
-          <span>{copied ? "Copied!" : "Copy Link"}</span>
+          <span>{copied ? t("copied") : t("copyLink")}</span>
         </button>
         <button
           onClick={saveToNotes}
-          aria-label="Save recipe to Notes app"
-          title="Save to Notes"
-          className="flex items-center gap-2 rounded-full border border-cream-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-150 hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700"
+          aria-label={t("saveToNotesAriaLabel")}
+          title={t("saveToNotes")}
+          className={`${shareButtonBase} hover:border-amber-300 hover:bg-amber-50 hover:text-amber-700 dark:hover:border-amber-700 dark:hover:bg-amber-900/30 dark:hover:text-amber-400`}
         >
           {noteSaved ? (
             <Check className="size-5 text-green-500" />
           ) : (
             <NotebookPen className="size-5" />
           )}
-          <span>{noteSaved ? "Copied to clipboard!" : "Save to Notes"}</span>
+          <span>{noteSaved ? t("copiedToClipboard") : t("saveToNotes")}</span>
         </button>
 
-        <NextLink
+        <LocaleLink
           href={`/recipes/${slug}/print`}
-          aria-label="Print-friendly version of this recipe"
-          title="Print recipe"
-          className="flex items-center gap-2 rounded-full border border-cream-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-150 hover:border-gray-400 hover:bg-gray-100 hover:text-gray-900"
+          aria-label={t("printAriaLabel")}
+          title={t("print")}
+          className={`${shareButtonBase} hover:border-gray-400 hover:bg-gray-100 hover:text-gray-900 dark:hover:border-gray-500 dark:hover:bg-gray-700 dark:hover:text-gray-50`}
         >
           <Printer className="size-5" />
-          <span>Print</span>
-        </NextLink>
+          <span>{t("print")}</span>
+        </LocaleLink>
       </div>
     </div>
   );

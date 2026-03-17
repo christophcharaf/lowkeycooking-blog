@@ -1,0 +1,111 @@
+{
+  "Metadata": {
+    "siteTitle": "LowKeyCooking — Delicious Recipes for Everyone",
+    "siteDescription": "Discover hand-crafted recipes from around the world. Simple ingredients, incredible flavors.",
+    "recipesTitle": "All Recipes — LowKeyCooking",
+    "recipesDescription": "Browse and search all our homemade recipes."
+  },
+  "Layout": {
+    "footerTagline": "Homemade recipes for every occasion.",
+    "footerCopyright": "© {year} RecipeBlog. Made with love and good food."
+  },
+  "Navbar": {
+    "tagline": "Homemade with love",
+    "home": "Home",
+    "recipes": "Recipes",
+    "browseAll": "Browse All",
+    "toggleTheme": "Toggle theme",
+    "toggleMenu": "Toggle menu"
+  },
+  "HomePage": {
+    "badge": "Fresh & Homemade",
+    "heroLine1": "Recipes that bring",
+    "heroLine2": "people together",
+    "heroSubtitle": "From quick weeknight dinners to indulgent weekend bakes — discover hand-crafted recipes made with simple ingredients and a lot of love.",
+    "browseRecipes": "Browse Recipes",
+    "whatsCoking": "What's Cooking?",
+    "statRecipes": "Recipes",
+    "statHomemade": "Homemade",
+    "statPreservatives": "Preservatives",
+    "collectionLabel": "The Collection",
+    "allRecipes": "All Recipes",
+    "recipeCount": "{count} recipes"
+  },
+  "RecipesPage": {
+    "collectionLabel": "The Collection",
+    "heading": "All Recipes",
+    "subheading": "{count} homemade recipes — search by name or description."
+  },
+  "RecipeCard": {
+    "prep": "prep",
+    "cook": "cook",
+    "viewRecipe": "View Recipe"
+  },
+  "RecipeSearch": {
+    "placeholder": "Search recipes by name or ingredient...",
+    "noResultsFor": "No recipes found for",
+    "resultsFound": "{count} {count, plural, =1 {recipe} other {recipes}} found for",
+    "noResults": "No recipes found",
+    "tryDifferent": "Try a different search term",
+    "clearSearch": "Clear search"
+  },
+  "RecipePage": {
+    "backToAll": "All Recipes",
+    "backLink": "Back to all recipes",
+    "prepTime": "Prep Time",
+    "cookTime": "Cook Time",
+    "servings": "Servings",
+    "kitchenTools": "Kitchen Tools You'll Need",
+    "affiliateDisclaimer": "These are affiliate links — we may earn a small commission at no extra cost to you.",
+    "shopTemu": "Shop on TEMU",
+    "shopAmazon": "Shop on Amazon",
+    "shopNow": "Shop Now",
+    "nutritionFacts": "Nutrition Facts",
+    "perServing": "Per serving · Estimates only",
+    "nutritionDisclaimer": "* Percent daily values based on a 2,000 calorie diet. Nutritional information is estimated and may vary.",
+    "keepCooking": "Keep Cooking",
+    "youMightAlsoLike": "You Might Also Like",
+    "calories": "Calories",
+    "protein": "Protein",
+    "carbs": "Total Carbohydrates",
+    "fat": "Total Fat",
+    "fiber": "Dietary Fiber",
+    "sugar": "Total Sugar",
+    "sodium": "Sodium",
+    "kcal": "kcal",
+    "perServingShort": "Per serving",
+    "nutritionDisclaimerShort": "* Estimates only. Values based on a 2,000 calorie diet."
+  },
+  "ShareButtons": {
+    "shareThisRecipe": "Share this Recipe",
+    "shareSubtitle": "Loved it? Share it with friends and family!",
+    "copied": "Copied!",
+    "copyLink": "Copy Link",
+    "saveToNotes": "Save to Notes",
+    "copiedToClipboard": "Copied to clipboard!",
+    "print": "Print",
+    "shareOn": "Share on {platform}",
+    "copyLinkAriaLabel": "Copy link to clipboard",
+    "saveToNotesAriaLabel": "Save recipe to Notes app",
+    "printAriaLabel": "Print-friendly version of this recipe"
+  },
+  "PrintPreview": {
+    "goBack": "Go Back",
+    "recipeImage": "Recipe Image",
+    "nutritionFacts": "Nutrition Facts",
+    "print": "Print",
+    "prepTime": "Prep Time",
+    "cookTime": "Cook Time",
+    "servings": "Servings",
+    "calories": "Calories",
+    "perServing": "Per serving · Estimates only",
+    "nutritionDisclaimer": "* Estimates only. Values based on a 2,000 calorie diet.",
+    "recipeFrom": "Recipe from",
+    "protein": "Protein",
+    "carbs": "Total Carbohydrates",
+    "fat": "Total Fat",
+    "fiber": "Dietary Fiber",
+    "sugar": "Total Sugar",
+    "sodium": "Sodium"
+  }
+}

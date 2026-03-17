@@ -1,0 +1,111 @@
+{
+  "Metadata": {
+    "siteTitle": "LowKeyCooking — Recetas Deliciosas para Todos",
+    "siteDescription": "Descubre recetas artesanales de todo el mundo. Ingredientes simples, sabores increíbles.",
+    "recipesTitle": "Todas las Recetas — LowKeyCooking",
+    "recipesDescription": "Explora y busca todas nuestras recetas caseras."
+  },
+  "Layout": {
+    "footerTagline": "Recetas caseras para cada ocasión.",
+    "footerCopyright": "© {year} RecipeBlog. Hecho con amor y buena comida."
+  },
+  "Navbar": {
+    "tagline": "Hecho con amor",
+    "home": "Inicio",
+    "recipes": "Recetas",
+    "browseAll": "Ver Todas",
+    "toggleTheme": "Cambiar tema",
+    "toggleMenu": "Abrir menú"
+  },
+  "HomePage": {
+    "badge": "Fresco y Casero",
+    "heroLine1": "Recetas que unen",
+    "heroLine2": "a las personas",
+    "heroSubtitle": "Desde cenas rápidas entre semana hasta deliciosas preparaciones de fin de semana — descubre recetas artesanales hechas con ingredientes simples y mucho amor.",
+    "browseRecipes": "Ver Recetas",
+    "whatsCoking": "¿Qué estamos cocinando?",
+    "statRecipes": "Recetas",
+    "statHomemade": "Casero",
+    "statPreservatives": "Conservantes",
+    "collectionLabel": "La Colección",
+    "allRecipes": "Todas las Recetas",
+    "recipeCount": "{count} recetas"
+  },
+  "RecipesPage": {
+    "collectionLabel": "La Colección",
+    "heading": "Todas las Recetas",
+    "subheading": "{count} recetas caseras — busca por nombre o descripción."
+  },
+  "RecipeCard": {
+    "prep": "prep",
+    "cook": "cocción",
+    "viewRecipe": "Ver Receta"
+  },
+  "RecipeSearch": {
+    "placeholder": "Busca recetas por nombre o ingrediente...",
+    "noResultsFor": "No se encontraron recetas para",
+    "resultsFound": "{count} {count, plural, =1 {receta} other {recetas}} encontrada{count, plural, =1 {} other {s}} para",
+    "noResults": "No se encontraron recetas",
+    "tryDifferent": "Intenta con otro término de búsqueda",
+    "clearSearch": "Limpiar búsqueda"
+  },
+  "RecipePage": {
+    "backToAll": "Todas las Recetas",
+    "backLink": "Volver a todas las recetas",
+    "prepTime": "Preparación",
+    "cookTime": "Cocción",
+    "servings": "Porciones",
+    "kitchenTools": "Herramientas de Cocina Necesarias",
+    "affiliateDisclaimer": "Estos son enlaces de afiliados — podemos ganar una pequeña comisión sin costo adicional para ti.",
+    "shopTemu": "Comprar en TEMU",
+    "shopAmazon": "Comprar en Amazon",
+    "shopNow": "Comprar Ahora",
+    "nutritionFacts": "Información Nutricional",
+    "perServing": "Por porción · Solo estimaciones",
+    "nutritionDisclaimer": "* Los valores diarios porcentuales se basan en una dieta de 2,000 calorías. La información nutricional es estimada y puede variar.",
+    "keepCooking": "Sigue Cocinando",
+    "youMightAlsoLike": "También te Puede Gustar",
+    "calories": "Calorías",
+    "protein": "Proteínas",
+    "carbs": "Carbohidratos Totales",
+    "fat": "Grasas Totales",
+    "fiber": "Fibra Dietética",
+    "sugar": "Azúcar Total",
+    "sodium": "Sodio",
+    "kcal": "kcal",
+    "perServingShort": "Por porción",
+    "nutritionDisclaimerShort": "* Solo estimaciones. Valores basados en una dieta de 2,000 calorías."
+  },
+  "ShareButtons": {
+    "shareThisRecipe": "Compartir esta Receta",
+    "shareSubtitle": "¿Te gustó? ¡Compártela con amigos y familia!",
+    "copied": "¡Copiado!",
+    "copyLink": "Copiar Enlace",
+    "saveToNotes": "Guardar en Notas",
+    "copiedToClipboard": "¡Copiado al portapapeles!",
+    "print": "Imprimir",
+    "shareOn": "Compartir en {platform}",
+    "copyLinkAriaLabel": "Copiar enlace al portapapeles",
+    "saveToNotesAriaLabel": "Guardar receta en la app de Notas",
+    "printAriaLabel": "Versión imprimible de esta receta"
+  },
+  "PrintPreview": {
+    "goBack": "Volver",
+    "recipeImage": "Imagen de la Receta",
+    "nutritionFacts": "Información Nutricional",
+    "print": "Imprimir",
+    "prepTime": "Preparación",
+    "cookTime": "Cocción",
+    "servings": "Porciones",
+    "calories": "Calorías",
+    "perServing": "Por porción · Solo estimaciones",
+    "nutritionDisclaimer": "* Solo estimaciones. Valores basados en una dieta de 2,000 calorías.",
+    "recipeFrom": "Receta de",
+    "protein": "Proteínas",
+    "carbs": "Carbohidratos Totales",
+    "fat": "Grasas Totales",
+    "fiber": "Fibra Dietética",
+    "sugar": "Azúcar Total",
+    "sodium": "Sodio"
+  }
+}
