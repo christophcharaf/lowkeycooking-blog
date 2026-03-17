@@ -40,12 +40,12 @@ nutrition:
 
 ## Instructions
 
-1.  **Prepare Brisket**: Trim the hard fat off the brisket, leaving about 1/4 inch of fat cap evenly distributed across the top. Remove any silver skin.
-2.  **Make Rub**: In a small bowl, combine the kosher salt, coarse black pepper, garlic powder, onion powder, smoked paprika, and cayenne pepper (if using). Mix well.
-3.  **Apply Rub**: Generously coat the entire brisket with the rub, pressing it gently to adhere. For best results, place the brisket on a wire rack set over a baking sheet and refrigerate for at least 4 hours, or preferably overnight.
-4.  **Preheat Smoker/Oven**: Preheat your smoker to a consistent 250°F (120°C). If using an oven, preheat to 275°F (135°C) and place the brisket in a large roasting pan on a wire rack. Add wood chips to your smoker as per manufacturer instructions.
-5.  **Initial Cook**: Place the brisket fat-side up in the smoker or oven. Cook for approximately 6-8 hours, or until the internal temperature reaches 165-175°F (74-79°C). Begin spritzing with beef broth or apple cider vinegar every 1-2 hours after the first 3 hours of cooking.
-6.  **Wrap Brisket**: Once the brisket reaches 165-175°F (74-79°C), remove it from the smoker/oven. Wrap it tightly in butcher paper or heavy-duty foil. Return the wrapped brisket to the smoker or oven.
-7.  **Finish Cooking**: Continue cooking until the internal temperature reaches 200-205°F (93-96°C) and a probe slides into the meat with very little resistance, like butter (this will take another 4-6 hours).
-8.  **Rest Brisket**: Remove the wrapped brisket from the heat. Let it rest at room temperature for at least 1-2 hours. For an even better rest, place it in an insulated cooler for 3-4 hours. This crucial step allows the juices to redistribute, ensuring a tender and moist brisket.
-9.  **Slice and Serve**: Unwrap the brisket. Slice against the grain, separating the point and the flat if desired. Serve immediately with your favorite sides.
+1.  Prepare Brisket: Trim the hard fat off the brisket, leaving about 1/4 inch of fat cap evenly distributed across the top. Remove any silver skin.
+2.  Make Rub: In a small bowl, combine the kosher salt, coarse black pepper, garlic powder, onion powder, smoked paprika, and cayenne pepper (if using). Mix well.
+3.  Apply Rub: Generously coat the entire brisket with the rub, pressing it gently to adhere. For best results, place the brisket on a wire rack set over a baking sheet and refrigerate for at least 4 hours, or preferably overnight.
+4.  Preheat Smoker/Oven: Preheat your smoker to a consistent 250°F (120°C). If using an oven, preheat to 275°F (135°C) and place the brisket in a large roasting pan on a wire rack. Add wood chips to your smoker as per manufacturer instructions.
+5.  Initial Cook: Place the brisket fat-side up in the smoker or oven. Cook for approximately 6-8 hours, or until the internal temperature reaches 165-175°F (74-79°C). Begin spritzing with beef broth or apple cider vinegar every 1-2 hours after the first 3 hours of cooking.
+6.  Wrap Brisket: Once the brisket reaches 165-175°F (74-79°C), remove it from the smoker/oven. Wrap it tightly in butcher paper or heavy-duty foil. Return the wrapped brisket to the smoker or oven.
+7.  Finish Cooking: Continue cooking until the internal temperature reaches 200-205°F (93-96°C) and a probe slides into the meat with very little resistance, like butter (this will take another 4-6 hours).
+8.  Rest Brisket: Remove the wrapped brisket from the heat. Let it rest at room temperature for at least 1-2 hours. For an even better rest, place it in an insulated cooler for 3-4 hours. This crucial step allows the juices to redistribute, ensuring a tender and moist brisket.
+9.  Slice and Serve: Unwrap the brisket. Slice against the grain, separating the point and the flat if desired. Serve immediately with your favorite sides.

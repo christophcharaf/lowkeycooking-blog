@@ -148,6 +148,9 @@
 
 /* ─── Recipe markdown content styles ────────────────────────────── */
 .recipe-content h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 1.5rem;
   font-weight: 800;
   color: #111827;
@@ -160,6 +163,11 @@
 
 .recipe-content h2:first-child {
   margin-top: 0;
+}
+
+.recipe-section-icon {
+  flex-shrink: 0;
+  color: #c2501f; /* terra-600 */
 }
 
 /* Ingredient list */
@@ -240,4 +248,47 @@
   font-size: 1rem;
   line-height: 1.75;
   color: #4b5563;
+}
+
+/* ── Print styles ─────────────────────────────────────────── */
+@media print {
+  /* Hide everything that isn't the recipe */
+  nav,
+  footer,
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Remove hero overlay gradient so the image prints cleanly */
+  .hero-overlay {
+    display: none !important;
+  }
+
+  /* Let the hero image size naturally on paper */
+  .hero-image-wrap {
+    height: 260px !important;
+    position: relative !important;
+  }
+
+  /* Make sure the page background is white */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Remove shadows / rounded corners that waste ink */
+  * {
+    box-shadow: none !important;
+  }
+
+  /* Keep links readable — show their href */
+  a[href]::after {
+    content: none !important;
+  }
+
+  /* Avoid breaking sections across pages */
+  section,
+  article > div {
+    break-inside: avoid;
+  }
 }

@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Clock, Flame, Users, ChevronLeft, ShoppingCart, ExternalLink } from "lucide-react";
+import { Clock, Flame, Users, ChevronLeft, ShoppingCart, ExternalLink, ChartNoAxesColumn } from "lucide-react";
 import {
   getAllRecipes,
   getRecipeBySlug,
+  recipeToShareText,
   generateStaticParams as getStaticParams,
   type Utensil,
   type Nutrition,
 } from "@/lib/recipes";
 import RecipeCard from "@/components/RecipeCard";
+import ShareButtons from "@/components/ShareButtons";
 
 export { getStaticParams as generateStaticParams };
 
@@ -68,7 +70,8 @@ function NutritionSection({ nutrition }: { nutrition: Nutrition }) {
 
   return (
     <div className="mt-10 border-t border-cream-200 pt-10">
-      <h2 className="mb-5 text-xl font-extrabold tracking-tight text-gray-900">
+      <h2 className="mb-5 flex items-center gap-2 text-xl font-extrabold tracking-tight text-gray-900">
+        <ChartNoAxesColumn className="size-5 text-terra-600" />
         Nutrition Facts
       </h2>
       <p className="mb-4 text-xs text-gray-400">Per serving · Estimates only</p>
@@ -250,7 +253,15 @@ export default async function RecipePage({
           <NutritionSection nutrition={recipe.nutrition} />
         )}
 
-        <div className="mt-14 border-t border-cream-200 pt-10">
+        <ShareButtons
+          title={recipe.title}
+          description={recipe.description}
+          image={recipe.image}
+          slug={slug}
+          shareText={recipeToShareText(recipe)}
+        />
+
+        <div className="print-hide mt-14 border-t border-cream-200 pt-10">
           <Link
             href="/"
             className="inline-flex items-center gap-2 rounded-full border border-terra-200 px-5 py-2.5 text-sm font-semibold text-terra-700 transition-all hover:border-terra-300 hover:bg-terra-50"
@@ -263,7 +274,7 @@ export default async function RecipePage({
 
       {/* Related Recipes */}
       {related.length > 0 && (
-        <section className="border-t border-cream-200 bg-cream-100 px-6 py-20">
+        <section className="print-hide border-t border-cream-200 bg-cream-100 px-6 py-20">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10">
               <p className="mb-1 text-sm font-semibold uppercase tracking-widest text-terra-600">
