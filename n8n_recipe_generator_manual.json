@@ -1,0 +1,290 @@
+{
+    "nodes": [
+      {
+        "parameters": {
+          "formTitle": "Generate Recipe",
+          "formDescription": "Enter a recipe name to generate and publish it to the blog.",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "Recipe Name",
+                "fieldType": "text",
+                "placeholder": "e.g. Lobster Bisque",
+                "requiredField": true
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "f1a2b3c4-d5e6-7890-abcd-ef1234567891",
+        "name": "Recipe Form",
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.2,
+        "position": [
+          -96,
+          -48
+        ],
+        "webhookId": "a1b2c3d4-e5f6-7890-abcd-ef0987654321"
+      },
+      {
+        "parameters": {
+          "method": "GET",
+          "url": "https://api.unsplash.com/search/photos",
+          "sendQuery": true,
+          "queryParameters": {
+            "parameters": [
+              {
+                "name": "query",
+                "value": "={{ $json['Recipe Name'] }}"
+              },
+              {
+                "name": "per_page",
+                "value": "30"
+              },
+              {
+                "name": "client_id",
+                "value": "YOUR_UNSPLASH_ACCESS_KEY"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "b2a1c3d4-e5f6-7890-abcd-ef1234567890",
+        "name": "Fetch Unsplash Photos",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          128,
+          -48
+        ]
+      },
+      {
+        "parameters": {
+          "jsCode": "const results = $input.first().json.results || [];\nconst recipeName = $('Recipe Form').first().json['Recipe Name'];\n\nconst hasImage = results.length > 0;\nconst imageUrl = hasImage\n  ? results[0].urls.regular.split('?')[0] + '?w=1200&q=80'\n  : null;\n\nreturn [{ json: { recipe_name: recipeName, image_url: imageUrl, has_image: hasImage } }];"
+        },
+        "id": "c3d4e5f6-a7b8-9012-cdef-234567890abc",
+        "name": "Extract Image URL",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          352,
+          -48
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "boolean": [
+              {
+                "value1": "={{ $json.has_image }}",
+                "value2": true
+              }
+            ]
+          }
+        },
+        "id": "d4e5f6a7-b8c9-0123-def0-345678901bcd",
+        "name": "Has Unsplash Image?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          576,
+          -48
+        ]
+      },
+      {
+        "parameters": {
+          "jsCode": "const recipeName = $json.recipe_name;\n\n// Build a Pollinations.ai URL — free, no API key required\nconst prompt = encodeURIComponent(\n  `professional food photography ${recipeName} delicious appetizing styled dish overhead shot`\n);\nconst imageUrl = `https://image.pollinations.ai/prompt/${prompt}?width=1200&height=800&nologo=true&model=flux`;\n\nreturn [{ json: { recipe_name: recipeName, image_url: imageUrl } }];"
+        },
+        "id": "e5f6a7b8-c9d0-1234-ef01-456789012cde",
+        "name": "Generate AI Image URL",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          800,
+          112
+        ]
+      },
+      {
+        "parameters": {
+          "options": {
+            "maxOutputTokens": 4000,
+            "temperature": 0.7
+          }
+        },
+        "id": "a75a626d-12c0-4f58-81b7-af422a7e189b",
+        "name": "Gemini 2.0 Flash",
+        "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+        "typeVersion": 1,
+        "position": [
+          1024,
+          200
+        ],
+        "credentials": {
+          "googlePalmApi": {
+            "id": "6GlvU53LoLfQx3Uv",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "promptType": "define",
+          "text": "=You are a recipe content generator for a food blog called LowKeyCooking. Your job is to output a single, complete recipe in markdown format — nothing else. Do not include any explanation, intro text, or commentary before or after the markdown. Output only the raw markdown file content, starting with ---.\n\nGenerate a complete recipe markdown file for: {{ $json.recipe_name }}\n\nThe output must follow this exact structure:\n\n<!-- filename: [recipe-name-lowercase-hyphens.md] -->\n---\ntitle: [Full recipe name]\ndescription: [One sentence — appetizing, specific, max 20 words]\nimage: {{ $json.image_url }}\nprep_time: [e.g. 15 mins]\ncook_time: [e.g. 30 mins]\nservings: [e.g. 4]\nutensils:\n  - name: [Utensil 1]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 2]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 3]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 4]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\nnutrition:\n  calories: [number only, no units]\n  protein: [e.g. 12g]\n  carbs: [e.g. 34g]\n  fat: [e.g. 14g]\n  fiber: [e.g. 3g]\n  sugar: [e.g. 5g]\n  sodium: [e.g. 480mg]\n---\n\n## Ingredients\n\n- [Quantity + ingredient]\n- [Quantity + ingredient]\n[list all ingredients, one per line]\n\n## Instructions\n\n1. [Clear, specific step]\n2. [Clear, specific step]\n[number all steps, one action per step]\n\nRules:\n- Filename must be the recipe name in lowercase with spaces replaced by hyphens (e.g. pulled-pork-tacos.md)\n- The image URL has already been provided above — use it exactly as given, do not modify it\n- Utensil URLs must use Amazon search format: https://www.amazon.com/s?k=search+terms\n- Include 4–6 utensils actually used in the recipe\n- Nutrition values should be realistic estimates per serving\n- Ingredients must include quantities and units\n- Instructions must be numbered, clear, and written in second person (\"Add the flour...\", not \"You should add...\")\n- Do not include any text outside the markdown content\n- The file must have valid YAML frontmatter — use exact 2-space indentation for list items"
+        },
+        "id": "e3a727ac-ba36-4fe5-af8c-cd6f14e00437",
+        "name": "Generate Recipe",
+        "type": "@n8n/n8n-nodes-langchain.chainLlm",
+        "typeVersion": 1.4,
+        "position": [
+          1024,
+          -48
+        ],
+        "retryOnFail": true,
+        "maxTries": 5,
+        "waitBetweenTries": 10000
+      },
+      {
+        "parameters": {
+          "jsCode": "// Extract the filename from the <!-- filename: ... --> comment\n// and clean up any markdown code block wrappers Gemini might add\nconst raw = $input.first().json.text;\n\n// Strip markdown code fences if present\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\n// Extract filename from the HTML comment\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : `recipe-${Date.now()}.md`;\n\n// Remove the filename comment line from the final file content\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent } }];"
+        },
+        "id": "a20ecd4f-2e6e-4eb6-965f-e222c48c55c3",
+        "name": "Parse Filename & Clean",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1248,
+          -48
+        ]
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "owner": "christophcharaf",
+          "repository": "lowkeycooking-blog",
+          "filePath": "={{ 'recipes/' + $json.filename }}",
+          "fileContent": "={{ $json.content }}",
+          "commitMessage": "={{ 'feat: add ' + $json.filename.replace('.md', '') + ' recipe' }}",
+          "additionalParameters": {
+            "branch": {}
+          }
+        },
+        "id": "9ef1543a-7713-4ef2-b331-322ceea36377",
+        "name": "Push to GitHub",
+        "type": "n8n-nodes-base.github",
+        "typeVersion": 1,
+        "position": [
+          1472,
+          -48
+        ],
+        "webhookId": "d27c46f0-e2a3-49df-88a1-844d1eb98a59",
+        "credentials": {
+          "githubApi": {
+            "id": "tRzghR5msfMo6aQ6",
+            "name": "GitHub account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Recipe Form": {
+        "main": [
+          [
+            {
+              "node": "Fetch Unsplash Photos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Fetch Unsplash Photos": {
+        "main": [
+          [
+            {
+              "node": "Extract Image URL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract Image URL": {
+        "main": [
+          [
+            {
+              "node": "Has Unsplash Image?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Has Unsplash Image?": {
+        "main": [
+          [
+            {
+              "node": "Generate Recipe",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Generate AI Image URL",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generate AI Image URL": {
+        "main": [
+          [
+            {
+              "node": "Generate Recipe",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Gemini 2.0 Flash": {
+        "ai_languageModel": [
+          [
+            {
+              "node": "Generate Recipe",
+              "type": "ai_languageModel",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generate Recipe": {
+        "main": [
+          [
+            {
+              "node": "Parse Filename & Clean",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Parse Filename & Clean": {
+        "main": [
+          [
+            {
+              "node": "Push to GitHub",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "pinData": {},
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "80664dbc990da4ced652c71ae04d16d3881c368fc794bc8eb2db300cc33d46e0"
+    }
+  }
