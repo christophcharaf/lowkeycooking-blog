@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden px-6 py-28">
+      <section className="relative overflow-hidden px-6 py-16 md:py-28">
         {/* Blurred background video */}
         <div className="absolute inset-0 scale-110">
           <video
@@ -34,7 +34,7 @@ export default function HomePage() {
             Fresh &amp; Homemade
           </div>
 
-          <h1 className="mb-6 text-6xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg">
+          <h1 className="mb-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-5xl md:text-6xl">
             Recipes that bring
             <span className="block text-terra-300">people together</span>
           </h1>
@@ -61,7 +61,7 @@ export default function HomePage() {
           </div>
 
           {/* Stats strip */}
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-10 text-center">
+          <div className="mt-12 grid grid-cols-3 gap-4 text-center md:mt-16 md:flex md:flex-wrap md:justify-center md:gap-10">
             {[
               { value: `${recipes.length}`, label: "Recipes" },
               { value: "100%", label: "Homemade" },

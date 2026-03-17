@@ -195,42 +195,42 @@ export default async function RecipePage({
 
       {/* At-a-glance strip */}
       <div className="border-b border-cream-200 bg-white shadow-sm">
-        <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-0 divide-x divide-cream-200 px-6">
-          <div className="flex flex-1 items-center justify-center gap-3 py-5">
-            <div className="flex size-10 items-center justify-center rounded-full bg-terra-50">
-              <Clock className="size-5 text-terra-600" />
+        <div className="mx-auto grid max-w-3xl grid-cols-3 divide-x divide-cream-200 px-6">
+          <div className="flex flex-col items-center justify-center gap-1.5 py-4 sm:flex-row sm:gap-3 sm:py-5">
+            <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-terra-50 sm:size-10">
+              <Clock className="size-4 text-terra-600 sm:size-5" />
             </div>
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+            <div className="text-center sm:text-left">
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 sm:text-xs">
                 Prep Time
               </div>
-              <div className="text-base font-bold text-gray-900">
+              <div className="text-sm font-bold text-gray-900 sm:text-base">
                 {recipe.prep_time}
               </div>
             </div>
           </div>
-          <div className="flex flex-1 items-center justify-center gap-3 py-5">
-            <div className="flex size-10 items-center justify-center rounded-full bg-orange-50">
-              <Flame className="size-5 text-orange-500" />
+          <div className="flex flex-col items-center justify-center gap-1.5 py-4 sm:flex-row sm:gap-3 sm:py-5">
+            <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-orange-50 sm:size-10">
+              <Flame className="size-4 text-orange-500 sm:size-5" />
             </div>
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+            <div className="text-center sm:text-left">
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 sm:text-xs">
                 Cook Time
               </div>
-              <div className="text-base font-bold text-gray-900">
+              <div className="text-sm font-bold text-gray-900 sm:text-base">
                 {recipe.cook_time}
               </div>
             </div>
           </div>
-          <div className="flex flex-1 items-center justify-center gap-3 py-5">
-            <div className="flex size-10 items-center justify-center rounded-full bg-cream-100">
-              <Users className="size-5 text-terra-500" />
+          <div className="flex flex-col items-center justify-center gap-1.5 py-4 sm:flex-row sm:gap-3 sm:py-5">
+            <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-cream-100 sm:size-10">
+              <Users className="size-4 text-terra-500 sm:size-5" />
             </div>
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+            <div className="text-center sm:text-left">
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-gray-400 sm:text-xs">
                 Servings
               </div>
-              <div className="text-base font-bold text-gray-900">
+              <div className="text-sm font-bold text-gray-900 sm:text-base">
                 {recipe.servings}
               </div>
             </div>
