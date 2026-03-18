@@ -1,49 +1,64 @@
 ---
-title: Bisque de Langosta
-description: Una sopa cremosa y lujosa de langosta con un suave toque de brandy, nata y una pizca de cayena. Elegancia en cada cucharada.
+draft: true
+title: Sopa de Langosta Cremosa
+description: Una bisque de langosta lujosa y aterciopelada, perfecta para impresionar y deleitar en cualquier ocasión especial.
 image: https://images.unsplash.com/photo-1464093515883-ec948246accb?w=1200&q=80
-prep_time: 20 min
-cook_time: 45 min
-servings: 4
+prep_time: 30 min
+cook_time: 1 hr 30 min
+servings: 6
 utensils:
   - name: Olla grande
     url: https://www.amazon.com/s?k=large+pot
-  - name: Batidora de mano
+  - name: Cacerola
+    url: https://www.amazon.com/s?k=saucepan
+  - name: Colador de malla fina
+    url: https://www.amazon.com/s?k=fine+mesh+sieve
+  - name: Licuadora de inmersión
     url: https://www.amazon.com/s?k=immersion+blender
+  - name: Cuchillo de chef
+    url: https://www.amazon.com/s?k=chefs+knife
+  - name: Tabla de cortar
+    url: https://www.amazon.com/s?k=cutting+board
 nutrition:
-  calories: 380
-  protein: 22g
+  calories: 400
+  protein: 25g
   carbs: 18g
-  fat: 24g
-  fiber: 2g
-  sodium: 820mg
+  fat: 30g
+  fiber: 3g
+  sugar: 6g
+  sodium: 650mg
 ---
 
 ## Ingredientes
 
-- 2 colas de langosta (o 500g de carne de langosta)
-- 3 cucharadas de mantequilla sin sal
-- 1 cebolla mediana, picada
-- 2 tallos de apio, picados
+- 2 langostas enteras (aproximadamente 500g cada una), cocidas y la carne extraída, cáscaras reservadas
+- 4 cucharadas de mantequilla sin sal, divididas
+- 1 cucharada de aceite de oliva virgen extra
+- 1 cebolla grande, picada
 - 2 zanahorias medianas, picadas
+- 2 tallos de apio, picados
 - 4 dientes de ajo, picados
-- 3 cucharadas de pasta de tomate
-- 60ml de brandy o coñac
-- 240ml de vino blanco seco
-- 1 litro de caldo de marisco o fumet
-- 240ml de nata para montar
-- 2 cucharadas de harina todo uso
-- 1 hoja de laurel, tomillo fresco
-- Cayena, sal y pimienta blanca al gusto
-- Cebollino fresco para decorar
+- 2 cucharadas de pasta de tomate
+- 1/4 taza de brandy o coñac
+- 6 tazas de caldo de pescado o de pollo
+- 1 taza de vino blanco seco
+- 2 hojas de laurel
+- 4 ramitas de tomillo fresco
+- 1/4 taza de harina para todo uso
+- 1 1/2 tazas de crema espesa
+- Sal marina fina y pimienta negra recién molida al gusto
+- Perejil fresco picado o cebollino para decorar (opcional)
 
 ## Instrucciones
 
-1. Cocinar la langosta: Cuece las colas de langosta en agua salada hirviendo 5-7 minutos. Reserva el agua de cocción. Extrae la carne y córtala en trozos. Reserva las cáscaras.
-2. Sofrito de verduras: Derrite la mantequilla en la olla a fuego medio. Sofríe la cebolla, el apio y las zanahorias 5-6 minutos hasta ablandar. Añade el ajo y cocina 1 minuto más.
-3. Añadir pasta de tomate y harina: Incorpora la pasta de tomate y la harina. Cocina 2 minutos removiendo constantemente.
-4. Flambear con brandy: Vierte el brandy y flambea con cuidado si lo deseas. Añade el vino blanco y deja reducir a la mitad.
-5. Añadir caldo y aromáticos: Añade las cáscaras de langosta, el caldo de marisco (y el agua de cocción reservada), la hoja de laurel y el tomillo. Lleva a ebullición, reduce el fuego y cocina a fuego lento 20 minutos.
-6. Triturar y colar: Retira las cáscaras y las hierbas. Tritura la sopa con la batidora de mano hasta obtener una textura muy suave. Cuela por un colador fino.
-7. Terminar con nata: Vuelve a poner la sopa al fuego. Añade la nata y la carne de langosta reservada. Sazona con cayena, sal y pimienta blanca. Calienta sin hervir.
-8. Servir: Reparte en cuencos calientes. Decora con cebollino picado y un hilo de nata. Sirve con pan crujiente.
+1.  Prepara las langostas cocidas. Retira la carne de las colas y las pinzas, córtala en trozos pequeños y resérvala. Rompe las cáscaras de langosta en pedazos más pequeños y resérvalas.
+2.  En una olla grande a fuego medio-alto, derrite 1 cucharada de mantequilla y 1 cucharada de aceite de oliva. Añade las cáscaras de langosta y saltéalas durante 5-7 minutos hasta que estén fragantes y ligeramente tostadas.
+3.  Añade la cebolla, las zanahorias y el apio a la olla con las cáscaras. Cocina durante 8-10 minutos, revolviendo ocasionalmente, hasta que las verduras estén suaves. Agrega el ajo y la pasta de tomate, cocinando por 2 minutos más.
+4.  Vierte el brandy o coñac en la olla y raspa el fondo para despegar cualquier trozo pegado. Cocina durante 2-3 minutos hasta que el alcohol se evapore.
+5.  Añade el caldo de pescado, el vino blanco, las hojas de laurel y el tomillo fresco. Lleva a ebullición, luego reduce el fuego a bajo, cubre y cocina a fuego lento durante al menos 45 minutos a 1 hora para permitir que los sabores se desarrollen.
+6.  Retira la olla del fuego. Con cuidado, cuela el caldo a través de un colador de malla fina en otra olla o recipiente grande, presionando las cáscaras y verduras para extraer todo el líquido. Desecha las cáscaras y los sólidos.
+7.  En una cacerola separada, derrite las 3 cucharadas restantes de mantequilla a fuego medio. Agrega la harina y bate constantemente durante 2-3 minutos para crear un roux claro.
+8.  Incorpora gradualmente el caldo de langosta colado al roux, batiendo continuamente para evitar grumos. Lleva la sopa a fuego lento y cocina, revolviendo ocasionalmente, durante 10-15 minutos o hasta que espese ligeramente.
+9.  Reduce el fuego a bajo y añade la crema espesa. Calienta suavemente sin dejar que hierva. Incorpora la carne de langosta reservada y cocina por unos minutos hasta que esté bien caliente.
+10. Sazona la sopa con sal y pimienta al gusto. Si deseas una textura más suave, puedes licuar la sopa con una licuadora de inmersión directamente en la olla, o en lotes en una licuadora normal (ten cuidado al licuar líquidos calientes).
+11. Sirve la sopa de langosta caliente, decorada con perejil fresco picado o cebollino si lo deseas.
