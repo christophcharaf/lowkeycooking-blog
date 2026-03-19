@@ -1,42 +1,55 @@
 ---
-title: Tortitas de Calabacín Crujientes
-description: Tortitas de calabacín doradas y crujientes por fuera, tiernas por dentro. Perfectas como aperitivo o guarnición.
-image: https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=1200&q=80
+draft: true
+title: Tortitas de Calabacín
+description: Crujientes por fuera y tiernas por dentro, estas tortitas de calabacín son el aperitivo o guarnición perfecta para cualquier comida.
+image: https://images.unsplash.com/photo-1607095591644-9f97a2099c92?w=1200&q=80
 prep_time: 20 min
-cook_time: 20 min
+cook_time: 15 min
 servings: 4
 utensils:
-  - name: Rallador de caja
+  - name: Rallador de Caja
     url: https://www.amazon.com/s?k=box+grater
-  - name: Sartén antiadherente
-    url: https://www.amazon.com/s?k=nonstick+skillet
+  - name: Bol Grande
+    url: https://www.amazon.com/s?k=large+mixing+bowl
+  - name: Paños de Cocina o Toallas de Papel
+    url: https://www.amazon.com/s?k=kitchen+towels
+  - name: Sartén Antiadherente
+    url: https://www.amazon.com/s?k=nonstick+frying+pan
+  - name: Espátula
+    url: https://www.amazon.com/s?k=spatula
+  - name: Cuchara Medidora
+    url: https://www.amazon.com/s?k=measuring+spoon
 nutrition:
-  calories: 195
-  protein: 8g
-  carbs: 18g
-  fat: 11g
-  fiber: 2g
-  sodium: 340mg
+  calories: 280
+  protein: 10g
+  carbs: 25g
+  fat: 16g
+  fiber: 4g
+  sugar: 5g
+  sodium: 420mg
 ---
 
 ## Ingredientes
 
-- 3 calabacines medianos (unos 600g)
-- 1 cucharadita de sal gruesa
-- 2 cebolletas, picadas finamente
-- 2 dientes de ajo, rallados
-- 60g de queso feta desmenuzado
-- 2 huevos grandes, ligeramente batidos
-- 60g de harina todo uso
-- 2 cucharadas de eneldo fresco picado (o menta)
-- Pimienta negra al gusto
-- Aceite de oliva para freír
-- Yogur griego o crema agria para acompañar
+- 2 calabacines medianos (aproximadamente 500g)
+- 1/2 cucharadita de sal (para escurrir el calabacín)
+- 1 huevo grande
+- 1/4 taza de cebolla morada finamente picada (o cebollino)
+- 2 dientes de ajo picados
+- 1/2 taza de harina de trigo todo uso
+- 1/4 taza de queso parmesano rallado (opcional)
+- 2 cucharadas de perejil fresco picado
+- 1/4 cucharadita de pimienta negra
+- Sal al gusto (para la mezcla)
+- Aceite vegetal o de oliva para freír
 
 ## Instrucciones
 
-1. Preparar el calabacín: Ralla los calabacines con la parte gruesa del rallador. Colócalos en un colador, añade la sal, mezcla y deja reposar 10 minutos. Exprímelos con fuerza con las manos (o con un paño de cocina limpio) para eliminar tanta agua como sea posible. Este paso es clave para que queden crujientes.
-2. Mezclar: En un tazón grande, combina el calabacín escurrido, las cebolletas, el ajo, el feta, los huevos, la harina y el eneldo. Sazona con pimienta. Mezcla hasta integrar.
-3. Calentar el aceite: Vierte suficiente aceite en la sartén para cubrir el fondo generosamente. Calienta a fuego medio-alto.
-4. Freír las tortitas: Forma porciones de mezcla (unas 2-3 cucharadas) y colócalas en la sartén caliente, aplastándolas ligeramente con la espátula. Fríe en tandas sin sobrecargar la sartén, 3-4 minutos por lado hasta que estén bien doradas y crujientes.
-5. Escurrir y servir: Escurre sobre papel de cocina. Sirve calientes acompañadas de yogur griego con un chorrito de aceite de oliva y eneldo fresco.
+1.  Lava bien los calabacines y rállalos con un rallador de caja. Colócalos en un colador, espolvorea con 1/2 cucharadita de sal y déjalos reposar durante 10-15 minutos para que suelten el exceso de agua.
+2.  Transfiere el calabacín rallado a un paño de cocina limpio o a varias capas de toallas de papel. Exprime con fuerza para eliminar la mayor cantidad de líquido posible. Este paso es crucial para que las tortitas queden crujientes.
+3.  En un bol grande, bate el huevo. Añade el calabacín escurrido, la cebolla picada, el ajo, la harina, el queso parmesano (si lo usas), el perejil, la pimienta negra y una pizca de sal. Mezcla bien hasta que todos los ingredientes estén combinados.
+4.  Calienta aproximadamente 1-2 cm de aceite vegetal o de oliva en una sartén antiadherente a fuego medio.
+5.  Con una cuchara, vierte porciones de la mezcla en la sartén caliente, aplanándolas ligeramente con el dorso de la cuchara para formar tortitas de unos 5-7 cm de diámetro. No satures la sartén; fríe en tandas si es necesario.
+6.  Fríe las tortitas durante 3-4 minutos por cada lado, o hasta que estén doradas y crujientes.
+7.  Retira las tortitas de la sartén y colócalas sobre papel de cocina para que escurran el exceso de aceite.
+8.  Sirve inmediatamente con tu salsa favorita, como yogur griego con hierbas o crema agria.
