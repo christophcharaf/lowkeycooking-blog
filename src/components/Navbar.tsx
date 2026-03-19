@@ -24,18 +24,18 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="LowKeyCooking"
-              width={280}
-              height={120}
-              className="h-[7.5rem] w-[17.5rem] object-contain"
+              width={240}
+              height={72}
+              className="h-[4.5rem] w-60 object-contain"
               priority
             />
           ) : (
             <Image
               src="/logo-dark.png"
               alt="LowKeyCooking"
-              width={280}
-              height={120}
-              className="h-[7.5rem] w-[17.5rem] object-contain"
+              width={240}
+              height={72}
+              className="h-[4.5rem] w-60 object-contain"
               priority
             />
           )}
