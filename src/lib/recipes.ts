@@ -54,6 +54,7 @@ export interface RecipeFrontmatter {
   servings: string | number;
   utensils?: Utensil[];
   nutrition?: Nutrition;
+  draft?: boolean;
 }
 
 export interface Recipe extends RecipeFrontmatter {
@@ -73,6 +74,7 @@ export function getAllRecipes(locale: string = "en"): RecipeSummary[] {
   const dir = getRecipesDirectory(locale);
   if (!fs.existsSync(dir)) return [];
   const fileNames = fs.readdirSync(dir);
+  const isPreview = process.env.VERCEL_ENV === "preview";
   return fileNames
     .filter((name) => name.endsWith(".md"))
     .map((fileName) => {
@@ -84,7 +86,8 @@ export function getAllRecipes(locale: string = "en"): RecipeSummary[] {
         slug,
         ...(data as RecipeFrontmatter),
       };
-    });
+    })
+    .filter((recipe) => isPreview || !recipe.draft);
 }
 
 export async function getRecipeBySlug(
