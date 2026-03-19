@@ -1,6 +1,7 @@
 "use client";
 
-import { UtensilsCrossed, Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
@@ -18,18 +19,26 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-cream-200 bg-white/95 backdrop-blur-md dark:border-gray-700 dark:bg-gray-900/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="group flex items-center gap-2.5">
-          <div className="flex size-9 items-center justify-center rounded-xl bg-terra-600 transition-colors group-hover:bg-terra-700">
-            <UtensilsCrossed className="size-4.5 text-white" strokeWidth={2} />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-base font-extrabold tracking-tight text-gray-900 dark:text-gray-50">
-              LowKeyCooking
-            </span>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-terra-600">
-              {t("tagline")}
-            </span>
-          </div>
+        <Link href="/" className="group">
+          {mounted && resolvedTheme === "dark" ? (
+            <Image
+              src="/logo.png"
+              alt="LowKeyCooking"
+              width={140}
+              height={60}
+              className="h-12 w-auto object-contain"
+              priority
+            />
+          ) : (
+            <Image
+              src="/logo-dark.png"
+              alt="LowKeyCooking"
+              width={140}
+              height={60}
+              className="h-12 w-auto object-contain"
+              priority
+            />
+          )}
         </Link>
 
         {/* Desktop nav */}
