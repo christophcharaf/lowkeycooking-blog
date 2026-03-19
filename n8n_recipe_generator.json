@@ -388,406 +388,52 @@
     },
     {
       "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter').first().json;\nconst resumeUrl = $execution.resumeUrl;\nconst slug = draftData.recipe_slug;\nconst previewUrl = 'https://lowkeycooking-blog-git-drafts-christophcharafs-projects.vercel.app/en/recipes/' + slug;\nconst approveUrl = resumeUrl + '?action=approve';\nconst rejectUrl = resumeUrl + '?action=reject';\nconst recipeName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');\nreturn [{ json: { previewUrl, approveUrl, rejectUrl, slug, recipeName } }];"
+        "jsCode": "const enFilename = $('Prepare Commit').first().json.en_filename;\nconst slug = enFilename.replace(/\\.md$/i, '');\nconst base = (process.env.VERCEL_PREVIEW_BASE_URL || 'https://lowkeycooking-blog-git-drafts-christophcharafs-projects.vercel.app').replace(/\\/$/, '');\nconst previewUrl = base + '/en/recipes/' + slug;\nconst recipeName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');\nreturn [{ json: { previewUrl, slug, recipeName } }];"
       },
-      "id": "13b8c254-704f-4b6c-892b-a193518ca7b5",
+      "id": "a8f3c2b1-0d9e-4f8a-b7c6-1234567890ab",
       "name": "Build Preview URL",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        4144,
-        -368
-      ]
+      "position": [4144, 0]
     },
     {
       "parameters": {
-        "jsCode": "const data = $('Build Preview URL').first().json;\nconst text = '<b>🍳 New Recipe Draft: ' + data.recipeName + '</b>\\n\\nA new recipe has been generated and is ready for your review on the preview site.\\n\\n<b>Preview:</b>\\n' + data.previewUrl;\nreturn [{ json: { text } }];"
+        "jsCode": "const data = $('Build Preview URL').first().json;\nconst previewUrl = data.previewUrl;\nconst maxAttempts = Math.max(1, parseInt(process.env.PREVIEW_POLL_MAX_ATTEMPTS || '40', 10) || 40);\nconst delayMs = Math.max(1000, parseInt(process.env.PREVIEW_POLL_INTERVAL_MS || '15000', 10) || 15000);\n\nfor (let attempt = 1; attempt <= maxAttempts; attempt++) {\n  let statusCode = 0;\n  try {\n    const res = await this.helpers.httpRequest({\n      method: 'GET',\n      url: previewUrl,\n      returnFullResponse: true,\n      timeout: 60000,\n    });\n    statusCode = typeof res.statusCode === 'number' ? res.statusCode : 0;\n  } catch (error) {\n    statusCode = error.response?.status ?? error.status ?? 0;\n  }\n\n  if (statusCode >= 200 && statusCode < 400) {\n    return [{ json: { ...data, previewPollAttempts: attempt } }];\n  }\n\n  if (attempt < maxAttempts) {\n    await new Promise((resolve) => setTimeout(resolve, delayMs));\n  }\n}\n\nthrow new Error(\n  'Preview URL did not become reachable (HTTP 2xx/3xx) after ' +\n    maxAttempts +\n    ' attempts (~' +\n    Math.round((maxAttempts * delayMs) / 60000) +\n    ' min): ' +\n    previewUrl\n);"
       },
-      "id": "e64498c5-2ccd-4901-a7e2-59296c9eb8cd",
+      "id": "b9e4d3c2-1f0a-5b9d-c8e7-2345678901bc",
+      "name": "Wait for Preview Ready",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [4368, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $('Build Preview URL').first().json;\nconst text = '<b>🍳 New Recipe Draft: ' + data.recipeName + '</b>\\n\\nPreview is live — ready for review:\\n' + data.previewUrl;\nreturn [{ json: { text } }];"
+      },
+      "id": "c0f5e4d3-2a1b-6c0e-d9f8-3456789012cd",
       "name": "Build Telegram Message",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [
-        4368,
-        -368
-      ]
+      "position": [4592, 0]
     },
     {
       "parameters": {
-        "chatId": "306989280",
+        "chatId": "={{ $env.TELEGRAM_GROUP_CHAT_ID }}",
         "text": "={{ $json.text }}",
-        "replyMarkup": "inlineKeyboard",
-        "inlineKeyboard": {
-          "rows": [
-            {
-              "row": {
-                "buttons": [
-                  {
-                    "text": "✅ Approve and Publish",
-                    "additionalFields": {
-                      "url": "={{ $('Build Preview URL').first().json.approveUrl }}"
-                    }
-                  },
-                  {
-                    "text": "❌ Reject",
-                    "additionalFields": {
-                      "url": "={{ $('Build Preview URL').first().json.rejectUrl }}"
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
         "additionalFields": {
           "parse_mode": "HTML"
         }
       },
-      "id": "36362054-8154-4a22-b477-244a3aefaa41",
+      "id": "d1a6f5e4-3b2c-7d1f-e0a9-4567890123de",
       "name": "Send Telegram Message",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
-      "position": [
-        4592,
-        -368
-      ],
+      "position": [4816, 0],
       "webhookId": "5b728623-535d-403d-b01c-a3904d128411",
       "credentials": {
         "telegramApi": {
           "id": "O1MJFVusDgb0GzSm",
           "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resume": "webhook",
-        "options": {}
-      },
-      "id": "2d01c680-c060-45c5-847e-c14522314ba4",
-      "name": "Wait for Approval",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        4816,
-        -368
-      ],
-      "webhookId": "lowkeycooking-recipe-approval"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "cond-approve",
-              "leftValue": "={{ $json.query.action }}",
-              "rightValue": "approve",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "8acc6f4c-09da-4bbb-833f-5e6842766977",
-      "name": "Check Decision",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        5040,
-        -368
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter').first().json;\nfunction removeDraft(content) {\n  return content.replace(/^---\\ndraft: true\\n/, '---\\n');\n}\nreturn [{\n  json: {\n    en_filename: draftData.en_filename,\n    en_content: removeDraft(draftData.en_content),\n    es_filename: draftData.es_filename,\n    es_content: removeDraft(draftData.es_content),\n    commit_message: draftData.commit_message\n  }\n}];"
-      },
-      "id": "6f9b2712-a729-473e-9a19-c2afb2a1df5c",
-      "name": "Remove Draft Frontmatter",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        5264,
-        -672
-      ]
-    },
-    {
-      "parameters": {
-        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/branches/' + $('Get Repo Info').first().json.default_branch }}",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "githubApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/vnd.github+json"
-            },
-            {
-              "name": "X-GitHub-Api-Version",
-              "value": "2022-11-28"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "222fb21c-79b0-4c4c-ae89-169e1ace9d88",
-      "name": "Get Main Branch Info",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        5488,
-        -672
-      ],
-      "credentials": {
-        "githubApi": {
-          "id": "Z6Aj7LavahsWsj15",
-          "name": "Hope Github"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const cleanData = $('Remove Draft Frontmatter').first().json;\nconst branchInfo = $input.first().json;\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\nconst defaultBranch = $('Get Repo Info').first().json.default_branch;\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        { path: 'recipes/en/' + cleanData.en_filename, mode: '100644', type: 'blob', content: cleanData.en_content },\n        { path: 'recipes/es/' + cleanData.es_filename, mode: '100644', type: 'blob', content: cleanData.es_content }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: cleanData.commit_message,\n    default_branch: defaultBranch\n  }\n}];"
-      },
-      "id": "9f04e1f3-eaee-4771-a15f-9b5d94d50865",
-      "name": "Build Main Tree Request",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        5712,
-        -672
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/trees",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "githubApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/vnd.github+json"
-            },
-            {
-              "name": "X-GitHub-Api-Version",
-              "value": "2022-11-28"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify($json.body) }}",
-        "options": {}
-      },
-      "id": "f11dc124-d523-475f-ac1f-88eb173ae5a5",
-      "name": "Create Main Tree",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        5936,
-        -672
-      ],
-      "credentials": {
-        "githubApi": {
-          "id": "Z6Aj7LavahsWsj15",
-          "name": "Hope Github"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Main Tree Request').first().json.parent_commit_sha;\nconst message = $('Build Main Tree Request').first().json.commit_message;\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
-      },
-      "id": "74314add-bd31-4a76-b606-4dbf91b18903",
-      "name": "Build Main Commit Request",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        6160,
-        -672
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/commits",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "githubApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/vnd.github+json"
-            },
-            {
-              "name": "X-GitHub-Api-Version",
-              "value": "2022-11-28"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify($json.body) }}",
-        "options": {}
-      },
-      "id": "da5f6965-9755-49a7-94af-2243bb8252ed",
-      "name": "Create Main Commit",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        6384,
-        -672
-      ],
-      "credentials": {
-        "githubApi": {
-          "id": "Z6Aj7LavahsWsj15",
-          "name": "Hope Github"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "PATCH",
-        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/refs/heads/' + $('Build Main Tree Request').first().json.default_branch }}",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "githubApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/vnd.github+json"
-            },
-            {
-              "name": "X-GitHub-Api-Version",
-              "value": "2022-11-28"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ sha: $json.sha }) }}",
-        "options": {}
-      },
-      "id": "f14e0c2f-86fa-4fb0-a35e-af2144468f98",
-      "name": "Update Main Branch Ref",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        6608,
-        -672
-      ],
-      "credentials": {
-        "githubApi": {
-          "id": "Z6Aj7LavahsWsj15",
-          "name": "Hope Github"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "chatId": "306989280",
-        "text": "={{ '❌ <b>Recipe Rejected</b>\\n\\n<b>' + $('Build Preview URL').first().json.recipeName + '</b> has been discarded and will not be published.' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "24c47deb-aaea-470e-9302-4c20236038c2",
-      "name": "Notify Rejected",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        5264,
-        -80
-      ],
-      "webhookId": "f6745d40-5a79-4046-a521-643dd1b73204",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "chatId": "306989280",
-        "text": "={{ '⏳ <b>Approved!</b>\\n\\nPublishing <b>' + $('Build Preview URL').first().json.recipeName + '</b> to production now...' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "76ca512a-371d-45be-9f2a-c84f452fe25a",
-      "name": "Notify Approved",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        5264,
-        -480
-      ],
-      "webhookId": "4aa31d11-6163-4850-8352-787e1ad883a8",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "chatId": "306989280",
-        "text": "={{ '🎉 <b>Published!</b>\\n\\n<b>' + $('Build Preview URL').first().json.recipeName + '</b> is now live on the site.' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "b4eac923-40e4-48ad-849c-812bbaf6e7cb",
-      "name": "Notify Published",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        6832,
-        -672
-      ],
-      "webhookId": "b4160ad3-c6ba-40a3-8565-d66c5fd84b79",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {
-          "maxOutputTokens": 4000,
-          "temperature": 0.7
-        }
-      },
-      "id": "53bc96fb-5dc2-47c7-8cf4-b79309e8c207",
-      "name": "Gemini 2.0 Flash1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        1312,
-        -352
-      ],
-      "credentials": {
-        "googlePalmApi": {
-          "id": "6XAzmOq7MWDpjqDb",
-          "name": "Google Gemini(PaLM) Api account 2"
         }
       }
     }
@@ -1000,6 +646,17 @@
       "main": [
         [
           {
+            "node": "Wait for Preview Ready",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Preview Ready": {
+      "main": [
+        [
+          {
             "node": "Build Telegram Message",
             "type": "main",
             "index": 0
@@ -1013,150 +670,6 @@
           {
             "node": "Send Telegram Message",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Send Telegram Message": {
-      "main": [
-        [
-          {
-            "node": "Wait for Approval",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait for Approval": {
-      "main": [
-        [
-          {
-            "node": "Check Decision",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check Decision": {
-      "main": [
-        [
-          {
-            "node": "Notify Approved",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Notify Rejected",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Remove Draft Frontmatter": {
-      "main": [
-        [
-          {
-            "node": "Get Main Branch Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Main Branch Info": {
-      "main": [
-        [
-          {
-            "node": "Build Main Tree Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Main Tree Request": {
-      "main": [
-        [
-          {
-            "node": "Create Main Tree",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Main Tree": {
-      "main": [
-        [
-          {
-            "node": "Build Main Commit Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Main Commit Request": {
-      "main": [
-        [
-          {
-            "node": "Create Main Commit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Main Commit": {
-      "main": [
-        [
-          {
-            "node": "Update Main Branch Ref",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update Main Branch Ref": {
-      "main": [
-        [
-          {
-            "node": "Notify Published",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Notify Approved": {
-      "main": [
-        [
-          {
-            "node": "Remove Draft Frontmatter",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Gemini 2.0 Flash1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Generate Recipe EN",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Generate Recipe ES",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]

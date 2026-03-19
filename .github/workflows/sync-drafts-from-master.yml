@@ -1,0 +1,32 @@
+# After every push to `master`, merge those commits into `drafts` and push.
+# Keeps `drafts` up to date with frontend/tooling changes on `master` without manual merges.
+#
+# If the merge conflicts, this workflow fails — resolve locally:
+#   git checkout drafts && git pull && git merge master && fix conflicts && git push
+
+name: Sync drafts from master
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  merge-master-into-drafts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge master into drafts and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin master drafts
+          git checkout drafts
+          git merge origin/master --no-edit -m "Merge branch 'master' into drafts [sync]"
+          git push origin drafts
