@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,6 +61,7 @@ export default async function LocaleLayout({
             <LocaleFooter locale={locale} />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
