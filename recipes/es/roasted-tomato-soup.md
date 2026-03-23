@@ -1,57 +1,53 @@
 ---
 draft: true
-title: Sopa de Tomate Asado
-description: Una reconfortante sopa de tomate asado con un toque ahumado y profundo, perfecta para cualquier ocasión.
-image: https://images.unsplash.com/photo-1763261790435-c0ea9b185fd7?w=1200&q=80
-prep_time: 20 min
-cook_time: 50 min
-servings: 6
+title: Sopa Cremosa de Tomate Asado
+description: Una sopa reconfortante y llena de sabor, con tomates asados que le dan una dulzura natural irresistible.
+prep_time: 15 min
+cook_time: 40 min
+servings: 4
 utensils:
   - name: Bandeja para hornear
-    url: https://www.amazon.com/s?k=baking+sheet
-  - name: Cuchillo de chef
-    url: https://www.amazon.com/s?k=chef+knife
-  - name: Tabla de cortar
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=baking+sheet&tag=lowkeycooking-20
   - name: Olla grande
-    url: https://www.amazon.com/s?k=large+pot
+    url: https://www.amazon.com/s?k=large+pot&tag=lowkeycooking-20
   - name: Batidora de inmersión
-    url: https://www.amazon.com/s?k=immersion+blender
-  - name: Tazas medidoras
-    url: https://www.amazon.com/s?k=measuring+cups
+    url: https://www.amazon.com/s?k=immersion+blender&tag=lowkeycooking-20
+  - name: Tabla de cortar
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
+  - name: Cuchillo afilado
+    url: https://www.amazon.com/s?k=sharp+knife&tag=lowkeycooking-20
 nutrition:
-  calories: 180
-  protein: 5g
-  carbs: 25g
-  fat: 7g
-  fiber: 6g
-  sugar: 12g
-  sodium: 450mg
+  calories: 210
+  protein: 6g
+  carbs: 26g
+  fat: 11g
+  fiber: 5g
+  sugar: 16g
+  sodium: 520mg
 ---
+
+Para mí, no hay nada más reconfortante que un buen plato de sopa, y esta Sopa Cremosa de Tomate Asado es mi favorita cuando busco algo cálido y lleno de sabor. Me encanta cómo el asado saca lo mejor de los tomates, dándoles una dulzura y profundidad que transforman por completo una simple sopa. Es la receta perfecta para una noche fría o cuando simplemente quiero sentirme mimada con una comida casera y saludable.
 
 ## Ingredientes
 
-- 1 kg de tomates Roma, cortados por la mitad
-- 1 cebolla amarilla grande, cortada en cuartos
-- 4 dientes de ajo, sin pelar
+- 2 libras (aproximadamente 1 kg) de tomates Roma o de vid, cortados por la mitad
+- 1 cebolla mediana, picada en trozos grandes
+- 4 dientes de ajo, pelados
 - 3 cucharadas de aceite de oliva virgen extra
-- 1 cucharadita de sal
-- 1/2 cucharadita de pimienta negra molida
-- 4 tazas de caldo de verduras bajo en sodio
-- 1/4 taza de crema para batir (opcional, para un toque más cremoso)
-- Hojas de albahaca fresca, para decorar (opcional)
+- 1 cucharadita de sal marina
+- 1/2 cucharadita de pimienta negra recién molida
+- 4 tazas (aproximadamente 1 litro) de caldo de verduras bajo en sodio
+- 1/4 taza de hojas de albahaca fresca, picadas (más extra para decorar)
+- Opcional: 1/4 taza de crema de coco o leche de tu elección, para una textura más cremosa
 
 ## Instrucciones
 
-1. Precalienta el horno a 200°C (400°F).
-2. Coloca los tomates cortados por la mitad, los cuartos de cebolla y los dientes de ajo (con piel) en una bandeja para hornear.
-3. Rocía todo con el aceite de oliva, sazona con sal y pimienta negra. Mezcla para asegurar que todo esté cubierto.
-4. Asa en el horno precalentado durante 30-40 minutos, o hasta que los tomates estén tiernos y ligeramente dorados, y la cebolla esté suave.
-5. Retira la bandeja del horno. Exprime los dientes de ajo de su piel.
-6. Transfiere los vegetales asados y el ajo pelado a una olla grande.
-7. Añade el caldo de verduras a la olla. Lleva a ebullición a fuego medio-alto.
-8. Reduce el fuego a bajo, tapa la olla y cocina a fuego lento durante 10 minutos.
-9. Con una batidora de inmersión, tritura la sopa hasta que esté suave y cremosa. Si no tienes batidora de inmersión, puedes transferir la sopa a una licuadora (trabajando en lotes si es necesario) y licuar hasta que esté suave.
-10. Si deseas una sopa más cremosa, añade la crema para batir y remueve hasta que se incorpore. Cocina a fuego muy bajo durante 2 minutos más, sin que hierva.
-11. Prueba y ajusta la sazón si es necesario.
-12. Sirve caliente, decorada con hojas de albahaca fresca si lo deseas.
+1.  Precalienta el horno a 200°C (400°F). Cubre una bandeja para hornear grande con papel pergamino.
+2.  En un tazón grande, combina los tomates cortados, la cebolla picada y los dientes de ajo. Rocía con el aceite de oliva, la sal y la pimienta. Mezcla bien para que todas las verduras estén cubiertas de manera uniforme.
+3.  Extiende las verduras en una sola capa sobre la bandeja para hornear preparada.
+4.  Asa durante 30-35 minutos, o hasta que los tomates estén suaves, ligeramente caramelizados y con los bordes un poco quemados.
+5.  Transfiere las verduras asadas a una olla grande. Vierte el caldo de verduras.
+6.  Lleva la mezcla a ebullición suave a fuego medio-alto, luego reduce el fuego a bajo y cocina a fuego lento durante 10 minutos para que los sabores se mezclen.
+7.  Retira la olla del fuego. Usando una batidora de inmersión, tritura la sopa hasta que esté suave y cremosa. Si prefieres una sopa más fina, puedes pasarla por un colador fino.
+8.  Incorpora la albahaca fresca picada y, si lo deseas, la crema de coco o leche. Revuelve bien.
+9.  Prueba y ajusta la sal y la pimienta si es necesario. Sirve caliente, decorada con hojas de albahaca fresca adicionales.
