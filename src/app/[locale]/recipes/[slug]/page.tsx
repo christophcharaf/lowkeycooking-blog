@@ -223,7 +223,7 @@ export default async function RecipePage({
       {/* Hero */}
       <div className="relative h-[480px] w-full overflow-hidden bg-cream-200 md:h-[580px]">
         <Image
-          src={recipe.image}
+          src={recipe.image || "/logo.png"}
           alt={recipe.title}
           fill
           priority

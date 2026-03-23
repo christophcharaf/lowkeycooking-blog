@@ -174,7 +174,7 @@ export default function PrintPreview({ recipe, slug }: PrintPreviewProps) {
         {showImage && (
           <div className="relative mb-8 h-64 w-full overflow-hidden rounded-2xl sm:h-80 print:rounded-none">
             <Image
-              src={recipe.image}
+              src={recipe.image || "/logo.png"}
               alt={recipe.title}
               fill
               priority

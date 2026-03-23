@@ -21,7 +21,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
       {/* Image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-cream-100 dark:bg-gray-700">
         <Image
-          src={recipe.image}
+          src={recipe.image || "/logo.png"}
           alt={recipe.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
