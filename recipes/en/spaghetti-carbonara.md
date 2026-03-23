@@ -7,15 +7,15 @@ cook_time: 20 mins
 servings: 4
 utensils:
   - name: Large Pasta Pot
-    url: https://www.amazon.com/s?k=large+pasta+pot
+    url: https://www.amazon.com/s?k=large+pasta+pot&tag=lowkeycooking-20
   - name: Skillet / Frying Pan
-    url: https://www.amazon.com/s?k=stainless+steel+skillet
+    url: https://www.amazon.com/s?k=stainless+steel+skillet&tag=lowkeycooking-20
   - name: Mixing Bowl Set
-    url: https://www.amazon.com/s?k=mixing+bowl+set
+    url: https://www.amazon.com/s?k=mixing+bowl+set&tag=lowkeycooking-20
   - name: Box Grater
-    url: https://www.amazon.com/s?k=box+grater+cheese
+    url: https://www.amazon.com/s?k=box+grater+cheese&tag=lowkeycooking-20
   - name: Pasta Tongs
-    url: https://www.amazon.com/s?k=pasta+tongs
+    url: https://www.amazon.com/s?k=pasta+tongs&tag=lowkeycooking-20
 nutrition:
   calories: 620
   protein: 28g
@@ -25,6 +25,8 @@ nutrition:
   sugar: 2g
   sodium: 680mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

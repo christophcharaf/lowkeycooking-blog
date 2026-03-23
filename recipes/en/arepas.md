@@ -7,15 +7,15 @@ cook_time: 25 mins
 servings: 4
 utensils:
   - name: Large Mixing Bowl
-    url: https://www.amazon.com/s?k=large+mixing+bowl
+    url: https://www.amazon.com/s?k=large+mixing+bowl&tag=lowkeycooking-20
   - name: Measuring Cups
-    url: https://www.amazon.com/s?k=measuring+cups
+    url: https://www.amazon.com/s?k=measuring+cups&tag=lowkeycooking-20
   - name: Non-stick Skillet
-    url: https://www.amazon.com/s?k=non-stick+skillet
+    url: https://www.amazon.com/s?k=non-stick+skillet&tag=lowkeycooking-20
   - name: Spatula
-    url: https://www.amazon.com/s?k=spatula
+    url: https://www.amazon.com/s?k=spatula&tag=lowkeycooking-20
   - name: Baking Sheet
-    url: https://www.amazon.com/s?k=baking+sheet
+    url: https://www.amazon.com/s?k=baking+sheet&tag=lowkeycooking-20
 nutrition:
   calories: 220
   protein: 5g
@@ -26,9 +26,11 @@ nutrition:
   sodium: 350mg
 ---
 
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps. The key ingridient here is the Harina Pan, if you are in Houston, you might find it in HEB and some Walmarts.
+
 ## Ingredients
 
-- 2 cups pre-cooked white cornmeal (Masarepa)
+- 2 cups pre-cooked white cornmeal (Harina Pan)
 - 2 ½ cups warm water
 - 1 teaspoon salt
 - 1 tablespoon vegetable oil (for cooking)

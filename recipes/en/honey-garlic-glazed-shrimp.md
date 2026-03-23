@@ -7,17 +7,17 @@ cook_time: 8 mins
 servings: 4
 utensils:
   - name: Large Skillet
-    url: https://www.amazon.com/s?k=large+skillet
+    url: https://www.amazon.com/s?k=large+skillet&tag=lowkeycooking-20
   - name: Whisk
-    url: https://www.amazon.com/s?k=whisk
+    url: https://www.amazon.com/s?k=whisk&tag=lowkeycooking-20
   - name: Measuring Spoons
-    url: https://www.amazon.com/s?k=measuring+spoons
+    url: https://www.amazon.com/s?k=measuring+spoons&tag=lowkeycooking-20
   - name: Measuring Cups
-    url: https://www.amazon.com/s?k=measuring+cups
+    url: https://www.amazon.com/s?k=measuring+cups&tag=lowkeycooking-20
   - name: Tongs
-    url: https://www.amazon.com/s?k=kitchen+tongs
+    url: https://www.amazon.com/s?k=kitchen+tongs&tag=lowkeycooking-20
   - name: Small Mixing Bowl
-    url: https://www.amazon.com/s?k=small+mixing+bowl
+    url: https://www.amazon.com/s?k=small+mixing+bowl&tag=lowkeycooking-20
 nutrition:
   calories: 250
   protein: 25g
@@ -27,6 +27,8 @@ nutrition:
   sugar: 12g
   sodium: 550mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

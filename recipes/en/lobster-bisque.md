@@ -7,17 +7,17 @@ cook_time: 60 mins
 servings: 4
 utensils:
   - name: Large Stockpot
-    url: https://www.amazon.com/s?k=large+stockpot
+    url: https://www.amazon.com/s?k=large+stockpot&tag=lowkeycooking-20
   - name: Dutch Oven
-    url: https://www.amazon.com/s?k=dutch+oven
+    url: https://www.amazon.com/s?k=dutch+oven&tag=lowkeycooking-20
   - name: Fine-Mesh Sieve
-    url: https://www.amazon.com/s?k=fine+mesh+sieve
+    url: https://www.amazon.com/s?k=fine+mesh+sieve&tag=lowkeycooking-20
   - name: Immersion Blender
-    url: https://www.amazon.com/s?k=immersion+blender
+    url: https://www.amazon.com/s?k=immersion+blender&tag=lowkeycooking-20
   - name: Whisk
-    url: https://www.amazon.com/s?k=whisk
+    url: https://www.amazon.com/s?k=whisk&tag=lowkeycooking-20
   - name: Chef's Knife
-    url: https://www.amazon.com/s?k=chefs+knife
+    url: https://www.amazon.com/s?k=chefs+knife&tag=lowkeycooking-20
 nutrition:
   calories: 480
   protein: 28g
@@ -27,6 +27,8 @@ nutrition:
   sugar: 9g
   sodium: 750mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

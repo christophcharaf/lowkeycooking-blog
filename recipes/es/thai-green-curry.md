@@ -7,9 +7,9 @@ cook_time: 25 min
 servings: 4
 utensils:
   - name: Wok o sartén profunda
-    url: https://www.amazon.com/s?k=wok
+    url: https://www.amazon.com/s?k=wok&tag=lowkeycooking-20
   - name: Tabla de cortar
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
 nutrition:
   calories: 420
   protein: 28g
@@ -18,6 +18,8 @@ nutrition:
   fiber: 4g
   sodium: 890mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

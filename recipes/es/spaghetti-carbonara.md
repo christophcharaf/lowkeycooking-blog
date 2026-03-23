@@ -7,11 +7,11 @@ cook_time: 20 min
 servings: 4
 utensils:
   - name: Olla grande para pasta
-    url: https://www.amazon.com/s?k=large+pasta+pot
+    url: https://www.amazon.com/s?k=large+pasta+pot&tag=lowkeycooking-20
   - name: Sartén grande
-    url: https://www.amazon.com/s?k=large+skillet
+    url: https://www.amazon.com/s?k=large+skillet&tag=lowkeycooking-20
   - name: Rallador de queso
-    url: https://www.amazon.com/s?k=cheese+grater
+    url: https://www.amazon.com/s?k=cheese+grater&tag=lowkeycooking-20
 nutrition:
   calories: 580
   protein: 28g
@@ -20,6 +20,8 @@ nutrition:
   fiber: 3g
   sodium: 720mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

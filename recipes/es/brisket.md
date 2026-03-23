@@ -7,15 +7,15 @@ cook_time: 12 horas
 servings: 10-12
 utensils:
   - name: Bandeja para asar
-    url: https://www.amazon.com/s?k=roasting+pan
+    url: https://www.amazon.com/s?k=roasting+pan&tag=lowkeycooking-20
   - name: Termómetro para carne
-    url: https://www.amazon.com/s?k=meat+thermometer
+    url: https://www.amazon.com/s?k=meat+thermometer&tag=lowkeycooking-20
   - name: Cuchillo para trinchar
-    url: https://www.amazon.com/s?k=carving+knife
+    url: https://www.amazon.com/s?k=carving+knife&tag=lowkeycooking-20
   - name: Tabla de cortar
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Brocha para barnizar
-    url: https://www.amazon.com/s?k=basting+brush
+    url: https://www.amazon.com/s?k=basting+brush&tag=lowkeycooking-20
 nutrition:
   calories: 520
   protein: 45g
@@ -25,6 +25,8 @@ nutrition:
   sugar: 1g
   sodium: 650mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

@@ -7,17 +7,17 @@ cook_time: 6-8 hr
 servings: 8
 utensils:
   - name: Olla de cocción lenta
-    url: https://www.amazon.com/s?k=slow+cooker
+    url: https://www.amazon.com/s?k=slow+cooker&tag=lowkeycooking-20
   - name: Tenedores para desmenuzar carne
-    url: https://www.amazon.com/s?k=meat+shredding+forks
+    url: https://www.amazon.com/s?k=meat+shredding+forks&tag=lowkeycooking-20
   - name: Tabla de cortar
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Cuchillo de chef
-    url: https://www.amazon.com/s?k=chefs+knife
+    url: https://www.amazon.com/s?k=chefs+knife&tag=lowkeycooking-20
   - name: Tazas medidoras
-    url: https://www.amazon.com/s?k=measuring+cups
+    url: https://www.amazon.com/s?k=measuring+cups&tag=lowkeycooking-20
   - name: Cucharas medidoras
-    url: https://www.amazon.com/s?k=measuring+spoons
+    url: https://www.amazon.com/s?k=measuring+spoons&tag=lowkeycooking-20
 nutrition:
   calories: 450
   protein: 35g
@@ -27,6 +27,8 @@ nutrition:
   sugar: 8g
   sodium: 650mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

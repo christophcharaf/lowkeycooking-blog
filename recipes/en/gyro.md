@@ -7,17 +7,17 @@ cook_time: 25 mins
 servings: 4
 utensils:
   - name: Mixing bowls
-    url: https://www.amazon.com/s?k=mixing+bowls
+    url: https://www.amazon.com/s?k=mixing+bowls&tag=lowkeycooking-20
   - name: Sharp knife
-    url: https://www.amazon.com/s?k=sharp+knife
+    url: https://www.amazon.com/s?k=sharp+knife&tag=lowkeycooking-20
   - name: Cutting board
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Large skillet
-    url: https://www.amazon.com/s?k=large+skillet
+    url: https://www.amazon.com/s?k=large+skillet&tag=lowkeycooking-20
   - name: Grater
-    url: https://www.amazon.com/s?k=grater
+    url: https://www.amazon.com/s?k=grater&tag=lowkeycooking-20
   - name: Tongs
-    url: https://www.amazon.com/s?k=tongs
+    url: https://www.amazon.com/s?k=tongs&tag=lowkeycooking-20
 nutrition:
   calories: 600
   protein: 35g
@@ -27,6 +27,8 @@ nutrition:
   sugar: 6g
   sodium: 800mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

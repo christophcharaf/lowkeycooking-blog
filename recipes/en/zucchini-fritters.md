@@ -7,15 +7,15 @@ cook_time: 25 mins
 servings: 4
 utensils:
   - name: Box Grater
-    url: https://www.amazon.com/s?k=box+grater
+    url: https://www.amazon.com/s?k=box+grater&tag=lowkeycooking-20
   - name: Large Mixing Bowl
-    url: https://www.amazon.com/s?k=large+mixing+bowl
+    url: https://www.amazon.com/s?k=large+mixing+bowl&tag=lowkeycooking-20
   - name: Colander
-    url: https://www.amazon.com/s?k=colander
+    url: https://www.amazon.com/s?k=colander&tag=lowkeycooking-20
   - name: Non-stick Skillet
-    url: https://www.amazon.com/s?k=nonstick+skillet
+    url: https://www.amazon.com/s?k=nonstick+skillet&tag=lowkeycooking-20
   - name: Flexible Spatula
-    url: https://www.amazon.com/s?k=flexible+spatula
+    url: https://www.amazon.com/s?k=flexible+spatula&tag=lowkeycooking-20
 nutrition:
   calories: 230
   protein: 9g
@@ -25,6 +25,8 @@ nutrition:
   sugar: 3g
   sodium: 380mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

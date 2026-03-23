@@ -7,15 +7,15 @@ cook_time: 12 hours
 servings: 10-12
 utensils:
   - name: Roasting Pan
-    url: https://www.amazon.com/s?k=roasting+pan
+    url: https://www.amazon.com/s?k=roasting+pan&tag=lowkeycooking-20
   - name: Meat Thermometer
-    url: https://www.amazon.com/s?k=meat+thermometer
+    url: https://www.amazon.com/s?k=meat+thermometer&tag=lowkeycooking-20
   - name: Carving Knife
-    url: https://www.amazon.com/s?k=carving+knife
+    url: https://www.amazon.com/s?k=carving+knife&tag=lowkeycooking-20
   - name: Cutting Board
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Basting Brush
-    url: https://www.amazon.com/s?k=basting+brush
+    url: https://www.amazon.com/s?k=basting+brush&tag=lowkeycooking-20
 nutrition:
   calories: 520
   protein: 45g
@@ -25,6 +25,8 @@ nutrition:
   sugar: 1g
   sodium: 650mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

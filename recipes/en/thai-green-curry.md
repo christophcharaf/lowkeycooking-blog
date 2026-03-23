@@ -7,17 +7,17 @@ cook_time: 25 mins
 servings: 4
 utensils:
   - name: Large Pot
-    url: https://www.amazon.com/s?k=large+pot
+    url: https://www.amazon.com/s?k=large+pot&tag=lowkeycooking-20
   - name: Cutting Board
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Chef's Knife
-    url: https://www.amazon.com/s?k=chef%27s+knife
+    url: https://www.amazon.com/s?k=chef%27s+knife&tag=lowkeycooking-20
   - name: Measuring Cups
-    url: https://www.amazon.com/s?k=measuring+cups
+    url: https://www.amazon.com/s?k=measuring+cups&tag=lowkeycooking-20
   - name: Measuring Spoons
-    url: https://www.amazon.com/s?k=measuring+spoons
+    url: https://www.amazon.com/s?k=measuring+spoons&tag=lowkeycooking-20
   - name: Ladle
-    url: https://www.amazon.com/s?k=ladle
+    url: https://www.amazon.com/s?k=ladle&tag=lowkeycooking-20
 nutrition:
   calories: 450
   protein: 35g
@@ -27,6 +27,8 @@ nutrition:
   sugar: 8g
   sodium: 800mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

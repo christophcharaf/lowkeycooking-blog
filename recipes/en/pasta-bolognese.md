@@ -7,17 +7,17 @@ cook_time: 2 hours 30 mins
 servings: 6
 utensils:
   - name: Dutch oven
-    url: https://www.amazon.com/s?k=dutch+oven
+    url: https://www.amazon.com/s?k=dutch+oven&tag=lowkeycooking-20
   - name: Cutting board
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Chef's knife
-    url: https://www.amazon.com/s?k=chef%27s+knife
+    url: https://www.amazon.com/s?k=chef%27s+knife&tag=lowkeycooking-20
   - name: Wooden spoon
-    url: https://www.amazon.com/s?k=wooden+spoon
+    url: https://www.amazon.com/s?k=wooden+spoon&tag=lowkeycooking-20
   - name: Measuring cups and spoons
-    url: https://www.amazon.com/s?k=measuring+cups+and+spoons
+    url: https://www.amazon.com/s?k=measuring+cups+and+spoons&tag=lowkeycooking-20
   - name: Large pasta pot
-    url: https://www.amazon.com/s?k=large+pasta+pot
+    url: https://www.amazon.com/s?k=large+pasta+pot&tag=lowkeycooking-20
 nutrition:
   calories: 680
   protein: 48g
@@ -27,6 +27,8 @@ nutrition:
   sugar: 12g
   sodium: 950mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

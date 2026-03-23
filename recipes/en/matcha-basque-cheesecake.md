@@ -7,17 +7,17 @@ cook_time: 50 mins
 servings: 8
 utensils:
   - name: 9-inch springform pan
-    url: https://www.amazon.com/s?k=9-inch+springform+pan
+    url: https://www.amazon.com/s?k=9-inch+springform+pan&tag=lowkeycooking-20
   - name: Parchment paper
-    url: https://www.amazon.com/s?k=parchment+paper+baking
+    url: https://www.amazon.com/s?k=parchment+paper+baking&tag=lowkeycooking-20
   - name: Electric mixer
-    url: https://www.amazon.com/s?k=electric+mixer
+    url: https://www.amazon.com/s?k=electric+mixer&tag=lowkeycooking-20
   - name: Large mixing bowl
-    url: https://www.amazon.com/s?k=large+mixing+bowl
+    url: https://www.amazon.com/s?k=large+mixing+bowl&tag=lowkeycooking-20
   - name: Fine-mesh sieve
-    url: https://www.amazon.com/s?k=fine-mesh+sieve
+    url: https://www.amazon.com/s?k=fine-mesh+sieve&tag=lowkeycooking-20
   - name: Rubber spatula
-    url: https://www.amazon.com/s?k=rubber+spatula
+    url: https://www.amazon.com/s?k=rubber+spatula&tag=lowkeycooking-20
 nutrition:
   calories: 450
   protein: 9g
@@ -27,6 +27,8 @@ nutrition:
   sugar: 28g
   sodium: 250mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

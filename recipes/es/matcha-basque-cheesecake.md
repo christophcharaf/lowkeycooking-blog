@@ -7,9 +7,9 @@ cook_time: 65 min
 servings: 8
 utensils:
   - name: Molde desmontable 20cm
-    url: https://www.amazon.com/s?k=springform+pan
+    url: https://www.amazon.com/s?k=springform+pan&tag=lowkeycooking-20
   - name: Batidora de pie
-    url: https://www.amazon.com/s?k=stand+mixer
+    url: https://www.amazon.com/s?k=stand+mixer&tag=lowkeycooking-20
 nutrition:
   calories: 410
   protein: 8g
@@ -19,6 +19,8 @@ nutrition:
   sugar: 22g
   sodium: 290mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

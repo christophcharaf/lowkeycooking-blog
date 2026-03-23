@@ -7,9 +7,9 @@ cook_time: 20 min
 servings: 4
 utensils:
   - name: Rallador de caja
-    url: https://www.amazon.com/s?k=box+grater
+    url: https://www.amazon.com/s?k=box+grater&tag=lowkeycooking-20
   - name: Sartén antiadherente
-    url: https://www.amazon.com/s?k=nonstick+skillet
+    url: https://www.amazon.com/s?k=nonstick+skillet&tag=lowkeycooking-20
 nutrition:
   calories: 195
   protein: 8g
@@ -18,6 +18,8 @@ nutrition:
   fiber: 2g
   sodium: 340mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

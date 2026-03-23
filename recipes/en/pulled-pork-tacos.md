@@ -7,15 +7,15 @@ cook_time: 8 hours
 servings: 6-8
 utensils:
   - name: Slow Cooker
-    url: https://www.amazon.com/s?k=slow+cooker
+    url: https://www.amazon.com/s?k=slow+cooker&tag=lowkeycooking-20
   - name: Meat Shredding Claws
-    url: https://www.amazon.com/s?k=meat+shredding+claws
+    url: https://www.amazon.com/s?k=meat+shredding+claws&tag=lowkeycooking-20
   - name: Large Mixing Bowl
-    url: https://www.amazon.com/s?k=large+mixing+bowl
+    url: https://www.amazon.com/s?k=large+mixing+bowl&tag=lowkeycooking-20
   - name: Cutting Board
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Measuring Spoons and Cups
-    url: https://www.amazon.com/s?k=measuring+spoons+and+cups
+    url: https://www.amazon.com/s?k=measuring+spoons+and+cups&tag=lowkeycooking-20
 nutrition:
   calories: 450
   protein: 30g
@@ -25,6 +25,8 @@ nutrition:
   sugar: 8g
   sodium: 800mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

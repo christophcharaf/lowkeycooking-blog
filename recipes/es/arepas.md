@@ -7,9 +7,9 @@ cook_time: 20 min
 servings: 6
 utensils:
   - name: Sartén de hierro fundido
-    url: https://www.amazon.com/s?k=cast+iron+skillet
+    url: https://www.amazon.com/s?k=cast+iron+skillet&tag=lowkeycooking-20
   - name: Tazón grande para mezclar
-    url: https://www.amazon.com/s?k=mixing+bowl
+    url: https://www.amazon.com/s?k=mixing+bowl&tag=lowkeycooking-20
 nutrition:
   calories: 220
   protein: 5g
@@ -18,6 +18,8 @@ nutrition:
   fiber: 2g
   sodium: 380mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

@@ -7,9 +7,9 @@ cook_time: 45 min
 servings: 4
 utensils:
   - name: Olla grande
-    url: https://www.amazon.com/s?k=large+pot
+    url: https://www.amazon.com/s?k=large+pot&tag=lowkeycooking-20
   - name: Batidora de mano
-    url: https://www.amazon.com/s?k=immersion+blender
+    url: https://www.amazon.com/s?k=immersion+blender&tag=lowkeycooking-20
 nutrition:
   calories: 380
   protein: 22g
@@ -18,6 +18,8 @@ nutrition:
   fiber: 2g
   sodium: 820mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

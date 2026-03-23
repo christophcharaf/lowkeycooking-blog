@@ -7,15 +7,15 @@ cook_time: 8 min
 servings: 4
 utensils:
   - name: Sartén grande
-    url: https://www.amazon.com/s?k=large+skillet
+    url: https://www.amazon.com/s?k=large+skillet&tag=lowkeycooking-20
   - name: Bol para mezclar
-    url: https://www.amazon.com/s?k=mixing+bowl
+    url: https://www.amazon.com/s?k=mixing+bowl&tag=lowkeycooking-20
   - name: Cuchara de madera o espátula
-    url: https://www.amazon.com/s?k=wooden+spoon+spatula
+    url: https://www.amazon.com/s?k=wooden+spoon+spatula&tag=lowkeycooking-20
   - name: Prensa de ajo
-    url: https://www.amazon.com/s?k=garlic+press
+    url: https://www.amazon.com/s?k=garlic+press&tag=lowkeycooking-20
   - name: Tazas y cucharas medidoras
-    url: https://www.amazon.com/s?k=measuring+cups+spoons
+    url: https://www.amazon.com/s?k=measuring+cups+spoons&tag=lowkeycooking-20
 nutrition:
   calories: 280
   protein: 28g
@@ -25,6 +25,8 @@ nutrition:
   sugar: 18g
   sodium: 550mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

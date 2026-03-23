@@ -7,11 +7,11 @@ cook_time: 30 min
 servings: 4
 utensils:
   - name: Procesador de alimentos
-    url: https://www.amazon.com/s?k=food+processor
+    url: https://www.amazon.com/s?k=food+processor&tag=lowkeycooking-20
   - name: Molde para pan
-    url: https://www.amazon.com/s?k=loaf+pan
+    url: https://www.amazon.com/s?k=loaf+pan&tag=lowkeycooking-20
   - name: Termómetro para carne
-    url: https://www.amazon.com/s?k=meat+thermometer
+    url: https://www.amazon.com/s?k=meat+thermometer&tag=lowkeycooking-20
 nutrition:
   calories: 520
   protein: 35g
@@ -20,6 +20,8 @@ nutrition:
   fiber: 3g
   sodium: 780mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 
