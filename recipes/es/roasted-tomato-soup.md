@@ -1,6 +1,7 @@
 ---
 title: Sopa Cremosa de Tomate Asado
 description: Una sopa reconfortante y llena de sabor, con tomates asados que le dan una dulzura natural irresistible.
+category: lunch
 prep_time: 15 min
 cook_time: 40 min
 servings: 4

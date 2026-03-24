@@ -2,6 +2,7 @@
 title: Brisket Ahumado Clásico
 description: Logra una ternura que se derrite en la boca con este clásico brisket ahumado a fuego lento, perfecto para cualquier reunión.
 image: https://images.unsplash.com/photo-1623174025518-b49000fb653d?w=1200&q=80
+category: dinner
 prep_time: 30 min
 cook_time: 12 horas
 servings: 10-12

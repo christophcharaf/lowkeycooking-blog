@@ -47,7 +47,15 @@
     "resultsFound": "{count} {count, plural, =1 {receta} other {recetas}} encontrada{count, plural, =1 {} other {s}} para",
     "noResults": "No se encontraron recetas",
     "tryDifferent": "Intenta con otro término de búsqueda",
-    "clearSearch": "Limpiar búsqueda"
+    "clearSearch": "Limpiar búsqueda",
+    "filterAll": "Todos",
+    "filterBreakfast": "Desayuno",
+    "filterLunch": "Almuerzo",
+    "filterDinner": "Cena",
+    "filterDessert": "Postre",
+    "page": "Página {current} de {total}",
+    "prev": "Anterior",
+    "next": "Siguiente"
   },
   "RecipePage": {
     "backToAll": "Todas las Recetas",

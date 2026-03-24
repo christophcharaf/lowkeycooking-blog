@@ -2,6 +2,7 @@
 title: Pasta Bolognese
 description: Savor this rich, slow-simmered Bolognese sauce, a comforting classic perfect over your favorite pasta.
 image: https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=1200&q=80
+category: dinner
 prep_time: 25 mins
 cook_time: 2 hours 30 mins
 servings: 6

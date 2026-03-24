@@ -2,6 +2,7 @@
 title: Salteado Crujiente de Garbanzos
 description: Prepara un salteado vibrante y lleno de sabor con garbanzos crujientes y verduras frescas, perfecto para una cena rápida y nutritiva.
 image: https://images.unsplash.com/photo-1602928630997-6aed5b819677?w=1200&q=80
+category: lunch
 prep_time: 15 min
 cook_time: 20 min
 servings: 4

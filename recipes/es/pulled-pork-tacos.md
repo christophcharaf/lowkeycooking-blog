@@ -2,6 +2,7 @@
 title: Tacos de Cerdo Desmenuzado
 description: Disfruta de la jugosa y tierna carne de cerdo desmenuzada, marinada a la perfección y servida en tortillas calientes con tus aderezos favoritos.
 image: https://images.unsplash.com/photo-1611699363797-ca04ec9249dd?w=1200&q=80
+category: lunch
 prep_time: 20 min
 cook_time: 6-8 hr
 servings: 8

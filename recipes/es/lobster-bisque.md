@@ -2,6 +2,7 @@
 title: Bisque de Langosta
 description: Una sopa cremosa y lujosa de langosta con un suave toque de brandy, nata y una pizca de cayena. Elegancia en cada cucharada.
 image: https://images.unsplash.com/photo-1464093515883-ec948246accb?w=1200&q=80
+category: dinner
 prep_time: 20 min
 cook_time: 45 min
 servings: 4

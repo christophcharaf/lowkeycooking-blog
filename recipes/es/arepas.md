@@ -2,6 +2,7 @@
 title: Arepas Venezolanas Clásicas
 description: Arepas esponjosas y doradas por fuera, perfectas para rellenar con queso, carne mechada o aguacate.
 image: https://images.unsplash.com/photo-1587603366933-aa6947174c65?w=1200&q=80
+category: breakfast
 prep_time: 15 min
 cook_time: 20 min
 servings: 6

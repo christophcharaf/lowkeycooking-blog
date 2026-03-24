@@ -2,6 +2,7 @@
 title: Curry Verde Tailandés
 description: Un curry verde cremoso y aromático con leche de coco, verduras frescas y la opción de pollo o tofu. Listo en 30 minutos.
 image: https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=1200&q=80
+category: dinner
 prep_time: 15 min
 cook_time: 25 min
 servings: 4

@@ -2,6 +2,7 @@
 title: Gyros Griegos Caseros
 description: Carne de cordero y ternera perfectamente especiada envuelta en pan pita esponjoso con tzatziki cremoso, tomate y cebolla.
 image: https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=1200&q=80
+category: lunch
 prep_time: 20 min
 cook_time: 30 min
 servings: 4

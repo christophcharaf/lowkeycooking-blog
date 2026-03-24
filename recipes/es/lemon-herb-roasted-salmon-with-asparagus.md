@@ -2,6 +2,7 @@
 title: Salmón Asado con Limón y Hierbas y Espárragos
 description: Una cena elegante y saludable, lista en minutos, que deleitará tu paladar con sabores frescos y aromáticos.
 image: https://images.unsplash.com/photo-1769081660604-721029725e07?w=1200&q=80
+category: dinner
 prep_time: 15 min
 cook_time: 20 min
 servings: 4

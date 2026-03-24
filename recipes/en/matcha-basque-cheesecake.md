@@ -2,6 +2,7 @@
 title: Matcha Basque Cheesecake
 description: A delightfully creamy and subtly bitter matcha-infused cheesecake with a beautifully caramelized, rustic top.
 image: https://images.unsplash.com/photo-1639665047213-d2b6eb288dc8?w=1200&q=80
+category: dessert
 prep_time: 20 mins
 cook_time: 50 mins
 servings: 8

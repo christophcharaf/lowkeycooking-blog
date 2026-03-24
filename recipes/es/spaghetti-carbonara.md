@@ -2,6 +2,7 @@
 title: Spaghetti Carbonara Clásico
 description: La auténtica carbonara romana con guanciale crujiente, yemas de huevo sedosas y abundante Pecorino Romano. Sin nata, sin atajos.
 image: https://images.unsplash.com/photo-1612874742237-6526221588e3?w=1200&q=80
+category: dinner
 prep_time: 10 min
 cook_time: 20 min
 servings: 4

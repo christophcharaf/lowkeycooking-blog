@@ -2,6 +2,7 @@
 title: Galletas con Chispas de Chocolate
 description: Galletas crujientes por fuera, masticables por dentro, llenas de chispas de chocolate. La receta perfecta de toda la vida.
 image: https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1200&q=80
+category: dessert
 prep_time: 15 min
 cook_time: 12 min
 servings: 24 galletas

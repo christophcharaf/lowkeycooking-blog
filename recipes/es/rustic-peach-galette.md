@@ -2,6 +2,7 @@
 title: Galette Rústica de Durazno
 description: Esta galette rústica de durazno ofrece una explosión de sabor frutal en una masa crujiente y fácil de hacer, ideal para cualquier ocasión.
 image: https://images.unsplash.com/photo-1664591080599-a33d227613d7?w=1200&q=80
+category: dessert
 prep_time: 25 min
 cook_time: 40 min
 servings: 6

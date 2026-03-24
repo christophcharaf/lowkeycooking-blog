@@ -2,6 +2,7 @@
 title: Tarta de Queso Vasca con Matcha
 description: La famosa tarta de queso vasca "quemada" con un toque japonés de matcha. Exterior caramelizado, interior cremoso y sedoso.
 image: https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1200&q=80
+category: dessert
 prep_time: 15 min
 cook_time: 65 min
 servings: 8

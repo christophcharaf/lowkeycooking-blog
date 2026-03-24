@@ -2,6 +2,7 @@
 title: Pulled Pork Tacos
 description: Tender pulled pork, zesty slaw, and creamy avocado in warm tortillas for an easy, flavorful taco night.
 image: https://images.unsplash.com/photo-1611699363797-ca04ec9249dd?w=1200&q=80
+category: lunch
 prep_time: 30 mins
 cook_time: 8 hours
 servings: 6-8

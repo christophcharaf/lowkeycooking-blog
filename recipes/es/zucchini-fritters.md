@@ -2,6 +2,7 @@
 title: Tortitas de Calabacín Crujientes
 description: Tortitas de calabacín doradas y crujientes por fuera, tiernas por dentro. Perfectas como aperitivo o guarnición.
 image: https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=1200&q=80
+category: lunch
 prep_time: 20 min
 cook_time: 20 min
 servings: 4

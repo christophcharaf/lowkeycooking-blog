@@ -2,6 +2,7 @@
 title: Gyro
 description: A classic Greek street food featuring savory seasoned meat, fresh vegetables, and creamy tzatziki, all wrapped in warm pita bread.
 image: https://images.unsplash.com/photo-1734974121561-11aee7d3cebd?w=1200&q=80
+category: lunch
 prep_time: 20 mins
 cook_time: 25 mins
 servings: 4

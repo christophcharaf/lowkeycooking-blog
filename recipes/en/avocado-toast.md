@@ -2,6 +2,7 @@
 title: Avocado Toast with Poached Egg
 description: Creamy smashed avocado on crusty sourdough, topped with a perfectly poached egg, chili flakes, and lemon zest.
 image: https://images.unsplash.com/photo-1687276287139-88f7333c8ca4?w=1200&q=80
+category: breakfast
 prep_time: 10 mins
 cook_time: 5 mins
 servings: 2

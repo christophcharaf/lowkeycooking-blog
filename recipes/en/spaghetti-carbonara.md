@@ -2,6 +2,7 @@
 title: Spaghetti Carbonara
 description: A silky, indulgent Roman pasta dish made with eggs, Pecorino Romano, guanciale, and black pepper — no cream required.
 image: https://images.unsplash.com/photo-1612874742237-6526221588e3?w=1200&q=80
+category: dinner
 prep_time: 15 mins
 cook_time: 20 mins
 servings: 4

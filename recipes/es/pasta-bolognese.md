@@ -2,6 +2,7 @@
 title: Pasta Boloñesa Clásica
 description: Disfruta de una auténtica y reconfortante salsa boloñesa casera, cocinada a fuego lento hasta la perfección.
 image: https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=1200&q=80
+category: dinner
 prep_time: 25 min
 cook_time: 120 min
 servings: 6

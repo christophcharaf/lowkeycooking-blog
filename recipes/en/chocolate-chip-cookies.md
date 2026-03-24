@@ -2,6 +2,7 @@
 title: Classic Chocolate Chip Cookies
 description: Perfectly chewy in the center and crispy at the edges — the ultimate homemade chocolate chip cookie recipe.
 image: https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1200&q=80
+category: dessert
 prep_time: 15 mins
 cook_time: 12 mins
 servings: 24 cookies

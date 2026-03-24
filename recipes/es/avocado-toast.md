@@ -2,6 +2,7 @@
 title: Tostada de Aguacate Perfecta
 description: Tostada crujiente con aguacate cremoso, huevo pochado y un toque de chile y limón. El desayuno definitivo.
 image: https://images.unsplash.com/photo-1687276287139-88f7333c8ca4?w=1200&q=80
+category: breakfast
 prep_time: 10 min
 cook_time: 5 min
 servings: 2

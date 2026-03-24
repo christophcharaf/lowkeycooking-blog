@@ -49,6 +49,7 @@ export interface RecipeFrontmatter {
   title: string;
   description: string;
   image: string;
+  category?: "breakfast" | "lunch" | "dinner" | "dessert";
   prep_time: string;
   cook_time: string;
   servings: string | number;

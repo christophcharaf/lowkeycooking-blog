@@ -2,6 +2,7 @@
 title: Thai Green Curry
 description: Creamy, vibrant Thai green curry with tender chicken and crisp vegetables, bursting with authentic flavors.
 image: https://images.unsplash.com/photo-1716959669858-11d415bdead6?w=1200&q=80
+category: dinner
 prep_time: 20 mins
 cook_time: 25 mins
 servings: 4

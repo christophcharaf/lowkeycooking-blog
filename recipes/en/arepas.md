@@ -2,6 +2,7 @@
 title: Homemade Arepas
 description: Simple yet satisfying, these crispy cornmeal patties are perfect for stuffing with your favorite savory fillings.
 image: https://images.unsplash.com/photo-1587603366933-aa6947174c65?w=1200&q=80
+category: breakfast
 prep_time: 15 mins
 cook_time: 25 mins
 servings: 4

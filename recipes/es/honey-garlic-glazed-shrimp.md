@@ -2,6 +2,7 @@
 title: Gambas Glaseadas con Miel y Ajo
 description: Una explosión de sabor dulce y salado en cada bocado de estas jugosas gambas, listas en minutos para una cena rápida y deliciosa.
 image: https://images.unsplash.com/photo-1603894483228-9a3d10c32390?w=1200&q=80
+category: dinner
 prep_time: 10 min
 cook_time: 8 min
 servings: 4
