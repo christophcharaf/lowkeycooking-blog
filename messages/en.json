@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "siteTitle": "LowKeyCooking — Delicious Recipes for Everyone",
-    "siteDescription": "Discover hand-crafted recipes from around the world. Simple ingredients, incredible flavors.",
-    "recipesTitle": "All Recipes — LowKeyCooking",
-    "recipesDescription": "Browse and search all our homemade recipes."
+    "siteTitle": "Easy Recipes for Home Cooks",
+    "siteDescription": "Easy homemade recipes for home cooks of every skill level. Simple ingredients, clear steps, and dishes that always deliver.",
+    "recipesTitle": "All Recipes",
+    "recipesDescription": "Browse all our homemade recipes — from quick weeknight dinners to weekend desserts. Filter by category and find your next favorite dish."
   },
   "Layout": {
     "footerTagline": "Homemade recipes for every occasion.",
-    "footerCopyright": "© {year} RecipeBlog. Made with love and good food."
+    "footerCopyright": "© {year} LowKeyCooking. Made with love and good food."
   },
   "Navbar": {
     "tagline": "Homemade with love",
@@ -96,6 +96,12 @@
     "copyLinkAriaLabel": "Copy link to clipboard",
     "saveToNotesAriaLabel": "Save recipe to Notes app",
     "printAriaLabel": "Print-friendly version of this recipe"
+  },
+  "NotFound": {
+    "heading": "Page Not Found",
+    "description": "Looks like this page took a wrong turn in the kitchen. Let's get you back to something delicious.",
+    "goHome": "Go Home",
+    "browseRecipes": "Browse Recipes"
   },
   "PrintPreview": {
     "goBack": "Go Back",

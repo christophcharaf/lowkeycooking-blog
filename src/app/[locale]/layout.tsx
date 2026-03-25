@@ -11,6 +11,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 
 const GA_ID = "G-KHHC5R4WBJ";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://lowkeycooking.com";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,11 +27,14 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
   return {
-    title: t("siteTitle"),
+    title: {
+      template: `%s — LowKeyCooking`,
+      default: t("siteTitle"),
+    },
     description: t("siteDescription"),
     alternates: {
       canonical: `/${locale}`,
-      languages: { en: "/en", es: "/es" },
+      languages: { en: "/en", es: "/es", "x-default": "/en" },
     },
   };
 }
@@ -53,9 +58,28 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "LowKeyCooking",
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/${locale}/recipes?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"

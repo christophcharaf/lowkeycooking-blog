@@ -12,12 +12,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
+  const ogLocale = locale === "es" ? "es_ES" : "en_US";
   return {
     title: t("siteTitle"),
     description: t("siteDescription"),
     alternates: {
       canonical: `/${locale}`,
-      languages: { en: "/en", es: "/es" },
+      languages: { en: "/en", es: "/es", "x-default": "/en" },
     },
     openGraph: {
       title: t("siteTitle"),
@@ -25,6 +26,7 @@ export async function generateMetadata({
       url: `/${locale}`,
       siteName: "LowKeyCooking",
       type: "website",
+      locale: ogLocale,
       images: [{ url: "/logo.png", width: 1200, height: 630, alt: "LowKeyCooking" }],
     },
     twitter: {

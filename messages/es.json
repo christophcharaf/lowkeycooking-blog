@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "siteTitle": "LowKeyCooking — Recetas Deliciosas para Todos",
-    "siteDescription": "Descubre recetas artesanales de todo el mundo. Ingredientes simples, sabores increíbles.",
-    "recipesTitle": "Todas las Recetas — LowKeyCooking",
-    "recipesDescription": "Explora y busca todas nuestras recetas caseras."
+    "siteTitle": "Recetas Fáciles para Cocineros en Casa",
+    "siteDescription": "Recetas caseras fáciles para cocineros de todos los niveles. Ingredientes simples, pasos claros y platos que siempre salen bien.",
+    "recipesTitle": "Todas las Recetas",
+    "recipesDescription": "Explora todas nuestras recetas caseras — desde cenas rápidas entre semana hasta postres de fin de semana. Filtra por categoría y encuentra tu próxima receta favorita."
   },
   "Layout": {
     "footerTagline": "Recetas caseras para cada ocasión.",
-    "footerCopyright": "© {year} RecipeBlog. Hecho con amor y buena comida."
+    "footerCopyright": "© {year} LowKeyCooking. Hecho con amor y buena comida."
   },
   "Navbar": {
     "tagline": "Hecho con amor",
@@ -96,6 +96,12 @@
     "copyLinkAriaLabel": "Copiar enlace al portapapeles",
     "saveToNotesAriaLabel": "Guardar receta en la app de Notas",
     "printAriaLabel": "Versión imprimible de esta receta"
+  },
+  "NotFound": {
+    "heading": "Página No Encontrada",
+    "description": "Parece que esta página tomó un camino equivocado en la cocina. Volvamos a algo delicioso.",
+    "goHome": "Ir al Inicio",
+    "browseRecipes": "Ver Recetas"
   },
   "PrintPreview": {
     "goBack": "Volver",

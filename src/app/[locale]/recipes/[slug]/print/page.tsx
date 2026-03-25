@@ -18,12 +18,12 @@ export async function generateMetadata({
   try {
     const recipe = await getRecipeBySlug(slug, locale);
     return {
-      title: `Print: ${recipe.title} — LowKeyCooking`,
+      title: { absolute: `Print: ${recipe.title} — LowKeyCooking` },
       robots: { index: false, follow: false },
     };
   } catch {
     return {
-      title: "Print Recipe",
+      title: { absolute: "Print Recipe — LowKeyCooking" },
       robots: { index: false, follow: false },
     };
   }

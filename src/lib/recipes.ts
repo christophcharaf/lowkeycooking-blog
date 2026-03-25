@@ -21,6 +21,70 @@ const SECTION_ICONS: Record<string, string> = {
   instructions: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="recipe-section-icon"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="M4 10h2"/><path d="M4 6h1v4"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>`,
 };
 
+const INGREDIENT_HEADINGS = new Set([
+  "ingredients",
+  "ingredientes",
+]);
+
+const INSTRUCTION_HEADINGS = new Set([
+  "instructions",
+  "instrucciones",
+  "preparación",
+  "preparacion",
+]);
+
+function extractSections(content: string): {
+  ingredients: string[];
+  instructions: string[];
+} {
+  const ingredients: string[] = [];
+  const instructions: string[] = [];
+
+  let activeSection: "ingredients" | "instructions" | null = null;
+
+  for (const raw of content.split("\n")) {
+    const line = raw.trim();
+
+    const h2 = line.match(/^##\s+(.+)$/);
+    if (h2) {
+      const heading = h2[1].trim().toLowerCase();
+      if (INGREDIENT_HEADINGS.has(heading)) {
+        activeSection = "ingredients";
+      } else if (INSTRUCTION_HEADINGS.has(heading)) {
+        activeSection = "instructions";
+      } else {
+        activeSection = null;
+      }
+      continue;
+    }
+
+    if (!activeSection) continue;
+
+    // Unordered list item: "- text" or "* text"
+    const unordered = line.match(/^[-*]\s+(.+)$/);
+    if (unordered) {
+      if (activeSection === "ingredients") {
+        ingredients.push(unordered[1].trim());
+      } else {
+        instructions.push(unordered[1].trim());
+      }
+      continue;
+    }
+
+    // Ordered list item: "1. text"
+    const ordered = line.match(/^\d+\.\s+(.+)$/);
+    if (ordered) {
+      if (activeSection === "instructions") {
+        instructions.push(ordered[1].trim());
+      } else {
+        ingredients.push(ordered[1].trim());
+      }
+    }
+  }
+
+  return { ingredients, instructions };
+}
+
 function injectSectionIcons(html: string): string {
   return html.replace(/<h2>(.*?)<\/h2>/gi, (match, title: string) => {
     const iconKey = HEADING_TO_ICON_KEY[title.trim().toLowerCase()];
@@ -61,6 +125,8 @@ export interface RecipeFrontmatter {
 export interface Recipe extends RecipeFrontmatter {
   slug: string;
   contentHtml: string;
+  ingredients: string[];
+  instructions: string[];
 }
 
 export interface RecipeSummary extends RecipeFrontmatter {
@@ -102,10 +168,13 @@ export async function getRecipeBySlug(
 
   const processedContent = await remark().use(remarkHtml).process(content);
   const contentHtml = injectSectionIcons(processedContent.toString());
+  const { ingredients, instructions } = extractSections(content);
 
   return {
     slug,
     contentHtml,
+    ingredients,
+    instructions,
     ...(data as RecipeFrontmatter),
   };
 }

@@ -171,14 +171,16 @@ export async function generateMetadata({
     const images = recipe.image
       ? [{ url: recipe.image, width: 1200, height: 800, alt: recipe.title }]
       : [];
+    const ogLocale = locale === "es" ? "es_ES" : "en_US";
     return {
-      title: `${recipe.title} — LowKeyCooking`,
+      title: recipe.title,
       description: recipe.description,
       alternates: {
         canonical: `/${locale}/recipes/${slug}`,
         languages: {
           en: `/en/recipes/${slug}`,
           es: `/es/recipes/${slug}`,
+          "x-default": `/en/recipes/${slug}`,
         },
       },
       openGraph: {
@@ -187,6 +189,7 @@ export async function generateMetadata({
         url: `/${locale}/recipes/${slug}`,
         siteName: "LowKeyCooking",
         type: "article",
+        locale: ogLocale,
         images,
       },
       twitter: {
@@ -219,17 +222,84 @@ export default async function RecipePage({
   const related = allRecipes.filter((r) => r.slug !== slug).slice(0, 3);
   const t = await getTranslations({ locale, namespace: "RecipePage" });
 
+  function parseMinutes(timeStr: string): number {
+    if (!timeStr) return 0;
+    const h = timeStr.match(/(\d+)\s*h/i);
+    const m = timeStr.match(/(\d+)\s*m/i);
+    return (h ? parseInt(h[1]) : 0) * 60 + (m ? parseInt(m[1]) : 0);
+  }
+
+  function toISO8601Duration(timeStr: string): string | undefined {
+    const total = parseMinutes(timeStr);
+    if (!total) return undefined;
+    const hours = Math.floor(total / 60);
+    const mins = total % 60;
+    return `PT${hours ? `${hours}H` : ""}${mins ? `${mins}M` : ""}`;
+  }
+
+  function totalISO8601Duration(a: string, b: string): string | undefined {
+    const total = parseMinutes(a) + parseMinutes(b);
+    if (!total) return undefined;
+    const hours = Math.floor(total / 60);
+    const mins = total % 60;
+    return `PT${hours ? `${hours}H` : ""}${mins ? `${mins}M` : ""}`;
+  }
+
+  const SITE_URL =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://lowkeycooking.com";
+
+  const breadcrumbNames =
+    locale === "es"
+      ? { home: "Inicio", recipes: "Recetas" }
+      : { home: "Home", recipes: "Recipes" };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: breadcrumbNames.home,
+        item: `${SITE_URL}/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: breadcrumbNames.recipes,
+        item: `${SITE_URL}/${locale}/recipes`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: recipe.title,
+        item: `${SITE_URL}/${locale}/recipes/${slug}`,
+      },
+    ],
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Recipe",
     name: recipe.title,
     description: recipe.description,
     image: recipe.image || undefined,
-    prepTime: `PT${recipe.prep_time}`,
-    cookTime: `PT${recipe.cook_time}`,
+    prepTime: toISO8601Duration(recipe.prep_time),
+    cookTime: toISO8601Duration(recipe.cook_time),
+    totalTime: totalISO8601Duration(recipe.prep_time, recipe.cook_time),
     recipeYield: String(recipe.servings),
     recipeCategory: recipe.category,
     author: { "@type": "Organization", name: "LowKeyCooking" },
+    ...(recipe.ingredients.length > 0 && {
+      recipeIngredient: recipe.ingredients,
+    }),
+    ...(recipe.instructions.length > 0 && {
+      recipeInstructions: recipe.instructions.map((step, i) => ({
+        "@type": "HowToStep",
+        name: `Step ${i + 1}`,
+        text: step,
+      })),
+    }),
     ...(recipe.nutrition && {
       nutrition: {
         "@type": "NutritionInformation",
@@ -273,6 +343,10 @@ export default async function RecipePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <div className="relative h-[480px] w-full overflow-hidden bg-cream-200 md:h-[580px]">
         <Image
@@ -289,7 +363,7 @@ export default async function RecipePage({
         <div className="absolute left-0 top-0 w-full px-6 pt-6">
           <div className="mx-auto max-w-3xl">
             <Link
-              href="/"
+              href="/recipes"
               className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/25"
             >
               <ChevronLeft className="size-4" />
@@ -384,7 +458,7 @@ export default async function RecipePage({
 
         <div className="print-hide mt-14 border-t border-cream-200 pt-10 dark:border-gray-700">
           <Link
-            href="/"
+            href="/recipes"
             className="inline-flex items-center gap-2 rounded-full border border-terra-200 px-5 py-2.5 text-sm font-semibold text-terra-700 transition-all hover:border-terra-300 hover:bg-terra-50 dark:border-terra-700 dark:text-terra-400 dark:hover:bg-terra-900/30"
           >
             <ChevronLeft className="size-4" />
