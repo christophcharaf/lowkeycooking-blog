@@ -168,9 +168,33 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   try {
     const recipe = await getRecipeBySlug(slug, locale);
+    const images = recipe.image
+      ? [{ url: recipe.image, width: 1200, height: 800, alt: recipe.title }]
+      : [];
     return {
       title: `${recipe.title} — LowKeyCooking`,
       description: recipe.description,
+      alternates: {
+        canonical: `/${locale}/recipes/${slug}`,
+        languages: {
+          en: `/en/recipes/${slug}`,
+          es: `/es/recipes/${slug}`,
+        },
+      },
+      openGraph: {
+        title: recipe.title,
+        description: recipe.description,
+        url: `/${locale}/recipes/${slug}`,
+        siteName: "LowKeyCooking",
+        type: "article",
+        images,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: recipe.title,
+        description: recipe.description,
+        images: recipe.image ? [recipe.image] : [],
+      },
     };
   } catch {
     return { title: "Recipe Not Found" };
@@ -194,6 +218,31 @@ export default async function RecipePage({
   const allRecipes = getAllRecipes(locale);
   const related = allRecipes.filter((r) => r.slug !== slug).slice(0, 3);
   const t = await getTranslations({ locale, namespace: "RecipePage" });
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    name: recipe.title,
+    description: recipe.description,
+    image: recipe.image || undefined,
+    prepTime: `PT${recipe.prep_time}`,
+    cookTime: `PT${recipe.cook_time}`,
+    recipeYield: String(recipe.servings),
+    recipeCategory: recipe.category,
+    author: { "@type": "Organization", name: "LowKeyCooking" },
+    ...(recipe.nutrition && {
+      nutrition: {
+        "@type": "NutritionInformation",
+        calories: `${recipe.nutrition.calories} calories`,
+        proteinContent: recipe.nutrition.protein,
+        carbohydrateContent: recipe.nutrition.carbs,
+        fatContent: recipe.nutrition.fat,
+        fiberContent: recipe.nutrition.fiber,
+        ...(recipe.nutrition.sugar && { sugarContent: recipe.nutrition.sugar }),
+        ...(recipe.nutrition.sodium && { sodiumContent: recipe.nutrition.sodium }),
+      },
+    }),
+  };
 
   const utensilLabels = {
     heading: t("kitchenTools"),
@@ -220,6 +269,10 @@ export default async function RecipePage({
 
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <div className="relative h-[480px] w-full overflow-hidden bg-cream-200 md:h-[580px]">
         <Image

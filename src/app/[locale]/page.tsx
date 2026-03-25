@@ -3,6 +3,38 @@ import RecipeCard from "@/components/RecipeCard";
 import { ArrowRight, Leaf } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+  return {
+    title: t("siteTitle"),
+    description: t("siteDescription"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { en: "/en", es: "/es" },
+    },
+    openGraph: {
+      title: t("siteTitle"),
+      description: t("siteDescription"),
+      url: `/${locale}`,
+      siteName: "LowKeyCooking",
+      type: "website",
+      images: [{ url: "/logo.png", width: 1200, height: 630, alt: "LowKeyCooking" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("siteTitle"),
+      description: t("siteDescription"),
+      images: ["/logo.png"],
+    },
+  };
+}
 
 export default async function HomePage({
   params,

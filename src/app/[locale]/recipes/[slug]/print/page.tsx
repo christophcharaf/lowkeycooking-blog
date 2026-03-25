@@ -17,9 +17,15 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   try {
     const recipe = await getRecipeBySlug(slug, locale);
-    return { title: `Print: ${recipe.title} — LowKeyCooking` };
+    return {
+      title: `Print: ${recipe.title} — LowKeyCooking`,
+      robots: { index: false, follow: false },
+    };
   } catch {
-    return { title: "Print Recipe" };
+    return {
+      title: "Print Recipe",
+      robots: { index: false, follow: false },
+    };
   }
 }
 

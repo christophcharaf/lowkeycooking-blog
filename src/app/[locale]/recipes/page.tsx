@@ -12,6 +12,24 @@ export async function generateMetadata({
   return {
     title: t("recipesTitle"),
     description: t("recipesDescription"),
+    alternates: {
+      canonical: `/${locale}/recipes`,
+      languages: { en: "/en/recipes", es: "/es/recipes" },
+    },
+    openGraph: {
+      title: t("recipesTitle"),
+      description: t("recipesDescription"),
+      url: `/${locale}/recipes`,
+      siteName: "LowKeyCooking",
+      type: "website",
+      images: [{ url: "/logo.png", width: 1200, height: 630, alt: "LowKeyCooking" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("recipesTitle"),
+      description: t("recipesDescription"),
+      images: ["/logo.png"],
+    },
   };
 }
 
