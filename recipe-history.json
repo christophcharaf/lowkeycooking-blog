@@ -98,6 +98,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-01-01"
+    },
+    {
+      "slug": "sheet-pan-lemon-herb-salmon-with-asparagus",
+      "name": "Sheet Pan Lemon Herb Salmon with Asparagus",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "dinner",
+      "protein": "salmon",
+      "published_at": "2026-04-02"
     }
   ]
 }

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lemon Herb Salmon with Asparagus
 description: A vibrant, flavorful, and easy weeknight dinner that cooks all on one pan.
 image: https://images.unsplash.com/photo-1526471160464-18556e5e7d5f?w=1200&q=80
