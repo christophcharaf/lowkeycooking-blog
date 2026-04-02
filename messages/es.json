@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "siteTitle": "LowKeyCooking — Recetas Deliciosas para Todos",
-    "siteDescription": "Descubre recetas artesanales de todo el mundo. Ingredientes simples, sabores increíbles.",
-    "recipesTitle": "Todas las Recetas — LowKeyCooking",
-    "recipesDescription": "Explora y busca todas nuestras recetas caseras."
+    "siteTitle": "Recetas Fáciles para Cocineros en Casa",
+    "siteDescription": "Recetas caseras fáciles para cocineros de todos los niveles. Ingredientes simples, pasos claros y platos que siempre salen bien.",
+    "recipesTitle": "Todas las Recetas",
+    "recipesDescription": "Explora todas nuestras recetas caseras — desde cenas rápidas entre semana hasta postres de fin de semana. Filtra por categoría y encuentra tu próxima receta favorita."
   },
   "Layout": {
     "footerTagline": "Recetas caseras para cada ocasión.",
-    "footerCopyright": "© {year} RecipeBlog. Hecho con amor y buena comida."
+    "footerCopyright": "© {year} LowKeyCooking. Hecho con amor y buena comida."
   },
   "Navbar": {
     "tagline": "Hecho con amor",
@@ -21,7 +21,7 @@
     "badge": "Fresco y Casero",
     "heroLine1": "Recetas que unen",
     "heroLine2": "a las personas",
-    "heroSubtitle": "Desde cenas rápidas entre semana hasta deliciosas preparaciones de fin de semana — descubre recetas artesanales hechas con ingredientes simples y mucho amor.",
+    "heroSubtitle": "La buena comida es un derecho de todo cocinero en casa. Descubre cómo ingredientes sencillos y métodos simples crean platos impresionantes que cuidan tu bolsillo y satisfacen tu paladar en cada bocado.",
     "browseRecipes": "Ver Recetas",
     "whatsCoking": "¿Qué estamos cocinando?",
     "statRecipes": "Recetas",
@@ -47,7 +47,15 @@
     "resultsFound": "{count} {count, plural, =1 {receta} other {recetas}} encontrada{count, plural, =1 {} other {s}} para",
     "noResults": "No se encontraron recetas",
     "tryDifferent": "Intenta con otro término de búsqueda",
-    "clearSearch": "Limpiar búsqueda"
+    "clearSearch": "Limpiar búsqueda",
+    "filterAll": "Todos",
+    "filterBreakfast": "Desayuno",
+    "filterLunch": "Almuerzo",
+    "filterDinner": "Cena",
+    "filterDessert": "Postre",
+    "page": "Página {current} de {total}",
+    "prev": "Anterior",
+    "next": "Siguiente"
   },
   "RecipePage": {
     "backToAll": "Todas las Recetas",
@@ -88,6 +96,12 @@
     "copyLinkAriaLabel": "Copiar enlace al portapapeles",
     "saveToNotesAriaLabel": "Guardar receta en la app de Notas",
     "printAriaLabel": "Versión imprimible de esta receta"
+  },
+  "NotFound": {
+    "heading": "Página No Encontrada",
+    "description": "Parece que esta página tomó un camino equivocado en la cocina. Volvamos a algo delicioso.",
+    "goHome": "Ir al Inicio",
+    "browseRecipes": "Ver Recetas"
   },
   "PrintPreview": {
     "goBack": "Volver",

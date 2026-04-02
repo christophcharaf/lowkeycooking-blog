@@ -2,20 +2,21 @@
 title: Classic Chocolate Chip Cookies
 description: Perfectly chewy in the center and crispy at the edges — the ultimate homemade chocolate chip cookie recipe.
 image: https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1200&q=80
+category: dessert
 prep_time: 15 mins
 cook_time: 12 mins
 servings: 24 cookies
 utensils:
   - name: Stand Mixer
-    url: https://www.amazon.com/s?k=stand+mixer+baking
+    url: https://www.amazon.com/s?k=stand+mixer+baking&tag=lowkeycooking-20
   - name: Baking Sheets (Set of 2)
-    url: https://www.amazon.com/s?k=half+sheet+baking+pan
+    url: https://www.amazon.com/s?k=half+sheet+baking+pan&tag=lowkeycooking-20
   - name: Parchment Paper
-    url: https://www.amazon.com/s?k=parchment+paper+baking
+    url: https://www.amazon.com/s?k=parchment+paper+baking&tag=lowkeycooking-20
   - name: Cookie Scoop
-    url: https://www.amazon.com/s?k=cookie+scoop+tablespoon
+    url: https://www.amazon.com/s?k=cookie+scoop+tablespoon&tag=lowkeycooking-20
   - name: Wire Cooling Rack
-    url: https://www.amazon.com/s?k=wire+cooling+rack+baking
+    url: https://www.amazon.com/s?k=wire+cooling+rack+baking&tag=lowkeycooking-20
 nutrition:
   calories: 180
   protein: 2g
@@ -25,6 +26,8 @@ nutrition:
   sugar: 15g
   sodium: 120mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

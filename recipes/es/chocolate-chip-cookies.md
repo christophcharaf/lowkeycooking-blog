@@ -2,16 +2,17 @@
 title: Galletas con Chispas de Chocolate
 description: Galletas crujientes por fuera, masticables por dentro, llenas de chispas de chocolate. La receta perfecta de toda la vida.
 image: https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1200&q=80
+category: dessert
 prep_time: 15 min
 cook_time: 12 min
 servings: 24 galletas
 utensils:
   - name: Bandeja para hornear
-    url: https://www.amazon.com/s?k=baking+sheet
+    url: https://www.amazon.com/s?k=baking+sheet&tag=lowkeycooking-20
   - name: Batidora de mano
-    url: https://www.amazon.com/s?k=hand+mixer
+    url: https://www.amazon.com/s?k=hand+mixer&tag=lowkeycooking-20
   - name: Tazones para mezclar
-    url: https://www.amazon.com/s?k=mixing+bowls
+    url: https://www.amazon.com/s?k=mixing+bowls&tag=lowkeycooking-20
 nutrition:
   calories: 180
   protein: 2g
@@ -21,6 +22,8 @@ nutrition:
   sugar: 14g
   sodium: 95mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

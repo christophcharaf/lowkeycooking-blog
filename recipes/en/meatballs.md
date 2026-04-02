@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Classic Homemade Meatballs
 description: Juicy, flavorful homemade meatballs simmered in a rich tomato sauce, perfect for a comforting family meal.
 image: https://images.unsplash.com/photo-1515516969-d4008cc6241a?w=1200&q=80

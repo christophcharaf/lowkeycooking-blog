@@ -2,16 +2,17 @@
 title: Spaghetti Carbonara Clásico
 description: La auténtica carbonara romana con guanciale crujiente, yemas de huevo sedosas y abundante Pecorino Romano. Sin nata, sin atajos.
 image: https://images.unsplash.com/photo-1612874742237-6526221588e3?w=1200&q=80
+category: dinner
 prep_time: 10 min
 cook_time: 20 min
 servings: 4
 utensils:
   - name: Olla grande para pasta
-    url: https://www.amazon.com/s?k=large+pasta+pot
+    url: https://www.amazon.com/s?k=large+pasta+pot&tag=lowkeycooking-20
   - name: Sartén grande
-    url: https://www.amazon.com/s?k=large+skillet
+    url: https://www.amazon.com/s?k=large+skillet&tag=lowkeycooking-20
   - name: Rallador de queso
-    url: https://www.amazon.com/s?k=cheese+grater
+    url: https://www.amazon.com/s?k=cheese+grater&tag=lowkeycooking-20
 nutrition:
   calories: 580
   protein: 28g
@@ -20,6 +21,8 @@ nutrition:
   fiber: 3g
   sodium: 720mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

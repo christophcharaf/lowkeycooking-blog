@@ -1,5 +1,4 @@
 ---
-draft: true
 title: French Onion Soup
 description: A rich, savory French onion soup with caramelized onions, beef broth, and a cheesy crouton topping.
 image: https://images.unsplash.com/photo-1549203438-a7696aed4dac?w=1200&q=80

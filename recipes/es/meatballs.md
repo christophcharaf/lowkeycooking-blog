@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Albóndigas Clásicas Caseras con Salsa de Tomate
 description: Prepara unas albóndigas jugosas y sabrosas, bañadas en una rica salsa de tomate, perfectas para cualquier comida familiar.
 image: https://images.unsplash.com/photo-1515516969-d4008cc6241a?w=1200&q=80

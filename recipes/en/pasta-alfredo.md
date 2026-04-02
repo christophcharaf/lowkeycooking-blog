@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Classic Pasta Alfredo
 description: Indulge in a rich, creamy, and utterly satisfying classic pasta Alfredo that's deceptively easy to master.
 image: https://images.unsplash.com/photo-1662197480393-2a82030b7b83?w=1200&q=80

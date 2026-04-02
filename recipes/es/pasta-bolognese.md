@@ -3,22 +3,23 @@ draft: true
 title: Pasta Boloñesa Clásica
 description: Disfruta de una auténtica y reconfortante salsa boloñesa casera, cocinada a fuego lento hasta la perfección.
 image: https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=1200&q=80
+category: dinner
 prep_time: 25 min
 cook_time: 120 min
 servings: 6
 utensils:
   - name: Olla grande
-    url: https://www.amazon.com/s?k=large+pot
+    url: https://www.amazon.com/s?k=large+pot&tag=lowkeycooking-20
   - name: Sartén profunda
-    url: https://www.amazon.com/s?k=deep+skillet
+    url: https://www.amazon.com/s?k=deep+skillet&tag=lowkeycooking-20
   - name: Cuchara de madera
-    url: https://www.amazon.com/s?k=wooden+spoon
+    url: https://www.amazon.com/s?k=wooden+spoon&tag=lowkeycooking-20
   - name: Tabla de cortar
-    url: https://www.amazon.com/s?k=cutting+board
+    url: https://www.amazon.com/s?k=cutting+board&tag=lowkeycooking-20
   - name: Cuchillo de chef
-    url: https://www.amazon.com/s?k=chef+knife
+    url: https://www.amazon.com/s?k=chef+knife&tag=lowkeycooking-20
   - name: Rallador
-    url: https://www.amazon.com/s?k=grater
+    url: https://www.amazon.com/s?k=grater&tag=lowkeycooking-20
 nutrition:
   calories: 550
   protein: 35g
@@ -28,6 +29,8 @@ nutrition:
   sugar: 8g
   sodium: 700mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

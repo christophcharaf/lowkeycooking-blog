@@ -2,20 +2,21 @@
 title: Avocado Toast with Poached Egg
 description: Creamy smashed avocado on crusty sourdough, topped with a perfectly poached egg, chili flakes, and lemon zest.
 image: https://images.unsplash.com/photo-1687276287139-88f7333c8ca4?w=1200&q=80
+category: breakfast
 prep_time: 10 mins
 cook_time: 5 mins
 servings: 2
 utensils:
   - name: Toaster or Grill Pan
-    url: https://www.amazon.com/s?k=cast+iron+grill+pan
+    url: https://www.amazon.com/s?k=cast+iron+grill+pan&tag=lowkeycooking-20
   - name: Small Saucepan
-    url: https://www.amazon.com/s?k=small+saucepan
+    url: https://www.amazon.com/s?k=small+saucepan&tag=lowkeycooking-20
   - name: Slotted Spoon
-    url: https://www.amazon.com/s?k=slotted+spoon+kitchen
+    url: https://www.amazon.com/s?k=slotted+spoon+kitchen&tag=lowkeycooking-20
   - name: Avocado Slicer
-    url: https://www.amazon.com/s?k=avocado+slicer+tool
+    url: https://www.amazon.com/s?k=avocado+slicer+tool&tag=lowkeycooking-20
   - name: Microplane Zester
-    url: https://www.amazon.com/s?k=microplane+zester+grater
+    url: https://www.amazon.com/s?k=microplane+zester+grater&tag=lowkeycooking-20
 nutrition:
   calories: 380
   protein: 14g
@@ -25,6 +26,8 @@ nutrition:
   sugar: 3g
   sodium: 420mg
 ---
+
+I love making this recipe when I want something comforting without overcomplicating dinner. It is one of those reliable favorites I come back to because the flavors always deliver. If you cook along with me, you will have a delicious result with simple, practical steps.
 
 ## Ingredients
 

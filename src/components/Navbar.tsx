@@ -16,29 +16,21 @@ export default function Navbar() {
 
   useEffect(() => setMounted(true), []);
 
+  // Default to light logo until mounted to avoid empty src on SSR
+  const logoSrc = mounted && resolvedTheme === "dark" ? "/logo.png" : "/logo-dark.png";
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-cream-200 bg-white/95 backdrop-blur-md dark:border-gray-700 dark:bg-gray-900/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="group">
-          {mounted && resolvedTheme === "dark" ? (
-            <Image
-              src="/logo.png"
-              alt="LowKeyCooking"
-              width={240}
-              height={72}
-              className="h-[4.5rem] w-60 object-contain"
-              priority
-            />
-          ) : (
-            <Image
-              src="/logo-dark.png"
-              alt="LowKeyCooking"
-              width={240}
-              height={72}
-              className="h-[4.5rem] w-60 object-contain"
-              priority
-            />
-          )}
+          <Image
+            src={logoSrc}
+            alt="LowKeyCooking"
+            width={240}
+            height={72}
+            className="h-[4.5rem] w-60 object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

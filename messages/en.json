@@ -1,13 +1,13 @@
 {
   "Metadata": {
-    "siteTitle": "LowKeyCooking — Delicious Recipes for Everyone",
-    "siteDescription": "Discover hand-crafted recipes from around the world. Simple ingredients, incredible flavors.",
-    "recipesTitle": "All Recipes — LowKeyCooking",
-    "recipesDescription": "Browse and search all our homemade recipes."
+    "siteTitle": "Easy Recipes for Home Cooks",
+    "siteDescription": "Easy homemade recipes for home cooks of every skill level. Simple ingredients, clear steps, and dishes that always deliver.",
+    "recipesTitle": "All Recipes",
+    "recipesDescription": "Browse all our homemade recipes — from quick weeknight dinners to weekend desserts. Filter by category and find your next favorite dish."
   },
   "Layout": {
     "footerTagline": "Homemade recipes for every occasion.",
-    "footerCopyright": "© {year} RecipeBlog. Made with love and good food."
+    "footerCopyright": "© {year} LowKeyCooking. Made with love and good food."
   },
   "Navbar": {
     "tagline": "Homemade with love",
@@ -21,7 +21,7 @@
     "badge": "Fresh & Homemade",
     "heroLine1": "Recipes that bring",
     "heroLine2": "people together",
-    "heroSubtitle": "From quick weeknight dinners to indulgent weekend bakes — discover hand-crafted recipes made with simple ingredients and a lot of love.",
+    "heroSubtitle": "Great food is a right for every home cook. Discover how simple ingredients and straightforward methods create impressive dishes that respect your wallet and satisfy your cravings through every single bite.",
     "browseRecipes": "Browse Recipes",
     "whatsCoking": "What's Cooking?",
     "statRecipes": "Recipes",
@@ -47,7 +47,15 @@
     "resultsFound": "{count} {count, plural, =1 {recipe} other {recipes}} found for",
     "noResults": "No recipes found",
     "tryDifferent": "Try a different search term",
-    "clearSearch": "Clear search"
+    "clearSearch": "Clear search",
+    "filterAll": "All",
+    "filterBreakfast": "Breakfast",
+    "filterLunch": "Lunch",
+    "filterDinner": "Dinner",
+    "filterDessert": "Dessert",
+    "page": "Page {current} of {total}",
+    "prev": "Previous",
+    "next": "Next"
   },
   "RecipePage": {
     "backToAll": "All Recipes",
@@ -88,6 +96,12 @@
     "copyLinkAriaLabel": "Copy link to clipboard",
     "saveToNotesAriaLabel": "Save recipe to Notes app",
     "printAriaLabel": "Print-friendly version of this recipe"
+  },
+  "NotFound": {
+    "heading": "Page Not Found",
+    "description": "Looks like this page took a wrong turn in the kitchen. Let's get you back to something delicious.",
+    "goHome": "Go Home",
+    "browseRecipes": "Browse Recipes"
   },
   "PrintPreview": {
     "goBack": "Go Back",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
@@ -8,6 +9,10 @@ import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
+
+const GA_ID = "G-KHHC5R4WBJ";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://lowkeycooking.com";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,8 +27,15 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
   return {
-    title: t("siteTitle"),
+    title: {
+      template: `%s — LowKeyCooking`,
+      default: t("siteTitle"),
+    },
     description: t("siteDescription"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: { en: "/en", es: "/es", "x-default": "/en" },
+    },
   };
 }
 
@@ -46,9 +58,28 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "LowKeyCooking",
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/${locale}/recipes?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -62,6 +93,19 @@ export default async function LocaleLayout({
           </ThemeProvider>
         </NextIntlClientProvider>
         <Analytics />
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );

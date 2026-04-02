@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sopa de Cebolla Francesa
 description: Un clásico reconfortante de cebollas caramelizadas lentamente en un caldo rico, gratinado con pan tostado y queso derretido.
 image: https://images.unsplash.com/photo-1549203438-a7696aed4dac?w=1200&q=80

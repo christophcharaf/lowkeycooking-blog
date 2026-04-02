@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pasta Alfredo Clásica
 description: Disfruta de la cremosidad y el sabor inigualable de esta clásica pasta Alfredo, perfecta para una cena rápida y reconfortante.
 image: https://images.unsplash.com/photo-1662197480393-2a82030b7b83?w=1200&q=80

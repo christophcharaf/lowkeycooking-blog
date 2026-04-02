@@ -2,14 +2,15 @@
 title: Tostada de Aguacate Perfecta
 description: Tostada crujiente con aguacate cremoso, huevo pochado y un toque de chile y limón. El desayuno definitivo.
 image: https://images.unsplash.com/photo-1687276287139-88f7333c8ca4?w=1200&q=80
+category: breakfast
 prep_time: 10 min
 cook_time: 5 min
 servings: 2
 utensils:
   - name: Tostadora
-    url: https://www.amazon.com/s?k=toaster
+    url: https://www.amazon.com/s?k=toaster&tag=lowkeycooking-20
   - name: Sartén pequeña
-    url: https://www.amazon.com/s?k=small+saucepan
+    url: https://www.amazon.com/s?k=small+saucepan&tag=lowkeycooking-20
 nutrition:
   calories: 320
   protein: 10g
@@ -18,6 +19,8 @@ nutrition:
   fiber: 8g
   sodium: 310mg
 ---
+
+Me encanta preparar esta receta cuando quiero algo rico y reconfortante sin complicarme en la cocina. Es de esas favoritas a las que siempre vuelvo porque sale bien y tiene muchísimo sabor. Si la haces conmigo, vas a conseguir un resultado delicioso con pasos simples y prácticos.
 
 ## Ingredientes
 

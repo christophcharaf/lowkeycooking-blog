@@ -53,13 +53,6 @@ function RedditIcon() {
   );
 }
 
-function TikTokIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-5 fill-current" aria-hidden="true">
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z" />
-    </svg>
-  );
-}
 
 const shareButtonBase =
   "flex items-center gap-2 rounded-full border border-cream-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-150 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200";
@@ -115,12 +108,6 @@ export default function ShareButtons({
       href: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
       icon: <RedditIcon />,
       hoverClass: "hover:bg-[#FF4500] hover:text-white hover:border-[#FF4500]",
-    },
-    {
-      name: "TikTok",
-      href: `https://www.tiktok.com/`,
-      icon: <TikTokIcon />,
-      hoverClass: "hover:bg-black hover:text-white hover:border-black",
     },
     {
       name: "Email",
