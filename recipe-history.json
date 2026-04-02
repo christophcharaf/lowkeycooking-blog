@@ -1,0 +1,103 @@
+{
+  "recipes": [
+    {
+      "slug": "homemade-arepas",
+      "name": "Homemade Arepas",
+      "status": "published",
+      "cuisine": "Latin American",
+      "meal_type": "breakfast",
+      "protein": "no specific protein — vegetable-forward",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "avocado-toast-with-poached-egg",
+      "name": "Avocado Toast with Poached Egg",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "breakfast",
+      "protein": "eggs",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "classic-chocolate-chip-cookies",
+      "name": "Classic Chocolate Chip Cookies",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "dessert",
+      "protein": "no specific protein — vegetable-forward",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "french-onion-soup",
+      "name": "French Onion Soup",
+      "status": "published",
+      "cuisine": "French",
+      "meal_type": "dinner",
+      "protein": "no specific protein — vegetable-forward",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "gyro",
+      "name": "Gyro",
+      "status": "published",
+      "cuisine": "Greek",
+      "meal_type": "lunch",
+      "protein": "lamb",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "classic-homemade-meatballs",
+      "name": "Classic Homemade Meatballs",
+      "status": "published",
+      "cuisine": "Italian",
+      "meal_type": "dinner",
+      "protein": "ground beef",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "classic-pasta-alfredo",
+      "name": "Classic Pasta Alfredo",
+      "status": "published",
+      "cuisine": "Italian",
+      "meal_type": "dinner",
+      "protein": "no specific protein — vegetable-forward",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "pasta-bolognese",
+      "name": "Pasta Bolognese",
+      "status": "published",
+      "cuisine": "Italian",
+      "meal_type": "dinner",
+      "protein": "ground beef",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "pulled-pork-tacos",
+      "name": "Pulled Pork Tacos",
+      "status": "published",
+      "cuisine": "Mexican",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "spaghetti-carbonara",
+      "name": "Spaghetti Carbonara",
+      "status": "published",
+      "cuisine": "Italian",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-01-01"
+    },
+    {
+      "slug": "thai-green-curry",
+      "name": "Thai Green Curry",
+      "status": "published",
+      "cuisine": "Thai",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-01-01"
+    }
+  ]
+}
