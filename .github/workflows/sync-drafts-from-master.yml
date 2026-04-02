@@ -1,8 +1,8 @@
 # After every push to `master`, merge those commits into `drafts` and push.
 # Keeps `drafts` up to date with frontend/tooling changes on `master` without manual merges.
 #
-# If the merge conflicts, this workflow fails — resolve locally:
-#   git checkout drafts && git pull && git merge master && fix conflicts && git push
+# Conflicts are auto-resolved in master's favour (-X theirs), since this sync's
+# sole purpose is to bring master's changes into drafts.
 
 name: Sync drafts from master
 
@@ -28,5 +28,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin master drafts
           git checkout drafts
-          git merge origin/master --no-edit -m "Merge branch 'master' into drafts [sync]"
+          git merge origin/master --no-edit -X theirs -m "Merge branch 'master' into drafts [sync]"
           git push origin drafts
