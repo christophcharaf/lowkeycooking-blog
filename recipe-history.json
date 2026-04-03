@@ -107,6 +107,15 @@
       "meal_type": "dinner",
       "protein": "salmon",
       "published_at": "2026-04-02"
+    },
+    {
+      "slug": "spicy-peanut-noodles-with-edamame",
+      "name": "Spicy Peanut Noodles with Edamame",
+      "status": "published",
+      "cuisine": "Asian-inspired",
+      "meal_type": "lunch",
+      "protein": "vegetarian",
+      "published_at": "2026-04-03"
     }
   ]
 }
