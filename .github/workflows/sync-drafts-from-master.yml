@@ -11,6 +11,10 @@ on:
     branches: [master]
   workflow_dispatch: {}
 
+concurrency:
+  group: sync-drafts
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
