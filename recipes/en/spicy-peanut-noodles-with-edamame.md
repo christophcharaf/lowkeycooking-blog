@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spicy Peanut Noodles with Edamame
 description: Quick and flavorful peanut noodles with edamame, perfect for a weeknight meal.
 image: https://images.unsplash.com/photo-1624034767209-4afc3dc076b4?w=1200&q=80
