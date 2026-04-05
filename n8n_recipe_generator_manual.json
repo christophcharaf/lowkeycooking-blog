@@ -2,59 +2,6 @@
   "nodes": [
     {
       "parameters": {
-        "content": "## Manual workflow \n",
-        "height": 80,
-        "width": 278
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -6400,
-        320
-      ],
-      "typeVersion": 1,
-      "id": "3208392f-3197-4239-bef4-8e499d4776b9",
-      "name": "Sticky Note"
-    },
-    {
-      "parameters": {
-        "updates": [
-          "message"
-        ],
-        "additionalFields": {
-          "chatIds": "8698740078,306989280,-5249412419"
-        }
-      },
-      "id": "1bf5d67d-67e8-4579-83de-602cead29c65",
-      "name": "Telegram Trigger",
-      "type": "n8n-nodes-base.telegramTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        -6048,
-        304
-      ],
-      "webhookId": "manual-recipe-trigger",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const msg = $json.message;\nconst text = (msg && msg.text || '').trim();\nconst chatId = msg && msg.chat && msg.chat.id;\n\nif (!text || text.length === 0) {\n  return [{ json: { valid: false, recipe_name: '', chat_id: chatId } }];\n}\n\n// Strip any leading slash commands e.g. /generate Lobster Bisque -> Lobster Bisque\nconst recipeName = text.startsWith('/') ? text.split(' ').slice(1).join(' ').trim() : text;\n\nif (!recipeName) {\n  return [{ json: { valid: false, recipe_name: '', chat_id: chatId } }];\n}\n\nreturn [{ json: { valid: true, recipe_name: recipeName, chat_id: chatId } }];"
-      },
-      "id": "ccc6ea26-31da-45d5-b66d-893f1df992be",
-      "name": "Validate Recipe Name",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -5824,
-        304
-      ]
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -63,159 +10,9 @@
           },
           "conditions": [
             {
-              "id": "cond-valid",
-              "leftValue": "={{ $json.valid }}",
-              "rightValue": true,
-              "operator": {
-                "type": "boolean",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "7fb941a7-8dbd-4e01-b3bc-77373d34ddd1",
-      "name": "Route Validation",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        -5600,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "={{ '⚠️ Please send me a recipe name.\\n\\nExample: <b>Lobster Bisque</b>\\n\\nJust type the name and send it.' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "4221d950-18aa-4f49-8656-3489b94da05e",
-      "name": "Send Error Empty Name",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -5376,
-        608
-      ],
-      "webhookId": "937d3d8b-a454-40ff-97d2-ba28cd82224b",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const results = $input.first().json.results || [];\nconst recipeName = $('Validate Recipe Name').first().json.recipe_name;\n\nlet imageUrl;\nif (results.length > 0) {\n  imageUrl = results[0].urls.regular.split('?')[0] + '?w=1200&q=80';\n} else {\n  // Fall back to AI-generated image if Unsplash returns nothing\n  const prompt = encodeURIComponent('professional food photography ' + recipeName + ' delicious appetizing styled dish overhead shot');\n  imageUrl = 'https://image.pollinations.ai/prompt/' + prompt + '?width=1200&height=800&nologo=true&model=flux';\n}\n\nreturn [{ json: { recipe_name: recipeName, image_url: imageUrl } }];"
-      },
-      "id": "350135f1-c9d9-48d8-91b0-2b3bbb1785a4",
-      "name": "Resolve Image",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -5152,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const data = $('Resolve Image').first().json;\nconst chatId = $('Validate Recipe Name').first().json.chat_id;\nconst resumeUrl = $execution.resumeUrl;\nreturn [{\n  json: {\n    recipe_name: data.recipe_name,\n    image_url: data.image_url,\n    chat_id: chatId,\n    approve_url: resumeUrl + '?action=approve',\n    cancel_url: resumeUrl + '?action=cancel'\n  }\n}];"
-      },
-      "id": "e8cffc23-d6e7-46dd-92e0-04838397a146",
-      "name": "Build Image Buttons",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -4928,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $json.chat_id }}",
-        "text": "=Use this Image?\n{{ $json.image_url }}",
-        "replyMarkup": "inlineKeyboard",
-        "inlineKeyboard": {
-          "rows": [
-            {
-              "row": {
-                "buttons": [
-                  {
-                    "text": "✅ Use this image",
-                    "additionalFields": {
-                      "url": "={{ $json.approve_url }}"
-                    }
-                  }
-                ]
-              }
-            },
-            {
-              "row": {
-                "buttons": [
-                  {
-                    "text": "❌ Cancel",
-                    "additionalFields": {
-                      "url": "={{ $json.cancel_url }}"
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "58d0cc2d-a844-448b-8483-15dc82db4de0",
-      "name": "Send Image Preview",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -4704,
-        304
-      ],
-      "webhookId": "60abdc96-1ee1-4b6c-9688-31607dafbf9d",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resume": "webhook",
-        "options": {}
-      },
-      "id": "39d63aac-c3ff-40fa-ae06-7cf4a4a956d6",
-      "name": "Wait for Image Decision",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        -4480,
-        304
-      ],
-      "webhookId": "manual-image-decision"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "cond-image-approve",
-              "leftValue": "={{ $json.query.action }}",
-              "rightValue": "approve",
+              "id": "cond-callback-publish",
+              "leftValue": "={{ $json.callback_type }}",
+              "rightValue": "publish",
               "operator": {
                 "type": "string",
                 "operation": "equals"
@@ -226,120 +23,80 @@
         },
         "options": {}
       },
-      "id": "fd31e29d-2902-4df8-ad8d-2f81e4dd1c72",
-      "name": "Check Image Decision",
+      "id": "487f64ec-2f47-4389-a154-f5679e95eaa5",
+      "name": "Is Publish Callback",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -4256,
-        304
+        -4960,
+        2952
       ]
     },
     {
       "parameters": {
-        "chatId": "={{ $('Validate Recipe Name').first().json.chat_id }}",
-        "text": "❌ Flow cancelled. Send me a recipe name whenever you want to try again.",
-        "additionalFields": {}
-      },
-      "id": "32f841ad-141c-4cda-b83a-acf1cb625a62",
-      "name": "Send Cancelled",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -4032,
-        608
-      ],
-      "webhookId": "550b811f-2f40-49e5-9cbf-ea9f83ed16fe",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "return [{\n  json: {\n    recipe_name: $('Resolve Image').first().json.recipe_name,\n    image_url: $('Resolve Image').first().json.image_url\n  }\n}];"
-      },
-      "id": "75121668-d7fe-4314-9f64-3b8c7045ca63",
-      "name": "Get Recipe Data",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -4032,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $('Validate Recipe Name').first().json.chat_id }}",
-        "text": "={{ '⚙️ Generating <b>' + $('Validate Recipe Name').first().json.recipe_name + '</b> in EN and ES... This will take a moment.' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "fb6731e7-8397-4ddd-9994-c9b772b175e8",
-      "name": "Send Generating Message",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -4032,
-        112
-      ],
-      "webhookId": "f31e9342-e374-43fd-903f-dec5b270efb8",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "https://api.unsplash.com/search/photos",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
+        "promptType": "define",
+        "text": "=Generate a complete recipe markdown file for: {{ $json.recipe_name }}\nimage: {{ $json.image_url }}",
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
             {
-              "name": "query",
-              "value": "={{ $json.recipe_name }}"
-            },
-            {
-              "name": "per_page",
-              "value": "30"
-            },
-            {
-              "name": "client_id",
-              "value": "AGT99jkn31AmL38BS4QE8PqKt9RRge2zGEohexDpans"
+              "message": "=You are a recipe content generator for a food blog called LowKeyCooking. Your job is to output a single, complete recipe in markdown format — nothing else. Do not include any explanation, intro text, or commentary outside the markdown content. Output only the raw markdown file content, starting with ---.\n\n\nThe output must follow this exact structure:\n\n<!-- filename: [recipe-name-lowercase-hyphens.md] -->\n---\ntitle: [Full recipe name]\ndescription: [One sentence — appetizing, specific, max 20 words]\nimage: [use the image URL from the user message, exactly as provided — do not modify it]\ncategory: [choose exactly one of: breakfast, lunch, dinner, dessert]\nprep_time: [e.g. 15 mins]\ncook_time: [e.g. 30 mins]\nservings: [e.g. 4]\nutensils:\n  - name: [Utensil 1]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\n  - name: [Utensil 2]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\n  - name: [Utensil 3]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\n  - name: [Utensil 4]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\nnutrition:\n  calories: [number only, no units]\n  protein: [e.g. 12g]\n  carbs: [e.g. 34g]\n  fat: [e.g. 14g]\n  fiber: [e.g. 3g]\n  sugar: [e.g. 5g]\n  sodium: [e.g. 480mg]\n---\n\n[Single blog-style introduction paragraph, 2-4 sentences. Use a warm, personal tone in first-person singular (I/me/my). Briefly explain why this recipe is great, flavorful, practical, or comforting, and you may include a short relatable personal anecdote. Also mention why it is easy to cook, and that home cooks and starter cooks should nto be intimidated by it.]\n\n## Ingredients\n\n- [Quantity + ingredient]\n- [Quantity + ingredient]\n[list all ingredients, one per line]\n\n## Instructions\n\n1. [Clear, specific step]\n2. [Clear, specific step]\n[number all steps, one action per step]\n\nRules:\n- Filename must be the recipe name in lowercase with spaces replaced by hyphens (e.g. pulled-pork-tacos.md)\n- The image URL is in the user message — place it in the frontmatter as the image field, exactly as provided, do not modify it\n- The category field must be exactly one of: breakfast, lunch, dinner, dessert — pick the most fitting for the recipe\n- Utensil URLs must use Amazon search format and ALWAYS include your affiliate tag: https://www.amazon.com/s?k=search+terms&tag=lowkeycooking-20\n- Include 4–6 utensils actually used in the recipe\n- Nutrition values should be realistic estimates per serving\n- Ingredients must include quantities and units\n- Instructions must be numbered, clear, and written in second person (\"Add the flour...\", not \"You should add...\")\n- Include exactly one intro paragraph before \"## Ingredients\" (no extra heading)\n- The intro paragraph must clearly use first-person singular with a warm tone\n- Do not include any text outside the markdown content\n- The file must have valid YAML frontmatter — use exact 2-space indentation for list items"
             }
           ]
-        },
-        "options": {}
+        }
       },
-      "id": "0b774342-a22d-468e-b729-20555e52c7ac",
-      "name": "Fetch Unsplash Photos2",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "id": "6ca4aa47-177b-4504-b960-c4f158274165",
+      "name": "Generate Recipe EN2",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
       "position": [
-        -5376,
-        304
-      ]
+        -4288,
+        3312
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
     },
     {
       "parameters": {
-        "options": {
-          "maxOutputTokens": 4000,
-          "temperature": 0.7
+        "promptType": "define",
+        "text": "=Genera un archivo markdown completo para la siguiente receta: {{ $json.recipe_name }}\nimage: {{ $json.image_url }}",
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Eres un generador de contenido de recetas para un blog de cocina llamado LowKeyCooking. Tu tarea es generar un único archivo de receta completo en formato markdown — nada más. No incluyas ninguna explicación, introducción ni comentario fuera del contenido markdown. Genera únicamente el contenido del archivo markdown, comenzando con ---.\n\n\nEl resultado debe seguir exactamente esta estructura:\n\n<!-- filename: [nombre-receta-en-minusculas-con-guiones.md] -->\n---\ntitle: [Nombre completo de la receta en español]\ndescription: [Una sola frase — apetitosa y específica, máximo 20 palabras, en español]\nimage: [usa la URL de imagen del mensaje del usuario, exactamente como se proporcionó — no la modifiques]\ncategory: [elige exactamente una de: breakfast, lunch, dinner, dessert]\nprep_time: [ej. 15 min]\ncook_time: [ej. 30 min]\nservings: [ej. 4]\nutensils:\n  - name: [Utensilio 1 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\n  - name: [Utensilio 2 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\n  - name: [Utensilio 3 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\n  - name: [Utensilio 4 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\nnutrition:\n  calories: [solo número, sin unidades]\n  protein: [ej. 12g]\n  carbs: [ej. 34g]\n  fat: [ej. 14g]\n  fiber: [ej. 3g]\n  sugar: [ej. 5g]\n  sodium: [ej. 480mg]\n---\n\n[Párrafo de introducción estilo blog, 2-4 frases, en español. Debe tener un tono cálido y cercano, escrito en primera persona del singular (yo/me/mi). Debe explicar por qué esta receta es buena, apetecible o práctica, y puede incluir una anécdota breve o un detalle personal creíble.]\n\n## Ingredientes\n\n- [Cantidad + ingrediente]\n- [Cantidad + ingrediente]\n[lista todos los ingredientes, uno por línea]\n\n## Instrucciones\n\n1. [Paso claro y específico]\n2. [Paso claro y específico]\n[numera todos los pasos, una acción por paso]\n\nReglas:\n- El nombre del archivo (filename) debe ser el nombre de la receta en inglés, en minúsculas, con espacios reemplazados por guiones (ej. pulled-pork-tacos.md). Esto es imprescindible para que coincida con el archivo en inglés.\n- La URL de la imagen está en el mensaje del usuario — colócala en el frontmatter como el campo image, exactamente como se proporcionó, sin modificarla\n- El campo category debe ser exactamente uno de: breakfast, lunch, dinner, dessert — elige el que mejor se adapte a la receta\n- Las URLs de utensilios deben usar el formato de búsqueda de Amazon en inglés y SIEMPRE incluir tu etiqueta de afiliado: https://www.amazon.com/s?k=search+terms&tag=lowkeycooking-20\n- Incluye entre 4 y 6 utensilios realmente usados en la receta\n- Los valores nutricionales deben ser estimaciones realistas por porción\n- Los ingredientes deben incluir cantidades y unidades\n- Las instrucciones deben estar numeradas, ser claras y escritas en segunda persona (\"Añade la harina...\", no \"Deberías añadir...\")\n- Incluye exactamente un solo párrafo introductorio antes de \"## Ingredientes\" (sin encabezado adicional)\n- Ese párrafo debe usar claramente primera persona del singular y tono cálido\n- No incluyas ningún texto fuera del contenido markdown\n- El archivo debe tener un frontmatter YAML válido — usa exactamente 2 espacios de indentación para los elementos de lista\n- Todo el contenido visible (title, description, párrafo introductorio, ingredientes, instrucciones) debe estar en español"
+            }
+          ]
         }
       },
-      "id": "eec5fe67-1414-44c4-82b9-aa939ef598a2",
-      "name": "Gemini 2.0 Flash2",
+      "id": "938ef065-bb76-4fae-9ff2-d0e48a732ed5",
+      "name": "Generate Recipe ES2",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        -4288,
+        3712
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash-lite",
+        "options": {
+          "maxOutputTokens": 4000
+        }
+      },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -3824,
-        304
+        -4152,
+        3536
       ],
+      "id": "7383d49b-65eb-4108-b660-600ddf42f84b",
+      "name": "Google Gemini Chat Model2",
       "credentials": {
         "googlePalmApi": {
           "id": "6XAzmOq7MWDpjqDb",
@@ -349,106 +106,89 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=You are a recipe content generator for a food blog called LowKeyCooking. Your job is to output a single, complete recipe in markdown format — nothing else. Do not include any explanation, intro text, or commentary before or after the markdown. Output only the raw markdown file content, starting with ---.\n\nGenerate a complete recipe markdown file for: {{ $json.recipe_name }}\n\nThe output must follow this exact structure:\n\n<!-- filename: [{{ $json.recipe_name }}-lowercase-hyphens.md] -->\n---\ntitle: [Full recipe name]\ndescription: [One sentence — appetizing, specific, max 20 words]\nimage: {{ $json.image_url }}\nprep_time: [e.g. 15 mins]\ncook_time: [e.g. 30 mins]\nservings: [e.g. 4]\nutensils:\n  - name: [Utensil 1]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 2]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 3]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 4]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\nnutrition:\n  calories: [number only, no units]\n  protein: [e.g. 12g]\n  carbs: [e.g. 34g]\n  fat: [e.g. 14g]\n  fiber: [e.g. 3g]\n  sugar: [e.g. 5g]\n  sodium: [e.g. 480mg]\n---\n\n## Ingredients\n\n- [Quantity + ingredient]\n- [Quantity + ingredient]\n[list all ingredients, one per line]\n\n## Instructions\n\n1. [Clear, specific step]\n2. [Clear, specific step]\n[number all steps, one action per step]\n\nRules:\n- Filename must be the recipe name in lowercase with spaces replaced by hyphens (e.g. pulled-pork-tacos.md)\n- The image URL has already been provided above — use it exactly as given, do not modify it\n- Utensil URLs must use Amazon search format: https://www.amazon.com/s?k=search+terms\n- Include 4–6 utensils actually used in the recipe\n- Nutrition values should be realistic estimates per serving\n- Ingredients must include quantities and units\n- Instructions must be numbered, clear, and written in second person (\"Add the flour...\", not \"You should add...\")\n- Do not include any text outside the markdown content\n- The file must have valid YAML frontmatter — use exact 2-space indentation for list items",
-        "needsFallback": true
+        "amount": 30
       },
-      "id": "f1432712-f1e0-4360-b602-26beac5fa7d6",
-      "name": "Generate Recipe EN2",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
       "position": [
-        -3808,
-        112
+        -1024,
+        3612
       ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000,
-      "maxTries": 5
+      "id": "63b9860b-1657-4491-bd32-5d86f9806150",
+      "name": "Wait2",
+      "webhookId": "0ab47855-bde1-4eab-8992-c0dcafc19613"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=Eres un generador de contenido de recetas para un blog de cocina llamado LowKeyCooking. Tu tarea es generar un único archivo de receta completo en formato markdown — nada más. No incluyas ninguna explicación, introducción ni comentario antes o después del markdown. Genera únicamente el contenido del archivo markdown, comenzando con ---.\n\nGenera un archivo markdown completo para la siguiente receta: {{ $json.recipe_name }}\n\nEl resultado debe seguir exactamente esta estructura:\n\n<!-- filename: [{{ $json.recipe_name }}-en-minusculas-con-guiones.md] -->\n---\ntitle: [Nombre completo de la receta en español]\ndescription: [Una sola frase — apetitosa y específica, máximo 20 palabras, en español]\nimage: {{ $json.image_url }}\nprep_time: [ej. 15 min]\ncook_time: [ej. 30 min]\nservings: [ej. 4]\nutensils:\n  - name: [Utensilio 1 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\n  - name: [Utensilio 2 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\n  - name: [Utensilio 3 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\n  - name: [Utensilio 4 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\nnutrition:\n  calories: [solo número, sin unidades]\n  protein: [ej. 12g]\n  carbs: [ej. 34g]\n  fat: [ej. 14g]\n  fiber: [ej. 3g]\n  sugar: [ej. 5g]\n  sodium: [ej. 480mg]\n---\n\n## Ingredientes\n\n- [Cantidad + ingrediente]\n- [Cantidad + ingrediente]\n[lista todos los ingredientes, uno por línea]\n\n## Instrucciones\n\n1. [Paso claro y específico]\n2. [Paso claro y específico]\n[numera todos los pasos, una acción por paso]\n\nReglas:\n- El nombre del archivo (filename) debe ser el nombre de la receta en inglés, en minúsculas, con espacios reemplazados por guiones (ej. pulled-pork-tacos.md). Esto es imprescindible para que coincida con el archivo en inglés.\n- La URL de la imagen ya fue proporcionada — úsala exactamente como está, sin modificarla\n- Las URLs de utensilios deben usar el formato de búsqueda de Amazon en inglés: https://www.amazon.com/s?k=search+terms\n- Incluye entre 4 y 6 utensilios realmente usados en la receta\n- Los valores nutricionales deben ser estimaciones realistas por porción\n- Los ingredientes deben incluir cantidades y unidades\n- Las instrucciones deben estar numeradas, ser claras y escritas en segunda persona (\"Añade la harina...\", no \"Deberías añadir...\")\n- No incluyas ningún texto fuera del contenido markdown\n- El archivo debe tener un frontmatter YAML válido — usa exactamente 2 espacios de indentación para los elementos de lista\n- Todo el contenido visible (title, description, ingredientes, instrucciones) debe estar en español",
-        "needsFallback": true
+        "url": "={{ $json.previewUrl }}",
+        "options": {}
       },
-      "id": "0e568d25-6746-45a1-98f5-9450a6c88706",
-      "name": "Generate Recipe ES2",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
       "position": [
-        -3808,
-        512
+        -1248,
+        3536
       ],
-      "retryOnFail": true,
+      "id": "6977f92b-f680-47ef-9998-5b47ec6b80f6",
+      "name": "HTTP Request2",
+      "retryOnFail": false,
+      "maxTries": 5,
       "waitBetweenTries": 5000,
-      "maxTries": 5
+      "alwaysOutputData": false,
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.text;\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'en' } }];"
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ '❌ <b>Recipe Rejected</b>\\n\\n<b>' + $json.recipeName + '</b> has been discarded and will not be published.' }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
       },
-      "id": "0fc33ca5-2537-4ce7-8d9c-48e691cbab6a",
-      "name": "Parse Filename & Clean EN2",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "id": "047c93ac-4a8f-4a1a-b502-a465190447b7",
+      "name": "Notify Rejected2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
       "position": [
-        -3552,
-        112
-      ]
+        -4512,
+        3172
+      ],
+      "webhookId": "6613d506-61eb-4fe8-8780-43adb4d25ddc",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.text;\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'es' } }];"
+        "chatId": "={{ $('Build Main Tree Request2').first().json.chat_id }}",
+        "text": "={{ '🎉 <b>Published!</b>\\n\\n<b>' + $('Build Main Tree Request2').first().json.recipeName + '</b> is now live on the site.' }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
       },
-      "id": "91e392a7-fbdb-463a-823c-fed3d0413876",
-      "name": "Parse Filename & Clean ES2",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "id": "25e60243-49be-4573-8ec5-939413701f1b",
+      "name": "Notify Published2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
       "position": [
-        -3552,
-        512
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "e074d249-4bd7-47e4-badd-ac194ead1ede",
-      "name": "Merge2",
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        -3360,
-        304
-      ]
+        -2592,
+        2928
+      ],
+      "webhookId": "50f518a1-115b-41b9-876f-5de923ac9d7b",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
     },
     {
       "parameters": {
-        "jsCode": "const items = $input.all();\nconst en = items.find(i => i.json.lang === 'en');\nconst es = items.find(i => i.json.lang === 'es');\n\nif (!en || !es) {\n  throw new Error('Missing language variant. Got: ' + JSON.stringify(items.map(i => i.json.lang)));\n}\n\nconst recipeName = en.json.filename.replace('.md', '');\n\nreturn [{\n  json: {\n    en_filename: en.json.filename,\n    en_content: en.json.content,\n    es_filename: es.json.filename,\n    es_content: es.json.content,\n    commit_message: 'feat: add ' + recipeName + ' recipe (EN + ES)'\n  }\n}];"
-      },
-      "id": "4e041e9c-133f-4291-afdd-c002d436cad1",
-      "name": "Prepare Commit2",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -3136,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const prepareData = $input.first().json;\n\nfunction addDraft(content) {\n  return content.replace(/^---\\n/, '---\\ndraft: true\\n');\n}\n\nconst slug = prepareData.en_filename.replace('.md', '');\n\nreturn [{\n  json: {\n    en_filename: prepareData.en_filename,\n    en_content: addDraft(prepareData.en_content),\n    es_filename: prepareData.es_filename,\n    es_content: addDraft(prepareData.es_content),\n    commit_message: prepareData.commit_message,\n    recipe_slug: slug\n  }\n}];"
-      },
-      "id": "3541ed55-5070-4a71-b112-83a366167a7a",
-      "name": "Inject Draft Frontmatter1",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -2912,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog",
+        "method": "PATCH",
+        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/refs/heads/' + $('Build Main Tree Request2').first().json.default_branch }}",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -464,15 +204,18 @@
             }
           ]
         },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ sha: $json.sha }) }}",
         "options": {}
       },
-      "id": "b4fb61da-482f-4cd6-b4d6-4d0645ed682e",
-      "name": "Get Repo Info1",
+      "id": "fc7376b3-1c5c-44ce-bd08-aeeaf586df8f",
+      "name": "Update Main Branch Ref2",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -2688,
-        304
+        -2816,
+        2928
       ],
       "credentials": {
         "githubApi": {
@@ -483,7 +226,8 @@
     },
     {
       "parameters": {
-        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/branches/drafts",
+        "method": "POST",
+        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/commits",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -499,15 +243,18 @@
             }
           ]
         },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "e9bce4a6-cfa2-403c-8b1a-a4ee4eb287c1",
-      "name": "Get Branch Info1",
+      "id": "abc90f98-34ad-44ad-b3f3-35dcad41d9ea",
+      "name": "Create Main Commit2",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -2464,
-        304
+        -3040,
+        2928
       ],
       "credentials": {
         "githubApi": {
@@ -518,15 +265,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter1').first().json;\nconst branchInfo = $input.first().json;\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\n\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        {\n          path: 'recipes/en/' + draftData.en_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.en_content\n        },\n        {\n          path: 'recipes/es/' + draftData.es_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.es_content\n        }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: draftData.commit_message,\n    default_branch: 'drafts'\n  }\n}];"
+        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Main Tree Request2').first().json.parent_commit_sha;\nconst message = $('Build Main Tree Request2').first().json.commit_message;\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
       },
-      "id": "2d5494c5-a140-40d6-b5e5-a7d80bc7b863",
-      "name": "Build Create Tree Request2",
+      "id": "72c85d07-d336-44ef-9dad-8a72fc1ad818",
+      "name": "Build Main Commit Request2",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2240,
-        304
+        -3264,
+        2928
       ]
     },
     {
@@ -553,13 +300,13 @@
         "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "bc045836-a499-4a56-9c52-47606b00abbb",
-      "name": "Create Tree2",
+      "id": "d9eb7fa6-72f0-44dd-8214-37170c81f76d",
+      "name": "Create Main Tree2",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -2016,
-        304
+        -3488,
+        2928
       ],
       "credentials": {
         "githubApi": {
@@ -570,21 +317,20 @@
     },
     {
       "parameters": {
-        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Create Tree Request2').first().json.parent_commit_sha;\nconst message = $('Build Create Tree Request2').first().json.commit_message;\n\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
+        "jsCode": "const cleanData = $('Remove Draft Frontmatter2').first().json;\nconst branchInfo = $input.first().json;\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\nconst defaultBranch = cleanData.default_branch || $('Get Repo Info2').first().json.default_branch;\n\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        { path: 'recipes/en/' + cleanData.en_filename, mode: '100644', type: 'blob', content: cleanData.en_content },\n        { path: 'recipes/es/' + cleanData.es_filename, mode: '100644', type: 'blob', content: cleanData.es_content }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: cleanData.commit_message,\n    default_branch: defaultBranch,\n    chat_id: cleanData.chat_id,\n    recipeName: cleanData.recipeName\n  }\n}];"
       },
-      "id": "51cf5598-f6f9-44e3-a364-8c79dc086c9d",
-      "name": "Build Create Commit Request2",
+      "id": "51c03bb6-45b4-49d5-9554-38065aa77ab1",
+      "name": "Build Main Tree Request2",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1792,
-        304
+        -3712,
+        2928
       ]
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/commits",
+        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/branches/' + ($json.default_branch || $('Get Repo Info2').first().json.default_branch) }}",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -600,18 +346,15 @@
             }
           ]
         },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "0ef4bd4b-160f-461c-9196-68bfacfd8091",
-      "name": "Create Commit2",
+      "id": "eb41e96d-db16-4575-ac67-2ad0d2358ec6",
+      "name": "Get Main Branch Info2",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1568,
-        304
+        -3936,
+        2928
       ],
       "credentials": {
         "githubApi": {
@@ -619,6 +362,163 @@
           "name": "Hope Github"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "const callbackData = $('Parse Callback & Build Resume URL1').first().json;\n\nif (!callbackData.en_filename || !callbackData.es_filename) {\n  throw new Error('Missing draft recipe data. Generate the recipe again and approve from the latest message.');\n}\n\nfunction removeDraft(content) {\n  if (typeof content !== 'string') return '';\n  return content.replace(/^---\\ndraft: true\\n/, '---\\n');\n}\n\nreturn [{\n  json: {\n    en_filename: callbackData.en_filename,\n    en_content: removeDraft(callbackData.en_content),\n    es_filename: callbackData.es_filename,\n    es_content: removeDraft(callbackData.es_content),\n    commit_message: callbackData.commit_message,\n    default_branch: callbackData.default_branch || 'main',\n    chat_id: callbackData.chat_id || null,\n    recipeName: callbackData.recipeName || null\n  }\n}];"
+      },
+      "id": "ecaa6e7b-93ca-4b8c-a954-91b48052043a",
+      "name": "Remove Draft Frontmatter2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4224,
+        2928
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ '⏳ <b>Approved!</b>\\n\\nPublishing <b>' + $json.recipeName + '</b> to production now...' }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "ce59a248-5331-4621-bc8d-ab1e135f2664",
+      "name": "Notify Approved2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -4512,
+        2928
+      ],
+      "webhookId": "c8022eca-9b33-4b25-b06f-aabdb9d26e9a",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-approve",
+              "leftValue": "={{ $json.query.action }}",
+              "rightValue": "approve",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "34ca8071-5ae8-4119-9b3f-ca9a5957e8e1",
+      "name": "Check Decision2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -4736,
+        2952
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "options": {}
+      },
+      "id": "e5c18e90-4a74-4b71-abbd-5941e16a07ba",
+      "name": "Wait for Approval2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -4960,
+        4456
+      ],
+      "webhookId": "manual-recipe-approval"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Build Preview URL2').first().json.chat_id }}",
+        "text": "={{ $json.text }}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "✅ Approve and Publish",
+                    "additionalFields": {
+                      "callback_data": "={{ $('Build Preview URL2').first().json.approve_cb }}"
+                    }
+                  },
+                  {
+                    "text": "❌ Reject",
+                    "additionalFields": {
+                      "callback_data": "={{ $('Build Preview URL2').first().json.reject_cb }}"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "684b9b27-8074-4b8d-a142-5a359e0c13d6",
+      "name": "Send Telegram Message2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -800,
+        3420
+      ],
+      "webhookId": "fd52bf01-0232-4459-a7d8-ecf5c86492a1",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $('Build Preview URL2').first().json;\nconst text = '<b>🍳 New Recipe Draft: ' + data.recipeName + '</b>\\n\\nA new recipe has been generated and is ready for your review on the preview site.\\n\\n<b>Preview:</b>\\n' + data.previewUrl;\nreturn [{ json: { text } }];"
+      },
+      "id": "3c965c94-5db3-4483-a079-1f2bb7803927",
+      "name": "Build Telegram Message2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1024,
+        3420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const draftData = $('Inject Draft Frontmatter2').first().json;\nconst repoInfo = $('Get Repo Info2').first().json;\nconst slug = draftData.recipe_slug;\nconst previewUrl = 'https://lowkeycooking-blog-git-drafts-christophcharafs-projects.vercel.app/en/recipes/' + slug;\nconst recipeName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');\n\nconst approveCb = 'pub|approve';\nconst rejectCb = 'pub|reject';\n\nconst store = $getWorkflowStaticData('global');\nif (!store.publishApprovalSessions) store.publishApprovalSessions = {};\nstore.publishApprovalSessions[String(draftData.chat_id)] = {\n  recipe_name: recipeName,\n  recipe_slug: slug,\n  en_filename: draftData.en_filename,\n  en_content: draftData.en_content,\n  es_filename: draftData.es_filename,\n  es_content: draftData.es_content,\n  commit_message: draftData.commit_message,\n  default_branch: repoInfo.default_branch || 'main',\n  updated_at: new Date().toISOString()\n};\n\nreturn [{ json: { previewUrl, recipeName, chat_id: draftData.chat_id, approve_cb: approveCb, reject_cb: rejectCb } }];"
+      },
+      "id": "60616839-8f3f-4f28-ac88-5576e50c727a",
+      "name": "Build Preview URL2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1472,
+        3536
+      ]
     },
     {
       "parameters": {
@@ -644,13 +544,13 @@
         "jsonBody": "={{ JSON.stringify({ sha: $json.sha }) }}",
         "options": {}
       },
-      "id": "5797603c-58bf-4311-ae57-6a48e1d9ebb7",
-      "name": "Update Branch Ref2",
+      "id": "3f1ae777-ee8d-4f09-bb64-b84891737a52",
+      "name": "Update Branch Ref3",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1344,
-        304
+        -1696,
+        3536
       ],
       "credentials": {
         "githubApi": {
@@ -661,164 +561,8 @@
     },
     {
       "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter1').first().json;\nconst resumeUrl = $execution.resumeUrl;\nconst slug = draftData.recipe_slug;\nconst previewUrl = 'https://lowkeycooking-blog-git-drafts-christophcharafs-projects.vercel.app/en/recipes/' + slug;\nconst approveUrl = resumeUrl + '?action=approve';\nconst rejectUrl = resumeUrl + '?action=reject';\nconst recipeName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');\nreturn [{ json: { previewUrl, approveUrl, rejectUrl, slug, recipeName } }];"
-      },
-      "id": "0c79ea5d-718d-476e-979b-d894c286912b",
-      "name": "Build Preview URL1",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -1120,
-        304
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "const data = $('Build Preview URL1').first().json;\nconst text = '<b>🍳 New Recipe Draft: ' + data.recipeName + '</b>\\n\\nA new recipe has been generated and is ready for your review on the preview site.\\n\\n<b>Preview:</b>\\n' + data.previewUrl;\nreturn [{ json: { text } }];"
-      },
-      "id": "a3dfe0c3-605e-48fd-a25c-5b4eaed8905c",
-      "name": "Build Telegram Message1",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -720,
-        288
-      ]
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $('Validate Recipe Name').first().json.chat_id }}",
-        "text": "={{ $json.text }}",
-        "replyMarkup": "inlineKeyboard",
-        "inlineKeyboard": {
-          "rows": [
-            {
-              "row": {
-                "buttons": [
-                  {
-                    "text": "✅ Approve and Publish",
-                    "additionalFields": {
-                      "url": "={{ $('Build Preview URL1').first().json.approveUrl }}"
-                    }
-                  },
-                  {
-                    "text": "❌ Reject",
-                    "additionalFields": {
-                      "url": "={{ $('Build Preview URL1').first().json.rejectUrl }}"
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "7961d6eb-0393-4da0-acb5-c0d2e07d3b0c",
-      "name": "Send Telegram Message1",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -480,
-        288
-      ],
-      "webhookId": "fd52bf01-0232-4459-a7d8-ecf5c86492a1",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resume": "webhook",
-        "options": {}
-      },
-      "id": "13b22053-6e70-4a46-b372-eebc2fce3ae2",
-      "name": "Wait for Approval1",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        -256,
-        288
-      ],
-      "webhookId": "manual-recipe-approval"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "cond-approve",
-              "leftValue": "={{ $json.query.action }}",
-              "rightValue": "approve",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "6f20f72f-cec7-462a-9a9d-86635426bf34",
-      "name": "Check Decision1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        -32,
-        288
-      ]
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $('Validate Recipe Name').first().json.chat_id }}",
-        "text": "={{ '⏳ <b>Approved!</b>\\n\\nPublishing <b>' + $('Build Preview URL1').first().json.recipeName + '</b> to production now...' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
-      },
-      "id": "39652bf5-6837-47c6-a1e5-c50348c9cc41",
-      "name": "Notify Approved1",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        192,
-        -16
-      ],
-      "webhookId": "c8022eca-9b33-4b25-b06f-aabdb9d26e9a",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter1').first().json;\nfunction removeDraft(content) {\n  return content.replace(/^---\\ndraft: true\\n/, '---\\n');\n}\nreturn [{\n  json: {\n    en_filename: draftData.en_filename,\n    en_content: removeDraft(draftData.en_content),\n    es_filename: draftData.es_filename,\n    es_content: removeDraft(draftData.es_content),\n    commit_message: draftData.commit_message\n  }\n}];"
-      },
-      "id": "92e97fd5-fcc9-48e6-a6f6-f3ae272b110c",
-      "name": "Remove Draft Frontmatter1",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        416,
-        -16
-      ]
-    },
-    {
-      "parameters": {
-        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/branches/' + $('Get Repo Info1').first().json.default_branch }}",
+        "method": "POST",
+        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/commits",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -834,15 +578,18 @@
             }
           ]
         },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "976ec44b-3e0e-4d48-9048-9063c96e07b7",
-      "name": "Get Main Branch Info1",
+      "id": "b864a72e-827f-4e8d-aa46-868814900457",
+      "name": "Create Commit3",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        640,
-        -16
+        -1920,
+        3536
       ],
       "credentials": {
         "githubApi": {
@@ -853,15 +600,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const cleanData = $('Remove Draft Frontmatter1').first().json;\nconst branchInfo = $input.first().json;\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\nconst defaultBranch = $('Get Repo Info1').first().json.default_branch;\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        { path: 'recipes/en/' + cleanData.en_filename, mode: '100644', type: 'blob', content: cleanData.en_content },\n        { path: 'recipes/es/' + cleanData.es_filename, mode: '100644', type: 'blob', content: cleanData.es_content }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: cleanData.commit_message,\n    default_branch: defaultBranch\n  }\n}];"
+        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Create Tree Request3').first().json.parent_commit_sha;\nconst message = $('Build Create Tree Request3').first().json.commit_message;\n\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
       },
-      "id": "f6a3c2e0-b684-4d38-8479-3e392d4bd3a9",
-      "name": "Build Main Tree Request1",
+      "id": "1bbf7f9c-a48d-47a4-8a1d-6c01794a626d",
+      "name": "Build Create Commit Request3",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        864,
-        -16
+        -2144,
+        3536
       ]
     },
     {
@@ -888,13 +635,13 @@
         "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "18f3777f-5162-4ed2-ba3b-2123f0aa6fb3",
-      "name": "Create Main Tree1",
+      "id": "799e8e5d-06a2-4e16-838e-33e1d528ee3a",
+      "name": "Create Tree3",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1088,
-        -16
+        -2368,
+        3536
       ],
       "credentials": {
         "githubApi": {
@@ -905,21 +652,20 @@
     },
     {
       "parameters": {
-        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Main Tree Request1').first().json.parent_commit_sha;\nconst message = $('Build Main Tree Request1').first().json.commit_message;\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
+        "jsCode": "const draftData = $('Inject Draft Frontmatter2').first().json;\nconst branchInfo = $input.first().json;\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\n\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        {\n          path: 'recipes/en/' + draftData.en_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.en_content\n        },\n        {\n          path: 'recipes/es/' + draftData.es_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.es_content\n        }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: draftData.commit_message,\n    default_branch: 'drafts'\n  }\n}];"
       },
-      "id": "e3d25020-9853-452f-81ad-500e4abec112",
-      "name": "Build Main Commit Request1",
+      "id": "4413a9cb-2ffe-49f9-a0d8-3afa13a862f9",
+      "name": "Build Create Tree Request3",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1312,
-        -16
+        -2592,
+        3536
       ]
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/commits",
+        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/branches/drafts",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -935,18 +681,15 @@
             }
           ]
         },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "6b4e53dd-63e9-4190-8e31-e444f5424518",
-      "name": "Create Main Commit1",
+      "id": "4fe59df9-db00-4bb6-a52b-f240b930812a",
+      "name": "Get Branch Info2",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1536,
-        -16
+        -2816,
+        3536
       ],
       "credentials": {
         "githubApi": {
@@ -957,8 +700,7 @@
     },
     {
       "parameters": {
-        "method": "PATCH",
-        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/refs/heads/' + $('Build Main Tree Request1').first().json.default_branch }}",
+        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -974,18 +716,15 @@
             }
           ]
         },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ sha: $json.sha }) }}",
         "options": {}
       },
-      "id": "5618e869-a479-4132-9bd5-db1fe8ddd344",
-      "name": "Update Main Branch Ref1",
+      "id": "f4af2029-0bf2-4a5d-9bfd-84a191efa6cd",
+      "name": "Get Repo Info2",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1760,
-        -16
+        -3040,
+        3536
       ],
       "credentials": {
         "githubApi": {
@@ -996,254 +735,654 @@
     },
     {
       "parameters": {
-        "chatId": "={{ $('Validate Recipe Name').first().json.chat_id }}",
-        "text": "={{ '🎉 <b>Published!</b>\\n\\n<b>' + $('Build Preview URL1').first().json.recipeName + '</b> is now live on the site.' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
+        "jsCode": "const prepareData = $input.first().json;\n\nfunction addDraft(content) {\n  return content.replace(/^---\\n/, '---\\ndraft: true\\n');\n}\n\nconst slug = prepareData.en_filename.replace('.md', '');\n\nreturn [{\n  json: {\n    en_filename: prepareData.en_filename,\n    en_content: addDraft(prepareData.en_content),\n    es_filename: prepareData.es_filename,\n    es_content: addDraft(prepareData.es_content),\n    commit_message: prepareData.commit_message,\n    recipe_slug: slug,\n    chat_id: prepareData.chat_id\n  }\n}];"
       },
-      "id": "12bd7567-d9b2-458a-823d-30c66c78fffe",
-      "name": "Notify Published1",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
+      "id": "7af7bd92-ba29-47fc-9a89-8baead9eec24",
+      "name": "Inject Draft Frontmatter2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        1984,
-        -16
-      ],
-      "webhookId": "50f518a1-115b-41b9-876f-5de923ac9d7b",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
+        -3264,
+        3536
+      ]
     },
     {
       "parameters": {
-        "chatId": "={{ $('Validate Recipe Name').first().json.chat_id }}",
-        "text": "={{ '❌ <b>Recipe Rejected</b>\\n\\n<b>' + $('Build Preview URL1').first().json.recipeName + '</b> has been discarded and will not be published.' }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
+        "jsCode": "const items = $input.all();\nconst en = items.find(i => i.json.lang === 'en');\nconst es = items.find(i => i.json.lang === 'es');\n\nif (!en || !es) {\n  throw new Error('Missing language variant. Got: ' + JSON.stringify(items.map(i => i.json.lang)));\n}\n\nconst recipeName = en.json.filename.replace('.md', '');\nconst chatId = en.json.chat_id || es.json.chat_id;\n\nreturn [{\n  json: {\n    en_filename: en.json.filename,\n    en_content: en.json.content,\n    es_filename: es.json.filename,\n    es_content: es.json.content,\n    commit_message: 'feat: add ' + recipeName + ' recipe (EN + ES)',\n    chat_id: chatId\n  }\n}];"
       },
-      "id": "e7b0dce5-3124-4538-8732-581533087394",
-      "name": "Notify Rejected1",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
+      "id": "b48b8740-5004-4035-9448-39b7a7d3848f",
+      "name": "Prepare Commit3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        192,
-        592
-      ],
-      "webhookId": "6613d506-61eb-4fe8-8780-43adb4d25ddc",
-      "credentials": {
-        "telegramApi": {
-          "id": "O1MJFVusDgb0GzSm",
-          "name": "Telegram account"
-        }
-      }
+        -3488,
+        3536
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a2e7e91b-98d3-46f1-932c-38f0579afa2e",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -3712,
+        3536
+      ]
     },
     {
       "parameters": {
-        "url": "={{ $json.previewUrl }}",
-        "options": {}
+        "jsCode": "const raw = $input.first().json.text;\nconst chatId = $('Get Recipe Data2').first().json.chat_id;\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'es', chat_id: chatId } }];"
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.4,
+      "id": "fcb9d101-b87e-4b71-ae79-9009eff82527",
+      "name": "Parse Filename & Clean ES3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        -928,
-        304
-      ],
-      "id": "88748b9d-3f43-4bcf-8d8e-8bdade6be430",
-      "name": "HTTP Request",
-      "retryOnFail": false,
-      "maxTries": 5,
-      "waitBetweenTries": 5000,
-      "alwaysOutputData": false,
-      "onError": "continueErrorOutput"
+        -3936,
+        3712
+      ]
     },
     {
       "parameters": {
-        "amount": 30
+        "jsCode": "const raw = $input.first().json.text;\nconst chatId = $('Get Recipe Data2').first().json.chat_id;\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'en', chat_id: chatId } }];"
       },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
+      "id": "2f348443-644c-4801-8d8e-487f0709ccb2",
+      "name": "Parse Filename & Clean EN3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
-        -928,
-        480
-      ],
-      "id": "686bce99-6845-46fa-a664-a8b6bf5826f9",
-      "name": "Wait",
-      "webhookId": "0ab47855-bde1-4eab-8992-c0dcafc19613"
+        -3936,
+        3416
+      ]
     },
     {
       "parameters": {
-        "modelName": "models/gemini-2.5-flash-lite",
         "options": {
-          "maxOutputTokens": 4000
+          "maxOutputTokens": 4000,
+          "temperature": 0.7
         }
       },
+      "id": "2d500026-0bcc-4436-b331-18f929a8da7f",
+      "name": "Gemini 2.0 Flash3",
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -3664,
-        320
+        -4280,
+        3536
       ],
-      "id": "0e6ea15e-44aa-4d75-916b-4b873ed8a191",
-      "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
           "id": "6XAzmOq7MWDpjqDb",
           "name": "Google Gemini(PaLM) Api account 2"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "https://api.unsplash.com/search/photos",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "query",
+              "value": "={{ $json.recipe_name }}"
+            },
+            {
+              "name": "per_page",
+              "value": "30"
+            },
+            {
+              "name": "client_id",
+              "value": "AGT99jkn31AmL38BS4QE8PqKt9RRge2zGEohexDpans"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "97e23b2e-573c-46d8-96ef-0a33a6404e96",
+      "name": "Fetch Unsplash Photos3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4224,
+        4384
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ '⚙️ Generating <b>' + $json.recipe_name + '</b> in EN and ES... This will take a moment.' }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "afd97796-9c5e-4698-84c1-b923df9ed4c2",
+      "name": "Send Generating Message2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -4224,
+        3120
+      ],
+      "webhookId": "f31e9342-e374-43fd-903f-dec5b270efb8",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const baseData = $input.first().json;\nconst query = $json.query || {};\n\nconst recipeName = baseData.recipe_name;\nconst unsplashUrls = Array.isArray(baseData.unsplash_urls) ? baseData.unsplash_urls : [];\nconst source = (query.source || baseData.current_source || 'unsplash').toString();\nconst idx = Number.parseInt(query.idx ?? baseData.current_index ?? 0, 10);\nconst seed = (query.seed || baseData.current_seed || '').toString();\nconst fallbackFoodImage = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80';\n\nconst pollinationsKey = 'sk_kDELuAwOIQELSZp2jvTTWPqUwFW17Fz3';\nconst aiAvailable = pollinationsKey.length > 0;\n\nconst prompt = encodeURIComponent(\n  'professional food photography ' + recipeName + ' delicious appetizing styled dish overhead shot'\n);\nconst makeAiImageUrl = (aiSeed) => {\n  if (!aiAvailable) return '';\n  return (\n    'https://image.pollinations.ai/prompt/' +\n    prompt +\n    '?width=1200&height=800&nologo=true&model=flux&seed=' +\n    aiSeed +\n    '&key=' +\n    encodeURIComponent(pollinationsKey)\n  );\n};\nconst createSafeSeed = () => String(Math.floor(Math.random() * 2147483647) + 1);\nconst sanitizeSeed = (value) => {\n  const parsed = Number.parseInt(String(value || ''), 10);\n  if (Number.isFinite(parsed) && parsed >= 1 && parsed <= 2147483647) {\n    return String(parsed);\n  }\n  return createSafeSeed();\n};\n\nlet imageUrl;\nif (source === 'unsplash' && unsplashUrls.length > 0) {\n  const safeIndex = Number.isFinite(idx)\n    ? ((idx % unsplashUrls.length) + unsplashUrls.length) % unsplashUrls.length\n    : 0;\n  imageUrl = unsplashUrls[safeIndex];\n} else if (source === 'ai') {\n  const aiSeed = sanitizeSeed(seed);\n  imageUrl = makeAiImageUrl(aiSeed) || baseData.image_url || fallbackFoodImage;\n} else {\n  imageUrl = baseData.image_url || unsplashUrls[0] || fallbackFoodImage;\n}\n\nreturn [{\n  json: {\n    recipe_name: recipeName,\n    image_url: imageUrl,\n    chat_id: baseData.chat_id\n  }\n}];"
+      },
+      "id": "f3ba79ea-4bea-42d0-b198-f04da4bf97e9",
+      "name": "Get Recipe Data2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4512,
+        3372
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "❌ Flow cancelled. Send me a recipe name whenever you want to try again.",
+        "additionalFields": {}
+      },
+      "id": "f98e03ba-f4d9-4d1f-beb4-0407d91302a0",
+      "name": "Send Cancelled2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -4224,
+        4192
+      ],
+      "webhookId": "550b811f-2f40-49e5-9cbf-ea9f83ed16fe",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const baseData = $input.first().json;\nconst recipeName = baseData.recipe_name;\nconst fallbackFoodImage = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80';\nconst pollinationsKey = 'sk_kDELuAwOIQELSZp2jvTTWPqUwFW17Fz3';\nconst aiAvailable = pollinationsKey.length > 0;\n\nif (!aiAvailable) {\n  return [{\n    json: {\n      ...baseData,\n      image_url: baseData.image_url || fallbackFoodImage,\n      current_source: baseData.current_source || 'unsplash',\n      current_seed: '',\n      ai_available: false,\n      image_warning: 'AI image requires a configured API key.'\n    }\n  }];\n}\n\nconst prompt = encodeURIComponent(\n  'professional food photography ' + recipeName + ' delicious appetizing styled dish overhead shot'\n);\nconst seed = String(Math.floor(Math.random() * 2147483647) + 1);\nconst imageUrl =\n  'https://image.pollinations.ai/prompt/' +\n  prompt +\n  '?width=1200&height=800&nologo=true&model=flux&seed=' +\n  seed +\n  '&key=' +\n  encodeURIComponent(pollinationsKey);\n\nreturn [{\n  json: {\n    ...baseData,\n    image_url: imageUrl,\n    current_source: 'ai',\n    current_index: 0,\n    current_seed: seed,\n    ai_available: true,\n    image_warning: ''\n  }\n}];"
+      },
+      "id": "f909589c-2a62-4796-818a-e1f1634c2c8e",
+      "name": "Build AI Image Candidate2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3936,
+        3904
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const baseData = $input.first().json;\nconst query = $json.query || {};\n\nconst recipeName = baseData.recipe_name;\nconst chatId = baseData.chat_id;\nconst unsplashUrls = Array.isArray(baseData.unsplash_urls) ? baseData.unsplash_urls : [];\nconst idx = Number.parseInt(query.idx ?? baseData.current_index ?? 0, 10);\nconst createSafeSeed = () => String(Math.floor(Math.random() * 2147483647) + 1);\nconst fallbackFoodImage = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80';\nconst pollinationsKey = 'sk_kDELuAwOIQELSZp2jvTTWPqUwFW17Fz3';\nconst aiAvailable = pollinationsKey.length > 0;\n\nif (unsplashUrls.length === 0) {\n  const prompt = encodeURIComponent(\n    'professional food photography ' + recipeName + ' delicious appetizing styled dish overhead shot'\n  );\n  const seed = createSafeSeed();\n  const imageUrl = aiAvailable\n    ? (\n      'https://image.pollinations.ai/prompt/' +\n      prompt +\n      '?width=1200&height=800&nologo=true&model=flux&seed=' +\n      seed +\n      '&key=' +\n      encodeURIComponent(pollinationsKey)\n    )\n    : fallbackFoodImage;\n\n  return [{\n    json: {\n      ...baseData,\n      recipe_name: recipeName,\n      chat_id: chatId,\n      image_url: imageUrl,\n      current_source: aiAvailable ? 'ai' : 'fallback',\n      current_index: 0,\n      current_seed: aiAvailable ? seed : '',\n      ai_available: aiAvailable,\n      image_warning: aiAvailable ? '' : 'AI image requires a configured API key.'\n    }\n  }];\n}\n\nconst safeIdx = Number.isFinite(idx) ? idx : 0;\nconst nextIndex = (safeIdx + 1 + unsplashUrls.length) % unsplashUrls.length;\n\nreturn [{\n  json: {\n    ...baseData,\n    recipe_name: recipeName,\n    chat_id: chatId,\n    image_url: unsplashUrls[nextIndex],\n    current_source: 'unsplash',\n    current_index: nextIndex,\n    current_seed: '',\n    ai_available: aiAvailable,\n    image_warning: ''\n  }\n}];"
+      },
+      "id": "625aabb4-092d-440c-9d1e-dc6092b95b22",
+      "name": "Build Next Image Candidate2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3936,
+        4096
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-image-ai",
+              "leftValue": "={{ $json.query.action }}",
+              "rightValue": "ai",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7e4d3211-5b15-409a-842a-c05df43fdbc6",
+      "name": "Check Image AI Action2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -4224,
+        4000
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-image-cancel",
+              "leftValue": "={{ $json.query.action }}",
+              "rightValue": "cancel",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "43842b05-0f30-44f2-acab-4a419edfdb0a",
+      "name": "Check Image Cancel2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -4512,
+        4024
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-image-approve",
+              "leftValue": "={{ $json.query.action }}",
+              "rightValue": "approve",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "70930830-3c18-41a0-b623-b38f4e2305f3",
+      "name": "Check Image Decision2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -4736,
+        3684
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "options": {}
+      },
+      "id": "94a31c1a-05a1-4291-bc73-c349b5c7278e",
+      "name": "Wait for Image Decision2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -4960,
+        4648
+      ],
+      "webhookId": "manual-image-decision"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{ $json.chat_id }}",
+        "file": "={{ $json.image_url }}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "✅ Use image",
+                    "additionalFields": {
+                      "callback_data": "={{ $json.approve_cb }}"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "➡️ Next",
+                    "additionalFields": {
+                      "callback_data": "={{ $json.next_cb }}"
+                    }
+                  },
+                  {
+                    "text": "🎨 AI image",
+                    "additionalFields": {
+                      "callback_data": "={{ $json.ai_cb }}"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "❌ Cancel",
+                    "additionalFields": {
+                      "callback_data": "={{ $json.cancel_cb }}"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "caption": "={{ $json.image_caption }}"
+        }
+      },
+      "id": "bbb20b87-8de9-44f7-9bc4-7620f0ee54c8",
+      "name": "Send Image Preview2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -3488,
+        4120
+      ],
+      "webhookId": "60abdc96-1ee1-4b6c-9688-31607dafbf9d",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json;\n\nconst source = (data.current_source || 'unsplash').toString();\nconst index = Number.isFinite(Number(data.current_index)) ? Number(data.current_index) : 0;\nconst seed = (data.current_seed || '').toString();\nconst aiAvailable = !!data.ai_available;\nconst warning = (data.image_warning || '').toString();\n\nconst totalUnsplash = Array.isArray(data.unsplash_urls) ? data.unsplash_urls.length : 0;\nlet imageCaption = source === 'unsplash'\n  ? 'Pick image (' + (index + 1) + '/' + Math.max(totalUnsplash, 1) + ')'\n  : source === 'ai'\n    ? 'Pick AI image'\n    : 'Pick image';\n\nif (!aiAvailable) {\n  imageCaption += '\\n(AI unavailable)';\n}\nif (warning) {\n  imageCaption += '\\n' + warning;\n}\n\nconst callbackPayload = (action) => {\n  const safeSeed = (seed || '').replace(/\\|/g, '').slice(0, 20);\n  return ['img', action, source, String(index), safeSeed].join('|');\n};\n\nconst store = $getWorkflowStaticData('global');\nif (!store.imagePickerSessions) store.imagePickerSessions = {};\nstore.imagePickerSessions[String(data.chat_id)] = {\n  recipe_name: data.recipe_name,\n  chat_id: data.chat_id,\n  unsplash_urls: Array.isArray(data.unsplash_urls) ? data.unsplash_urls : [],\n  image_url: data.image_url,\n  current_source: source,\n  current_index: index,\n  current_seed: seed,\n  ai_available: aiAvailable,\n  image_warning: warning,\n  updated_at: new Date().toISOString()\n};\n\nreturn [{\n  json: {\n    recipe_name: data.recipe_name,\n    image_url: data.image_url,\n    chat_id: data.chat_id,\n    unsplash_urls: data.unsplash_urls || [],\n    current_source: source,\n    current_index: index,\n    current_seed: seed,\n    ai_available: aiAvailable,\n    image_warning: warning,\n    image_caption: imageCaption,\n    approve_cb: callbackPayload('approve'),\n    next_cb: callbackPayload('next'),\n    ai_cb: callbackPayload('ai'),\n    cancel_cb: callbackPayload('cancel')\n  }\n}];"
+      },
+      "id": "77ea298c-705b-4485-a9e8-dac08112dd9a",
+      "name": "Build Image Buttons2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3712,
+        4120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const results = $input.first().json.results || [];\nconst recipeName = $('Validate Recipe Name2').first().json.recipe_name;\nconst chatId = $('Validate Recipe Name2').first().json.chat_id;\nconst fallbackFoodImage = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=80';\n\nconst pollinationsKey = 'sk_kDELuAwOIQELSZp2jvTTWPqUwFW17Fz3';\nconst aiAvailable = pollinationsKey.length > 0;\n\nconst unsplashUrls = results\n  .map((item) => item?.urls?.regular)\n  .filter(Boolean)\n  .map((url) => url.split('?')[0] + '?w=1200&q=80');\n\nconst prompt = encodeURIComponent(\n  'professional food photography ' + recipeName + ' delicious appetizing styled dish overhead shot'\n);\nconst makeAiImageUrl = (seed) => {\n  if (!aiAvailable) return '';\n  return (\n    'https://image.pollinations.ai/prompt/' +\n    prompt +\n    '?width=1200&height=800&nologo=true&model=flux&seed=' +\n    seed +\n    '&key=' +\n    encodeURIComponent(pollinationsKey)\n  );\n};\nconst createSafeSeed = () => String(Math.floor(Math.random() * 2147483647) + 1);\n\nlet imageUrl = '';\nlet currentSource = 'unsplash';\nlet currentIndex = 0;\nlet currentSeed = '';\nlet imageWarning = '';\n\nif (unsplashUrls.length > 0) {\n  imageUrl = unsplashUrls[0];\n} else {\n  currentSeed = createSafeSeed();\n  const aiUrl = makeAiImageUrl(currentSeed);\n\n  if (aiUrl) {\n    currentSource = 'ai';\n    imageUrl = aiUrl;\n  } else {\n    currentSource = 'fallback';\n    currentSeed = '';\n    imageUrl = fallbackFoodImage;\n    imageWarning = 'AI image requires a configured API key.';\n  }\n}\n\nreturn [{\n  json: {\n    recipe_name: recipeName,\n    chat_id: chatId,\n    unsplash_urls: unsplashUrls,\n    image_url: imageUrl,\n    current_source: currentSource,\n    current_index: currentIndex,\n    current_seed: currentSeed,\n    ai_available: aiAvailable,\n    image_warning: imageWarning\n  }\n}];"
+      },
+      "id": "a80475a7-f27b-4c0e-bc19-3d630c37bb3e",
+      "name": "Resolve Image2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3936,
+        4384
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ '⚠️ Invalid format.\\n\\nUse one of these commands:\\n• <b>/recipe [recipe name]</b>\\n• <b>/generate [recipe name]</b>\\n\\nExample:\\n<b>/recipe Lobster Bisque</b>' }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "7473a1a4-ecb7-4904-b18b-1884bcb8c23a",
+      "name": "Send Error Empty Name2",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -4224,
+        4576
+      ],
+      "webhookId": "937d3d8b-a454-40ff-97d2-ba28cd82224b",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-valid",
+              "leftValue": "={{ $json.valid }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "76d2d40d-aa60-482d-a8fe-3c596029db45",
+      "name": "Route Validation2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -4512,
+        4408
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const msg = $json.message;\nconst text = ((msg && msg.text) || '').trim();\nconst chatId = msg && msg.chat && msg.chat.id;\n\nconst allowedCommands = ['/recipe', '/generate'];\n\nif (!text) {\n  return [{\n    json: {\n      valid: false,\n      error: 'empty',\n      recipe_name: '',\n      chat_id: chatId,\n      allowed_commands: allowedCommands\n    }\n  }];\n}\n\nif (!text.startsWith('/')) {\n  return [{\n    json: {\n      valid: false,\n      error: 'missing_command',\n      recipe_name: '',\n      chat_id: chatId,\n      allowed_commands: allowedCommands\n    }\n  }];\n}\n\nconst parts = text.split(/\\s+/).filter(Boolean);\nconst command = (parts[0] || '').toLowerCase();\n\nif (!allowedCommands.includes(command)) {\n  return [{\n    json: {\n      valid: false,\n      error: 'invalid_command',\n      recipe_name: '',\n      chat_id: chatId,\n      command,\n      allowed_commands: allowedCommands\n    }\n  }];\n}\n\nconst recipeName = parts.slice(1).join(' ').trim();\nif (!recipeName) {\n  return [{\n    json: {\n      valid: false,\n      error: 'missing_recipe_name',\n      recipe_name: '',\n      chat_id: chatId,\n      command,\n      allowed_commands: allowedCommands\n    }\n  }];\n}\n\nreturn [{\n  json: {\n    valid: true,\n    recipe_name: recipeName,\n    chat_id: chatId,\n    command,\n    allowed_commands: allowedCommands\n  }\n}];"
+      },
+      "id": "39f7e002-cee2-457c-8845-480a6fe29758",
+      "name": "Validate Recipe Name2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4736,
+        4408
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ '⚠️ ' + $json.reason }}",
+        "additionalFields": {}
+      },
+      "id": "7467f5a5-2417-4bca-88bf-d61f7351c5d4",
+      "name": "Send Missing Session Message1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -4960,
+        4144
+      ],
+      "webhookId": "8ad79490-0dc2-46c3-92e2-f786f3419d58",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.resume_url }}",
+        "options": {
+          "timeout": 5000
+        }
+      },
+      "id": "ca78705b-5583-4021-a75a-737f8d899caa",
+      "name": "Resume Image Wait1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -5856,
+        2704
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-callback-ok",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "37512a65-27b8-4e8a-b927-f3ba5bdc8b2a",
+      "name": "Has Active Image Session1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -5184,
+        2952
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const cq = $json.callback_query || {};\nconst data = String(cq.data || '');\nconst chatId = cq?.message?.chat?.id;\n\nconst parts = data.split('|');\nconst type = parts[0];\n\nif (!chatId || (type !== 'img' && type !== 'pub')) {\n  return [{\n    json: {\n      ok: false,\n      reason: 'Unsupported callback payload',\n      chat_id: chatId || null\n    }\n  }];\n}\n\nconst store = $getWorkflowStaticData('global');\n\nif (type === 'img') {\n  if (parts.length < 5) {\n    return [{ json: { ok: false, reason: 'Invalid image callback payload', chat_id: chatId } }];\n  }\n\n  const action = parts[1];\n  const source = parts[2] || 'unsplash';\n  const idx = Number.parseInt(parts[3] || '0', 10);\n  const seed = parts[4] || '';\n\n  const sessions = store.imagePickerSessions || {};\n  const session = sessions[String(chatId)] || null;\n\n  if (!session?.recipe_name) {\n    return [{\n      json: {\n        ok: false,\n        reason: 'No active image picker session for this chat. Send a recipe name again.',\n        chat_id: chatId\n      }\n    }];\n  }\n\n  const safeIdx = Number.isFinite(idx) ? idx : 0;\n\n  return [{\n    json: {\n      ok: true,\n      callback_type: 'image',\n      query: {\n        action,\n        source,\n        idx: safeIdx,\n        seed\n      },\n      chat_id: chatId,\n      callback_id: cq.id,\n      recipe_name: session.recipe_name,\n      unsplash_urls: Array.isArray(session.unsplash_urls) ? session.unsplash_urls : [],\n      image_url: session.image_url,\n      current_source: session.current_source || 'unsplash',\n      current_index: Number.isFinite(Number(session.current_index)) ? Number(session.current_index) : 0,\n      current_seed: session.current_seed || '',\n      ai_available: !!session.ai_available,\n      image_warning: session.image_warning || ''\n    }\n  }];\n}\n\nif (parts.length < 2) {\n  return [{ json: { ok: false, reason: 'Invalid publish callback payload', chat_id: chatId } }];\n}\n\nconst action = parts[1];\nconst publishSessions = store.publishApprovalSessions || {};\nconst session = publishSessions[String(chatId)] || null;\n\nif (!session?.recipe_slug) {\n  return [{\n    json: {\n      ok: false,\n      reason: 'No active publish approval session for this chat. Generate a recipe first.',\n      chat_id: chatId\n    }\n  }];\n}\n\nreturn [{\n  json: {\n    ok: true,\n    callback_type: 'publish',\n    query: { action },\n    chat_id: chatId,\n    callback_id: cq.id,\n    recipeName: session.recipe_name,\n    recipe_slug: session.recipe_slug,\n    en_filename: session.en_filename,\n    en_content: session.en_content,\n    es_filename: session.es_filename,\n    es_content: session.es_content,\n    commit_message: session.commit_message,\n    default_branch: session.default_branch || 'main'\n  }\n}];"
+      },
+      "id": "d3a22192-df3c-4717-ae2e-497cff7d38f4",
+      "name": "Parse Callback & Build Resume URL1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5408,
+        2952
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "cond-is-callback",
+              "leftValue": "={{ !!$json.callback_query }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "206d74e2-8b95-4227-aecb-a376a71cb805",
+      "name": "Is Callback Update1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -5632,
+        3004
+      ]
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message",
+          "callback_query"
+        ],
+        "additionalFields": {}
+      },
+      "id": "5a443172-6867-4c93-9610-10a1309e32d8",
+      "name": "Telegram Trigger2",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -5856,
+        3004
+      ],
+      "webhookId": "manual-recipe-trigger",
+      "credentials": {
+        "telegramApi": {
+          "id": "O1MJFVusDgb0GzSm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Manual workflow \n",
+        "height": 80,
+        "width": 278
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -5760,
+        3280
+      ],
+      "typeVersion": 1,
+      "id": "2b91598e-1c9d-403f-8759-6aaeb8ae77fc",
+      "name": "Sticky Note1"
     }
   ],
   "connections": {
-    "Telegram Trigger": {
+    "Is Publish Callback": {
       "main": [
         [
           {
-            "node": "Validate Recipe Name",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Validate Recipe Name": {
-      "main": [
-        [
-          {
-            "node": "Route Validation",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Route Validation": {
-      "main": [
-        [
-          {
-            "node": "Fetch Unsplash Photos2",
+            "node": "Check Decision2",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Send Error Empty Name",
+            "node": "Check Image Decision2",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Resolve Image": {
-      "main": [
-        [
-          {
-            "node": "Build Image Buttons",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Image Buttons": {
-      "main": [
-        [
-          {
-            "node": "Send Image Preview",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Send Image Preview": {
-      "main": [
-        [
-          {
-            "node": "Wait for Image Decision",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait for Image Decision": {
-      "main": [
-        [
-          {
-            "node": "Check Image Decision",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check Image Decision": {
-      "main": [
-        [
-          {
-            "node": "Get Recipe Data",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Send Cancelled",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Recipe Data": {
-      "main": [
-        [
-          {
-            "node": "Send Generating Message",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Generate Recipe EN2",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Generate Recipe ES2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fetch Unsplash Photos2": {
-      "main": [
-        [
-          {
-            "node": "Resolve Image",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Gemini 2.0 Flash2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Generate Recipe EN2",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Generate Recipe ES2",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -1253,7 +1392,7 @@
       "main": [
         [
           {
-            "node": "Parse Filename & Clean EN2",
+            "node": "Parse Filename & Clean EN3",
             "type": "main",
             "index": 0
           }
@@ -1264,336 +1403,569 @@
       "main": [
         [
           {
-            "node": "Parse Filename & Clean ES2",
+            "node": "Parse Filename & Clean ES3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Parse Filename & Clean EN2": {
-      "main": [
-        [
-          {
-            "node": "Merge2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Parse Filename & Clean ES2": {
-      "main": [
-        [
-          {
-            "node": "Merge2",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Merge2": {
-      "main": [
-        [
-          {
-            "node": "Prepare Commit2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Prepare Commit2": {
-      "main": [
-        [
-          {
-            "node": "Inject Draft Frontmatter1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Inject Draft Frontmatter1": {
-      "main": [
-        [
-          {
-            "node": "Get Repo Info1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Repo Info1": {
-      "main": [
-        [
-          {
-            "node": "Get Branch Info1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Branch Info1": {
-      "main": [
-        [
-          {
-            "node": "Build Create Tree Request2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Create Tree Request2": {
-      "main": [
-        [
-          {
-            "node": "Create Tree2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Tree2": {
-      "main": [
-        [
-          {
-            "node": "Build Create Commit Request2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Create Commit Request2": {
-      "main": [
-        [
-          {
-            "node": "Create Commit2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Commit2": {
-      "main": [
-        [
-          {
-            "node": "Update Branch Ref2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update Branch Ref2": {
-      "main": [
-        [
-          {
-            "node": "Build Preview URL1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Preview URL1": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Telegram Message1": {
-      "main": [
-        [
-          {
-            "node": "Send Telegram Message1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Send Telegram Message1": {
-      "main": [
-        [
-          {
-            "node": "Wait for Approval1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait for Approval1": {
-      "main": [
-        [
-          {
-            "node": "Check Decision1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check Decision1": {
-      "main": [
-        [
-          {
-            "node": "Notify Approved1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Notify Rejected1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Notify Approved1": {
-      "main": [
-        [
-          {
-            "node": "Remove Draft Frontmatter1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Remove Draft Frontmatter1": {
-      "main": [
-        [
-          {
-            "node": "Get Main Branch Info1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Main Branch Info1": {
-      "main": [
-        [
-          {
-            "node": "Build Main Tree Request1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Main Tree Request1": {
-      "main": [
-        [
-          {
-            "node": "Create Main Tree1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Main Tree1": {
-      "main": [
-        [
-          {
-            "node": "Build Main Commit Request1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Main Commit Request1": {
-      "main": [
-        [
-          {
-            "node": "Create Main Commit1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Main Commit1": {
-      "main": [
-        [
-          {
-            "node": "Update Main Branch Ref1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Update Main Branch Ref1": {
-      "main": [
-        [
-          {
-            "node": "Notify Published1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Build Telegram Message1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Wait",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Wait": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model": {
+    "Google Gemini Chat Model2": {
       "ai_languageModel": [
         [
-          {
-            "node": "Generate Recipe EN2",
-            "type": "ai_languageModel",
-            "index": 1
-          },
           {
             "node": "Generate Recipe ES2",
             "type": "ai_languageModel",
             "index": 1
+          },
+          {
+            "node": "Generate Recipe EN2",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Build Telegram Message2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Main Branch Ref2": {
+      "main": [
+        [
+          {
+            "node": "Notify Published2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Main Commit2": {
+      "main": [
+        [
+          {
+            "node": "Update Main Branch Ref2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Main Commit Request2": {
+      "main": [
+        [
+          {
+            "node": "Create Main Commit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Main Tree2": {
+      "main": [
+        [
+          {
+            "node": "Build Main Commit Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Main Tree Request2": {
+      "main": [
+        [
+          {
+            "node": "Create Main Tree2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Main Branch Info2": {
+      "main": [
+        [
+          {
+            "node": "Build Main Tree Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Draft Frontmatter2": {
+      "main": [
+        [
+          {
+            "node": "Get Main Branch Info2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Approved2": {
+      "main": [
+        [
+          {
+            "node": "Remove Draft Frontmatter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Decision2": {
+      "main": [
+        [
+          {
+            "node": "Notify Approved2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notify Rejected2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Approval2": {
+      "main": [
+        [
+          {
+            "node": "Check Decision2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Telegram Message2": {
+      "main": [
+        [
+          {
+            "node": "Send Telegram Message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Preview URL2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Branch Ref3": {
+      "main": [
+        [
+          {
+            "node": "Build Preview URL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Commit3": {
+      "main": [
+        [
+          {
+            "node": "Update Branch Ref3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Create Commit Request3": {
+      "main": [
+        [
+          {
+            "node": "Create Commit3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Tree3": {
+      "main": [
+        [
+          {
+            "node": "Build Create Commit Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Create Tree Request3": {
+      "main": [
+        [
+          {
+            "node": "Create Tree3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Branch Info2": {
+      "main": [
+        [
+          {
+            "node": "Build Create Tree Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Repo Info2": {
+      "main": [
+        [
+          {
+            "node": "Get Branch Info2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inject Draft Frontmatter2": {
+      "main": [
+        [
+          {
+            "node": "Get Repo Info2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Commit3": {
+      "main": [
+        [
+          {
+            "node": "Inject Draft Frontmatter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Prepare Commit3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Filename & Clean ES3": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Parse Filename & Clean EN3": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 2.0 Flash3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Recipe ES2",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Generate Recipe EN2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Unsplash Photos3": {
+      "main": [
+        [
+          {
+            "node": "Resolve Image2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Recipe Data2": {
+      "main": [
+        [
+          {
+            "node": "Generate Recipe ES2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate Recipe EN2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send Generating Message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build AI Image Candidate2": {
+      "main": [
+        [
+          {
+            "node": "Build Image Buttons2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Next Image Candidate2": {
+      "main": [
+        [
+          {
+            "node": "Build Image Buttons2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Image AI Action2": {
+      "main": [
+        [
+          {
+            "node": "Build AI Image Candidate2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Build Next Image Candidate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Image Cancel2": {
+      "main": [
+        [
+          {
+            "node": "Send Cancelled2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check Image AI Action2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Image Decision2": {
+      "main": [
+        [
+          {
+            "node": "Get Recipe Data2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check Image Cancel2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Image Decision2": {
+      "main": [
+        [
+          {
+            "node": "Check Image Decision2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Image Buttons2": {
+      "main": [
+        [
+          {
+            "node": "Send Image Preview2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve Image2": {
+      "main": [
+        [
+          {
+            "node": "Build Image Buttons2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route Validation2": {
+      "main": [
+        [
+          {
+            "node": "Fetch Unsplash Photos3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Empty Name2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Recipe Name2": {
+      "main": [
+        [
+          {
+            "node": "Route Validation2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has Active Image Session1": {
+      "main": [
+        [
+          {
+            "node": "Is Publish Callback",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Missing Session Message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Callback & Build Resume URL1": {
+      "main": [
+        [
+          {
+            "node": "Has Active Image Session1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Callback Update1": {
+      "main": [
+        [
+          {
+            "node": "Parse Callback & Build Resume URL1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Validate Recipe Name2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger2": {
+      "main": [
+        [
+          {
+            "node": "Is Callback Update1",
+            "type": "main",
+            "index": 0
           }
         ]
       ]

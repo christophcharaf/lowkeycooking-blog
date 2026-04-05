@@ -126,7 +126,7 @@ function NutritionSection({
             <div
               key={row.label}
               className={`flex items-center justify-between px-5 py-3 ${
-                row.bold ? "bg-cream-50 dark:bg-gray-750" : ""
+                row.bold ? "bg-cream-50 dark:bg-gray-700" : ""
               }`}
             >
               <span
