@@ -14,7 +14,9 @@ export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations("Navbar");
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    queueMicrotask(() => setMounted(true));
+  }, []);
 
   // Default to light logo until mounted to avoid empty src on SSR
   const logoSrc = mounted && resolvedTheme === "dark" ? "/logo.png" : "/logo-dark.png";

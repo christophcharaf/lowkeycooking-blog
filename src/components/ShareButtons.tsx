@@ -70,7 +70,7 @@ export default function ShareButtons({
   const t = useTranslations("ShareButtons");
 
   useEffect(() => {
-    setUrl(window.location.href);
+    queueMicrotask(() => setUrl(window.location.href));
   }, []);
 
   const encodedUrl = encodeURIComponent(url);
