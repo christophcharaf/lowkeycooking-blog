@@ -134,33 +134,44 @@ export default function Navbar() {
 
         <div className="min-h-0 min-w-0 flex-1" aria-hidden />
 
-        <nav
-          ref={navRef}
+        <div
           className={cn(
-            "absolute left-1/2 top-1/2 z-[5] flex w-max -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-[40px] p-0 text-lg",
-            navCollapses && "pointer-events-none invisible",
+            "absolute left-1/2 top-1/2 z-[5] -translate-x-1/2 -translate-y-1/2 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+            navCollapses
+              ? "pointer-events-none opacity-0 motion-reduce:opacity-0"
+              : "opacity-100 motion-reduce:opacity-100",
           )}
           aria-hidden={navCollapses}
         >
-          <Link
-            href="/"
-            className="shrink-0 whitespace-nowrap text-lg font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+          <nav
+            ref={navRef}
+            className={cn(
+              "flex w-max items-center justify-center gap-[40px] p-0 text-lg transition-[transform,filter] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+              navCollapses
+                ? "translate-y-1 scale-[0.97] blur-[2px] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:blur-none"
+                : "translate-y-0 scale-100 blur-0",
+            )}
           >
-            {t("home")}
-          </Link>
-          <Link
-            href="/#recipes"
-            className="shrink-0 whitespace-nowrap text-lg font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-          >
-            {t("recipes")}
-          </Link>
-          <Link
-            href="/recipes"
-            className="shrink-0 whitespace-nowrap rounded-full bg-terra-600 px-5 py-2 text-lg font-semibold text-white shadow-sm transition-all hover:bg-terra-700 hover:shadow-md"
-          >
-            {t("browseAll")}
-          </Link>
-        </nav>
+            <Link
+              href="/"
+              className="shrink-0 whitespace-nowrap text-lg font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+            >
+              {t("home")}
+            </Link>
+            <Link
+              href="/#recipes"
+              className="shrink-0 whitespace-nowrap text-lg font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+            >
+              {t("recipes")}
+            </Link>
+            <Link
+              href="/recipes"
+              className="shrink-0 whitespace-nowrap rounded-full bg-terra-600 px-5 py-2 text-lg font-semibold text-white shadow-sm transition-all hover:bg-terra-700 hover:shadow-md"
+            >
+              {t("browseAll")}
+            </Link>
+          </nav>
+        </div>
 
         <div
           ref={toolsRef}
@@ -186,44 +197,82 @@ export default function Navbar() {
           <button
             type="button"
             className={cn(
-              "size-9 items-center justify-center rounded-lg text-gray-600 transition-colors hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800",
+              "size-9 items-center justify-center rounded-lg text-gray-600 transition-colors duration-200 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800",
               navCollapses ? "flex" : "hidden",
             )}
             onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
             aria-label={t("toggleMenu")}
           >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            <span className="relative block size-5">
+              <Menu
+                className={cn(
+                  "absolute inset-0 size-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none",
+                  open ? "scale-75 opacity-0" : "scale-100 opacity-100",
+                )}
+                aria-hidden
+                focusable={false}
+              />
+              <X
+                className={cn(
+                  "absolute inset-0 size-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none",
+                  open ? "scale-100 opacity-100" : "scale-75 opacity-0",
+                )}
+                aria-hidden
+                focusable={false}
+              />
+            </span>
           </button>
         </div>
       </div>
 
-      {/* Menu panel when nav is collapsed */}
-      {open && navCollapses && (
-        <nav className="border-t border-cream-200 bg-white px-6 pb-4 pt-3 dark:border-gray-700 dark:bg-gray-900">
-          <div className="flex flex-col gap-3">
-            <Link
-              href="/"
-              onClick={() => setOpen(false)}
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
+      {/* Menu panel when nav is collapsed — height + content fade */}
+      {navCollapses && (
+        <div
+          className={cn(
+            "grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+          )}
+        >
+          <div className="min-h-0 overflow-hidden">
+            <nav
+              className="border-t border-cream-200 bg-white px-6 pb-4 pt-3 dark:border-gray-700 dark:bg-gray-900"
+              aria-hidden={!open}
+              inert={!open ? true : undefined}
             >
-              {t("home")}
-            </Link>
-            <Link
-              href="/#recipes"
-              onClick={() => setOpen(false)}
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
-            >
-              {t("recipes")}
-            </Link>
-            <Link
-              href="/recipes"
-              onClick={() => setOpen(false)}
-              className="inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-terra-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-terra-700"
-            >
-              {t("browseAll")}
-            </Link>
+              <div
+                className={cn(
+                  "flex flex-col gap-3 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                  open
+                    ? "translate-y-0 opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100"
+                    : "pointer-events-none -translate-y-1 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-0",
+                )}
+              >
+                <Link
+                  href="/"
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
+                >
+                  {t("home")}
+                </Link>
+                <Link
+                  href="/#recipes"
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
+                >
+                  {t("recipes")}
+                </Link>
+                <Link
+                  href="/recipes"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex w-full shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-terra-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-terra-700"
+                >
+                  {t("browseAll")}
+                </Link>
+              </div>
+            </nav>
           </div>
-        </nav>
+        </div>
       )}
     </header>
   );
