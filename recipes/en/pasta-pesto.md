@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pasta Pesto
 description: A vibrant and incredibly easy pasta dish featuring fresh basil pesto, perfect for a quick, flavorful meal.
 image: https://images.unsplash.com/photo-1616299908398-9af1134ad522?w=1200&q=80

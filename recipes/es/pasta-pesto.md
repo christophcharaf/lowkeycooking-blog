@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pasta con Pesto Casero Fresco
 description: Disfruta de una pasta rápida y vibrante con un pesto fresco hecho en casa, perfecto para cualquier día de la semana.
 image: https://images.unsplash.com/photo-1616299908398-9af1134ad522?w=1200&q=80
