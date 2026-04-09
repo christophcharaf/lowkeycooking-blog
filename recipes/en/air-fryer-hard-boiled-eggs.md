@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Air Fryer Hard Boiled Eggs
 description: Perfectly cooked "hard-boiled" eggs, no water needed, with easy peel shells every time.
 image: https://images.unsplash.com/photo-1719384991231-b357a292022d?w=1200&q=80

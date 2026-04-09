@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Huevos Duros en Freidora de Aire
 description: Prepara huevos duros perfectamente cocidos y fáciles de pelar en tu freidora de aire, ¡sin necesidad de agua hirviendo!
 image: https://images.unsplash.com/photo-1719384991231-b357a292022d?w=1200&q=80
