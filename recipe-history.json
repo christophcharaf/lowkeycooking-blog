@@ -134,6 +134,15 @@
       "meal_type": "lunch",
       "protein": "vegetarian",
       "published_at": "2026-04-10"
+    },
+    {
+      "slug": "spring-vegetable-feta-frittata",
+      "name": "Spring Vegetable and Feta Frittata",
+      "status": "published",
+      "cuisine": "Greek",
+      "meal_type": "breakfast",
+      "protein": "eggs",
+      "published_at": "2026-04-10"
     }
   ]
 }

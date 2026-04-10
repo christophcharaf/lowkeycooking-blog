@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Frittata de Verduras de Primavera y Feta
 description: Una frittata vibrante y sabrosa, perfecta para un brunch o cena ligera.
 image: https://images.unsplash.com/photo-1602015999555-66df95cd9098?w=1200&q=80

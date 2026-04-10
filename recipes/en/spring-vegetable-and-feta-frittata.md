@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spring Vegetable and Feta Frittata
 description: A vibrant, easy frittata bursting with fresh spring veggies and salty feta cheese.
 image: https://images.unsplash.com/photo-1602015999555-66df95cd9098?w=1200&q=80
