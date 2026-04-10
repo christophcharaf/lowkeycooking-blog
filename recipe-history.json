@@ -116,6 +116,15 @@
       "meal_type": "lunch",
       "protein": "vegetarian",
       "published_at": "2026-04-03"
+    },
+    {
+      "slug": "quick-spiced-lentil-soup",
+      "name": "Quick Spiced Lentil Soup",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "lunch",
+      "protein": "vegetarian",
+      "published_at": "2026-04-10"
     }
   ]
 }
