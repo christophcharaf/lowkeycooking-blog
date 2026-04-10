@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Spiced Lentil Soup
 description: A hearty and flavorful lentil soup, ready in under an hour for a comforting weeknight meal.
 image: https://images.unsplash.com/photo-1610631087258-016a10fa7487?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sopa Rápida de Lentejas Especiadas
 description: Una reconfortante sopa de lentejas llena de sabor, perfecta para una comida rápida y nutritiva entre semana.
 image: https://images.unsplash.com/photo-1610631087258-016a10fa7487?w=1200&q=80
