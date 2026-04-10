@@ -125,6 +125,15 @@
       "meal_type": "lunch",
       "protein": "vegetarian",
       "published_at": "2026-04-10"
+    },
+    {
+      "slug": "speedy-chickpea-and-spinach-curry",
+      "name": "Speedy Chickpea and Spinach Curry",
+      "status": "published",
+      "cuisine": "Indian-inspired",
+      "meal_type": "lunch",
+      "protein": "vegetarian",
+      "published_at": "2026-04-10"
     }
   ]
 }

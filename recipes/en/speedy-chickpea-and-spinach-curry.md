@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Chickpea and Spinach Curry
 description: A quick and flavorful plant-based curry perfect for weeknights.
 image: https://images.unsplash.com/photo-1731328351443-ea233d9b8037?w=1200&q=80

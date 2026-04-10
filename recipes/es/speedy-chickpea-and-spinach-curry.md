@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Curry Rápido de Garbanzos y Espinacas
 description: Un curry cremoso, reconfortante y lleno de sabor, listo en menos de 30 minutos.
 image: https://images.unsplash.com/photo-1731328351443-ea233d9b8037?w=1200&q=80
