@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Tilapia al Horno con Vegetales de Primavera y Limón
 description: Una cena fácil y saludable en una sola bandeja, lista en menos de 30 minutos.
 image: https://images.unsplash.com/photo-1755796376264-0b154d9b2f0b?w=1200&q=80

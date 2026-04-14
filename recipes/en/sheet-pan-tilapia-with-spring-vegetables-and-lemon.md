@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Tilapia with Spring Vegetables and Lemon
 description: Easy sheet pan dinner featuring flaky tilapia, vibrant spring vegetables, and a bright lemon flavor.
 image: https://images.unsplash.com/photo-1755796376264-0b154d9b2f0b?w=1200&q=80

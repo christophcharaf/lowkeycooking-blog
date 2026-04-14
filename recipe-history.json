@@ -143,6 +143,15 @@
       "meal_type": "breakfast",
       "protein": "eggs",
       "published_at": "2026-04-10"
+    },
+    {
+      "slug": "sheet-pan-tilapia-spring-veg-lemon",
+      "name": "Sheet Pan Tilapia with Spring Vegetables and Lemon",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "dinner",
+      "protein": "tilapia",
+      "published_at": "2026-04-14"
     }
   ]
 }
