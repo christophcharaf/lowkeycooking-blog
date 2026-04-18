@@ -152,6 +152,15 @@
       "meal_type": "dinner",
       "protein": "tilapia",
       "published_at": "2026-04-14"
+    },
+    {
+      "slug": "quick-chickpea-and-spinach-curry-with-coconut-milk",
+      "name": "Quick Chickpea and Spinach Curry with Coconut Milk",
+      "status": "published",
+      "cuisine": "Indian-inspired",
+      "meal_type": "dinner",
+      "protein": "vegetarian",
+      "published_at": "2026-04-18"
     }
   ]
 }
