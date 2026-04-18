@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Chickpea and Spinach Curry with Coconut Milk
 description: A creamy, flavorful, and vibrant curry that comes together in under 30 minutes.
 image: https://images.unsplash.com/photo-1731328351443-ea233d9b8037?w=1200&q=80

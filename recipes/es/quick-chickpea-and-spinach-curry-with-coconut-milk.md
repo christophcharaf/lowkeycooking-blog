@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Curry Rápido de Garbanzos y Espinacas con Leche de Coco
 description: Un curry cremoso y reconfortante, listo en menos de 30 minutos, perfecto para cualquier noche.
 image: https://images.unsplash.com/photo-1731328351443-ea233d9b8037?w=1200&q=80
