@@ -20,11 +20,13 @@ import RecipeCard from "@/components/RecipeCard";
 import ShareButtons from "@/components/ShareButtons";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 
 export async function generateStaticParams() {
-  const locales = ["en", "es"];
-  return locales.flatMap((locale) =>
-    getAllRecipes(locale).map((r) => ({ locale, slug: r.slug })),
+  const { locales } = routing;
+  const recipesByLocale = await Promise.all(locales.map((locale) => getAllRecipes(locale)));
+  return locales.flatMap((locale, i) =>
+    recipesByLocale[i].map((r) => ({ locale, slug: r.slug })),
   );
 }
 
@@ -172,9 +174,19 @@ export async function generateMetadata({
       ? [{ url: recipe.image, width: 1200, height: 800, alt: recipe.title }]
       : [];
     const ogLocale = locale === "es" ? "es_ES" : "en_US";
+    const keywords = [
+      recipe.title,
+      recipe.category,
+      "recipe",
+      "homemade",
+      locale === "es" ? "receta casera" : "home cooking",
+      "lowkeycooking",
+    ].filter(Boolean) as string[];
+
     return {
       title: recipe.title,
       description: recipe.description,
+      keywords,
       alternates: {
         canonical: `/${locale}/recipes/${slug}`,
         languages: {
@@ -211,16 +223,20 @@ export default async function RecipePage({
 }) {
   const { locale, slug } = await params;
 
-  let recipe;
-  try {
-    recipe = await getRecipeBySlug(slug, locale);
-  } catch {
-    notFound();
-  }
+  const [recipeResult, allRecipes] = await Promise.all([
+    getRecipeBySlug(slug, locale).catch(() => null),
+    getAllRecipes(locale),
+  ]);
 
-  const allRecipes = getAllRecipes(locale);
+  if (!recipeResult) notFound();
+  const recipe = recipeResult;
+
   const related = allRecipes.filter((r) => r.slug !== slug).slice(0, 3);
-  const t = await getTranslations({ locale, namespace: "RecipePage" });
+  const [t, tCard] = await Promise.all([
+    getTranslations({ locale, namespace: "RecipePage" }),
+    getTranslations({ locale, namespace: "RecipeCard" }),
+  ]);
+  const cardLabels = { prep: tCard("prep"), cook: tCard("cook"), viewRecipe: tCard("viewRecipe") };
 
   function parseMinutes(timeStr: string): number {
     if (!timeStr) return 0;
@@ -453,7 +469,7 @@ export default async function RecipePage({
           description={recipe.description}
           image={recipe.image}
           slug={slug}
-          shareText={recipeToShareText(recipe)}
+          shareText={recipeToShareText(recipe, locale)}
         />
 
         <div className="print-hide mt-14 border-t border-cream-200 pt-10 dark:border-gray-700">
@@ -481,7 +497,7 @@ export default async function RecipePage({
             </div>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((r) => (
-                <RecipeCard key={r.slug} recipe={r} />
+                <RecipeCard key={r.slug} recipe={r} labels={cardLabels} />
               ))}
             </div>
           </div>

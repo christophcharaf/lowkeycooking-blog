@@ -38,9 +38,8 @@ export default function Navbar() {
     queueMicrotask(() => setMounted(true));
   }, []);
 
-  useEffect(() => {
-    if (!navCollapses) setOpen(false);
-  }, [navCollapses]);
+  // Derived: menu can only be open when the hamburger is visible
+  const isMenuOpen = navCollapses && open;
 
   useLayoutEffect(() => {
     const row = rowRef.current;
@@ -201,14 +200,14 @@ export default function Navbar() {
               navCollapses ? "flex" : "hidden",
             )}
             onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
+            aria-expanded={isMenuOpen}
             aria-label={t("toggleMenu")}
           >
             <span className="relative block size-5">
               <Menu
                 className={cn(
                   "absolute inset-0 size-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none",
-                  open ? "scale-75 opacity-0" : "scale-100 opacity-100",
+                  isMenuOpen ? "scale-75 opacity-0" : "scale-100 opacity-100",
                 )}
                 aria-hidden
                 focusable={false}
@@ -216,7 +215,7 @@ export default function Navbar() {
               <X
                 className={cn(
                   "absolute inset-0 size-5 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none",
-                  open ? "scale-100 opacity-100" : "scale-75 opacity-0",
+                  isMenuOpen ? "scale-100 opacity-100" : "scale-75 opacity-0",
                 )}
                 aria-hidden
                 focusable={false}
@@ -231,19 +230,19 @@ export default function Navbar() {
         <div
           className={cn(
             "grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
-            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+            isMenuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
           )}
         >
           <div className="min-h-0 overflow-hidden">
             <nav
               className="border-t border-cream-200 bg-white px-6 pb-4 pt-3 dark:border-gray-700 dark:bg-gray-900"
-              aria-hidden={!open}
-              inert={!open ? true : undefined}
+              aria-hidden={!isMenuOpen}
+              inert={!isMenuOpen ? true : undefined}
             >
               <div
                 className={cn(
                   "flex flex-col gap-3 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
-                  open
+                  isMenuOpen
                     ? "translate-y-0 opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100"
                     : "pointer-events-none -translate-y-1 opacity-0 motion-reduce:translate-y-0 motion-reduce:opacity-0",
                 )}

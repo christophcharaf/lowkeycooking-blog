@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { getAllRecipes } from "@/lib/recipes";
+import { routing } from "@/i18n/routing";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lowkeycooking.com";
-const LOCALES = ["en", "es"] as const;
+const LOCALES = routing.locales;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = LOCALES.flatMap((locale) => [
@@ -12,10 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/${locale}/recipes`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
   ]);
 
-  const recipeEntries: MetadataRoute.Sitemap = LOCALES.flatMap((locale) =>
-    getAllRecipes(locale).map((recipe) => ({
+  const recipesByLocale = await Promise.all(LOCALES.map((locale) => getAllRecipes(locale)));
+
+  const recipeEntries: MetadataRoute.Sitemap = LOCALES.flatMap((locale, i) =>
+    recipesByLocale[i].map((recipe) => ({
       url: `${BASE}/${locale}/recipes/${recipe.slug}`,
-      lastModified: now,
+      lastModified: recipe.lastModified ?? now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

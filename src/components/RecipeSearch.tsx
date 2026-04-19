@@ -1,24 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useDeferredValue } from "react";
 import { Search, X } from "lucide-react";
 import RecipeCard from "@/components/RecipeCard";
 import type { RecipeSummary } from "@/lib/recipes";
 import { useTranslations } from "next-intl";
 
+interface RecipeCardLabels {
+  prep: string;
+  cook: string;
+  viewRecipe: string;
+}
+
 interface RecipeSearchProps {
   recipes: RecipeSummary[];
+  cardLabels: RecipeCardLabels;
 }
 
 const CATEGORIES = ["all", "breakfast", "lunch", "dinner", "dessert"] as const;
 type Category = (typeof CATEGORIES)[number];
 const PAGE_SIZE = 12;
 
-export default function RecipeSearch({ recipes }: RecipeSearchProps) {
+export default function RecipeSearch({ recipes, cardLabels }: RecipeSearchProps) {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [page, setPage] = useState(1);
   const t = useTranslations("RecipeSearch");
+
+  const deferredQuery = useDeferredValue(query);
+  const deferredCategory = useDeferredValue(activeCategory);
 
   const categoryLabels: Record<Category, string> = {
     all: t("filterAll"),
@@ -30,8 +40,8 @@ export default function RecipeSearch({ recipes }: RecipeSearchProps) {
 
   const filtered = recipes.filter((recipe) => {
     const matchesCategory =
-      activeCategory === "all" || recipe.category === activeCategory;
-    const q = query.toLowerCase();
+      deferredCategory === "all" || recipe.category === deferredCategory;
+    const q = deferredQuery.toLowerCase();
     const matchesQuery =
       recipe.title.toLowerCase().includes(q) ||
       recipe.description.toLowerCase().includes(q);
@@ -107,7 +117,7 @@ export default function RecipeSearch({ recipes }: RecipeSearchProps) {
       {paginated.length > 0 ? (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {paginated.map((recipe) => (
-            <RecipeCard key={recipe.slug} recipe={recipe} />
+            <RecipeCard key={recipe.slug} recipe={recipe} labels={cardLabels} />
           ))}
         </div>
       ) : (

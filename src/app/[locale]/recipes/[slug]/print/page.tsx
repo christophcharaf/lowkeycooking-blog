@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import { getAllRecipes, getRecipeBySlug } from "@/lib/recipes";
 import PrintPreview from "@/components/PrintPreview";
+import { routing } from "@/i18n/routing";
 
 export async function generateStaticParams() {
-  const locales = ["en", "es"];
-  return locales.flatMap((locale) =>
-    getAllRecipes(locale).map((r) => ({ locale, slug: r.slug })),
+  const { locales } = routing;
+  const recipesByLocale = await Promise.all(locales.map((locale) => getAllRecipes(locale)));
+  return locales.flatMap((locale, i) =>
+    recipesByLocale[i].map((r) => ({ locale, slug: r.slug })),
   );
 }
 
