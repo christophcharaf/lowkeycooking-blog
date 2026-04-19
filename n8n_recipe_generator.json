@@ -2,41 +2,61 @@
   "nodes": [
     {
       "parameters": {
-        "options": {
-          "maxOutputTokens": 4000,
-          "temperature": 0.7
-        }
+        "promptType": "define",
+        "text": "=You are a recipe curator for LowKeyCooking — a food blog for home cooks.\nBrand values: budget-conscious, comfort-first, accessible, globally-inspired classics.\n\"Great food is a right for every home cook.\"\n\nCURRENT COLLECTION:\n{{ $json.history_summary }}\n\nSEASON: {{ $json.season }}\n\nEXCLUDED SLUGS (must not generate any of these):\n{{ $json.exclude_slugs }}\n\nCONSTRAINTS (apply to every candidate):\n- Max 30 minutes total (prep + cook combined)\n- Beginner skill — achievable by someone who rarely cooks\n- Grocery-store ingredients only (Walmart, Kroger, Target level)\n- No luxury ingredients: no truffle, lobster, wagyu, burrata, or expensive specialty items\n- No tofu\n- Fish must be tilapia, salmon, or mahi mahi only\n- Target 6-8 ingredients, hard max 10\n- Single cooking vessel only (one pan, one pot, or one baking sheet)\n- Max 6 steps — no special techniques (no deep frying, no emulsifying, no dough-making)\n\nYour task:\n1. Analyze the collection above. What cuisines, meal types, and proteins are missing or underrepresented?\n2. Generate exactly 3 diverse recipe candidates that fill the identified gaps and fit the current season.\n3. Select the single best candidate: most novel vs the existing collection, best seasonal fit, strongest brand alignment.\n\nAvoid generic names — be specific (e.g. not \"Chicken Stir Fry\" but \"Ginger Scallion Chicken Stir Fry\").\n\nReturn ONLY valid JSON, no prose, no code fences:\n{\n  \"gap_analysis\": \"one sentence describing what is missing from the collection\",\n  \"candidates\": [\n    { \"recipe_name\": \"string\", \"slug\": \"kebab-case\", \"cuisine\": \"string\", \"meal_type\": \"string\", \"protein\": \"string\", \"why\": \"string\" },\n    { \"recipe_name\": \"string\", \"slug\": \"kebab-case\", \"cuisine\": \"string\", \"meal_type\": \"string\", \"protein\": \"string\", \"why\": \"string\" },\n    { \"recipe_name\": \"string\", \"slug\": \"kebab-case\", \"cuisine\": \"string\", \"meal_type\": \"string\", \"protein\": \"string\", \"why\": \"string\" }\n  ],\n  \"selected\": {\n    \"recipe_name\": \"string\",\n    \"slug\": \"kebab-case\",\n    \"cuisine\": \"string\",\n    \"meal_type\": \"string\",\n    \"protein\": \"string\",\n    \"why_fit\": \"one sentence on why this is the best addition to the collection right now\"\n  }\n}",
+        "needsFallback": true
       },
-      "id": "53bc96fb-5dc2-47c7-8cf4-b79309e8c207",
-      "name": "Gemini 2.0 Flash1",
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
+      "id": "392fa5e0-395b-48c7-aa35-d79154b80bbd",
+      "name": "Generate Recipe Idea",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
       "position": [
-        1312,
-        -352
-      ],
-      "credentials": {
-        "googlePalmApi": {
-          "id": "6XAzmOq7MWDpjqDb",
-          "name": "Google Gemini(PaLM) Api account 2"
-        }
-      }
+        -12192,
+        -864
+      ]
     },
     {
       "parameters": {
-        "chatId": "306989280",
-        "text": "={{ '🎉 <b>Published!</b>\\n\\n<b>' + $('Build Preview URL').first().json.recipeName + '</b> is now live on the site.' }}",
+        "jsCode": "const raw = ($input.first().json.text || '').trim();\nlet parsed;\n\ntry {\n  parsed = JSON.parse(raw);\n} catch {\n  const fenced = raw.match(/```(?:json)?\\n([\\s\\S]*?)\\n```/i);\n  if (!fenced) {\n    throw new Error('Generate Recipe Idea did not return valid JSON: ' + raw);\n  }\n  parsed = JSON.parse(fenced[1]);\n}\n\nconst selected = parsed.selected || parsed;\n\nconst recipeName = (selected.recipe_name || '').trim();\nif (!recipeName) {\n  throw new Error('Missing recipe_name in Generate Recipe Idea output.');\n}\n\nconst slug = (selected.slug || recipeName)\n  .toLowerCase()\n  .replace(/[^a-z0-9]+/g, '-')\n  .replace(/^-+|-+$/g, '');\n\nreturn [{\n  json: {\n    recipe_name: recipeName,\n    slug,\n    why_fit: (selected.why_fit || '').trim(),\n    cuisine: (selected.cuisine || '').trim(),\n    meal_type: (selected.meal_type || '').trim(),\n    protein: (selected.protein || '').trim(),\n    gap_analysis: (parsed.gap_analysis || '').trim(),\n    candidates: parsed.candidates || []\n  }\n}];"
+      },
+      "id": "2f37f5f3-81a5-4e8b-8aa7-75652baaf1a0",
+      "name": "Parse Recipe Idea",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11840,
+        -864
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const recipes = [\n  'Lemon Butter Salmon',\n  'Shakshuka',\n  'Beef Bulgogi Rice Bowl',\n  'Roasted Tomato Soup',\n  'Crispy Chickpea Stir Fry',\n  'Lemon Ricotta Pancakes',\n  'Chicken Tikka Masala',\n  'Caprese Pasta',\n  'Korean Fried Chicken',\n  'Smashed Crispy Burger',\n  'Honey Garlic Glazed Shrimp',\n  'Lamb Kofta with Tzatziki',\n  'Harissa Roasted Cauliflower',\n  'Birria Quesatacos',\n  'Classic Banana Bread',\n  'One-Pan Garlic Butter Shrimp Pasta',\n  'Creamy Tuscan Chicken',\n  'Sheet Pan Fajitas',\n  'Egg Fried Rice',\n  'Black Bean Tacos',\n  'Greek Lemon Chicken',\n  'Teriyaki Salmon Bowl',\n  'Creamy Tomato Tortellini',\n  'Cheesy Baked Chicken Thighs',\n  'Sesame Noodles',\n  'Skillet Cornbread',\n  'Classic Brownies',\n  'Mango Chicken Curry',\n  'Pork Fried Rice',\n  'Vegetable Minestrone'\n];\n\nconst recipe = recipes[Math.floor(Math.random() * recipes.length)];\nconst slug = recipe.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');\n\nreturn [{ json: { recipe_name: recipe, slug, why_fit: 'fallback_random_recipe', cuisine: '', meal_type: '', protein: '' } }];"
+      },
+      "id": "c054aba9-dfeb-4f9c-9cf4-8e38b63fa83a",
+      "name": "Fallback Recipe Idea",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -11616,
+        -944
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "-5249412419",
+        "text": "={{ '🎉 <b>Published!</b>\\n\\n<b>' + $('Build Preview URL1').first().json.recipeName + '</b> is now live on the site.' }}",
         "additionalFields": {
           "parse_mode": "HTML"
         }
       },
-      "id": "b4eac923-40e4-48ad-849c-812bbaf6e7cb",
-      "name": "Notify Published",
+      "id": "fb1a01c8-52fb-49aa-95f6-b1a07155fc56",
+      "name": "Notify Published1",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        7152,
-        -688
+        -4320,
+        -1104
       ],
       "webhookId": "b4160ad3-c6ba-40a3-8565-d66c5fd84b79",
       "credentials": {
@@ -48,19 +68,19 @@
     },
     {
       "parameters": {
-        "chatId": "306989280",
-        "text": "={{ '⏳ <b>Approved!</b>\\n\\nPublishing <b>' + $('Build Preview URL').first().json.recipeName + '</b> to production now...' }}",
+        "chatId": "-5249412419",
+        "text": "={{ '⏳ <b>Approved!</b>\\n\\nPublishing <b>' + $('Build Preview URL1').first().json.recipeName + '</b> to production now...' }}",
         "additionalFields": {
           "parse_mode": "HTML"
         }
       },
-      "id": "76ca512a-371d-45be-9f2a-c84f452fe25a",
-      "name": "Notify Approved",
+      "id": "5d3ec462-75f2-4e9d-86b6-86fcfd08fbe9",
+      "name": "Notify Approved1",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5584,
-        -496
+        -6784,
+        -1104
       ],
       "webhookId": "4aa31d11-6163-4850-8352-787e1ad883a8",
       "credentials": {
@@ -72,19 +92,19 @@
     },
     {
       "parameters": {
-        "chatId": "306989280",
-        "text": "={{ '❌ <b>Recipe Rejected</b>\\n\\n<b>' + $('Build Preview URL').first().json.recipeName + '</b> has been discarded and will not be published.' }}",
+        "chatId": "-5249412419",
+        "text": "={{ '❌ <b>Recipe Rejected</b>\\n\\n<b>' + $('Build Preview URL1').first().json.recipeName + '</b> has been discarded and will not be published.' }}",
         "additionalFields": {
           "parse_mode": "HTML"
         }
       },
-      "id": "24c47deb-aaea-470e-9302-4c20236038c2",
-      "name": "Notify Rejected",
+      "id": "349bbd6f-2333-47a7-a7ea-a4ae4716fe25",
+      "name": "Notify Rejected1",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5584,
-        -96
+        -6784,
+        -912
       ],
       "webhookId": "f6745d40-5a79-4046-a521-643dd1b73204",
       "credentials": {
@@ -97,7 +117,7 @@
     {
       "parameters": {
         "method": "PATCH",
-        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/refs/heads/' + $('Build Main Tree Request').first().json.default_branch }}",
+        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/git/refs/heads/' + $('Build Main Tree Request1').first().json.default_branch }}",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -118,13 +138,13 @@
         "jsonBody": "={{ JSON.stringify({ sha: $json.sha }) }}",
         "options": {}
       },
-      "id": "f14e0c2f-86fa-4fb0-a35e-af2144468f98",
-      "name": "Update Main Branch Ref",
+      "id": "71df16cc-271e-450b-9f9e-5dcb7e2328a6",
+      "name": "Update Main Branch Ref1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        6928,
-        -688
+        -5216,
+        -1104
       ],
       "credentials": {
         "githubApi": {
@@ -157,13 +177,13 @@
         "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "da5f6965-9755-49a7-94af-2243bb8252ed",
-      "name": "Create Main Commit",
+      "id": "d655b6f1-4473-481f-8cac-2705ac68afc3",
+      "name": "Create Main Commit1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        6704,
-        -688
+        -5440,
+        -1104
       ],
       "credentials": {
         "githubApi": {
@@ -174,15 +194,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Main Tree Request').first().json.parent_commit_sha;\nconst message = $('Build Main Tree Request').first().json.commit_message;\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
+        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Main Tree Request1').first().json.parent_commit_sha;\nconst message = $('Build Main Tree Request1').first().json.commit_message;\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
       },
-      "id": "74314add-bd31-4a76-b606-4dbf91b18903",
-      "name": "Build Main Commit Request",
+      "id": "3b9686f4-278d-4620-9cc3-76753a01ec2f",
+      "name": "Build Main Commit Request1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        6480,
-        -688
+        -5664,
+        -1104
       ]
     },
     {
@@ -209,13 +229,13 @@
         "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "f11dc124-d523-475f-ac1f-88eb173ae5a5",
-      "name": "Create Main Tree",
+      "id": "9208a7e1-b08c-4d53-9415-63b022e64c24",
+      "name": "Create Main Tree1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        6256,
-        -688
+        -5888,
+        -1104
       ],
       "credentials": {
         "githubApi": {
@@ -226,20 +246,20 @@
     },
     {
       "parameters": {
-        "jsCode": "const cleanData = $('Remove Draft Frontmatter').first().json;\nconst branchInfo = $input.first().json;\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\nconst defaultBranch = $('Get Repo Info').first().json.default_branch;\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        { path: 'recipes/en/' + cleanData.en_filename, mode: '100644', type: 'blob', content: cleanData.en_content },\n        { path: 'recipes/es/' + cleanData.es_filename, mode: '100644', type: 'blob', content: cleanData.es_content }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: cleanData.commit_message,\n    default_branch: defaultBranch\n  }\n}];"
+        "jsCode": "const cleanData = $('Remove Draft Frontmatter1').first().json;\nconst branchInfo = $input.first().json;\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\nconst defaultBranch = $('Get Repo Info1').first().json.default_branch;\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        { path: 'recipes/en/' + cleanData.en_filename, mode: '100644', type: 'blob', content: cleanData.en_content },\n        { path: 'recipes/es/' + cleanData.es_filename, mode: '100644', type: 'blob', content: cleanData.es_content }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: cleanData.commit_message,\n    default_branch: defaultBranch\n  }\n}];"
       },
-      "id": "9f04e1f3-eaee-4771-a15f-9b5d94d50865",
-      "name": "Build Main Tree Request",
+      "id": "ac4e0225-3294-44ea-a225-68cf3955d99b",
+      "name": "Build Main Tree Request1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        6032,
-        -688
+        -6112,
+        -1104
       ]
     },
     {
       "parameters": {
-        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/branches/' + $('Get Repo Info').first().json.default_branch }}",
+        "url": "={{ 'https://api.github.com/repos/christophcharaf/lowkeycooking-blog/branches/' + $('Get Repo Info1').first().json.default_branch }}",
         "authentication": "predefinedCredentialType",
         "nodeCredentialType": "githubApi",
         "sendHeaders": true,
@@ -257,13 +277,13 @@
         },
         "options": {}
       },
-      "id": "222fb21c-79b0-4c4c-ae89-169e1ace9d88",
-      "name": "Get Main Branch Info",
+      "id": "735ff47b-15a6-4152-bc2f-73915847db57",
+      "name": "Get Main Branch Info1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        5808,
-        -688
+        -6336,
+        -1104
       ],
       "credentials": {
         "githubApi": {
@@ -274,15 +294,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter').first().json;\nfunction removeDraft(content) {\n  return content.replace(/^---\\ndraft: true\\n/, '---\\n');\n}\nreturn [{\n  json: {\n    en_filename: draftData.en_filename,\n    en_content: removeDraft(draftData.en_content),\n    es_filename: draftData.es_filename,\n    es_content: removeDraft(draftData.es_content),\n    commit_message: draftData.commit_message\n  }\n}];"
+        "jsCode": "const draftData = $('Inject Draft Frontmatter1').first().json;\nfunction removeDraft(content) {\n  return content.replace(/^---\\ndraft: true\\n/, '---\\n');\n}\nreturn [{\n  json: {\n    en_filename: draftData.en_filename,\n    en_content: removeDraft(draftData.en_content),\n    es_filename: draftData.es_filename,\n    es_content: removeDraft(draftData.es_content),\n    commit_message: draftData.commit_message\n  }\n}];"
       },
-      "id": "6f9b2712-a729-473e-9a19-c2afb2a1df5c",
-      "name": "Remove Draft Frontmatter",
+      "id": "17d0049e-a5f3-4e45-99ce-57d78211e546",
+      "name": "Remove Draft Frontmatter1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5584,
-        -688
+        -6560,
+        -1104
       ]
     },
     {
@@ -291,7 +311,8 @@
           "options": {
             "caseSensitive": true,
             "leftValue": "",
-            "typeValidation": "strict"
+            "typeValidation": "strict",
+            "version": 1
           },
           "conditions": [
             {
@@ -308,13 +329,13 @@
         },
         "options": {}
       },
-      "id": "8acc6f4c-09da-4bbb-833f-5e6842766977",
-      "name": "Check Decision",
+      "id": "adf137eb-3ecb-4aa8-b417-51897abe0d05",
+      "name": "Check Decision1",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        5360,
-        -384
+        -7008,
+        -1008
       ]
     },
     {
@@ -322,13 +343,13 @@
         "resume": "webhook",
         "options": {}
       },
-      "id": "2d01c680-c060-45c5-847e-c14522314ba4",
-      "name": "Wait for Approval",
+      "id": "74c676c2-55b2-467a-81c5-aad29311274f",
+      "name": "Wait for Approval1",
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        5152,
-        -384
+        -7232,
+        -1008
       ],
       "webhookId": "lowkeycooking-recipe-approval"
     },
@@ -345,13 +366,13 @@
                   {
                     "text": "✅ Approve and Publish",
                     "additionalFields": {
-                      "url": "={{ $('Build Preview URL').first().json.approveUrl }}"
+                      "url": "={{ $('Build Preview URL1').first().json.approveUrl }}"
                     }
                   },
                   {
                     "text": "❌ Reject",
                     "additionalFields": {
-                      "url": "={{ $('Build Preview URL').first().json.rejectUrl }}"
+                      "url": "={{ $('Build Preview URL1').first().json.rejectUrl }}"
                     }
                   }
                 ]
@@ -363,13 +384,13 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "36362054-8154-4a22-b477-244a3aefaa41",
-      "name": "Send Telegram Message",
+      "id": "99b89406-73bd-4a0f-828b-0ed33f4b7fb8",
+      "name": "Send Telegram Message1",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        4928,
-        -384
+        -7456,
+        -1008
       ],
       "webhookId": "5b728623-535d-403d-b01c-a3904d128411",
       "credentials": {
@@ -381,28 +402,28 @@
     },
     {
       "parameters": {
-        "jsCode": "const data = $('Build Preview URL').first().json;\nconst text = '<b>🍳 New Recipe Draft: ' + data.recipeName + '</b>\\n\\nA new recipe has been generated and is ready for your review on the preview site.\\n\\n<b>Preview:</b>\\n' + data.previewUrl;\nreturn [{ json: { text } }];"
+        "jsCode": "const data = $('Build Preview URL1').first().json;\n\nlet parsedRecipe = {};\ntry { parsedRecipe = $('Parse Recipe Idea').first().json || {}; } catch (e) {}\n\nconst gapAnalysis = parsedRecipe.gap_analysis\n  ? '\\n\\n<b>Gap filled:</b> ' + parsedRecipe.gap_analysis\n  : '';\nconst whyFit = parsedRecipe.why_fit\n  ? '\\n<b>Why this recipe:</b> ' + parsedRecipe.why_fit\n  : '';\n\nconst candidates = parsedRecipe.candidates || [];\nconst candidatesText = candidates.length > 0\n  ? '\\n\\n<b>Other candidates considered:</b>\\n' +\n    candidates.map((c, i) => (i + 1) + '. ' + c.recipe_name + ' (' + c.cuisine + ', ' + c.meal_type + ')').join('\\n')\n  : '';\n\nconst text = '<b>New Recipe Draft: ' + data.recipeName + '</b>\\n\\nA new recipe has been generated and is ready for your review.' +\n  gapAnalysis + whyFit + candidatesText +\n  '\\n\\n<b>Preview:</b>\\n' + data.previewUrl;\nreturn [{ json: { text } }];"
       },
-      "id": "e64498c5-2ccd-4901-a7e2-59296c9eb8cd",
-      "name": "Build Telegram Message",
+      "id": "414278e4-2800-4a39-ba49-0930fbc4bfa9",
+      "name": "Build Telegram Message1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4656,
-        -384
+        -7680,
+        -1008
       ]
     },
     {
       "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter').first().json;\nconst resumeUrl = $execution.resumeUrl;\nconst slug = draftData.recipe_slug;\nconst previewUrl = 'https://lowkeycooking-blog-git-drafts-christophcharafs-projects.vercel.app/en/recipes/' + slug;\nconst approveUrl = resumeUrl + '?action=approve';\nconst rejectUrl = resumeUrl + '?action=reject';\nconst recipeName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');\nreturn [{ json: { previewUrl, approveUrl, rejectUrl, slug, recipeName } }];"
+        "jsCode": "const draftData = $('Inject Draft Frontmatter1').first().json;\nconst resumeUrl = $execution.resumeUrl;\nconst slug = draftData.recipe_slug;\nconst previewUrl = 'https://lowkeycooking-blog-git-drafts-christophcharafs-projects.vercel.app/en/recipes/' + slug;\nconst approveUrl = resumeUrl + '&action=approve';\nconst rejectUrl = resumeUrl + '&action=reject';\nconst recipeName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');\nreturn [{ json: { previewUrl, approveUrl, rejectUrl, slug, recipeName } }];"
       },
-      "id": "13b8c254-704f-4b6c-892b-a193518ca7b5",
-      "name": "Build Preview URL",
+      "id": "c75c6da1-715b-48ab-8c28-7a60a1d301a4",
+      "name": "Build Preview URL1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4144,
-        -368
+        -8128,
+        -864
       ]
     },
     {
@@ -429,13 +450,13 @@
         "jsonBody": "={{ JSON.stringify({ sha: $json.sha }) }}",
         "options": {}
       },
-      "id": "eb40209c-7dd5-4316-bb8b-335684f697df",
-      "name": "Update Branch Ref",
+      "id": "9f871270-12b7-4c69-a2a7-754782fb3c73",
+      "name": "Update Branch Ref1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3920,
-        -368
+        -8352,
+        -864
       ],
       "credentials": {
         "githubApi": {
@@ -468,13 +489,13 @@
         "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "3f12c41a-94cd-4b93-b9f0-7bcb0459f950",
-      "name": "Create Commit",
+      "id": "cb83d810-e4ae-4233-be2d-9b14651c4740",
+      "name": "Create Commit1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3696,
-        -368
+        -8576,
+        -864
       ],
       "credentials": {
         "githubApi": {
@@ -485,15 +506,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Create Tree Request').first().json.parent_commit_sha;\nconst message = $('Build Create Tree Request').first().json.commit_message;\n\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
+        "jsCode": "const newTreeSha = $input.first().json.sha;\nconst parentSha = $('Build Create Tree Request1').first().json.parent_commit_sha;\nconst message = $('Build Create Tree Request1').first().json.commit_message;\n\nreturn [{\n  json: {\n    body: {\n      message: message,\n      tree: newTreeSha,\n      parents: [parentSha]\n    }\n  }\n}];"
       },
-      "id": "45f02655-64f3-45f3-bea3-f9bcc3b58931",
-      "name": "Build Create Commit Request",
+      "id": "065e75b1-4a51-43d1-b4c8-911e3138af47",
+      "name": "Build Create Commit Request1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3472,
-        -368
+        -8800,
+        -864
       ]
     },
     {
@@ -520,13 +541,13 @@
         "jsonBody": "={{ JSON.stringify($json.body) }}",
         "options": {}
       },
-      "id": "64249f9f-f4a1-46c5-a393-c476dec6d999",
-      "name": "Create Tree",
+      "id": "aaf30cf3-e27a-4c9a-9af3-58bc01038429",
+      "name": "Create Tree1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        3248,
-        -368
+        -9024,
+        -864
       ],
       "credentials": {
         "githubApi": {
@@ -537,15 +558,15 @@
     },
     {
       "parameters": {
-        "jsCode": "const draftData = $('Inject Draft Frontmatter').first().json;\nconst branchInfo = $input.first().json;\n// GET /branches/{branch} returns: { commit: { sha, commit: { tree: { sha } } } }\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\n\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        {\n          path: 'recipes/en/' + draftData.en_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.en_content\n        },\n        {\n          path: 'recipes/es/' + draftData.es_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.es_content\n        }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: draftData.commit_message,\n    default_branch: 'drafts'\n  }\n}];"
+        "jsCode": "const draftData = $('Inject Draft Frontmatter1').first().json;\nconst branchInfo = $input.first().json;\n// GET /branches/{branch} returns: { commit: { sha, commit: { tree: { sha } } } }\nconst parentCommitSha = branchInfo.commit.sha;\nconst currentTreeSha = branchInfo.commit.commit.tree.sha;\n\nreturn [{\n  json: {\n    body: {\n      base_tree: currentTreeSha,\n      tree: [\n        {\n          path: 'recipes/en/' + draftData.en_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.en_content\n        },\n        {\n          path: 'recipes/es/' + draftData.es_filename,\n          mode: '100644',\n          type: 'blob',\n          content: draftData.es_content\n        }\n      ]\n    },\n    parent_commit_sha: parentCommitSha,\n    commit_message: draftData.commit_message,\n    default_branch: 'drafts'\n  }\n}];"
       },
-      "id": "ec2713d0-80fc-4c91-b3d8-6728f0dd5e1f",
-      "name": "Build Create Tree Request",
+      "id": "8f1bab9d-49dc-4976-a337-ae8ef9ee896b",
+      "name": "Build Create Tree Request1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3024,
-        -368
+        -9248,
+        -864
       ]
     },
     {
@@ -568,13 +589,13 @@
         },
         "options": {}
       },
-      "id": "ab39dd4b-b727-4d5e-9324-ecdd36678b37",
-      "name": "Get Branch Info",
+      "id": "dbab28dc-22fb-4425-96ad-415a6574dc86",
+      "name": "Get Branch Info1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2800,
-        -368
+        -9472,
+        -864
       ],
       "credentials": {
         "githubApi": {
@@ -603,13 +624,13 @@
         },
         "options": {}
       },
-      "id": "c4058583-89ce-4456-a474-f809dc7b6d8a",
-      "name": "Get Repo Info",
+      "id": "f001742a-dc8d-46be-807a-5707b1dcf2b5",
+      "name": "Get Repo Info1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2576,
-        -368
+        -9696,
+        -864
       ],
       "credentials": {
         "githubApi": {
@@ -622,112 +643,76 @@
       "parameters": {
         "jsCode": "const prepareData = $input.first().json;\n\nfunction addDraft(content) {\n  return content.replace(/^---\\n/, '---\\ndraft: true\\n');\n}\n\nconst slug = prepareData.en_filename.replace('.md', '');\n\nreturn [{\n  json: {\n    en_filename: prepareData.en_filename,\n    en_content: addDraft(prepareData.en_content),\n    es_filename: prepareData.es_filename,\n    es_content: addDraft(prepareData.es_content),\n    commit_message: prepareData.commit_message,\n    recipe_slug: slug\n  }\n}];"
       },
-      "id": "d897d976-1f90-4694-9f43-25369be05f50",
-      "name": "Inject Draft Frontmatter",
+      "id": "2d4d7220-bb11-48dd-ad74-fb7b6c8c79d5",
+      "name": "Inject Draft Frontmatter1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2352,
-        -368
+        -9920,
+        -864
       ]
     },
     {
       "parameters": {
         "jsCode": "const items = $input.all();\nconst en = items.find(i => i.json.lang === 'en');\nconst es = items.find(i => i.json.lang === 'es');\n\nif (!en || !es) {\n  throw new Error('Missing language variant. Got: ' + JSON.stringify(items.map(i => i.json.lang)));\n}\n\nconst recipeName = en.json.filename.replace('.md', '');\n\nreturn [{\n  json: {\n    en_filename: en.json.filename,\n    en_content: en.json.content,\n    es_filename: es.json.filename,\n    es_content: es.json.content,\n    commit_message: 'feat: add ' + recipeName + ' recipe (EN + ES)'\n  }\n}];"
       },
-      "id": "2798210a-dbc6-446f-adfa-9c4b4702591a",
-      "name": "Prepare Commit",
+      "id": "34650166-ad21-4ed1-9699-0704604d5cd4",
+      "name": "Prepare Commit1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2128,
-        -368
+        -10144,
+        -864
       ]
     },
     {
       "parameters": {},
-      "id": "32003317-aa8e-45fa-8797-c4641ec3484a",
-      "name": "Merge",
+      "id": "b362932f-1405-4546-b16a-cb8d8a0af180",
+      "name": "Merge1",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
       "position": [
-        1904,
-        -368
+        -10384,
+        -944
       ]
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.text;\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'es' } }];"
+        "jsCode": "const item = $input.first().json;\nconst raw = item.text ?? item.output ?? item.response ?? item.content ?? '';\nif (!raw) throw new Error('No content from AI node. Keys received: ' + Object.keys(item).join(', '));\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'es' } }];"
       },
-      "id": "bf68fef6-bc7a-4fe7-a887-33d12aa543b1",
-      "name": "Parse Filename & Clean ES",
+      "id": "e9148b43-c6ef-4a92-ac6e-4aadfb6a1c1c",
+      "name": "Parse Filename & Clean ES1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1632,
-        -176
+        -10592,
+        -720
       ]
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.text;\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'en' } }];"
+        "jsCode": "const item = $input.first().json;\nconst raw = item.text ?? item.output ?? item.response ?? item.content ?? '';\nif (!raw) throw new Error('No content from AI node. Keys received: ' + Object.keys(item).join(', '));\n\nlet content = raw\n  .replace(/^```(?:markdown|md)?\\n?/i, '')\n  .replace(/\\n?```\\s*$/i, '')\n  .trim();\n\nconst filenameMatch = content.match(/<!--\\s*filename:\\s*([\\w-]+\\.md)\\s*-->/);\nconst filename = filenameMatch ? filenameMatch[1] : 'recipe-' + Date.now() + '.md';\n\nconst cleanContent = content\n  .replace(/<!--\\s*filename:[^>]+-->\\n?/, '')\n  .trim();\n\nreturn [{ json: { filename, content: cleanContent, lang: 'en' } }];"
       },
-      "id": "2c8308f6-5de0-47de-a89c-0fca98d7dfd4",
-      "name": "Parse Filename & Clean EN",
+      "id": "887feea5-feef-4bcf-9814-f9ebcbbcb3f4",
+      "name": "Parse Filename & Clean EN1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1632,
-        -560
+        -10592,
+        -1120
       ]
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=Eres un generador de contenido de recetas para un blog de cocina llamado LowKeyCooking. Tu tarea es generar un único archivo de receta completo en formato markdown — nada más. No incluyas ninguna explicación, introducción ni comentario antes o después del markdown. Genera únicamente el contenido del archivo markdown, comenzando con ---.\n\nGenera un archivo markdown completo para la siguiente receta: {{ $json.recipe_name }}\n\nEl resultado debe seguir exactamente esta estructura:\n\n<!-- filename: [nombre-receta-en-minusculas-con-guiones.md] -->\n---\ntitle: [Nombre completo de la receta en español]\ndescription: [Una sola frase — apetitosa y específica, máximo 20 palabras, en español]\nimage: {{ $json.image_url }}\nprep_time: [ej. 15 min]\ncook_time: [ej. 30 min]\nservings: [ej. 4]\nutensils:\n  - name: [Utensilio 1 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\n  - name: [Utensilio 2 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\n  - name: [Utensilio 3 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\n  - name: [Utensilio 4 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]\nnutrition:\n  calories: [solo número, sin unidades]\n  protein: [ej. 12g]\n  carbs: [ej. 34g]\n  fat: [ej. 14g]\n  fiber: [ej. 3g]\n  sugar: [ej. 5g]\n  sodium: [ej. 480mg]\n---\n\n## Ingredientes\n\n- [Cantidad + ingrediente]\n- [Cantidad + ingrediente]\n[lista todos los ingredientes, uno por línea]\n\n## Instrucciones\n\n1. [Paso claro y específico]\n2. [Paso claro y específico]\n[numera todos los pasos, una acción por paso]\n\nReglas:\n- El nombre del archivo (filename) debe ser el nombre de la receta en inglés, en minúsculas, con espacios reemplazados por guiones (ej. pulled-pork-tacos.md). Esto es imprescindible para que coincida con el archivo en inglés.\n- La URL de la imagen ya fue proporcionada — úsala exactamente como está, sin modificarla\n- Las URLs de utensilios deben usar el formato de búsqueda de Amazon en inglés: https://www.amazon.com/s?k=search+terms\n- Incluye entre 4 y 6 utensilios realmente usados en la receta\n- Los valores nutricionales deben ser estimaciones realistas por porción\n- Los ingredientes deben incluir cantidades y unidades\n- Las instrucciones deben estar numeradas, ser claras y escritas en segunda persona (\"Añade la harina...\", no \"Deberías añadir...\")\n- No incluyas ningún texto fuera del contenido markdown\n- El archivo debe tener un frontmatter YAML válido — usa exactamente 2 espacios de indentación para los elementos de lista\n- Todo el contenido visible (title, description, ingredientes, instrucciones) debe estar en español",
-        "needsFallback": true
+        "jsCode": "const results = $input.first().json.results || [];\nconst recipeName = $('Parse Recipe Idea').first().json.recipe_name || $('Fallback Recipe Idea').first().json.recipe_name;\n\nif (!results.length) throw new Error('No photos found for: ' + recipeName);\n\nconst imageUrl = results[0].urls.regular.split('?')[0] + '?w=1200&q=80';\n\nreturn [{ json: { recipe_name: recipeName, image_url: imageUrl } }];"
       },
-      "id": "883594b1-82ea-43e5-8013-1860ce3742c4",
-      "name": "Generate Recipe ES",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        1312,
-        -176
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000,
-      "maxTries": 5
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=You are a recipe content generator for a food blog called LowKeyCooking. Your job is to output a single, complete recipe in markdown format — nothing else. Do not include any explanation, intro text, or commentary before or after the markdown. Output only the raw markdown file content, starting with ---.\n\nGenerate a complete recipe markdown file for: {{ $json.recipe_name }}\n\nThe output must follow this exact structure:\n\n<!-- filename: [recipe-name-lowercase-hyphens.md] -->\n---\ntitle: [Full recipe name]\ndescription: [One sentence — appetizing, specific, max 20 words]\nimage: {{ $json.image_url }}\nprep_time: [e.g. 15 mins]\ncook_time: [e.g. 30 mins]\nservings: [e.g. 4]\nutensils:\n  - name: [Utensil 1]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 2]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 3]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\n  - name: [Utensil 4]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]\nnutrition:\n  calories: [number only, no units]\n  protein: [e.g. 12g]\n  carbs: [e.g. 34g]\n  fat: [e.g. 14g]\n  fiber: [e.g. 3g]\n  sugar: [e.g. 5g]\n  sodium: [e.g. 480mg]\n---\n\n## Ingredients\n\n- [Quantity + ingredient]\n- [Quantity + ingredient]\n[list all ingredients, one per line]\n\n## Instructions\n\n1. [Clear, specific step]\n2. [Clear, specific step]\n[number all steps, one action per step]\n\nRules:\n- Filename must be the recipe name in lowercase with spaces replaced by hyphens (e.g. pulled-pork-tacos.md)\n- The image URL has already been provided above — use it exactly as given, do not modify it\n- Utensil URLs must use Amazon search format: https://www.amazon.com/s?k=search+terms\n- Include 4–6 utensils actually used in the recipe\n- Nutrition values should be realistic estimates per serving\n- Ingredients must include quantities and units\n- Instructions must be numbered, clear, and written in second person (\"Add the flour...\", not \"You should add...\")\n- Do not include any text outside the markdown content\n- The file must have valid YAML frontmatter — use exact 2-space indentation for list items",
-        "needsFallback": true
-      },
-      "id": "483fc167-d36d-475a-bbd8-e226424d1bb5",
-      "name": "Generate Recipe EN",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.4,
-      "position": [
-        1312,
-        -560
-      ],
-      "retryOnFail": true,
-      "waitBetweenTries": 5000,
-      "maxTries": 5
-    },
-    {
-      "parameters": {
-        "jsCode": "const results = $input.first().json.results || [];\nconst recipeName = $('Pick Recipe').first().json.recipe_name;\n\nif (!results.length) throw new Error('No photos found for: ' + recipeName);\n\nconst imageUrl = results[0].urls.regular.split('?')[0] + '?w=1200&q=80';\n\nreturn [{ json: { recipe_name: recipeName, image_url: imageUrl } }];"
-      },
-      "id": "62778e39-a86b-4e42-b2ce-e59c39749329",
-      "name": "Extract Largest Image URL",
+      "id": "af64a397-b1fc-4dd4-8111-abb1293825da",
+      "name": "Extract Largest Image URL1",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1104,
-        -368
+        -11168,
+        -864
       ]
     },
     {
@@ -752,46 +737,29 @@
         },
         "options": {}
       },
-      "id": "4e6ac07e-61be-4afb-b40c-7f0b09163352",
-      "name": "Fetch Unsplash Photos",
+      "id": "3fabd4d1-89e0-4ff1-8c0c-29bf64a1c219",
+      "name": "Fetch Unsplash Photos1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        912,
-        -368
+        -11392,
+        -864
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Pick a random recipe from a diverse list — avoids duplicating existing ones\nconst recipes = [\n  'Lemon Butter Salmon',\n  'Wild Mushroom Risotto',\n  'Thai Green Curry',\n  'Classic French Omelette',\n  'Pulled Pork Tacos',\n  'Shakshuka',\n  'Beef Bulgogi Rice Bowl',\n  'Roasted Tomato Soup',\n  'Crispy Chickpea Stir Fry',\n  'Lemon Ricotta Pancakes',\n  'Miso Glazed Eggplant',\n  'Chicken Tikka Masala',\n  'Caprese Pasta',\n  'Korean Fried Chicken',\n  'Matcha Basque Cheesecake',\n  'Smashed Crispy Burger',\n  'Gnocchi with Brown Butter and Sage',\n  'Vietnamese Banh Mi',\n  'Lobster Bisque',\n  'Rustic Peach Galette',\n  'Harissa Roasted Cauliflower',\n  'Pad See Ew',\n  'Birria Quesatacos',\n  'French Onion Soup',\n  'Honey Garlic Glazed Shrimp',\n  'Lamb Kofta with Tzatziki',\n  'Truffle Mac and Cheese',\n  'Butter Chicken',\n  'Zucchini Fritters',\n  'Sesame Ramen'\n];\n\nconst recipe = recipes[Math.floor(Math.random() * recipes.length)];\nreturn [{ json: { recipe_name: recipe } }];"
+        "content": "## Automatic workflow every 3 days\n",
+        "height": 80,
+        "width": 400
       },
-      "id": "0e4b51f5-f4d5-47b3-9d72-3f67a42eedb8",
-      "name": "Pick Recipe",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.stickyNote",
       "position": [
-        720,
-        -368
-      ]
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "daysInterval": 3
-            }
-          ]
-        }
-      },
-      "id": "807bdc7d-d731-46db-ad4c-563d1c363186",
-      "name": "Every 3 Days",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.2,
-      "position": [
-        496,
-        -368
-      ]
+        -13328,
+        -848
+      ],
+      "typeVersion": 1,
+      "id": "2590f9f7-4afc-46b9-9053-96b49625145d",
+      "name": "Sticky Note"
     },
     {
       "parameters": {
@@ -801,11 +769,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        4416,
-        -368
+        -7904,
+        -864
       ],
-      "id": "b36514d8-baca-4acd-99a2-238444ee76ab",
-      "name": "HTTP Request",
+      "id": "37da6faf-482a-4878-8491-5665c64a7a11",
+      "name": "HTTP Request1",
       "retryOnFail": false,
       "maxTries": 5,
       "waitBetweenTries": 5000,
@@ -814,19 +782,34 @@
     },
     {
       "parameters": {
+        "amount": 30
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -7680,
+        -816
+      ],
+      "id": "fe5ee4bf-0468-4f92-9e0b-22afeeb854f0",
+      "name": "Wait1",
+      "webhookId": "21884687-d4f6-41a7-a4d4-20960669973c"
+    },
+    {
+      "parameters": {
         "modelName": "models/gemini-2.5-flash-lite",
         "options": {
-          "maxOutputTokens": 4000
+          "maxOutputTokens": 8000,
+          "temperature": 0.7
         }
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1424,
-        -352
+        -12192,
+        -640
       ],
-      "id": "2d6e0f4d-773b-4481-b9ea-9ceeaf5d6f6e",
-      "name": "Google Gemini Chat Model",
+      "id": "6f0b9a5a-3e84-4c1d-934e-a55125210af3",
+      "name": "Google Gemini Chat Model2",
       "credentials": {
         "googlePalmApi": {
           "id": "6XAzmOq7MWDpjqDb",
@@ -836,428 +819,811 @@
     },
     {
       "parameters": {
-        "amount": 30
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
       },
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
       "position": [
-        4496,
-        -208
+        -10784,
+        -976
       ],
-      "id": "3a488fb2-61f1-4495-bb1c-7720baf04f9e",
-      "name": "Wait",
-      "webhookId": "21884687-d4f6-41a7-a4d4-20960669973c"
+      "id": "a2773d7f-e6fb-4fbf-b079-18c66f6c99ac",
+      "name": "Google Gemini Chat Model4",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6XAzmOq7MWDpjqDb",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -12064,
+        -640
+      ],
+      "id": "2d418bbe-19ac-4f06-97fa-217e79f59085",
+      "name": "Google Gemini Chat Model5",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6XAzmOq7MWDpjqDb",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/contents/recipe-history.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "92b1819b-61c1-40b8-b108-f5d2128c6099",
+      "name": "Fetch Recipe History",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12640,
+        -864
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "Z6Aj7LavahsWsj15",
+          "name": "Hope Github"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const fileData = $input.first().json;\nlet recipes = [];\nlet fileSha = '';\n\ntry {\n  const decoded = Buffer.from(fileData.content, 'base64').toString('utf8');\n  const content = JSON.parse(decoded);\n  recipes = content.recipes || [];\n  fileSha = fileData.sha || '';\n} catch (e) {\n  recipes = [];\n  fileSha = '';\n}\n\nconst published = recipes.filter(r => r.status === 'published');\nconst allSlugs = recipes.map(r => r.slug);\n\nconst byCuisine = {};\nconst byMealType = {};\nconst byProtein = {};\n\nfor (const r of published) {\n  byCuisine[r.cuisine] = (byCuisine[r.cuisine] || 0) + 1;\n  byMealType[r.meal_type] = (byMealType[r.meal_type] || 0) + 1;\n  if (r.protein && r.protein !== 'no specific protein — vegetable-forward') {\n    byProtein[r.protein] = (byProtein[r.protein] || 0) + 1;\n  }\n}\n\nconst historySummary = [\n  'By cuisine: ' + JSON.stringify(byCuisine),\n  'By meal type: ' + JSON.stringify(byMealType),\n  'By protein: ' + JSON.stringify(byProtein),\n  'Total published: ' + published.length\n].join('\\n');\n\nconst now = new Date();\nconst month = now.getMonth() + 1;\nlet season;\nif (month === 12 || month === 1 || month === 2) season = 'winter';\nelse if (month >= 3 && month <= 5) season = 'spring';\nelse if (month >= 6 && month <= 8) season = 'summer';\nelse season = 'fall';\n\nreturn [{ json: {\n  exclude_slugs: allSlugs.join(', '),\n  history_summary: historySummary,\n  file_sha: fileSha,\n  season\n} }];"
+      },
+      "id": "9a7be529-96ad-4ed9-bbcc-6b93c81afe21",
+      "name": "Parse & Build Context",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -12416,
+        -864
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/contents/recipe-history.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc5ed76a-fa87-44c1-9c4e-59e5fd269950",
+      "name": "Re-Fetch Recipe History",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4992,
+        -1104
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "Z6Aj7LavahsWsj15",
+          "name": "Hope Github"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const fileData = $input.first().json;\nlet currentContent;\nlet fileSha;\n\ntry {\n  currentContent = JSON.parse(Buffer.from(fileData.content, 'base64').toString('utf8'));\n  fileSha = fileData.sha;\n} catch (e) {\n  currentContent = { recipes: [] };\n  fileSha = fileData.sha || '';\n}\n\nlet parsedRecipe = {};\ntry {\n  const pr = $('Parse Recipe Idea').first().json;\n  if (pr && pr.slug) parsedRecipe = pr;\n} catch (e) {}\n\nif (!parsedRecipe.slug) {\n  try { parsedRecipe = $('Fallback Recipe Idea').first().json || {}; } catch (e) {}\n}\n\nconst newRecipe = {\n  slug: parsedRecipe.slug || '',\n  name: parsedRecipe.recipe_name || '',\n  status: 'published',\n  cuisine: parsedRecipe.cuisine || '',\n  meal_type: parsedRecipe.meal_type || '',\n  protein: parsedRecipe.protein || '',\n  published_at: new Date().toISOString().split('T')[0]\n};\n\nconst alreadyExists = !newRecipe.slug || currentContent.recipes.some(r => r.slug === newRecipe.slug);\nif (!alreadyExists) {\n  currentContent.recipes.push(newRecipe);\n}\n\nconst newContentBase64 = Buffer.from(JSON.stringify(currentContent, null, 2)).toString('base64');\n\nreturn [{ json: { body: {\n  message: 'chore: update recipe history — add ' + (newRecipe.slug || 'unknown'),\n  content: newContentBase64,\n  sha: fileSha\n} } }];"
+      },
+      "id": "45528a61-9554-4334-80b6-1157c903c39d",
+      "name": "Build History Update Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4768,
+        -1104
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://api.github.com/repos/christophcharaf/lowkeycooking-blog/contents/recipe-history.json",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            },
+            {
+              "name": "X-GitHub-Api-Version",
+              "value": "2022-11-28"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {}
+      },
+      "id": "f97b3aa4-44a3-40db-ac0d-ec3c847606e4",
+      "name": "Update Recipe History",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -4544,
+        -1104
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "Z6Aj7LavahsWsj15",
+          "name": "Hope Github"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Generate a complete recipe markdown file for: {{ $json.recipe_name }}\nimage: {{ $json.image_url }}",
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a recipe content generator for a food blog called LowKeyCooking. Your job is to output a single, complete recipe in markdown format — nothing else. Do not include any explanation, intro text, or commentary outside the markdown content. Output only the raw markdown file content, starting with ---.\n\n\nThe output must follow this exact structure:\n\n<!-- filename: [recipe-name-lowercase-hyphens.md] -->\n---\ntitle: [Full recipe name]\ndescription: [One sentence — appetizing, specific, max 20 words]\nimage: [use the image URL from the user message, exactly as provided — do not modify it]\ncategory: [choose exactly one of: breakfast, lunch, dinner, dessert]\nprep_time: [e.g. 15 mins]\ncook_time: [e.g. 30 mins]\nservings: [e.g. 4]\nutensils:\n  - name: [Utensil 1]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\n  - name: [Utensil 2]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\n  - name: [Utensil 3]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\n  - name: [Utensil 4]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded]&tag=lowkeycooking-20\nnutrition:\n  calories: [number only, no units]\n  protein: [e.g. 12g]\n  carbs: [e.g. 34g]\n  fat: [e.g. 14g]\n  fiber: [e.g. 3g]\n  sugar: [e.g. 5g]\n  sodium: [e.g. 480mg]\n---\n\n[Single blog-style introduction paragraph, 2-4 sentences. Use a warm, personal tone in first-person singular (I/me/my). Briefly explain why this recipe is great, flavorful, practical, or comforting, and you may include a short relatable personal anecdote. Also mention why it is easy to cook, and that home cooks and starter cooks should nto be intimidated by it.]\n\n## Ingredients\n\n- [Quantity + ingredient]\n- [Quantity + ingredient]\n[list all ingredients, one per line]\n\n## Instructions\n\n1. [Clear, specific step]\n2. [Clear, specific step]\n[number all steps, one action per step]\n\nRules:\n- Filename must be the recipe name in lowercase with spaces replaced by hyphens (e.g. pulled-pork-tacos.md)\n- The image URL is in the user message — place it in the frontmatter as the image field, exactly as provided, do not modify it\n- The category field must be exactly one of: breakfast, lunch, dinner, dessert — pick the most fitting for the recipe\n- Utensil URLs must use Amazon search format and ALWAYS include your affiliate tag: https://www.amazon.com/s?k=search+terms&tag=lowkeycooking-20\n- Include 4–6 utensils actually used in the recipe\n- Nutrition values should be realistic estimates per serving\n- Ingredients must include quantities and units\n- Instructions must be numbered, clear, and written in second person (\"Add the flour...\", not \"You should add...\")\n- Include exactly one intro paragraph before \"## Ingredients\" (no extra heading)\n- The intro paragraph must clearly use first-person singular with a warm tone\n- Do not include any text outside the markdown content\n- The file must have valid YAML frontmatter — use exact 2-space indentation for list items"
+            }
+          ]
+        }
+      },
+      "id": "2e6e5d92-402b-46be-8d43-1b5c68ceb3c7",
+      "name": "Generate Recipe EN1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        -10912,
+        -1184
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Genera un archivo markdown completo para la siguiente receta: {{ $json.recipe_name }}\nimage: {{ $json.image_url }}",
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Eres un generador de contenido de recetas para un blog de cocina llamado LowKeyCooking. Tu tarea es generar un único archivo de receta completo en formato markdown — nada más. No incluyas ninguna explicación, introducción ni comentario fuera del contenido markdown. Genera únicamente el contenido del archivo markdown, comenzando con ---.\n\n\nEl resultado debe seguir exactamente esta estructura:\n\n<!-- filename: [nombre-receta-en-minusculas-con-guiones.md] -->\n---\ntitle: [Nombre completo de la receta en español]\ndescription: [Una sola frase — apetitosa y específica, máximo 20 palabras, en español]\nimage: [usa la URL de imagen del mensaje del usuario, exactamente como se proporcionó — no la modifiques]\ncategory: [elige exactamente una de: breakfast, lunch, dinner, dessert]\nprep_time: [ej. 15 min]\ncook_time: [ej. 30 min]\nservings: [ej. 4]\nutensils:\n  - name: [Utensilio 1 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\n  - name: [Utensilio 2 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\n  - name: [Utensilio 3 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\n  - name: [Utensilio 4 en español]\n    url: https://www.amazon.com/s?k=[utensil+name+url+encoded+in+english]&tag=lowkeycooking-20\nnutrition:\n  calories: [solo número, sin unidades]\n  protein: [ej. 12g]\n  carbs: [ej. 34g]\n  fat: [ej. 14g]\n  fiber: [ej. 3g]\n  sugar: [ej. 5g]\n  sodium: [ej. 480mg]\n---\n\n[Párrafo de introducción estilo blog, 2-4 frases, en español. Debe tener un tono cálido y cercano, escrito en primera persona del singular (yo/me/mi). Debe explicar por qué esta receta es buena, apetecible o práctica, y puede incluir una anécdota breve o un detalle personal creíble.]\n\n## Ingredientes\n\n- [Cantidad + ingrediente]\n- [Cantidad + ingrediente]\n[lista todos los ingredientes, uno por línea]\n\n## Instrucciones\n\n1. [Paso claro y específico]\n2. [Paso claro y específico]\n[numera todos los pasos, una acción por paso]\n\nReglas:\n- El nombre del archivo (filename) debe ser el nombre de la receta en inglés, en minúsculas, con espacios reemplazados por guiones (ej. pulled-pork-tacos.md). Esto es imprescindible para que coincida con el archivo en inglés.\n- La URL de la imagen está en el mensaje del usuario — colócala en el frontmatter como el campo image, exactamente como se proporcionó, sin modificarla\n- El campo category debe ser exactamente uno de: breakfast, lunch, dinner, dessert — elige el que mejor se adapte a la receta\n- Las URLs de utensilios deben usar el formato de búsqueda de Amazon en inglés y SIEMPRE incluir tu etiqueta de afiliado: https://www.amazon.com/s?k=search+terms&tag=lowkeycooking-20\n- Incluye entre 4 y 6 utensilios realmente usados en la receta\n- Los valores nutricionales deben ser estimaciones realistas por porción\n- Los ingredientes deben incluir cantidades y unidades\n- Las instrucciones deben estar numeradas, ser claras y escritas en segunda persona (\"Añade la harina...\", no \"Deberías añadir...\")\n- Incluye exactamente un solo párrafo introductorio antes de \"## Ingredientes\" (sin encabezado adicional)\n- Ese párrafo debe usar claramente primera persona del singular y tono cálido\n- No incluyas ningún texto fuera del contenido markdown\n- El archivo debe tener un frontmatter YAML válido — usa exactamente 2 espacios de indentación para los elementos de lista\n- Todo el contenido visible (title, description, párrafo introductorio, ingredientes, instrucciones) debe estar en español"
+            }
+          ]
+        }
+      },
+      "id": "9f3c8d87-a618-4009-afd2-0569aba61576",
+      "name": "Generate Recipe ES1",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        -10944,
+        -704
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash-lite",
+        "options": {
+          "maxOutputTokens": 4000,
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -10928,
+        -960
+      ],
+      "id": "51cb81ad-e5f0-471b-9899-8e8857d27abd",
+      "name": "Google Gemini Chat Model1",
+      "retryOnFail": false,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "6XAzmOq7MWDpjqDb",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "daysInterval": 2,
+              "triggerAtHour": 12
+            }
+          ]
+        }
+      },
+      "id": "fdff63e1-965a-4b1e-a003-43102de7c61d",
+      "name": "Every 2 Days",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -12864,
+        -864
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -13008,
+        -624
+      ],
+      "id": "1273eaca-2b6d-4e96-ac89-b9ea2404d984",
+      "name": "When clicking ‘Execute workflow’"
     }
   ],
   "connections": {
-    "Gemini 2.0 Flash1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Generate Recipe ES",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "Generate Recipe EN",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Notify Approved": {
+    "Generate Recipe Idea": {
       "main": [
         [
           {
-            "node": "Remove Draft Frontmatter",
+            "node": "Parse Recipe Idea",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Update Main Branch Ref": {
+    "Parse Recipe Idea": {
       "main": [
         [
           {
-            "node": "Notify Published",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Main Commit": {
-      "main": [
-        [
-          {
-            "node": "Update Main Branch Ref",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Main Commit Request": {
-      "main": [
-        [
-          {
-            "node": "Create Main Commit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Create Main Tree": {
-      "main": [
-        [
-          {
-            "node": "Build Main Commit Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Build Main Tree Request": {
-      "main": [
-        [
-          {
-            "node": "Create Main Tree",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Main Branch Info": {
-      "main": [
-        [
-          {
-            "node": "Build Main Tree Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Remove Draft Frontmatter": {
-      "main": [
-        [
-          {
-            "node": "Get Main Branch Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Check Decision": {
-      "main": [
-        [
-          {
-            "node": "Notify Approved",
+            "node": "Fetch Unsplash Photos1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Notify Rejected",
+            "node": "Fallback Recipe Idea",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Wait for Approval": {
+    "Fallback Recipe Idea": {
       "main": [
         [
           {
-            "node": "Check Decision",
+            "node": "Fetch Unsplash Photos1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Send Telegram Message": {
+    "Notify Approved1": {
       "main": [
         [
           {
-            "node": "Wait for Approval",
+            "node": "Remove Draft Frontmatter1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Build Telegram Message": {
+    "Update Main Branch Ref1": {
       "main": [
         [
           {
-            "node": "Send Telegram Message",
+            "node": "Re-Fetch Recipe History",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Build Preview URL": {
+    "Create Main Commit1": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Update Main Branch Ref1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Update Branch Ref": {
+    "Build Main Commit Request1": {
       "main": [
         [
           {
-            "node": "Build Preview URL",
+            "node": "Create Main Commit1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Create Commit": {
+    "Create Main Tree1": {
       "main": [
         [
           {
-            "node": "Update Branch Ref",
+            "node": "Build Main Commit Request1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Build Create Commit Request": {
+    "Build Main Tree Request1": {
       "main": [
         [
           {
-            "node": "Create Commit",
+            "node": "Create Main Tree1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Create Tree": {
+    "Get Main Branch Info1": {
       "main": [
         [
           {
-            "node": "Build Create Commit Request",
+            "node": "Build Main Tree Request1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Build Create Tree Request": {
+    "Remove Draft Frontmatter1": {
       "main": [
         [
           {
-            "node": "Create Tree",
+            "node": "Get Main Branch Info1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get Branch Info": {
+    "Check Decision1": {
       "main": [
         [
           {
-            "node": "Build Create Tree Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Repo Info": {
-      "main": [
-        [
-          {
-            "node": "Get Branch Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Inject Draft Frontmatter": {
-      "main": [
-        [
-          {
-            "node": "Get Repo Info",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Prepare Commit": {
-      "main": [
-        [
-          {
-            "node": "Inject Draft Frontmatter",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Prepare Commit",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Parse Filename & Clean ES": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Parse Filename & Clean EN": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Generate Recipe ES": {
-      "main": [
-        [
-          {
-            "node": "Parse Filename & Clean ES",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Generate Recipe EN": {
-      "main": [
-        [
-          {
-            "node": "Parse Filename & Clean EN",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Extract Largest Image URL": {
-      "main": [
-        [
-          {
-            "node": "Generate Recipe ES",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Generate Recipe EN",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Fetch Unsplash Photos": {
-      "main": [
-        [
-          {
-            "node": "Extract Largest Image URL",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Pick Recipe": {
-      "main": [
-        [
-          {
-            "node": "Fetch Unsplash Photos",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Every 3 Days": {
-      "main": [
-        [
-          {
-            "node": "Pick Recipe",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Build Telegram Message",
+            "node": "Notify Approved1",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Wait",
+            "node": "Notify Rejected1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Google Gemini Chat Model": {
+    "Wait for Approval1": {
+      "main": [
+        [
+          {
+            "node": "Check Decision1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Telegram Message1": {
+      "main": [
+        [
+          {
+            "node": "Wait for Approval1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Telegram Message1": {
+      "main": [
+        [
+          {
+            "node": "Send Telegram Message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Preview URL1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Branch Ref1": {
+      "main": [
+        [
+          {
+            "node": "Build Preview URL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Commit1": {
+      "main": [
+        [
+          {
+            "node": "Update Branch Ref1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Create Commit Request1": {
+      "main": [
+        [
+          {
+            "node": "Create Commit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Tree1": {
+      "main": [
+        [
+          {
+            "node": "Build Create Commit Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Create Tree Request1": {
+      "main": [
+        [
+          {
+            "node": "Create Tree1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Branch Info1": {
+      "main": [
+        [
+          {
+            "node": "Build Create Tree Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Repo Info1": {
+      "main": [
+        [
+          {
+            "node": "Get Branch Info1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Inject Draft Frontmatter1": {
+      "main": [
+        [
+          {
+            "node": "Get Repo Info1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Commit1": {
+      "main": [
+        [
+          {
+            "node": "Inject Draft Frontmatter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Prepare Commit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Filename & Clean ES1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Parse Filename & Clean EN1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Largest Image URL1": {
+      "main": [
+        [
+          {
+            "node": "Generate Recipe ES1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Generate Recipe EN1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Unsplash Photos1": {
+      "main": [
+        [
+          {
+            "node": "Extract Largest Image URL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Build Telegram Message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
       "ai_languageModel": [
         [
           {
-            "node": "Generate Recipe EN",
+            "node": "Generate Recipe Idea",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Recipe EN1",
             "type": "ai_languageModel",
             "index": 1
           },
           {
-            "node": "Generate Recipe ES",
+            "node": "Generate Recipe ES1",
             "type": "ai_languageModel",
             "index": 1
           }
         ]
       ]
     },
-    "Wait": {
+    "Google Gemini Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Recipe Idea",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Fetch Recipe History": {
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Parse & Build Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse & Build Context": {
+      "main": [
+        [
+          {
+            "node": "Generate Recipe Idea",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Re-Fetch Recipe History": {
+      "main": [
+        [
+          {
+            "node": "Build History Update Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build History Update Request": {
+      "main": [
+        [
+          {
+            "node": "Update Recipe History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Recipe History": {
+      "main": [
+        [
+          {
+            "node": "Notify Published1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Recipe EN1": {
+      "main": [
+        [
+          {
+            "node": "Parse Filename & Clean EN1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Recipe ES1": {
+      "main": [
+        [
+          {
+            "node": "Parse Filename & Clean ES1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Recipe EN1",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Generate Recipe ES1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Every 2 Days": {
+      "main": [
+        [
+          {
+            "node": "Fetch Recipe History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Fetch Recipe History",
             "type": "main",
             "index": 0
           }

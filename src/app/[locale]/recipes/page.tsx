@@ -1,6 +1,11 @@
+import dynamic from "next/dynamic";
 import { getAllRecipes } from "@/lib/recipes";
-import RecipeSearch from "@/components/RecipeSearch";
+import RecipeSearchSkeleton from "@/components/RecipeSearchSkeleton";
 import { getTranslations } from "next-intl/server";
+
+const RecipeSearch = dynamic(() => import("@/components/RecipeSearch"), {
+  loading: () => <RecipeSearchSkeleton />,
+});
 
 export async function generateMetadata({
   params,
@@ -41,8 +46,12 @@ export default async function RecipesPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const recipes = getAllRecipes(locale);
-  const t = await getTranslations({ locale, namespace: "RecipesPage" });
+  const [recipes, t, tCard] = await Promise.all([
+    getAllRecipes(locale),
+    getTranslations({ locale, namespace: "RecipesPage" }),
+    getTranslations({ locale, namespace: "RecipeCard" }),
+  ]);
+  const cardLabels = { prep: tCard("prep"), cook: tCard("cook"), viewRecipe: tCard("viewRecipe") };
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
@@ -59,7 +68,7 @@ export default async function RecipesPage({
         </p>
       </div>
 
-      <RecipeSearch recipes={recipes} />
+      <RecipeSearch recipes={recipes} cardLabels={cardLabels} />
     </div>
   );
 }

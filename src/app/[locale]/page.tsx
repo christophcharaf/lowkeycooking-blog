@@ -44,8 +44,13 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const recipes = getAllRecipes(locale);
-  const t = await getTranslations({ locale, namespace: "HomePage" });
+  const [recipes, tHome, tCard] = await Promise.all([
+    getAllRecipes(locale),
+    getTranslations({ locale, namespace: "HomePage" }),
+    getTranslations({ locale, namespace: "RecipeCard" }),
+  ]);
+  const t = tHome;
+  const cardLabels = { prep: tCard("prep"), cook: tCard("cook"), viewRecipe: tCard("viewRecipe") };
 
   return (
     <div>
@@ -96,7 +101,7 @@ export default async function HomePage({
               href="/#recipes"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
             >
-              {t("whatsCoking")}
+              {t("whatsCooking")}
             </Link>
           </div>
 
@@ -137,8 +142,8 @@ export default async function HomePage({
         </div>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {recipes.map((recipe) => (
-            <RecipeCard key={recipe.slug} recipe={recipe} />
+          {recipes.map((recipe, i) => (
+            <RecipeCard key={recipe.slug} recipe={recipe} labels={cardLabels} index={i} />
           ))}
         </div>
       </section>

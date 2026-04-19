@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import { cache } from "react";
 
 // Map every translated heading variant to the icon key
 const HEADING_TO_ICON_KEY: Record<string, string> = {
@@ -131,13 +132,16 @@ export interface Recipe extends RecipeFrontmatter {
 
 export interface RecipeSummary extends RecipeFrontmatter {
   slug: string;
+  lastModified?: Date;
 }
 
 function getRecipesDirectory(locale: string): string {
   return path.join(process.cwd(), "recipes", locale);
 }
 
-export function getAllRecipes(locale: string = "en"): RecipeSummary[] {
+export const getAllRecipes = cache(async function getAllRecipes(
+  locale: string = "en",
+): Promise<RecipeSummary[]> {
   const dir = getRecipesDirectory(locale);
   if (!fs.existsSync(dir)) return [];
   const fileNames = fs.readdirSync(dir);
@@ -149,15 +153,17 @@ export function getAllRecipes(locale: string = "en"): RecipeSummary[] {
       const fullPath = path.join(dir, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data } = matter(fileContents);
+      const lastModified = fs.statSync(fullPath).mtime;
       return {
         slug,
+        lastModified,
         ...(data as RecipeFrontmatter),
       };
     })
     .filter((recipe) => isPreview || !recipe.draft);
-}
+});
 
-export async function getRecipeBySlug(
+export const getRecipeBySlug = cache(async function getRecipeBySlug(
   slug: string,
   locale: string = "en",
 ): Promise<Recipe> {
@@ -166,9 +172,11 @@ export async function getRecipeBySlug(
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(remarkHtml).process(content);
+  const [processedContent, { ingredients, instructions }] = await Promise.all([
+    remark().use(remarkHtml).process(content),
+    Promise.resolve(extractSections(content)),
+  ]);
   const contentHtml = injectSectionIcons(processedContent.toString());
-  const { ingredients, instructions } = extractSections(content);
 
   return {
     slug,
@@ -177,10 +185,17 @@ export async function getRecipeBySlug(
     instructions,
     ...(data as RecipeFrontmatter),
   };
-}
+});
 
 /** Converts a recipe into a clean plain-text string suitable for the Notes app. */
-export function recipeToShareText(recipe: Recipe): string {
+export function recipeToShareText(recipe: Recipe, locale: string = "en"): string {
+  const isEs = locale === "es";
+  const kitchenToolsHeading = isEs ? "HERRAMIENTAS DE COCINA" : "KITCHEN TOOLS";
+  const nutritionHeading = isEs ? "NUTRICIÓN (por porción)" : "NUTRITION (per serving)";
+  const fromLabel = isEs ? "Receta de LowKeyCooking" : "From LowKeyCooking";
+  const prepLabel = isEs ? "Prep" : "Prep";
+  const cookLabel = isEs ? "Cocción" : "Cook";
+  const servesLabel = isEs ? "Porciones" : "Serves";
   const contentText = recipe.contentHtml
     .replace(/<h2[^>]*>[\s\S]*?<\/h2>/gi, (match) => {
       const heading = match.replace(/<[^>]*>/g, "").trim();
@@ -209,20 +224,20 @@ export function recipeToShareText(recipe: Recipe): string {
     "",
     recipe.description,
     "",
-    `Prep: ${recipe.prep_time}  |  Cook: ${recipe.cook_time}  |  Serves: ${recipe.servings}`,
+    `${prepLabel}: ${recipe.prep_time}  |  ${cookLabel}: ${recipe.cook_time}  |  ${servesLabel}: ${recipe.servings}`,
     "",
     contentText,
   ];
 
   if (recipe.utensils?.length) {
-    lines.push("\n\n── KITCHEN TOOLS ──");
+    lines.push(`\n\n── ${kitchenToolsHeading} ──`);
     recipe.utensils.forEach((u) => lines.push(`• ${u.name}`));
   }
 
   if (recipe.nutrition) {
     lines.push(
       "",
-      "── NUTRITION (per serving) ──",
+      `── ${nutritionHeading} ──`,
       `Calories: ${recipe.nutrition.calories} kcal`,
       `Protein: ${recipe.nutrition.protein}`,
       `Carbs: ${recipe.nutrition.carbs}`,
@@ -231,7 +246,7 @@ export function recipeToShareText(recipe: Recipe): string {
     );
   }
 
-  lines.push("", `From LowKeyCooking`);
+  lines.push("", fromLabel);
 
   return lines.join("\n");
 }
