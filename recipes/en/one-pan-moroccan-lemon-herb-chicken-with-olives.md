@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Moroccan Lemon Herb Chicken with Olives
 description: Juicy chicken thighs infused with vibrant lemon, fragrant herbs, and briny olives, all cooked together in one pan.
 image: https://images.unsplash.com/photo-1680098021573-b9402ee336ec?w=1200&q=80

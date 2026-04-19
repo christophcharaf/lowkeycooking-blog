@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pollo Marroquí con Limón y Hierbas en una Sola Sartén con Aceitunas
 description: Jugoso pollo marroquí con limón, hierbas y aceitunas, todo cocinado en una sola sartén para una cena fácil.
 image: https://images.unsplash.com/photo-1680098021573-b9402ee336ec?w=1200&q=80
