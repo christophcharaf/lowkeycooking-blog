@@ -161,6 +161,15 @@
       "meal_type": "dinner",
       "protein": "vegetarian",
       "published_at": "2026-04-18"
+    },
+    {
+      "slug": "one-pan-moroccan-lemon-herb-chicken-with-olives",
+      "name": "One-Pan Moroccan Lemon Herb Chicken with Olives",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-04-19"
     }
   ]
 }
