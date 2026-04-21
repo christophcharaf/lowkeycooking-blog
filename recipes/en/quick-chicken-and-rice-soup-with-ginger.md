@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Chicken and Rice Soup with Ginger
 description: A comforting and zesty chicken and rice soup, perfect for a quick weeknight meal.
 image: https://images.unsplash.com/photo-1584003397737-af22d880f5d8?w=1200&q=80

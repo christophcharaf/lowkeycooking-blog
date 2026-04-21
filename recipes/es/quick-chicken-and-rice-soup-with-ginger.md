@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sopa Rápida de Pollo y Arroz con Jengibre
 description: Una reconfortante sopa casera de pollo y arroz, infundida con jengibre fresco y hierbas aromáticas.
 image: https://images.unsplash.com/photo-1584003397737-af22d880f5d8?w=1200&q=80

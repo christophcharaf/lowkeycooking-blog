@@ -170,6 +170,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-04-19"
+    },
+    {
+      "slug": "quick-chicken-rice-soup-ginger",
+      "name": "Quick Chicken and Rice Soup with Ginger",
+      "status": "published",
+      "cuisine": "Asian-inspired",
+      "meal_type": "lunch",
+      "protein": "chicken",
+      "published_at": "2026-04-21"
     }
   ]
 }
