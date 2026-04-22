@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Spring Lamb and Veggie Skillet
 description: Tender lamb and vibrant spring vegetables cook together in a flavorful, easy one-pan meal.
 image: https://images.unsplash.com/photo-1535291692377-b7eb2fb22a8b?w=1200&q=80

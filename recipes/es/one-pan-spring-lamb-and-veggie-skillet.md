@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén de Cordero y Verduras de Primavera en Una Sola Bandeja
 description: Un plato rápido y fácil con cordero tierno y verduras frescas, perfecto para una cena entre semana.
 image: https://images.unsplash.com/photo-1535291692377-b7eb2fb22a8b?w=1200&q=80
