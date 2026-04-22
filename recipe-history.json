@@ -179,6 +179,15 @@
       "meal_type": "lunch",
       "protein": "chicken",
       "published_at": "2026-04-21"
+    },
+    {
+      "slug": "one-pan-spring-lamb-and-veggie-skillet",
+      "name": "One-Pan Spring Lamb and Veggie Skillet",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-04-22"
     }
   ]
 }
