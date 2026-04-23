@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén de Halloumi y Verduras de Primavera en Bandeja
 description: Cena rápida y fácil con halloumi salado y verduras frescas asadas a la perfección.
 image: https://images.unsplash.com/photo-1627446605605-1f0385188cd5?w=1200&q=80
