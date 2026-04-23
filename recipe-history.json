@@ -188,6 +188,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-04-22"
+    },
+    {
+      "slug": "sheet-pan-halloumi-and-spring-vegetable-skillet",
+      "name": "Sheet Pan Halloumi and Spring Vegetable Skillet",
+      "status": "published",
+      "cuisine": "Greek",
+      "meal_type": "dinner",
+      "protein": "vegetarian",
+      "published_at": "2026-04-23"
     }
   ]
 }
