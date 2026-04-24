@@ -197,6 +197,15 @@
       "meal_type": "dinner",
       "protein": "vegetarian",
       "published_at": "2026-04-23"
+    },
+    {
+      "slug": "quick-coconut-mango-sticky-rice",
+      "name": "Quick Coconut Mango Sticky Rice",
+      "status": "published",
+      "cuisine": "Thai",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-04-24"
     }
   ]
 }
