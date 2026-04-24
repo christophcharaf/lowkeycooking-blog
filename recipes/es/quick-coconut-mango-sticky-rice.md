@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Arroz Pegajoso Rápido de Mango y Coco
 description: Un postre tropical cremoso y dulce, perfecto para cualquier ocasión.
 image: https://images.unsplash.com/photo-1705056508219-0aa0ceb16820?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Coconut Mango Sticky Rice
 description: A simplified, vibrant dessert featuring sweet mango, creamy coconut rice, and a touch of indulgence.
 image: https://images.unsplash.com/photo-1705056508219-0aa0ceb16820?w=1200&q=80
