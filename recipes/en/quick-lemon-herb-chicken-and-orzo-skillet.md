@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Lemon Herb Chicken and Orzo Skillet
 description: Flavorful one-pan chicken and orzo bursting with lemon and herbs, ready in under 30 minutes.
 image: https://images.unsplash.com/photo-1577110632782-397c0dea76b4?w=1200&q=80

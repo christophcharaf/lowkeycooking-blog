@@ -206,6 +206,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-04-24"
+    },
+    {
+      "slug": "quick-lemon-herb-chicken-and-orzo-skillet",
+      "name": "Quick Lemon Herb Chicken and Orzo Skillet",
+      "status": "published",
+      "cuisine": "Greek",
+      "meal_type": "lunch",
+      "protein": "chicken",
+      "published_at": "2026-04-25"
     }
   ]
 }
