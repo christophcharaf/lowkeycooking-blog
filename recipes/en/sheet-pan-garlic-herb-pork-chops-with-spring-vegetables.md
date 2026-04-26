@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Garlic Herb Pork Chops with Spring Vegetables
 description: Juicy pork chops and tender spring vegetables roasted together with fragrant garlic and herbs.
 image: https://images.unsplash.com/photo-1524394071506-4c3fde76077b?w=1200&q=80
