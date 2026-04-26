@@ -215,6 +215,15 @@
       "meal_type": "lunch",
       "protein": "chicken",
       "published_at": "2026-04-25"
+    },
+    {
+      "slug": "sheet-pan-garlic-herb-pork-chops-spring-veg",
+      "name": "Sheet Pan Garlic Herb Pork Chops with Spring Vegetables",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-04-26"
     }
   ]
 }
