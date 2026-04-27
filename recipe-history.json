@@ -224,6 +224,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-04-26"
+    },
+    {
+      "slug": "easy-huevos-rancheros-for-two",
+      "name": "Easy Huevos Rancheros for Two",
+      "status": "published",
+      "cuisine": "Latin American",
+      "meal_type": "breakfast",
+      "protein": "eggs",
+      "published_at": "2026-04-27"
     }
   ]
 }
