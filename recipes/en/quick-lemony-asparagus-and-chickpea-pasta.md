@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Lemony Asparagus and Chickpea Pasta
 description: A vibrant and healthy pasta dish bursting with fresh lemon, tender asparagus, and protein-rich chickpeas.
 image: https://images.unsplash.com/photo-1662478838323-2b4d9dba8ce8?w=1200&q=80

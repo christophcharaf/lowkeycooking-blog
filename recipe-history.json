@@ -233,6 +233,15 @@
       "meal_type": "breakfast",
       "protein": "eggs",
       "published_at": "2026-04-27"
+    },
+    {
+      "slug": "quick-lemony-asparagus-and-chickpea-pasta",
+      "name": "Quick Lemony Asparagus and Chickpea Pasta",
+      "status": "published",
+      "cuisine": "Italian-inspired",
+      "meal_type": "lunch",
+      "protein": "vegetarian",
+      "published_at": "2026-04-28"
     }
   ]
 }
