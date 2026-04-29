@@ -242,6 +242,15 @@
       "meal_type": "lunch",
       "protein": "vegetarian",
       "published_at": "2026-04-28"
+    },
+    {
+      "slug": "easy-mango-sticky-rice-parfaits",
+      "name": "Easy Mango Sticky Rice Parfaits",
+      "status": "published",
+      "cuisine": "Thai",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-04-29"
     }
   ]
 }

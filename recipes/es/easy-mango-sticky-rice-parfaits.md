@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Parfaits de Arroz Pegajoso con Mango Fáciles
 description: Un postre tropical refrescante y sencillo, perfecto para cualquier ocasión.
 image: https://images.unsplash.com/photo-1648913370516-4e3bf8f9aee8?w=1200&q=80

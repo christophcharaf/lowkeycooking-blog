@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Easy Mango Sticky Rice Parfaits
 description: A deconstructed take on a classic Thai dessert, layered for ultimate convenience and flavor.
 image: https://images.unsplash.com/photo-1648913370516-4e3bf8f9aee8?w=1200&q=80
