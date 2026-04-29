@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Empanadas Venezolanas de Carne Mechada
 description: Sabrosas empanadas de maíz rellenas de carne mechada, perfectas para un almuerzo rápido o una cena informal.
 image: https://images.unsplash.com/photo-1619683551733-90293a10a302?w=1200&q=80
