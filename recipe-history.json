@@ -251,6 +251,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-04-29"
+    },
+    {
+      "slug": "speedy-pork-and-broccoli-stir-fry",
+      "name": "Speedy Pork and Broccoli Stir-Fry",
+      "status": "published",
+      "cuisine": "Asian-inspired",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-04-30"
     }
   ]
 }
