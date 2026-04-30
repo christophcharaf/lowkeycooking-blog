@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Pork and Broccoli Stir-Fry
 description: A quick and flavorful weeknight stir-fry with tender pork and crisp broccoli.
 image: https://images.unsplash.com/photo-1601226809816-b8c32440158a?w=1200&q=80
