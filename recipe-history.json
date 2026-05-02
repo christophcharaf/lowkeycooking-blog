@@ -260,6 +260,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-04-30"
+    },
+    {
+      "slug": "quick-ground-beef-black-bean-tostadas",
+      "name": "Quick Ground Beef and Black Bean Tostadas",
+      "status": "published",
+      "cuisine": "Mexican",
+      "meal_type": "lunch",
+      "protein": "ground beef",
+      "published_at": "2026-05-02"
     }
   ]
 }

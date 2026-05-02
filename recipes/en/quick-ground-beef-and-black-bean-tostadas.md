@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Ground Beef and Black Bean Tostadas
 description: Savory ground beef and black beans topped on crispy tortillas with your favorite fixings.
 image: https://images.unsplash.com/photo-1587000289580-4834645b9bbc?w=1200&q=80
