@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén Rápida de Kofta de Cordero con Salsa de Yogur y Limón
 description: Koftas jugosos de cordero con especias, servidos en una sartén con una salsa de yogur refrescante y limón.
 image: https://images.unsplash.com/photo-1597900087354-fd72dab61157?w=1200&q=80

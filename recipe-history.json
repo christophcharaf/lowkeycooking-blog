@@ -269,6 +269,15 @@
       "meal_type": "lunch",
       "protein": "ground beef",
       "published_at": "2026-05-02"
+    },
+    {
+      "slug": "quick-lamb-kofta-skillet-lemony-yogurt",
+      "name": "Quick Lamb Kofta Skillet with Lemony Yogurt Sauce",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "lunch",
+      "protein": "lamb",
+      "published_at": "2026-05-03"
     }
   ]
 }

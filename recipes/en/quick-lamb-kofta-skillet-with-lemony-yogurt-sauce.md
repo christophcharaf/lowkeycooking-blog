@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Lamb Kofta Skillet with Lemony Yogurt Sauce
 description: Flavorful lamb kofta simmered in a rich tomato sauce, topped with a bright, creamy yogurt sauce.
 image: https://images.unsplash.com/photo-1597900087354-fd72dab61157?w=1200&q=80
