@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Crumble de Frutos Rojos en Sartén Fácil
 description: Un postre caliente y reconfortante de frutos rojos con cubierta crujiente, perfecto para cualquier ocasión.
 image: https://images.unsplash.com/photo-1588119193915-add420937188?w=1200&q=80
