@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Lemony Shrimp and Asparagus Pasta
 description: Bright, garlicky pasta with tender shrimp and crisp asparagus in a zesty lemon sauce.
 image: https://images.unsplash.com/photo-1647782180635-53abbb1e2ec4?w=1200&q=80

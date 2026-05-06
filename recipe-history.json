@@ -287,6 +287,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-05-04"
+    },
+    {
+      "slug": "speedy-lemony-shrimp-and-asparagus-pasta",
+      "name": "Speedy Lemony Shrimp and Asparagus Pasta",
+      "status": "published",
+      "cuisine": "Italian-inspired",
+      "meal_type": "lunch",
+      "protein": "shrimp",
+      "published_at": "2026-05-06"
     }
   ]
 }
