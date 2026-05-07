@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lemon Herb Mahi Mahi with Asparagus and Cherry Tomatoes
 description: Effortless weeknight dinner featuring flaky mahi mahi, tender asparagus, and burst cherry tomatoes.
 image: https://images.unsplash.com/photo-1588428894220-ae6af96e8c2d?w=1200&q=80
