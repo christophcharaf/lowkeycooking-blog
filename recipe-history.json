@@ -296,6 +296,15 @@
       "meal_type": "lunch",
       "protein": "shrimp",
       "published_at": "2026-05-06"
+    },
+    {
+      "slug": "sheet-pan-lemon-herb-mahi-mahi-with-asparagus-and-cherry-tomatoes",
+      "name": "Sheet Pan Lemon Herb Mahi Mahi with Asparagus and Cherry Tomatoes",
+      "status": "published",
+      "cuisine": "Mediterranean-inspired",
+      "meal_type": "dinner",
+      "protein": "mahi mahi",
+      "published_at": "2026-05-07"
     }
   ]
 }
