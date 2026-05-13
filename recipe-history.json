@@ -305,6 +305,15 @@
       "meal_type": "dinner",
       "protein": "mahi mahi",
       "published_at": "2026-05-07"
+    },
+    {
+      "slug": "quick-lemony-lamb-pea-orzo",
+      "name": "Quick Lemony Lamb and Pea Orzo",
+      "status": "published",
+      "cuisine": "Greek",
+      "meal_type": "lunch",
+      "protein": "lamb",
+      "published_at": "2026-05-13"
     }
   ]
 }

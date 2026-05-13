@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Lemony Lamb and Pea Orzo
 description: Tender lamb, bright peas, and zesty lemon combine in this satisfying one-pan orzo dish.
 image: https://images.unsplash.com/photo-1621341258668-b2bf005a9f97?w=1200&q=80
