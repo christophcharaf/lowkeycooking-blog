@@ -314,6 +314,15 @@
       "meal_type": "lunch",
       "protein": "lamb",
       "published_at": "2026-05-13"
+    },
+    {
+      "slug": "easy-berry-crumble-with-oat-topping",
+      "name": "Easy Berry Crumble with Oat Topping",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-05-14"
     }
   ]
 }
