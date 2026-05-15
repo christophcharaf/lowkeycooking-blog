@@ -323,6 +323,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-05-14"
+    },
+    {
+      "slug": "sheet-pan-lemon-herb-pork-chops-with-asparagus-and-potatoes",
+      "name": "Sheet Pan Lemon Herb Pork Chops with Asparagus and Potatoes",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-05-15"
     }
   ]
 }

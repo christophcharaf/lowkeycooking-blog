@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lemon Herb Pork Chops with Asparagus and Potatoes
 description: Juicy pork chops baked with tender potatoes and crisp asparagus, seasoned with bright lemon and herbs.
 image: https://images.unsplash.com/photo-1573543977297-754d620e3580?w=1200&q=80
