@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pasta Rápida de Garbanzos y Espinacas con Limón
 description: Una pasta vibrante y nutritiva lista en minutos, perfecta para una comida rápida entre semana.
 image: https://images.unsplash.com/photo-1587206668283-c21d974993c3?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Lemony Chickpea and Spinach Pasta
 description: A vibrant, satisfying pasta dish bursting with lemon, garlic, and fresh spinach.
 image: https://images.unsplash.com/photo-1587206668283-c21d974993c3?w=1200&q=80

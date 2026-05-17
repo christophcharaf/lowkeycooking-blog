@@ -332,6 +332,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-05-15"
+    },
+    {
+      "slug": "quick-lemony-chickpea-and-spinach-pasta",
+      "name": "Quick Lemony Chickpea and Spinach Pasta",
+      "status": "published",
+      "cuisine": "Italian-inspired",
+      "meal_type": "lunch",
+      "protein": "vegetarian",
+      "published_at": "2026-05-17"
     }
   ]
 }
