@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Easy Ground Beef and Black Bean Tostadas
 description: Quick and flavorful tostadas with seasoned ground beef and black beans, perfect for a weeknight meal.
 image: https://images.unsplash.com/photo-1587000289580-4834645b9bbc?w=1200&q=80

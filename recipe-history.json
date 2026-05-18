@@ -341,6 +341,15 @@
       "meal_type": "lunch",
       "protein": "vegetarian",
       "published_at": "2026-05-17"
+    },
+    {
+      "slug": "easy-ground-beef-and-black-bean-tostadas",
+      "name": "Easy Ground Beef and Black Bean Tostadas",
+      "status": "published",
+      "cuisine": "Mexican",
+      "meal_type": "lunch",
+      "protein": "ground beef",
+      "published_at": "2026-05-18"
     }
   ]
 }
