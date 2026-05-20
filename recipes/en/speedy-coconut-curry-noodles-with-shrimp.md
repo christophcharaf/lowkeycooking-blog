@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Coconut Curry Noodles with Shrimp
 description: Quick and flavorful shrimp noodles in a creamy, spiced coconut curry sauce.
 image: https://images.unsplash.com/photo-1565700549653-3ae074ab0d6d?w=1200&q=80

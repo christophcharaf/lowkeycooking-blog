@@ -350,6 +350,15 @@
       "meal_type": "lunch",
       "protein": "ground beef",
       "published_at": "2026-05-18"
+    },
+    {
+      "slug": "speedy-coconut-curry-noodles-with-shrimp",
+      "name": "Speedy Coconut Curry Noodles with Shrimp",
+      "status": "published",
+      "cuisine": "Thai",
+      "meal_type": "dinner",
+      "protein": "shrimp",
+      "published_at": "2026-05-20"
     }
   ]
 }
