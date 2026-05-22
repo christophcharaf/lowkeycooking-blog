@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Crumble Fácil de Bayas con Cobertura de Avena
 description: Un postre reconfortante y fácil de hacer, perfecto para cualquier ocasión.
 image: https://images.unsplash.com/photo-1567977750379-8f3550644c2b?w=1200&q=80
