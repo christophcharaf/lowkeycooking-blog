@@ -1,22 +1,22 @@
 ---
 title: Easy Berry Crumble with Oat Topping
-description: A simple, comforting berry crumble topped with a crunchy oat mixture.
+description: A warm, comforting berry crumble topped with a sweet, crunchy oat mixture.
 image: https://images.unsplash.com/photo-1567977750379-8f3550644c2b?w=1200&q=80
 category: dessert
 prep_time: 15 mins
 cook_time: 35 mins
 servings: 6
 utensils:
-  - name: Baking Dish
-    url: https://www.amazon.com/s?k=baking+dish&tag=lowkeycooking-20
-  - name: Mixing Bowls
+  - name: 9x13 inch baking dish
+    url: https://www.amazon.com/s?k=9x13+inch+baking+dish&tag=lowkeycooking-20
+  - name: mixing bowls
     url: https://www.amazon.com/s?k=mixing+bowls&tag=lowkeycooking-20
-  - name: Measuring Cups
+  - name: measuring cups
     url: https://www.amazon.com/s?k=measuring+cups&tag=lowkeycooking-20
-  - name: Measuring Spoons
+  - name: measuring spoons
     url: https://www.amazon.com/s?k=measuring+spoons&tag=lowkeycooking-20
-  - name: Pastry Blender
-    url: https://www.amazon.com/s?k=pastry+blender&tag=lowkeycooking-20
+  - name: spatula
+    url: https://www.amazon.com/s?k=spatula&tag=lowkeycooking-20
 nutrition:
   calories: 350
   protein: 5g
@@ -27,27 +27,28 @@ nutrition:
   sodium: 150mg
 ---
 
-This berry crumble is my go-to dessert when I want something sweet and satisfying without a lot of fuss. I love how the tartness of the berries balances perfectly with the sweet, crunchy oat topping. It smells absolutely divine while baking, filling my kitchen with the most comforting aroma. Even if you're new to baking, this recipe is incredibly forgiving and straightforward – you'll be enjoying a warm slice in no time!
+I absolutely adore this berry crumble, especially on a chilly evening when I need a little bit of comfort. It's so simple to throw together, even if you're new to baking. The combination of sweet, juicy berries and the crunchy, slightly sweet oat topping is just heavenly. Plus, the aroma that fills the kitchen while it bakes is truly irresistible, making it a low-effort dessert that always impresses.
 
 ## Ingredients
 
-- 4 cups mixed berries (fresh or frozen)
-- 1/4 cup granulated sugar (for berries)
-- 1 tablespoon cornstarch (for berries)
-- 1 teaspoon lemon juice (for berries)
-- 1 cup all-purpose flour
-- 1/2 cup rolled oats
+- 6 cups mixed berries (fresh or frozen)
+- 1/4 cup granulated sugar, plus 2 tbsp for topping
+- 1 tbsp cornstarch
+- 1 tsp lemon juice
+- 1 cup rolled oats
+- 1/2 cup all-purpose flour
 - 1/2 cup packed brown sugar
-- 1/2 teaspoon ground cinnamon
-- 1/4 teaspoon salt
-- 1/2 cup cold unsalted butter, cut into cubes
+- 1/2 tsp ground cinnamon
+- 1/4 tsp salt
+- 1/2 cup cold unsalted butter, cut into small cubes
 
 ## Instructions
 
-1. Preheat your oven to 375°F (190°C). Lightly grease an 8x8 inch baking dish.
-2. In a medium bowl, gently toss the mixed berries with granulated sugar, cornstarch, and lemon juice until evenly coated. Pour the berry mixture into the prepared baking dish.
-3. In a separate bowl, whisk together the flour, rolled oats, brown sugar, cinnamon, and salt.
-4. Add the cold, cubed butter to the dry ingredients. Use a pastry blender, fork, or your fingertips to cut the butter into the mixture until it resembles coarse crumbs with some pea-sized pieces of butter remaining.
-5. Sprinkle the oat topping evenly over the berry mixture in the baking dish.
-6. Bake for 30-35 minutes, or until the topping is golden brown and the berry filling is bubbly.
-7. Let the crumble cool for at least 10-15 minutes before serving. It's delicious served warm on its own or with a scoop of vanilla ice cream.
+1. Preheat your oven to 375°F (190°C). Lightly grease a 9x13 inch baking dish.
+2. In a large bowl, combine the mixed berries, 1/4 cup granulated sugar, cornstarch, and lemon juice. Toss gently to coat the berries.
+3. Pour the berry mixture into the prepared baking dish and spread evenly.
+4. In a separate medium bowl, whisk together the rolled oats, flour, brown sugar, cinnamon, and salt.
+5. Add the cold butter cubes to the oat mixture. Use your fingers or a pastry blender to cut the butter into the dry ingredients until the mixture resembles coarse crumbs.
+6. Sprinkle the oat topping evenly over the berry mixture in the baking dish.
+7. Bake for 30-35 minutes, or until the topping is golden brown and the berry filling is bubbly.
+8. Let the crumble cool for at least 10 minutes before serving. Serve warm, perhaps with a scoop of vanilla ice cream or a dollop of whipped cream.
