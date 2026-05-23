@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Crumble de Frutos Rojos Fácil con Cubierta de Avena
 description: Un postre reconfortante y rápido, perfecto para cualquier ocasión, con una mezcla dulce de frutos rojos y una crujiente cubierta de avena.
 image: https://images.unsplash.com/photo-1567977750379-8f3550644c2b?w=1200&q=80
