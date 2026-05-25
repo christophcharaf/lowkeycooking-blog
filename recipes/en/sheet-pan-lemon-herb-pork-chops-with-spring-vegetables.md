@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lemon Herb Pork Chops with Spring Vegetables
 description: Juicy pork chops roasted with bright lemon and herbs alongside tender spring vegetables.
 image: https://images.unsplash.com/photo-1524394071506-4c3fde76077b?w=1200&q=80
