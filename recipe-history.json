@@ -359,6 +359,15 @@
       "meal_type": "dinner",
       "protein": "shrimp",
       "published_at": "2026-05-20"
+    },
+    {
+      "slug": "sheet-pan-lemon-herb-pork-chops-with-spring-vegetables",
+      "name": "Sheet Pan Lemon Herb Pork Chops with Spring Vegetables",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-05-25"
     }
   ]
 }
