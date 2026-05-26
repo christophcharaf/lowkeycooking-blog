@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Black Bean and Corn Quesadillas
 description: Speedy, cheesy quesadillas packed with savory black beans and sweet corn.
 image: https://images.unsplash.com/photo-1777013485814-288099531e5a?w=1200&q=80
