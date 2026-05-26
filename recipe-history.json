@@ -368,6 +368,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-05-25"
+    },
+    {
+      "slug": "quick-black-bean-and-corn-quesadillas",
+      "name": "Quick Black Bean and Corn Quesadillas",
+      "status": "published",
+      "cuisine": "Mexican",
+      "meal_type": "lunch",
+      "protein": "vegetarian",
+      "published_at": "2026-05-26"
     }
   ]
 }
