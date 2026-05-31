@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Crumble Rápido de Bayas con Cobertura de Avena
 description: Un postre fácil y reconfortante de bayas dulces cubierto con una crujiente cobertura de avena.
 image: https://images.unsplash.com/photo-1567977750379-8f3550644c2b?w=1200&q=80

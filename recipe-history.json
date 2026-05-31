@@ -377,6 +377,15 @@
       "meal_type": "lunch",
       "protein": "vegetarian",
       "published_at": "2026-05-26"
+    },
+    {
+      "slug": "speedy-berry-crumble-with-oat-topping",
+      "name": "Speedy Berry Crumble with Oat Topping",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-05-31"
     }
   ]
 }

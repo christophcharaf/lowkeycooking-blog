@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Berry Crumble with Oat Topping
 description: A quick and easy berry crumble with a delightful oat topping, perfect for a last-minute dessert.
 image: https://images.unsplash.com/photo-1567977750379-8f3550644c2b?w=1200&q=80
