@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Lemon-Garlic Shrimp with Orzo and Cherry Tomatoes
 description: A zesty and flavorful one-pan meal featuring tender shrimp, orzo pasta, and burst cherry tomatoes.
 image: https://images.unsplash.com/photo-1601579112759-761ccbaa8bde?w=1200&q=80

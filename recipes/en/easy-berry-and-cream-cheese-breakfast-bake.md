@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Easy Berry and Cream Cheese Breakfast Bake
 description: A simple, comforting berry and cream cheese bake perfect for a lazy weekend brunch.
 image: https://images.unsplash.com/photo-1503011994592-d30eb1ef61dc?w=1200&q=80
