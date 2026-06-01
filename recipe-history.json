@@ -386,6 +386,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-05-31"
+    },
+    {
+      "slug": "berry-cream-cheese-breakfast-bake",
+      "name": "Easy Berry and Cream Cheese Breakfast Bake",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "breakfast",
+      "protein": "vegetarian",
+      "published_at": "2026-06-01"
     }
   ]
 }
