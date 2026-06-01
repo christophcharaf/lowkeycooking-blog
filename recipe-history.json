@@ -395,6 +395,15 @@
       "meal_type": "breakfast",
       "protein": "vegetarian",
       "published_at": "2026-06-01"
+    },
+    {
+      "slug": "one-pan-lemon-garlic-shrimp-orzo-cherry-tomatoes",
+      "name": "One-Pan Lemon-Garlic Shrimp with Orzo and Cherry Tomatoes",
+      "status": "published",
+      "cuisine": "Mediterranean-inspired",
+      "meal_type": "lunch",
+      "protein": "shrimp",
+      "published_at": "2026-06-01"
     }
   ]
 }
