@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Lemon Herb Lamb Kofta Skillet with Couscous
 description: Tender lamb kofta simmered in a bright lemon-herb sauce, served over fluffy couscous.
 image: https://images.unsplash.com/photo-1708782340373-3d89d5aca4a1?w=1200&q=80

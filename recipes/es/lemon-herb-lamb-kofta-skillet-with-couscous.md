@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén de Kofta de Cordero con Limón y Hierbas y Cuscús
 description: Una sartén rápida y sabrosa de kofta de cordero con limón y hierbas, servida sobre cuscús esponjoso.
 image: https://images.unsplash.com/photo-1708782340373-3d89d5aca4a1?w=1200&q=80
