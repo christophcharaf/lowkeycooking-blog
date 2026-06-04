@@ -404,6 +404,15 @@
       "meal_type": "lunch",
       "protein": "shrimp",
       "published_at": "2026-06-01"
+    },
+    {
+      "slug": "lemon-herb-lamb-kofta-skillet-couscous",
+      "name": "Lemon Herb Lamb Kofta Skillet with Couscous",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-06-04"
     }
   ]
 }
