@@ -413,6 +413,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-06-04"
+    },
+    {
+      "slug": "speedy-coconut-rice-pudding",
+      "name": "Speedy Coconut Rice Pudding",
+      "status": "published",
+      "cuisine": "Asian-inspired",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-06-05"
     }
   ]
 }
