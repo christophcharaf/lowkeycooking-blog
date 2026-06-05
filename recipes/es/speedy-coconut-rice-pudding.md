@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pudin de Arroz Cremoso de Coco Rápido
 description: Un postre cremoso y aromático de coco, listo en minutos para un capricho rápido.
 image: https://images.unsplash.com/photo-1630056656591-0cba044ba94f?w=1200&q=80

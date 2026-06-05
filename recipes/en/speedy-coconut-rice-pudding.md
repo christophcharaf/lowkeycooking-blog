@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Coconut Rice Pudding
 description: A quick, creamy, and comforting coconut rice pudding perfect for a sweet treat.
 image: https://images.unsplash.com/photo-1630056656591-0cba044ba94f?w=1200&q=80
