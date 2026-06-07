@@ -422,6 +422,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-06-05"
+    },
+    {
+      "slug": "quick-berry-crumble-with-oat-topping",
+      "name": "Quick Berry Crumble with Oat Topping",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-06-07"
     }
   ]
 }

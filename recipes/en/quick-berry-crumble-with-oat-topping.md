@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Berry Crumble with Oat Topping
 description: A warm, comforting berry crumble with a crunchy oat topping, perfect for any occasion.
 image: https://images.unsplash.com/photo-1567977750379-8f3550644c2b?w=1200&q=80
