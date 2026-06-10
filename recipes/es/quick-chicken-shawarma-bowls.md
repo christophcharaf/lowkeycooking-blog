@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Tazón Rápido de Shawarma de Pollo
 description: Un tazón de shawarma de pollo rápido y fácil, perfecto para una cena entre semana deliciosa y saludable.
 image: https://images.unsplash.com/photo-1690979405976-91db03982b31?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Chicken Shawarma Bowls
 description: Flavorful, tender chicken shawarma piled high on fluffy rice with fresh toppings.
 image: https://images.unsplash.com/photo-1690979405976-91db03982b31?w=1200&q=80
