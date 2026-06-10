@@ -431,6 +431,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-06-07"
+    },
+    {
+      "slug": "quick-chicken-shawarma-bowls",
+      "name": "Quick Chicken Shawarma Bowls",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "lunch",
+      "protein": "chicken",
+      "published_at": "2026-06-10"
     }
   ]
 }
