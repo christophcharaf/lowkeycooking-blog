@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Camarones Rápidos al Curry con Coco y Pimientos
 description: Una cena exótica y fácil de preparar, lista en menos de 30 minutos.
 image: https://images.unsplash.com/photo-1751151497813-1280d81b5312?w=1200&q=80

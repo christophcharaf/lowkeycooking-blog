@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Coconut Curry Shrimp with Bell Peppers
 description: Flavorful shrimp and vibrant bell peppers simmered in a creamy, aromatic coconut curry sauce.
 image: https://images.unsplash.com/photo-1751151497813-1280d81b5312?w=1200&q=80
