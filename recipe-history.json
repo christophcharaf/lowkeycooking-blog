@@ -440,6 +440,15 @@
       "meal_type": "lunch",
       "protein": "chicken",
       "published_at": "2026-06-10"
+    },
+    {
+      "slug": "quick-coconut-curry-shrimp-with-bell-peppers",
+      "name": "Quick Coconut Curry Shrimp with Bell Peppers",
+      "status": "published",
+      "cuisine": "Thai",
+      "meal_type": "dinner",
+      "protein": "shrimp",
+      "published_at": "2026-06-12"
     }
   ]
 }
