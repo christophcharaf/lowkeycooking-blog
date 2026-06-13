@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Black Bean and Corn Fritters with Lime Crema
 description: Crispy, flavorful fritters packed with black beans and corn, served with a zesty lime crema.
 image: https://images.unsplash.com/photo-1632370382707-dcd0ec55d0ab?w=1200&q=80
