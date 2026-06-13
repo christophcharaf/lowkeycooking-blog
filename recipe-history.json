@@ -449,6 +449,15 @@
       "meal_type": "dinner",
       "protein": "shrimp",
       "published_at": "2026-06-12"
+    },
+    {
+      "slug": "speedy-black-bean-and-corn-fritters-with-lime-crema",
+      "name": "Speedy Black Bean and Corn Fritters with Lime Crema",
+      "status": "published",
+      "cuisine": "Latin American",
+      "meal_type": "lunch",
+      "protein": "vegetarian",
+      "published_at": "2026-06-13"
     }
   ]
 }
