@@ -458,6 +458,15 @@
       "meal_type": "lunch",
       "protein": "vegetarian",
       "published_at": "2026-06-13"
+    },
+    {
+      "slug": "quick-ground-beef-corn-skillet-black-beans",
+      "name": "Quick Ground Beef and Corn Skillet with Black Beans",
+      "status": "published",
+      "cuisine": "Mexican-inspired",
+      "meal_type": "lunch",
+      "protein": "ground beef",
+      "published_at": "2026-07-01"
     }
   ]
 }
