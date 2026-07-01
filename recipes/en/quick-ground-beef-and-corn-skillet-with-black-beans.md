@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Ground Beef and Corn Skillet with Black Beans
 description: A flavorful and hearty one-pan meal that's perfect for busy weeknights.
 image: https://images.unsplash.com/photo-1662743086910-38419bbf7f34?w=1200&q=80

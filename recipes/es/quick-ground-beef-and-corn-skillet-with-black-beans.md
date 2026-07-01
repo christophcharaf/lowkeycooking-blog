@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén Rápida de Carne Picada, Maíz y Frijoles Negros
 description: Una cena fácil y sabrosa en menos de 30 minutos, perfecta para cualquier noche de la semana.
 image: https://images.unsplash.com/photo-1662743086910-38419bbf7f34?w=1200&q=80
