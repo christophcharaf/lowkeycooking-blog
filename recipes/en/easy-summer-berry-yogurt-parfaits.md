@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Easy Summer Berry Yogurt Parfaits
 description: A refreshing, no-bake dessert layered with creamy yogurt, sweet berries, and crunchy granola.
 image: https://images.unsplash.com/photo-1571230389215-b34a89739ef1?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Parfaits de Yogur y Bayas de Verano
 description: Refrescantes y sencillos parfaits de yogur con bayas frescas, perfectos para cualquier momento del día.
 image: https://images.unsplash.com/photo-1571230389215-b34a89739ef1?w=1200&q=80
