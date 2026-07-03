@@ -467,6 +467,15 @@
       "meal_type": "lunch",
       "protein": "ground beef",
       "published_at": "2026-07-01"
+    },
+    {
+      "slug": "easy-summer-berry-yogurt-parfaits",
+      "name": "Easy Summer Berry Yogurt Parfaits",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-07-03"
     }
   ]
 }
