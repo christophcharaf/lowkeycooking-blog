@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Skillet Pork and Peach Hash
 description: Savory pork and sweet peaches come together in this easy, flavorful skillet hash.
 image: https://images.unsplash.com/photo-1681766841189-05779ec8ef4e?w=1200&q=80
