@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Tostadas Francesas Fáciles con Frutos Rojos de Verano
 description: Desayuno clásico y rápido con la dulzura fresca de los frutos rojos. ¡Perfecto para cualquier mañana!
 image: https://images.unsplash.com/photo-1620921575116-fb8902865f81?w=1200&q=80
