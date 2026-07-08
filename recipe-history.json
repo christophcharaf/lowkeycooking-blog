@@ -485,6 +485,15 @@
       "meal_type": "breakfast",
       "protein": "pork",
       "published_at": "2026-07-07"
+    },
+    {
+      "slug": "easy-french-toast-with-summer-berries",
+      "name": "Easy French Toast with Summer Berries",
+      "status": "published",
+      "cuisine": "French",
+      "meal_type": "breakfast",
+      "protein": "eggs",
+      "published_at": "2026-07-08"
     }
   ]
 }
