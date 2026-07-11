@@ -494,6 +494,15 @@
       "meal_type": "breakfast",
       "protein": "eggs",
       "published_at": "2026-07-08"
+    },
+    {
+      "slug": "lemon-blueberry-yogurt-parfaits-with-granola",
+      "name": "Lemon Blueberry Yogurt Parfaits with Granola",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "breakfast",
+      "protein": "vegetarian",
+      "published_at": "2026-07-11"
     }
   ]
 }
