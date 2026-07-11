@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Parfait de Yogur con Limón y Arándanos y Granola
 description: Un desayuno o postre refrescante y fácil, lleno de sabor a limón, arándanos y crujiente granola.
 image: https://images.unsplash.com/photo-1552320764-9fc870798a3f?w=1200&q=80

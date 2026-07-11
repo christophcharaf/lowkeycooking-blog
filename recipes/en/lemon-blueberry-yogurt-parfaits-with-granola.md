@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Lemon Blueberry Yogurt Parfaits with Granola
 description: A bright, refreshing, and easy parfait perfect for breakfast or a light dessert.
 image: https://images.unsplash.com/photo-1552320764-9fc870798a3f?w=1200&q=80
