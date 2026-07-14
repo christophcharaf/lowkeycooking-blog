@@ -503,6 +503,15 @@
       "meal_type": "breakfast",
       "protein": "vegetarian",
       "published_at": "2026-07-11"
+    },
+    {
+      "slug": "speedy-shrimp-corn-chowder",
+      "name": "Speedy Shrimp and Corn Chowder",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "lunch",
+      "protein": "shrimp",
+      "published_at": "2026-07-14"
     }
   ]
 }
