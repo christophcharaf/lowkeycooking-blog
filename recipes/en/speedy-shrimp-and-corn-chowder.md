@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Shrimp and Corn Chowder
 description: A quick, creamy, and comforting chowder packed with shrimp and sweet corn.
 image: https://images.unsplash.com/photo-1607887908631-4672d100ee01?w=1200&q=80
