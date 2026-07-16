@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lamb and Peach Skillet
 description: Juicy lamb and sweet peaches roasted together for a quick, flavorful, and colorful weeknight meal.
 image: https://images.unsplash.com/photo-1645563838635-5dcb448d1065?w=1200&q=80

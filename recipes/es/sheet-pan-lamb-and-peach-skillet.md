@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén de Cordero y Melocotón en Bandeja
 description: Un plato principal fácil y sabroso, con cordero tierno y melocotones dulces asados.
 image: https://images.unsplash.com/photo-1645563838635-5dcb448d1065?w=1200&q=80
