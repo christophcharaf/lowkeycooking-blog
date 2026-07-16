@@ -512,6 +512,15 @@
       "meal_type": "lunch",
       "protein": "shrimp",
       "published_at": "2026-07-14"
+    },
+    {
+      "slug": "sheet-pan-lamb-and-peach-skillet",
+      "name": "Sheet Pan Lamb and Peach Skillet",
+      "status": "published",
+      "cuisine": "Mediterranean-inspired",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-07-16"
     }
   ]
 }
