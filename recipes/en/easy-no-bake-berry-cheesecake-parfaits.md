@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Easy No-Bake Berry Cheesecake Parfaits
 description: Creamy, sweet, and delightfully fruity no-bake parfaits perfect for any occasion.
 image: https://images.unsplash.com/photo-1560513880-651eec4710c4?w=1200&q=80

@@ -521,6 +521,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-07-16"
+    },
+    {
+      "slug": "easy-no-bake-berry-cheesecake-parfaits",
+      "name": "Easy No-Bake Berry Cheesecake Parfaits",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-07-19"
     }
   ]
 }

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Parfaits de Cheesecake sin Horno con Frutas del Bosque
 description: Postre cremoso y refrescante de cheesecake, fácil de preparar en capas con frutas.
 image: https://images.unsplash.com/photo-1560513880-651eec4710c4?w=1200&q=80
