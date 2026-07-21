@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Skillet Pork and Peach Hash with Bell Peppers
 description: Savory pork, sweet peaches, and crisp bell peppers create a vibrant, easy weeknight skillet meal.
 image: https://images.unsplash.com/photo-1681766841189-05779ec8ef4e?w=1200&q=80
