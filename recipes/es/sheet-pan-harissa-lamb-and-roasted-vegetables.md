@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Cordero y Verduras Asadas en Bandeja con Harissa
 description: Un plato principal fácil y sabroso, perfecto para una cena entre semana rápida y deliciosa.
 image: https://images.unsplash.com/photo-1518133299975-8e1b628e1cfd?w=1200&q=80

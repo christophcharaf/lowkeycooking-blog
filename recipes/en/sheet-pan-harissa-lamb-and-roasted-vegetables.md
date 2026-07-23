@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Harissa Lamb and Roasted Vegetables
 description: Spicy, tender lamb and perfectly roasted vegetables come together in one easy, flavorful sheet pan dinner.
 image: https://images.unsplash.com/photo-1518133299975-8e1b628e1cfd?w=1200&q=80

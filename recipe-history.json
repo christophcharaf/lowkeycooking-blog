@@ -539,6 +539,15 @@
       "meal_type": "breakfast",
       "protein": "pork",
       "published_at": "2026-07-21"
+    },
+    {
+      "slug": "sheet-pan-harissa-lamb-and-roasted-vegetables",
+      "name": "Sheet Pan Harissa Lamb and Roasted Vegetables",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-07-23"
     }
   ]
 }
