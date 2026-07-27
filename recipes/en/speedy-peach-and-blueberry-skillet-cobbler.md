@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Peach and Blueberry Skillet Cobbler
 description: A warm, comforting fruit cobbler made in a skillet, perfect for a quick dessert.
 image: https://images.unsplash.com/photo-1593395676686-10a61bbc004b?w=1200&q=80

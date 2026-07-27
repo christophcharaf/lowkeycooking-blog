@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Cobbler Rápido de Durazno y Arándanos en Sartén
 description: Un postre fácil y rápido con frutas frescas y una cobertura dorada, perfecto para cualquier ocasión.
 image: https://images.unsplash.com/photo-1593395676686-10a61bbc004b?w=1200&q=80
