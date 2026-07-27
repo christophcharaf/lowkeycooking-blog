@@ -548,6 +548,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-07-23"
+    },
+    {
+      "slug": "speedy-peach-and-blueberry-skillet-cobbler",
+      "name": "Speedy Peach and Blueberry Skillet Cobbler",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-07-27"
     }
   ]
 }
