@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Salteado Rápido de Cerdo y Melocotón en Sartén
 description: Un salteado vibrante y fácil con cerdo tierno y melocotones dulces, perfecto para una cena rápida.
 image: https://images.unsplash.com/photo-1681766841189-05779ec8ef4e?w=1200&q=80

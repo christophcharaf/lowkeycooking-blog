@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Skillet Pork and Peach Stir-Fry
 description: Tender pork and sweet peaches create a vibrant, easy stir-fry perfect for weeknights.
 image: https://images.unsplash.com/photo-1681766841189-05779ec8ef4e?w=1200&q=80

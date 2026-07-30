@@ -557,6 +557,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-07-27"
+    },
+    {
+      "slug": "quick-skillet-pork-and-peach-stir-fry",
+      "name": "Quick Skillet Pork and Peach Stir-Fry",
+      "status": "published",
+      "cuisine": "Asian-inspired",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-07-30"
     }
   ]
 }
