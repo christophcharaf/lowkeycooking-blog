@@ -566,6 +566,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-07-30"
+    },
+    {
+      "slug": "quick-chicken-and-black-bean-quesadillas",
+      "name": "Quick Chicken and Black Bean Quesadillas",
+      "status": "published",
+      "cuisine": "Mexican",
+      "meal_type": "lunch",
+      "protein": "chicken",
+      "published_at": "2026-07-31"
     }
   ]
 }

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Chicken and Black Bean Quesadillas
 description: Speedy, cheesy quesadillas packed with seasoned chicken, black beans, and vibrant salsa.
 image: https://images.unsplash.com/photo-1673990349292-ed2dfa7988c9?w=1200&q=80
