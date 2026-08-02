@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén Rápida de Frijoles Negros y Maíz para el Desayuno
 description: Un desayuno rápido y nutritivo lleno de sabor, perfecto para empezar el día con energía.
 image: https://images.unsplash.com/photo-1518476381266-33596bddffc0?w=1200&q=80

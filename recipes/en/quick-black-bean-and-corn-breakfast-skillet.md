@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Black Bean and Corn Breakfast Skillet
 description: A speedy, satisfying vegetarian breakfast packed with flavor and fiber.
 image: https://images.unsplash.com/photo-1518476381266-33596bddffc0?w=1200&q=80

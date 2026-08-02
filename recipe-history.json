@@ -575,6 +575,15 @@
       "meal_type": "lunch",
       "protein": "chicken",
       "published_at": "2026-07-31"
+    },
+    {
+      "slug": "quick-black-bean-and-corn-breakfast-skillet",
+      "name": "Quick Black Bean and Corn Breakfast Skillet",
+      "status": "published",
+      "cuisine": "Mexican-inspired",
+      "meal_type": "breakfast",
+      "protein": "vegetarian",
+      "published_at": "2026-08-02"
     }
   ]
 }
