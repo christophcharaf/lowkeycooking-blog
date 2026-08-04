@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Empanadas Rápidas de Carne Molida y Maíz
 description: Unas empanadas caseras y deliciosas, perfectas para cualquier comida del día.
 image: https://images.unsplash.com/photo-1588418352567-2eee62ca802b?w=1200&q=80

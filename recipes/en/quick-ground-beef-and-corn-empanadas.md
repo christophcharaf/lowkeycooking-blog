@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Ground Beef and Corn Empanadas
 description: Savory ground beef and sweet corn encased in a flaky pastry, perfect for a quick and satisfying meal.
 image: https://images.unsplash.com/photo-1588418352567-2eee62ca802b?w=1200&q=80

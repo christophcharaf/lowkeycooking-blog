@@ -584,6 +584,15 @@
       "meal_type": "breakfast",
       "protein": "vegetarian",
       "published_at": "2026-08-02"
+    },
+    {
+      "slug": "quick-ground-beef-and-corn-empanadas",
+      "name": "Quick Ground Beef and Corn Empanadas",
+      "status": "published",
+      "cuisine": "Latin American",
+      "meal_type": "lunch",
+      "protein": "ground beef",
+      "published_at": "2026-08-04"
     }
   ]
 }
