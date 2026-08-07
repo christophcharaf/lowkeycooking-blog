@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Filete de Mahi Mahi al Limón y Hierbas con Calabacín y Tomates Cherry en Bandeja
 description: Una cena fácil y saludable en una sola bandeja, llena de sabor cítrico y verduras frescas.
 image: https://images.unsplash.com/photo-1785800930168-2aab343af264?w=1200&q=80

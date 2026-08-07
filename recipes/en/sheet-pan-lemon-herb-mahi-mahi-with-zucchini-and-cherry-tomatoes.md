@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lemon Herb Mahi Mahi with Zucchini and Cherry Tomatoes
 description: Effortless sheet pan dinner featuring flaky mahi mahi, tender zucchini, and burst cherry tomatoes with a bright lemon-herb flavor.
 image: https://images.unsplash.com/photo-1785800930168-2aab343af264?w=1200&q=80

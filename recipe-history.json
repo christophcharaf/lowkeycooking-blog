@@ -593,6 +593,15 @@
       "meal_type": "lunch",
       "protein": "ground beef",
       "published_at": "2026-08-04"
+    },
+    {
+      "slug": "sheet-pan-lemon-herb-mahi-mahi-zucchini-cherry-tomatoes",
+      "name": "Sheet Pan Lemon Herb Mahi Mahi with Zucchini and Cherry Tomatoes",
+      "status": "published",
+      "cuisine": "Mediterranean-inspired",
+      "meal_type": "dinner",
+      "protein": "mahi mahi",
+      "published_at": "2026-08-07"
     }
   ]
 }
