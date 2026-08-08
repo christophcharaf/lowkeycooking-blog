@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Skillet Lamb and Peach Hash
 description: Savory lamb and sweet peaches in a quick, flavorful skillet hash.
 image: https://images.unsplash.com/photo-1587016164135-258b9d6ebdef?w=1200&q=80

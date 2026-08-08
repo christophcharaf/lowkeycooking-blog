@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash Rápido de Cordero y Melocotón en Sartén
 description: Un plato principal rápido y sabroso que combina cordero tierno con melocotones dulces y especias.
 image: https://images.unsplash.com/photo-1587016164135-258b9d6ebdef?w=1200&q=80
