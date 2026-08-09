@@ -611,6 +611,15 @@
       "meal_type": "breakfast",
       "protein": "lamb",
       "published_at": "2026-08-08"
+    },
+    {
+      "slug": "quick-chicken-and-peanut-stew",
+      "name": "Quick Chicken and Peanut Stew",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-08-09"
     }
   ]
 }
