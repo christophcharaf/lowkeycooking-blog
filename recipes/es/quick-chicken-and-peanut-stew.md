@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Estofado Rápido de Pollo y Cacahuete
 description: Un estofado cremoso y reconfortante de pollo y cacahuete, perfecto para una cena rápida entre semana.
 image: https://images.unsplash.com/photo-1621515554656-3da68ba128b1?w=1200&q=80
