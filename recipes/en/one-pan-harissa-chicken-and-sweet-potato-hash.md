@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Harissa Chicken and Sweet Potato Hash
 description: Spicy, savory chicken and sweet potatoes roasted together for a quick, flavorful weeknight meal.
 image: https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=1200&q=80

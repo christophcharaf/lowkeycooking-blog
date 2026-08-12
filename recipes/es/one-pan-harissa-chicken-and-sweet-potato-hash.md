@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pollo y Batata a la Harissa en una Sola Sartén
 description: Una cena picante y reconfortante con pollo jugoso y batatas tiernas, lista en una sartén.
 image: https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=1200&q=80
