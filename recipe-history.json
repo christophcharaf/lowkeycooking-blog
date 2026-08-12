@@ -620,6 +620,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-08-09"
+    },
+    {
+      "slug": "one-pan-harissa-chicken-and-sweet-potato-hash",
+      "name": "One-Pan Harissa Chicken and Sweet Potato Hash",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "breakfast",
+      "protein": "chicken",
+      "published_at": "2026-08-12"
     }
   ]
 }
