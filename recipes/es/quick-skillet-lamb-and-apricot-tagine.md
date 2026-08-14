@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Tagine Rápido de Cordero y Albaricoque en Sartén
 description: Un tagine fragante y fácil de cordero con albaricoques secos, listo en menos de una hora.
 image: https://images.unsplash.com/photo-1648970198229-b7c89fc0e2a5?w=1200&q=80

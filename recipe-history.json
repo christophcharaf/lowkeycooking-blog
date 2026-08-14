@@ -629,6 +629,15 @@
       "meal_type": "breakfast",
       "protein": "chicken",
       "published_at": "2026-08-12"
+    },
+    {
+      "slug": "quick-skillet-lamb-and-apricot-tagine",
+      "name": "Quick Skillet Lamb and Apricot Tagine",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-08-14"
     }
   ]
 }

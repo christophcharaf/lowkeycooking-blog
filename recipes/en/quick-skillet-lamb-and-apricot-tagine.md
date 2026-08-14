@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Skillet Lamb and Apricot Tagine
 description: Tender lamb and sweet apricots simmered in a fragrant, spiced broth for a speedy, exotic dinner.
 image: https://images.unsplash.com/photo-1648970198229-b7c89fc0e2a5?w=1200&q=80
