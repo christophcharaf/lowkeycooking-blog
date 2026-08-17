@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén Rápida de Pollo con Cacahuete y Pimientos
 description: Un plato principal rápido y sabroso, lleno de pollo tierno, pimientos crujientes y una salsa de cacahuete irresistible.
 image: https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=1200&q=80

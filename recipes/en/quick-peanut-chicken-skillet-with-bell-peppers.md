@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Peanut Chicken Skillet with Bell Peppers
 description: A speedy, flavorful chicken and veggie stir-fry with a creamy, savory peanut sauce.
 image: https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=1200&q=80
