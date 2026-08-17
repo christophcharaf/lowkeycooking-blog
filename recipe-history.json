@@ -638,6 +638,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-08-14"
+    },
+    {
+      "slug": "quick-peanut-chicken-skillet-with-bell-peppers",
+      "name": "Quick Peanut Chicken Skillet with Bell Peppers",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-08-17"
     }
   ]
 }
