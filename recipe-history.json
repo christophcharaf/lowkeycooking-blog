@@ -647,6 +647,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-08-17"
+    },
+    {
+      "slug": "quick-skillet-jollof-rice-with-chicken",
+      "name": "Quick Skillet Jollof Rice with Chicken",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-08-24"
     }
   ]
 }

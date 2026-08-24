@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Skillet Jollof Rice with Chicken
 description: A vibrant, flavorful one-pan Jollof rice with tender chicken, perfect for weeknights.
 image: https://images.unsplash.com/photo-1612183078948-11291ada6356?w=1200&q=80
