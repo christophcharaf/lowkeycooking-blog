@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Arroz Jollof Rápido con Pollo en Sartén
 description: Un delicioso y sencillo plato africano de arroz y pollo, listo en menos de una hora.
 image: https://images.unsplash.com/photo-1612183078948-11291ada6356?w=1200&q=80
