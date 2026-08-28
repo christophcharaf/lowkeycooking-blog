@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Salmón Asado en una Bandeja con Limón y Hierbas, Espárragos y Tomates Cherry
 description: Una cena fácil y saludable en una sola bandeja con salmón jugoso, espárragos tiernos y tomates dulces.
 image: https://images.unsplash.com/photo-1588428894220-ae6af96e8c2d?w=1200&q=80

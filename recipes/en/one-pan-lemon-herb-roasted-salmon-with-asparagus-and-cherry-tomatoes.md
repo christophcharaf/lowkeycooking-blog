@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Lemon Herb Roasted Salmon with Asparagus and Cherry Tomatoes
 description: Effortlessly bake tender salmon, crisp asparagus, and sweet tomatoes with vibrant lemon-herb flavor.
 image: https://images.unsplash.com/photo-1588428894220-ae6af96e8c2d?w=1200&q=80
