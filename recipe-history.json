@@ -656,6 +656,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-08-24"
+    },
+    {
+      "slug": "one-pan-lemon-herb-roasted-salmon-with-asparagus-and-cherry-tomatoes",
+      "name": "One-Pan Lemon Herb Roasted Salmon with Asparagus and Cherry Tomatoes",
+      "status": "published",
+      "cuisine": "Mediterranean-inspired",
+      "meal_type": "dinner",
+      "protein": "salmon",
+      "published_at": "2026-08-28"
     }
   ]
 }
