@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pollo al Horno con Hierbas y Vegetales de Raíz
 description: Una comida completa y deliciosa en una sola bandeja, perfecta para una cena entre semana.
 image: https://images.unsplash.com/photo-1700956015209-4735e8bd9163?w=1200&q=80

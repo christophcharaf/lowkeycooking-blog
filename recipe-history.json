@@ -665,6 +665,24 @@
       "meal_type": "dinner",
       "protein": "salmon",
       "published_at": "2026-08-28"
+    },
+    {
+      "slug": "sheet-pan-pork-and-apple-sausage-hash",
+      "name": "Sheet Pan Pork and Apple Sausage Hash",
+      "status": "published",
+      "cuisine": "American",
+      "meal_type": "breakfast",
+      "protein": "pork",
+      "published_at": "2026-09-03"
+    },
+    {
+      "slug": "sheet-pan-garlic-herb-chicken-root-vegetables",
+      "name": "Sheet Pan Garlic Herb Chicken and Root Vegetables",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-09-03"
     }
   ]
 }

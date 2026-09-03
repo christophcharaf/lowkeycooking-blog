@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Garlic Herb Chicken and Root Vegetables
 description: Effortless weeknight dinner featuring tender chicken and roasted root vegetables with a savory herb coating.
 image: https://images.unsplash.com/photo-1700956015209-4735e8bd9163?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Salchicha de Cerdo y Manzana en Bandeja para Hornear
 description: Un plato fácil de una sola bandeja con salchicha, patatas y manzanas, perfecto para cualquier comida.
 image: https://images.unsplash.com/photo-1627446605605-1f0385188cd5?w=1200&q=80
