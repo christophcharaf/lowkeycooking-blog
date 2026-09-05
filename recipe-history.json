@@ -683,6 +683,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-09-03"
+    },
+    {
+      "slug": "quick-skillet-jollof-rice-with-vegetables",
+      "name": "Quick Skillet Jollof Rice with Vegetables",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "vegetarian",
+      "published_at": "2026-09-05"
     }
   ]
 }
