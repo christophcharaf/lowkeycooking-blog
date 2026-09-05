@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Skillet Jollof Rice with Vegetables
 description: Flavorful one-pan Jollof rice with tender vegetables, perfect for a weeknight meal.
 image: https://images.unsplash.com/photo-1665332111329-dd9d7fa46c74?w=1200&q=80

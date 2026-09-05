@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Arroz Jollof Rápido en Sartén con Verduras
 description: Un plato africano vibrante y lleno de sabor, perfecto para una cena rápida entre semana.
 image: https://images.unsplash.com/photo-1665332111329-dd9d7fa46c74?w=1200&q=80
