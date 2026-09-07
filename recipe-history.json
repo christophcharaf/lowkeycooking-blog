@@ -692,6 +692,15 @@
       "meal_type": "dinner",
       "protein": "vegetarian",
       "published_at": "2026-09-05"
+    },
+    {
+      "slug": "quick-lamb-and-lentil-stew",
+      "name": "Quick Lamb and Lentil Stew",
+      "status": "published",
+      "cuisine": "Middle Eastern-inspired",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-09-07"
     }
   ]
 }

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Estofado Rápido de Cordero y Lentejas
 description: Un estofado reconfortante y nutritivo de cordero y lentejas, perfecto para una cena entre semana.
 image: https://images.unsplash.com/photo-1648455320791-a667c8aab7e4?w=1200&q=80

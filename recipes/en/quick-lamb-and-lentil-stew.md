@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Lamb and Lentil Stew
 description: Hearty, flavorful lamb and lentil stew ready in under an hour for a comforting weeknight meal.
 image: https://images.unsplash.com/photo-1648455320791-a667c8aab7e4?w=1200&q=80
