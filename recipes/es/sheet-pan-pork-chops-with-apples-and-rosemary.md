@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Chuletas de Cerdo al Horno con Manzanas y Romero
 description: Chuletas de cerdo jugosas y manzanas caramelizadas, horneadas juntas con romero fresco para una cena fácil.
 image: https://images.unsplash.com/photo-1573543977297-754d620e3580?w=1200&q=80

@@ -701,6 +701,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-09-07"
+    },
+    {
+      "slug": "sheet-pan-pork-chops-with-apples-and-rosemary",
+      "name": "Sheet Pan Pork Chops with Apples and Rosemary",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-09-12"
     }
   ]
 }

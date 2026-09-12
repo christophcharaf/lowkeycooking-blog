@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Pork Chops with Apples and Rosemary
 description: Juicy pork chops roasted with sweet apples and fragrant rosemary for an easy weeknight meal.
 image: https://images.unsplash.com/photo-1573543977297-754d620e3580?w=1200&q=80
