@@ -710,6 +710,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-09-12"
+    },
+    {
+      "slug": "spiced-apple-cinnamon-baked-oatmeal",
+      "name": "Spiced Apple and Cinnamon Baked Oatmeal",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "breakfast",
+      "protein": "vegetarian",
+      "published_at": "2026-09-14"
     }
   ]
 }
