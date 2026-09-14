@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Avena Horneada Especiada con Manzana y Canela
 description: Un desayuno reconfortante y fácil, perfecto para mañanas frías. ¡Huele increíble!
 image: https://images.unsplash.com/photo-1633236188185-e84ee3ab1108?w=1200&q=80

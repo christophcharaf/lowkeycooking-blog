@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spiced Apple and Cinnamon Baked Oatmeal
 description: Cozy, comforting baked oatmeal bursting with apple and cinnamon flavor, perfect for a chilly morning.
 image: https://images.unsplash.com/photo-1633236188185-e84ee3ab1108?w=1200&q=80
