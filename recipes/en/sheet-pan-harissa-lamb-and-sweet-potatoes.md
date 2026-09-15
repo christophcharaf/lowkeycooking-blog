@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Harissa Lamb and Sweet Potatoes
 description: Spicy, savory lamb meets sweet potatoes for a quick, flavorful weeknight meal.
 image: https://images.unsplash.com/photo-1632420758609-206ed63cb4d8?w=1200&q=80

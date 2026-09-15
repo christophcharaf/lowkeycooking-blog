@@ -719,6 +719,15 @@
       "meal_type": "breakfast",
       "protein": "vegetarian",
       "published_at": "2026-09-14"
+    },
+    {
+      "slug": "sheet-pan-harissa-lamb-and-sweet-potatoes",
+      "name": "Sheet Pan Harissa Lamb and Sweet Potatoes",
+      "status": "published",
+      "cuisine": "Middle Eastern",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-09-15"
     }
   ]
 }

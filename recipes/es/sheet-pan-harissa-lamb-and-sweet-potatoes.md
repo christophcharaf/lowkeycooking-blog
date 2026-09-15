@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Cordero y Batatas en Bandeja con Harissa
 description: Un plato principal fácil y sabroso, perfecto para una cena rápida entre semana.
 image: https://images.unsplash.com/photo-1632420758609-206ed63cb4d8?w=1200&q=80
