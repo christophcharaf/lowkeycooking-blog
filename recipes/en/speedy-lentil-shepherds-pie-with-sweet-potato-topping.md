@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Lentil Shepherd's Pie with Sweet Potato Topping
 description: A hearty, quick vegetarian take on a classic comfort food, perfect for weeknights.
 image: https://images.unsplash.com/photo-1696935257293-9ec4f03074a1?w=1200&q=80

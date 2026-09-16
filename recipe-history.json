@@ -728,6 +728,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-09-15"
+    },
+    {
+      "slug": "speedy-lentil-shepherd-s-pie-with-sweet-potato-topping",
+      "name": "Speedy Lentil Shepherd's Pie with Sweet Potato Topping",
+      "status": "published",
+      "cuisine": "American comfort food",
+      "meal_type": "dinner",
+      "protein": "vegetarian",
+      "published_at": "2026-09-16"
     }
   ]
 }

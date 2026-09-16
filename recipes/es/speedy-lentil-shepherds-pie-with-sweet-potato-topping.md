@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pastel de Pastor de Lentejas Rápido con Cobertura de Batata
 description: Un reconfortante pastel de pastor vegano, repleto de lentejas y cubierto con puré de batata.
 image: https://images.unsplash.com/photo-1696935257293-9ec4f03074a1?w=1200&q=80
