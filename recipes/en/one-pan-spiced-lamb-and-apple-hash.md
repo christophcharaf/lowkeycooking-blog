@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Spiced Lamb and Apple Hash
 description: A hearty, flavorful one-pan meal featuring tender lamb, sweet apples, and warm spices.
 image: https://images.unsplash.com/photo-1587016164135-258b9d6ebdef?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Cordero y Manzana Especiado en Una Sola Sartén
 description: Un plato reconfortante y fácil de una sola sartén con cordero, manzana y especias.
 image: https://images.unsplash.com/photo-1587016164135-258b9d6ebdef?w=1200&q=80

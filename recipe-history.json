@@ -737,6 +737,15 @@
       "meal_type": "dinner",
       "protein": "vegetarian",
       "published_at": "2026-09-16"
+    },
+    {
+      "slug": "one-pan-spiced-lamb-and-apple-hash",
+      "name": "One-Pan Spiced Lamb and Apple Hash",
+      "status": "published",
+      "cuisine": "Middle Eastern-inspired",
+      "meal_type": "breakfast",
+      "protein": "lamb",
+      "published_at": "2026-09-17"
     }
   ]
 }
