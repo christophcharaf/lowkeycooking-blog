@@ -746,6 +746,15 @@
       "meal_type": "breakfast",
       "protein": "lamb",
       "published_at": "2026-09-17"
+    },
+    {
+      "slug": "speedy-lamb-and-apple-skillet",
+      "name": "Speedy Lamb and Apple Skillet",
+      "status": "published",
+      "cuisine": "Middle Eastern-inspired",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-09-18"
     }
   ]
 }
