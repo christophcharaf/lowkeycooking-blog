@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Salteado Rápido de Cordero y Manzana
 description: Un plato reconfortante y fácil de cordero, manzana y especias, perfecto para una cena entre semana.
 image: https://images.unsplash.com/photo-1520218508822-998633d997e6?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Lamb and Apple Skillet
 description: Savory lamb and sweet apples simmered together for a quick, comforting weeknight meal.
 image: https://images.unsplash.com/photo-1520218508822-998633d997e6?w=1200&q=80
