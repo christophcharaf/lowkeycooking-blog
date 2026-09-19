@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Salmón Picante con Verduras Asadas en una Bandeja
 description: Una cena fácil y sabrosa en una sola bandeja con salmón jugoso y verduras dulces y picantes.
 image: https://images.unsplash.com/photo-1518133299975-8e1b628e1cfd?w=1200&q=80

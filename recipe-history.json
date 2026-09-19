@@ -755,6 +755,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-09-18"
+    },
+    {
+      "slug": "sheet-pan-harissa-salmon-with-roasted-root-vegetables",
+      "name": "Sheet Pan Harissa Salmon with Roasted Root Vegetables",
+      "status": "published",
+      "cuisine": "Middle Eastern-inspired",
+      "meal_type": "dinner",
+      "protein": "salmon",
+      "published_at": "2026-09-19"
     }
   ]
 }

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Harissa Salmon with Roasted Root Vegetables
 description: Spicy harissa salmon and earthy root vegetables roast together for a vibrant, easy weeknight meal.
 image: https://images.unsplash.com/photo-1518133299975-8e1b628e1cfd?w=1200&q=80
