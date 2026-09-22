@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Pork Sausage and Apple Hash
 description: A simple, savory, and slightly sweet sheet pan dinner that’s perfect for busy weeknights.
 image: https://images.unsplash.com/photo-1627446605605-1f0385188cd5?w=1200&q=80
