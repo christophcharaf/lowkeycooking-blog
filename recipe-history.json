@@ -773,6 +773,15 @@
       "meal_type": "dinner",
       "protein": "shrimp",
       "published_at": "2026-09-22"
+    },
+    {
+      "slug": "sheet-pan-pork-sausage-and-apple-hash",
+      "name": "Sheet Pan Pork Sausage and Apple Hash",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "breakfast",
+      "protein": "pork",
+      "published_at": "2026-09-22"
     }
   ]
 }
