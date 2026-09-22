@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Shrimp Scampi with Orzo
 description: Effortless weeknight dinner featuring tender shrimp and pasta cooked together on one pan.
 image: https://images.unsplash.com/photo-1601579112759-761ccbaa8bde?w=1200&q=80

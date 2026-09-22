@@ -764,6 +764,15 @@
       "meal_type": "dinner",
       "protein": "salmon",
       "published_at": "2026-09-19"
+    },
+    {
+      "slug": "sheet-pan-shrimp-scampi-with-orzo",
+      "name": "Sheet Pan Shrimp Scampi with Orzo",
+      "status": "published",
+      "cuisine": "Italian-inspired",
+      "meal_type": "dinner",
+      "protein": "shrimp",
+      "published_at": "2026-09-22"
     }
   ]
 }

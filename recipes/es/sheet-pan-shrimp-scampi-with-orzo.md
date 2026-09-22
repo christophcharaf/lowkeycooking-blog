@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Gambas al Ajillo con Orzo en Bandeja de Horno
 description: Una cena rápida y fácil de una sola bandeja, llena de sabor a ajo y limón.
 image: https://images.unsplash.com/photo-1601579112759-761ccbaa8bde?w=1200&q=80
