@@ -782,6 +782,15 @@
       "meal_type": "breakfast",
       "protein": "pork",
       "published_at": "2026-09-22"
+    },
+    {
+      "slug": "speedy-coconut-milk-tapioca-pudding",
+      "name": "Speedy Coconut Milk Tapioca Pudding",
+      "status": "published",
+      "cuisine": "Asian-inspired",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-09-23"
     }
   ]
 }

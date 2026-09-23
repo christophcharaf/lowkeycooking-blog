@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Coconut Milk Tapioca Pudding
 description: Creamy, dreamy tapioca pudding made with coconut milk, ready in under 30 minutes.
 image: https://images.unsplash.com/photo-1551239326-fd02c74548ec?w=1200&q=80

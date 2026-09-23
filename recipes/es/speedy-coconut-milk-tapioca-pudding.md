@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pudin de Tapioca Rápido con Leche de Coco
 description: Un postre cremoso y exótico de tapioca, perfecto para un antojo dulce y rápido.
 image: https://images.unsplash.com/photo-1551239326-fd02c74548ec?w=1200&q=80
