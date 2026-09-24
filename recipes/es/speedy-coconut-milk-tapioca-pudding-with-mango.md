@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pudín de Tapioca Rápido con Leche de Coco y Mango
 description: Un postre cremoso y tropical, listo en minutos, perfecto para cualquier ocasión.
 image: https://images.unsplash.com/photo-1582801205465-c0d029e85a1c?w=1200&q=80

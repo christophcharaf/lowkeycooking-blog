@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Coconut Milk Tapioca Pudding with Mango
 description: Creamy, dreamy tapioca pudding made quick with coconut milk and topped with fresh mango.
 image: https://images.unsplash.com/photo-1582801205465-c0d029e85a1c?w=1200&q=80
