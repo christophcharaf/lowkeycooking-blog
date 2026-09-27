@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lamb Sausage and Apple Hash with Rosemary
 description: Quick and flavorful weeknight dinner featuring savory lamb sausage, sweet apples, and aromatic rosemary.
 image: https://images.unsplash.com/photo-1610631087248-08f2eac7a93d?w=1200&q=80

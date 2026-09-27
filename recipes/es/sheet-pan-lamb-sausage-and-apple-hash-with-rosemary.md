@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Salchicha de Cordero y Manzana en Bandeja con Romero
 description: Un hash reconfortante y fácil de hacer en una sola bandeja, perfecto para cualquier comida.
 image: https://images.unsplash.com/photo-1610631087248-08f2eac7a93d?w=1200&q=80
