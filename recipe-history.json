@@ -800,6 +800,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-09-24"
+    },
+    {
+      "slug": "sheet-pan-lamb-sausage-and-apple-hash-with-rosemary",
+      "name": "Sheet Pan Lamb Sausage and Apple Hash with Rosemary",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "breakfast",
+      "protein": "lamb",
+      "published_at": "2026-09-27"
     }
   ]
 }
