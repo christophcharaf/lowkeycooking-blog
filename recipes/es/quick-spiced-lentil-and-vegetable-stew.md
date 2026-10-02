@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Estofado Rápido de Lentejas y Verduras Especiadas
 description: Un estofado reconfortante y nutritivo, lleno de sabor y listo en poco tiempo.
 image: https://images.unsplash.com/photo-1664339031004-9cfdf88b8017?w=1200&q=80
