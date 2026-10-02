@@ -809,6 +809,15 @@
       "meal_type": "breakfast",
       "protein": "lamb",
       "published_at": "2026-09-27"
+    },
+    {
+      "slug": "quick-spiced-lamb-and-sweet-potato-hash",
+      "name": "Quick Spiced Lamb and Sweet Potato Hash",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "breakfast",
+      "protein": "lamb",
+      "published_at": "2026-10-02"
     }
   ]
 }
