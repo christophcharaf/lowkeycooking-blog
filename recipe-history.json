@@ -818,6 +818,15 @@
       "meal_type": "breakfast",
       "protein": "lamb",
       "published_at": "2026-10-02"
+    },
+    {
+      "slug": "quick-spiced-lentil-and-vegetable-stew",
+      "name": "Quick Spiced Lentil and Vegetable Stew",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "vegetarian",
+      "published_at": "2026-10-02"
     }
   ]
 }
