@@ -827,6 +827,15 @@
       "meal_type": "dinner",
       "protein": "vegetarian",
       "published_at": "2026-10-02"
+    },
+    {
+      "slug": "sheet-pan-lemon-herb-mahi-mahi-root-vegetables",
+      "name": "Sheet Pan Lemon Herb Mahi Mahi with Root Vegetables",
+      "status": "published",
+      "cuisine": "Mediterranean-inspired",
+      "meal_type": "dinner",
+      "protein": "mahi mahi",
+      "published_at": "2026-10-05"
     }
   ]
 }
