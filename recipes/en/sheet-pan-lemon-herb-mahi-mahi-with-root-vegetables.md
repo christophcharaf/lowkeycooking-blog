@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lemon Herb Mahi Mahi with Root Vegetables
 description: Juicy lemon-herb mahi mahi roasted with tender root vegetables for a simple, healthy weeknight dinner.
 image: https://images.unsplash.com/photo-1660180750734-52c97a0d02d0?w=1200&q=80
