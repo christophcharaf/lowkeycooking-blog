@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Coconut Rice Pudding with Fall Fruits
 description: Creamy, fragrant coconut rice pudding topped with warm, spiced fall fruits.
 image: https://images.unsplash.com/photo-1697381649399-0672a1568ab5?w=1200&q=80

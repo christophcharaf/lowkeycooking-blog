@@ -836,6 +836,15 @@
       "meal_type": "dinner",
       "protein": "mahi mahi",
       "published_at": "2026-10-05"
+    },
+    {
+      "slug": "quick-coconut-rice-pudding-with-fall-fruits",
+      "name": "Quick Coconut Rice Pudding with Fall Fruits",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-10-08"
     }
   ]
 }

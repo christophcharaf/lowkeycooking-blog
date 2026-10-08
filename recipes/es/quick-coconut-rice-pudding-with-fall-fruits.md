@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pudín de Arroz Cremoso de Coco con Frutas de Otoño
 description: Un postre reconfortante y rápido, cremoso, con el dulzor de las frutas de otoño y un toque exótico de coco.
 image: https://images.unsplash.com/photo-1697381649399-0672a1568ab5?w=1200&q=80
