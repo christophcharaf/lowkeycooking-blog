@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Kimchi Fried Rice with Pork
 description: Savory, spicy, and satisfying kimchi fried rice with tender pork, ready in under 30 minutes.
 image: https://images.unsplash.com/photo-1715854501867-5533189a5e71?w=1200&q=80

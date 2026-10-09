@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Arroz Frito Rápido de Kimchi con Cerdo
 description: Un plato reconfortante y lleno de sabor, perfecto para una comida rápida entre semana.
 image: https://images.unsplash.com/photo-1715854501867-5533189a5e71?w=1200&q=80

@@ -845,6 +845,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-10-08"
+    },
+    {
+      "slug": "quick-kimchi-fried-rice-with-pork",
+      "name": "Quick Kimchi Fried Rice with Pork",
+      "status": "published",
+      "cuisine": "Korean-inspired",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-10-09"
     }
   ]
 }
