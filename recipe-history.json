@@ -854,6 +854,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-10-09"
+    },
+    {
+      "slug": "sheet-pan-apple-sausage-and-root-vegetables",
+      "name": "Sheet Pan Apple Sausage and Root Vegetables",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "dinner",
+      "protein": "pork",
+      "published_at": "2026-10-10"
     }
   ]
 }

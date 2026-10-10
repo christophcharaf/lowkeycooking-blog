@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Apple Sausage and Root Vegetables
 description: A simple, flavorful weeknight meal with sweet apples, savory sausage, and hearty root vegetables.
 image: https://images.unsplash.com/photo-1627446605605-1f0385188cd5?w=1200&q=80
