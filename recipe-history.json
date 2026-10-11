@@ -863,6 +863,15 @@
       "meal_type": "dinner",
       "protein": "pork",
       "published_at": "2026-10-10"
+    },
+    {
+      "slug": "one-pan-harissa-chicken-and-root-vegetables",
+      "name": "One-Pan Harissa Chicken and Root Vegetables",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-10-11"
     }
   ]
 }

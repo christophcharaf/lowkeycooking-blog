@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pollo y Verduras de Raíz en una Sola Bandeja con Harissa
 description: Un plato reconfortante y lleno de sabor, perfecto para una cena rápida entre semana.
 image: https://images.unsplash.com/photo-1606791422814-b32c705e3e2f?w=1200&q=80

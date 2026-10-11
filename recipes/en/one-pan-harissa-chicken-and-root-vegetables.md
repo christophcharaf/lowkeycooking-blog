@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Harissa Chicken and Root Vegetables
 description: Spicy, tender chicken with caramelized root vegetables, all cooked on a single sheet pan for easy cleanup.
 image: https://images.unsplash.com/photo-1606791422814-b32c705e3e2f?w=1200&q=80
