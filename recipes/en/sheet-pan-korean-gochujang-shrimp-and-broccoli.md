@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Korean Gochujang Shrimp and Broccoli
 description: Spicy, savory gochujang shrimp and tender broccoli roasted to perfection on one sheet pan.
 image: https://images.unsplash.com/photo-1603093058375-eac0769409c1?w=1200&q=80

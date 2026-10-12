@@ -872,6 +872,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-10-11"
+    },
+    {
+      "slug": "sheet-pan-korean-gochujang-shrimp-and-broccoli",
+      "name": "Sheet Pan Korean Gochujang Shrimp and Broccoli",
+      "status": "published",
+      "cuisine": "Korean-inspired",
+      "meal_type": "dinner",
+      "protein": "shrimp",
+      "published_at": "2026-10-12"
     }
   ]
 }
