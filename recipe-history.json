@@ -881,6 +881,15 @@
       "meal_type": "dinner",
       "protein": "shrimp",
       "published_at": "2026-10-12"
+    },
+    {
+      "slug": "easy-coconut-milk-tapioca-pudding-with-fall-fruits",
+      "name": "Easy Coconut Milk Tapioca Pudding with Fall Fruits",
+      "status": "published",
+      "cuisine": "Asian-inspired",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-10-13"
     }
   ]
 }
