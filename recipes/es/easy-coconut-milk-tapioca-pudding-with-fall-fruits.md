@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pudín de Tapioca Cremoso con Leche de Coco y Frutas de Otoño
 description: Un postre reconfortante y fácil, perfecto para cualquier ocasión, con un toque tropical.
 image: https://images.unsplash.com/photo-1697615206035-31406935fd20?w=1200&q=80

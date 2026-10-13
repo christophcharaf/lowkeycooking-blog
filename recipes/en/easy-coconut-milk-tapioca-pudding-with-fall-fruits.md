@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Easy Coconut Milk Tapioca Pudding with Fall Fruits
 description: Creamy, dairy-free tapioca pudding swirled with warm fall fruits for a comforting dessert.
 image: https://images.unsplash.com/photo-1697615206035-31406935fd20?w=1200&q=80
