@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Salchicha de Cerdo y Manzana en Bandeja
 description: Una cena fácil y reconfortante de salchicha de cerdo, manzanas dulces y patatas crujientes, todo en una sola bandeja.
 image: https://images.unsplash.com/photo-1627446605605-1f0385188cd5?w=1200&q=80
