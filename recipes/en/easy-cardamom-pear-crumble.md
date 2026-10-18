@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Easy Cardamom Pear Crumble
 description: A comforting and aromatic dessert featuring tender pears with a sweet, spiced crumble topping.
 image: https://images.unsplash.com/photo-1602513916646-60a091ea794e?w=1200&q=80
