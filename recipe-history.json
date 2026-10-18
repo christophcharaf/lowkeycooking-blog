@@ -890,6 +890,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-10-13"
+    },
+    {
+      "slug": "easy-cardamom-pear-crumble",
+      "name": "Easy Cardamom Pear Crumble",
+      "status": "published",
+      "cuisine": "Middle Eastern-inspired",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-10-18"
     }
   ]
 }
