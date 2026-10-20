@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Cerdo Especiado con Manzana en Sartén
 description: Un delicioso y reconfortante plato de cerdo especiado con manzana, perfecto para cualquier comida.
 image: https://images.unsplash.com/photo-1601579112521-5d6badb0bf3c?w=1200&q=80

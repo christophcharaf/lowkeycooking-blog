@@ -899,6 +899,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-10-18"
+    },
+    {
+      "slug": "spiced-pork-and-apple-skillet-hash",
+      "name": "Spiced Pork and Apple Skillet Hash",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "breakfast",
+      "protein": "pork",
+      "published_at": "2026-10-20"
     }
   ]
 }

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spiced Pork and Apple Skillet Hash
 description: A hearty, flavorful hash with tender pork, crisp apples, and warming spices, perfect for any meal.
 image: https://images.unsplash.com/photo-1601579112521-5d6badb0bf3c?w=1200&q=80
