@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Brochetas de Cordero al Horno con Verduras de Raíz Asadas
 description: Deliciosas brochetas de cordero especiado y verduras de raíz asadas, todo en una sola bandeja para una cena fácil.
 image: https://images.unsplash.com/photo-1606791422814-b32c705e3e2f?w=1200&q=80

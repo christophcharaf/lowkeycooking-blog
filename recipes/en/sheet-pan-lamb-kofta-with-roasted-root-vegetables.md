@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lamb Kofta with Roasted Root Vegetables
 description: Easy sheet pan dinner featuring flavorful lamb kofta and caramelized root vegetables.
 image: https://images.unsplash.com/photo-1606791422814-b32c705e3e2f?w=1200&q=80
