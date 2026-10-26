@@ -917,6 +917,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-10-25"
+    },
+    {
+      "slug": "quick-lamb-chickpea-tagine-couscous",
+      "name": "Quick Lamb and Chickpea Tagine with Couscous",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-10-26"
     }
   ]
 }

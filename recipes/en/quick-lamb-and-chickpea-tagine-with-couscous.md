@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Lamb and Chickpea Tagine with Couscous
 description: A vibrant, flavorful lamb and chickpea tagine, ready in under an hour for a cozy weeknight meal.
 image: https://images.unsplash.com/photo-1582576163090-09d3b6f8a969?w=1200&q=80

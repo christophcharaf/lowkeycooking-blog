@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Rápido Estofado de Cordero y Garbanzos con Cuscús
 description: Un estofado de cordero y garbanzos fácil y rápido, perfecto para una cena reconfortante.
 image: https://images.unsplash.com/photo-1582576163090-09d3b6f8a969?w=1200&q=80
