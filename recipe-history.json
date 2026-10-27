@@ -926,6 +926,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-10-26"
+    },
+    {
+      "slug": "quick-jollof-rice-with-chicken",
+      "name": "Quick Jollof Rice with Chicken",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-10-27"
     }
   ]
 }

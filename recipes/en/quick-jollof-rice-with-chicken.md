@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Jollof Rice with Chicken
 description: Flavorful one-pot Jollof rice and tender chicken, a weeknight dinner win.
 image: https://images.unsplash.com/photo-1665332195309-9d75071138f0?w=1200&q=80

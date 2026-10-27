@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Arroz Jollof Rápido con Pollo
 description: Un plato africano vibrante y lleno de sabor, perfecto para una comida rápida y deliciosa.
 image: https://images.unsplash.com/photo-1665332195309-9d75071138f0?w=1200&q=80
