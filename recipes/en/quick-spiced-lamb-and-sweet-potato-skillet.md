@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Spiced Lamb and Sweet Potato Skillet
 description: Tender lamb and sweet potatoes mingle in a warm, aromatic spice blend for a weeknight wonder.
 image: https://images.unsplash.com/photo-1520218508822-998633d997e6?w=1200&q=80

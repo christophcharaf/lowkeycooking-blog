@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sartén Rápida de Cordero Especiado y Batata
 description: Un plato reconfortante y lleno de sabor, perfecto para una cena rápida entre semana.
 image: https://images.unsplash.com/photo-1520218508822-998633d997e6?w=1200&q=80
