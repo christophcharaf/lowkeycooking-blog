@@ -935,6 +935,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-10-27"
+    },
+    {
+      "slug": "quick-spiced-lamb-and-sweet-potato-skillet",
+      "name": "Quick Spiced Lamb and Sweet Potato Skillet",
+      "status": "published",
+      "cuisine": "Middle Eastern-inspired",
+      "meal_type": "dinner",
+      "protein": "lamb",
+      "published_at": "2026-10-29"
     }
   ]
 }
