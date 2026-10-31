@@ -944,6 +944,15 @@
       "meal_type": "dinner",
       "protein": "lamb",
       "published_at": "2026-10-29"
+    },
+    {
+      "slug": "spiced-apple-pork-sausage-breakfast-hash",
+      "name": "Spiced Apple and Pork Sausage Breakfast Hash",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "breakfast",
+      "protein": "pork",
+      "published_at": "2026-10-31"
     }
   ]
 }
