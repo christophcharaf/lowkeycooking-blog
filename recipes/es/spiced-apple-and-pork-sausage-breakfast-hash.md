@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Salchicha de Cerdo y Manzana Especiada para el Desayuno
 description: Un hash reconfortante y especiado con salchicha de cerdo, manzanas dulces y un toque de canela.
 image: https://images.unsplash.com/photo-1601579112521-5d6badb0bf3c?w=1200&q=80

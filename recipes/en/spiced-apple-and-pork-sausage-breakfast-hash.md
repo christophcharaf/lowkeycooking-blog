@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spiced Apple and Pork Sausage Breakfast Hash
 description: A comforting and flavorful breakfast hash with sweet apples and savory pork sausage.
 image: https://images.unsplash.com/photo-1601579112521-5d6badb0bf3c?w=1200&q=80
