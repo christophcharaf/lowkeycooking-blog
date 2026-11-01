@@ -953,6 +953,15 @@
       "meal_type": "breakfast",
       "protein": "pork",
       "published_at": "2026-10-31"
+    },
+    {
+      "slug": "sheet-pan-lemon-herb-salmon-brussels-sprouts-potatoes",
+      "name": "Sheet Pan Lemon Herb Salmon with Brussels Sprouts and Potatoes",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "dinner",
+      "protein": "salmon",
+      "published_at": "2026-11-01"
     }
   ]
 }
