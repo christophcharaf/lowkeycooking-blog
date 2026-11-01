@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Salmón al Limón y Hierbas en Bandeja con Coles de Bruselas y Patatas
 description: Una cena completa y saludable en una sola bandeja, fácil y deliciosa.
 image: https://images.unsplash.com/photo-1649366095449-128ddc5ac76f?w=1200&q=80

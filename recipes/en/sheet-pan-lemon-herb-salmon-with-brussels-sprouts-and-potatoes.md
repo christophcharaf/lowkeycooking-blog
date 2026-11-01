@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Lemon Herb Salmon with Brussels Sprouts and Potatoes
 description: Effortless weeknight dinner featuring flaky salmon, tender potatoes, and crispy sprouts with bright lemon and herbs.
 image: https://images.unsplash.com/photo-1649366095449-128ddc5ac76f?w=1200&q=80
