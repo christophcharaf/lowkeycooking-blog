@@ -962,6 +962,15 @@
       "meal_type": "dinner",
       "protein": "salmon",
       "published_at": "2026-11-01"
+    },
+    {
+      "slug": "spiced-lamb-sweet-potato-hash",
+      "name": "Spiced Lamb and Sweet Potato Hash",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "breakfast",
+      "protein": "lamb",
+      "published_at": "2026-11-16"
     }
   ]
 }

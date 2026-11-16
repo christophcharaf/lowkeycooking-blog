@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spiced Lamb and Sweet Potato Hash
 description: A hearty, flavorful hash with tender lamb, sweet potatoes, and warming spices, perfect for any meal.
 image: https://images.unsplash.com/photo-1596723419840-c7767821fc11?w=1200&q=80

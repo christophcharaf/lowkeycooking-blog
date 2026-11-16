@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Cordero y Boniato Especiado
 description: Un plato reconfortante y lleno de sabor, perfecto para cualquier comida del día.
 image: https://images.unsplash.com/photo-1596723419840-c7767821fc11?w=1200&q=80
