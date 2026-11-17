@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spiced Pear and Walnut Crumble
 description: Warm, spiced pears topped with a crunchy, buttery walnut crumble topping.
 image: https://images.unsplash.com/photo-1602513916646-60a091ea794e?w=1200&q=80
