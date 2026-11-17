@@ -971,6 +971,15 @@
       "meal_type": "breakfast",
       "protein": "lamb",
       "published_at": "2026-11-16"
+    },
+    {
+      "slug": "spiced-pear-and-walnut-crumble",
+      "name": "Spiced Pear and Walnut Crumble",
+      "status": "published",
+      "cuisine": "American-inspired",
+      "meal_type": "dessert",
+      "protein": "vegetarian",
+      "published_at": "2026-11-17"
     }
   ]
 }
