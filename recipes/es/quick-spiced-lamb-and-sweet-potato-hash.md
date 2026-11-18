@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash Rápido de Cordero y Boniato Especiado
 description: Un delicioso y reconfortante hash de cordero y boniato, perfecto para cualquier comida.
 image: https://images.unsplash.com/photo-1596723419840-c7767821fc11?w=1200&q=80
