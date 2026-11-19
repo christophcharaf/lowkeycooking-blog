@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Arroz Jollof Rápido con Pollo y Pimientos
 description: Un plato vibrante y sabroso de arroz Jollof con pollo tierno y pimientos coloridos, listo en poco tiempo.
 image: https://images.unsplash.com/photo-1664992960082-0ea299a9c53e?w=1200&q=80

@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Quick Jollof Rice with Chicken and Bell Peppers
 description: A vibrant and flavorful one-pot Jollof rice dish packed with tender chicken and sweet bell peppers.
 image: https://images.unsplash.com/photo-1664992960082-0ea299a9c53e?w=1200&q=80
