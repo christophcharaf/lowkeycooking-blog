@@ -980,6 +980,15 @@
       "meal_type": "dessert",
       "protein": "vegetarian",
       "published_at": "2026-11-17"
+    },
+    {
+      "slug": "quick-jollof-rice-chicken-bell-peppers",
+      "name": "Quick Jollof Rice with Chicken and Bell Peppers",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-11-19"
     }
   ]
 }
