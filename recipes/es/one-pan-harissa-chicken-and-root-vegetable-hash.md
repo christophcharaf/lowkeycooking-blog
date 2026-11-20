@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Pollo con Verduras de Raíz y Hash de Harissa en una Sola Sartén
 description: Un plato vibrante y sabroso, lleno de pollo jugoso y verduras asadas, todo cocinado en una sola sartén.
 image: https://images.unsplash.com/photo-1614345881639-91134888e2e4?w=1200&q=80

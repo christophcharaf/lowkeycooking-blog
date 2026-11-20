@@ -1,5 +1,4 @@
 ---
-draft: true
 title: One-Pan Harissa Chicken and Root Vegetable Hash
 description: Spicy harissa chicken and sweet root vegetables roasted to perfection on a single sheet pan.
 image: https://images.unsplash.com/photo-1614345881639-91134888e2e4?w=1200&q=80

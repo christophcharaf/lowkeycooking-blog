@@ -989,6 +989,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-11-19"
+    },
+    {
+      "slug": "one-pan-harissa-chicken-and-root-vegetable-hash",
+      "name": "One-Pan Harissa Chicken and Root Vegetable Hash",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-11-20"
     }
   ]
 }
