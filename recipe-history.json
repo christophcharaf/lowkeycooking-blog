@@ -998,6 +998,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-11-20"
+    },
+    {
+      "slug": "speedy-chicken-and-sweet-potato-jollof-rice",
+      "name": "Speedy Chicken and Sweet Potato Jollof Rice",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "dinner",
+      "protein": "chicken",
+      "published_at": "2026-11-22"
     }
   ]
 }
