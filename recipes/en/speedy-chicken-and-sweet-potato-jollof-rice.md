@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Speedy Chicken and Sweet Potato Jollof Rice
 description: A vibrant, flavorful one-pot meal bursting with tender chicken, sweet potatoes, and aromatic spices.
 image: https://images.unsplash.com/photo-1665332195309-9d75071138f0?w=1200&q=80

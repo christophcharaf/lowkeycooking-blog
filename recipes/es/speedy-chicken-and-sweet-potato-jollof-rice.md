@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Arroz Jollof Rápido de Pollo y Batata
 description: Un plato africano vibrante y sabroso con pollo tierno, batata dulce y arroz perfectamente cocido.
 image: https://images.unsplash.com/photo-1665332195309-9d75071138f0?w=1200&q=80
