@@ -1007,6 +1007,15 @@
       "meal_type": "dinner",
       "protein": "chicken",
       "published_at": "2026-11-22"
+    },
+    {
+      "slug": "spiced-sweet-potato-and-chickpea-hash-with-fried-egg",
+      "name": "Spiced Sweet Potato and Chickpea Hash with Fried Egg",
+      "status": "published",
+      "cuisine": "African-inspired",
+      "meal_type": "breakfast",
+      "protein": "vegetarian",
+      "published_at": "2026-11-26"
     }
   ]
 }

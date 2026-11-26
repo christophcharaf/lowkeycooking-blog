@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Spiced Sweet Potato and Chickpea Hash with Fried Egg
 description: A hearty and flavorful hash featuring sweet potatoes, chickpeas, and warm spices, topped with a perfectly fried egg.
 image: https://images.unsplash.com/photo-1596723419840-c7767821fc11?w=1200&q=80

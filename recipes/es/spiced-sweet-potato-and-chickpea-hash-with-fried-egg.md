@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Hash de Batata Especiada con Garbanzos y Huevo Frito
 description: Un desayuno o brunch reconfortante y nutritivo, lleno de especias y sabor.
 image: https://images.unsplash.com/photo-1596723419840-c7767821fc11?w=1200&q=80
