@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Mahi Mahi al Curry con Coco y Batatas en Bandeja
 description: Una cena fácil y deliciosa con pescado blanco cremoso, batatas dulces y un toque exótico de coco y curry.
 image: https://images.unsplash.com/photo-1660180751287-ed23a963cd83?w=1200&q=80

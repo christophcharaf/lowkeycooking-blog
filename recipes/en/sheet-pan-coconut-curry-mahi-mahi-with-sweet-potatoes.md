@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Sheet Pan Coconut Curry Mahi Mahi with Sweet Potatoes
 description: Easy weeknight dinner featuring flaky mahi mahi and tender sweet potatoes in a fragrant coconut curry sauce.
 image: https://images.unsplash.com/photo-1660180751287-ed23a963cd83?w=1200&q=80

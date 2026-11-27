@@ -1016,6 +1016,15 @@
       "meal_type": "breakfast",
       "protein": "vegetarian",
       "published_at": "2026-11-26"
+    },
+    {
+      "slug": "sheet-pan-coconut-curry-mahi-mahi-sweet-potatoes",
+      "name": "Sheet Pan Coconut Curry Mahi Mahi with Sweet Potatoes",
+      "status": "published",
+      "cuisine": "Thai-inspired",
+      "meal_type": "dinner",
+      "protein": "mahi mahi",
+      "published_at": "2026-11-27"
     }
   ]
 }
